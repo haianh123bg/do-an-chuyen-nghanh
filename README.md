@@ -30,45 +30,72 @@ backend/ └── learn-programming/ ├── src/ │ ├── main/ │ │
 
 ## 3. Quy Trình Làm Việc Trên GitHub
 
+# Quy Trình Làm Việc Git Với Nhánh `main` và `develop`
+
+## Cấu Trúc Nhánh
+
+- **`main`**: Nhánh chính chứa mã nguồn ổn định, được xem là phiên bản phát hành chính thức của dự án. Chỉ nhóm trưởng hoặc người có quyền mới được phép merge mã vào nhánh này.
+- **`develop`**: Nhánh trung tâm dùng cho việc phát triển. Tất cả các tính năng mới hoặc sửa lỗi đều được phát triển từ nhánh này. Sau khi mã ở `develop` đã ổn định và không có lỗi, nó sẽ được merge vào `main`.
+
 ### Trước Mỗi Phiên Làm Việc
 1. **Pull Code Mới Nhất**:
- - Đảm bảo bạn có phiên bản code mới nhất từ remote repository:
-   ```bash
-   git checkout <branch_name>
-   git pull origin <branch_name>
-   ```
+    - Đảm bảo bạn có phiên bản code mới nhất từ nhánh `develop` trước khi bắt đầu làm việc:
+    ```bash
+    git checkout develop
+    git pull origin develop
+    ```
 
 ### Trong Quá Trình Làm Việc
-2. **Tạo và Di Chuyển Branch**:
- - Tạo branch mới để làm việc:
-   ```bash
-   git checkout -b feature-branch
-   ```
- - Di chuyển giữa các branch:
-   ```bash
-   git checkout <branch_name>
-   ```
+
+2. **Tạo Nhánh Mới Từ `develop`**:
+    - Khi phát triển một tính năng mới hoặc sửa lỗi, bạn tạo một nhánh mới từ `develop`. Tên nhánh nên theo cấu trúc `feature/[tên-tính-năng]` hoặc `bugfix/[mô-tả-lỗi]`:
+    ```bash
+    git checkout develop
+    git checkout -b feature/tinh-nang-moi
+    ```
 
 3. **Thực Hiện Công Việc và Commit**:
- - Thực hiện thay đổi trong code, sau đó sử dụng `git add` và `git commit` để lưu các thay đổi vào local repository:
-   ```bash
-   git add <file_name>
-   git commit -m "Description of changes"
-   ```
+    - Thực hiện các thay đổi và commit chúng:
+    ```bash
+    git add <file_name>
+    git commit -m "Mô tả ngắn gọn thay đổi"
+    ```
 
-### Trước Khi Merge Code
-4. **Pull Request (PR)**:
- - Push branch của bạn lên remote repository:
-   ```bash
-   git push origin feature-branch
-   ```
- - Tạo Pull Request trên GitHub.
- - Chờ review và phản hồi từ nhóm trước khi merge.
+4. **Push Nhánh Lên Remote**:
+    - Sau khi hoàn thành tính năng, bạn push nhánh của mình lên remote repository:
+    ```bash
+    git push origin feature/tinh-nang-moi
+    ```
 
-### Lưu Ý Quan Trọng
-- Giữ các commit nhỏ và có ý nghĩa.
-- Viết message commit rõ ràng và mô tả đầy đủ về thay đổi.
-- Đảm bảo code chạy ổn định trước khi tạo Pull Request.
+### Gửi Yêu Cầu Pull Request (PR)
+
+5. **Tạo Pull Request**:
+    - Truy cập GitHub và tạo Pull Request từ nhánh `feature/tinh-nang-moi` về nhánh `develop`.
+    - Mô tả ngắn gọn về những thay đổi và tại sao thay đổi đó là cần thiết.
+
+6. **Review PR**:
+    - Nhóm trưởng hoặc người có trách nhiệm sẽ review mã của bạn. Nếu mã đáp ứng yêu cầu và không có lỗi, mã sẽ được merge vào nhánh `develop`.
+
+### Sau Khi Merge Vào `develop`
+
+7. **Cập Nhật `develop` Sau Khi Merge**:
+    - Sau khi mã của bạn được merge vào nhánh `develop`, tất cả các thành viên cần cập nhật phiên bản mới nhất:
+    ```bash
+    git checkout develop
+    git pull origin develop
+    ```
+
+### Trước Khi Merge Vào `main`
+
+8. **Merge `develop` Vào `main`**:
+    - Khi nhánh `develop` đã ổn định, nhóm trưởng sẽ tạo Pull Request từ nhánh `develop` vào `main`. Sau khi PR được review và xác nhận là ổn định, mã sẽ được merge vào nhánh `main` và có thể phát hành phiên bản mới.
+
+## Lưu Ý Quan Trọng
+
+- **Không Thao Tác Trực Tiếp Trên Nhánh `main`**: Các thành viên không được phép thực hiện bất kỳ thay đổi nào trực tiếp trên nhánh `main`. Tất cả thay đổi phải được thực hiện qua nhánh `develop`.
+- **Pull Request (PR)**: Tất cả thay đổi từ các nhánh tính năng phải được review qua Pull Request trước khi merge vào `develop`.
+- **Commit Rõ Ràng**: Mỗi commit phải rõ ràng, mô tả ngắn gọn và có ý nghĩa.
+- **Kiểm Tra Kỹ Lưỡng**: Đảm bảo mã đã được kiểm tra và hoạt động ổn định trước khi gửi Pull Request.
 
 ## 4. Phần Mềm Cần Cài Đặt
 
