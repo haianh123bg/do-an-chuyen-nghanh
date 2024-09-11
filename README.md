@@ -30,9 +30,7 @@ backend/ └── learn-programming/ ├── src/ │ ├── main/ │ │
 
 ## 3. Quy Trình Làm Việc Trên GitHub
 
-# Quy Trình Làm Việc Git Với Nhánh `main` và `develop`
-
-## Cấu Trúc Nhánh
+### Quy Trình Làm Việc Git Với Nhánh `main` và `develop`
 
 - **`main`**: Nhánh chính chứa mã nguồn ổn định, được xem là phiên bản phát hành chính thức của dự án. Chỉ nhóm trưởng hoặc người có quyền mới được phép merge mã vào nhánh này.
 - **`develop`**: Nhánh trung tâm dùng cho việc phát triển. Tất cả các tính năng mới hoặc sửa lỗi đều được phát triển từ nhánh này. Sau khi mã ở `develop` đã ổn định và không có lỗi, nó sẽ được merge vào `main`.
