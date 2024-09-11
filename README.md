@@ -87,19 +87,28 @@ backend/ └── learn-programming/ ├── src/ │ ├── main/ │ │
 1. Mở terminal và điều hướng vào thư mục `main` trong frontend:
  ```bash
  cd frontend/main
+ ```
 
 2. Cài đặt các package cần thiết:
+ ```bash
 npm install
+```
 
 3. Chạy dự án frontend:
+ ```bash
 npm run dev
+ ```
 
 ### **Backend**:
 1. Mở terminal và điều hướng vào thư mục learn-programming trong backend:
+ ```bash
 cd backend/learn-programming
-
+ ```
 2. Cài đặt các dependencies:
+ ```bash
 mvn clean install
-
+ ```
 3. Chạy dự án backend:
+ ```bash
 mvn spring-boot:run
+ ```bash
