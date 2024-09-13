@@ -1,5 +1,9 @@
 # HỆ THỐNG QUẢN LÝ KHÓA HỌC
 
+## LINK TÀI LIỆU
+
+[Onenote](https://onedrive.live.com/view.aspx?resid=454F9205FAC8A47%21sffb2fd79460847ceb1e78e5cade6b01f&id=documents)
+
 ## 1. Mô Tả Dự Án
 
 Dự án "Hệ Thống Quản Lý Khóa Học" giúp quản lý việc đăng ký, theo dõi, và quản lý các khóa học cho sinh viên, giảng viên và quản trị viên. Hệ thống cung cấp các chức năng như:
