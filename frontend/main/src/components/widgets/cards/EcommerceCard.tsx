@@ -21,7 +21,7 @@ interface ecocardType {
 
 const ecoCard: ecocardType[] = [
   {
-    title: 'Boat Headphone',
+    title: 'C++ từ cơ bản đến nâng cao',
     subheader: 'September 14, 2023',
     photo: img1,
     salesPrice: 375,
@@ -29,7 +29,7 @@ const ecoCard: ecocardType[] = [
     rating: 4,
   },
   {
-    title: 'MacBook Air Pro',
+    title: 'C++ từ cơ bản đến nâng cao',
     subheader: 'September 14, 2023',
     photo: img2,
     salesPrice: 650,

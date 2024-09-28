@@ -17,37 +17,37 @@ interface cardType {
 const topcards: cardType[] = [
   {
     icon: icon2,
-    title: 'Employees',
+    title: 'Học viên',
     digits: '96',
     bgcolor: 'primary',
   },
   {
     icon: icon3,
-    title: 'Clients',
+    title: 'Khóa học',
     digits: '3,650',
     bgcolor: 'warning',
   },
   {
     icon: icon4,
-    title: 'Projects',
+    title: 'Giáo viên',
     digits: '356',
     bgcolor: 'secondary',
   },
   {
     icon: icon5,
-    title: 'Events',
+    title: 'Google adsense',
     digits: '696',
     bgcolor: 'error',
   },
   {
     icon: icon6,
-    title: 'Payroll',
+    title: 'Doanh thu',
     digits: '$96k',
     bgcolor: 'success',
   },
   {
     icon: icon1,
-    title: 'Reports',
+    title: 'Chủ đề lập trình',
     digits: '59',
     bgcolor: 'info',
   },

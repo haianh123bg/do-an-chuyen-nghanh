@@ -74,6 +74,9 @@ const Pricing = Loadable(lazy(() => import('../views/pages/pricing/Pricing')));
 const AccountSetting = Loadable(
   lazy(() => import('../views/pages/account-setting/AccountSetting')),
 );
+const HomePage = Loadable(lazy(() => import('../views/apps/home/HomePage')));
+const CourseManage = Loadable(lazy(() => import('../views/course/CourseManage')));
+
 
 // charts
 const AreaChart = Loadable(lazy(() => import('../views/charts/AreaChart')));
@@ -120,9 +123,11 @@ const Router = [
     element: <FullLayout />,
     children: [
       { path: '/', element: <Navigate to="/dashboards/modern" /> },
+      { path: '/homepage', exact: true, element: <HomePage /> },
       { path: '/dashboards/modern', exact: true, element: <ModernDash /> },
       { path: '/dashboards/ecommerce', exact: true, element: <EcommerceDash /> },
       { path: '/apps/contacts', element: <Contacts /> },
+      { path: '/course/management', element: <CourseManage /> },
       { path: '/apps/blog/posts', element: <Blog /> },
       { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
       { path: '/apps/chats', element: <Chats /> },

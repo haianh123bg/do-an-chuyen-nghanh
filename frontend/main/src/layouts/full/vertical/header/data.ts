@@ -120,13 +120,13 @@ interface ProfileType {
 const profile: ProfileType[] = [
   {
     href: '/user-profile',
-    title: 'My Profile',
+    title: 'Quản lý tài khoản',
     subtitle: 'Account Settings',
     icon: icon1,
   },
   {
     href: '/apps/email',
-    title: 'My Inbox',
+    title: 'Khóa học của tôi',
     subtitle: 'Messages & Emails',
     icon: icon2,
   },

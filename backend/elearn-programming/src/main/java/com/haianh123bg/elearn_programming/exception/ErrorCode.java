@@ -33,11 +33,23 @@ public enum ErrorCode {
 
     ErrorCode(int code, String message, HttpStatusCode status) {
         this.code = code;
+        this.originalMessage = message;  // Lưu trữ message ban đầu
         this.message = message;
-        this.statusCode = statusCode;
+        this.statusCode = status;
     }
 
     private int code;
     private String message;
     private HttpStatusCode statusCode;
+    private final String originalMessage; // Lưu trữ message gốc (ban đầu)
+
+    // Phương thức để định dạng message và trả về ErrorCode
+    public ErrorCode formatMessage(Object... args) {
+        this.message = String.format(this.originalMessage, args);  // Luôn sử dụng message gốc để định dạng
+        return this;
+    }
+
+    public String getFormattedMessage() {
+        return this.message;
+    }
 }

@@ -86,7 +86,7 @@ const ProductsData = [
     description: chance.paragraph({ sentences: 2 }),
   },
   {
-    title: 'MacBook Air Pro',
+    title: 'C++ từ cơ bản đến nâng cao',
     price: 650,
     discount: 250,
     related: true,
