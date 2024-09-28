@@ -114,6 +114,9 @@ const Maintenance = Loadable(lazy(() => import('../views/authentication/Maintena
 // landingpage
 const Landingpage = Loadable(lazy(() => import('../views/pages/landingpage/Landingpage')));
 
+//Home
+const Home = Loadable(lazy(() => import('../views/pages/home/Home')));
+
 const Router = [
   {
     path: '/',
@@ -204,6 +207,7 @@ const Router = [
       { path: '/auth/two-steps2', element: <TwoSteps2 /> },
       { path: '/auth/maintenance', element: <Maintenance /> },
       { path: '/landingpage', element: <Landingpage /> },
+      { path: '/home', element: <Home /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
   },

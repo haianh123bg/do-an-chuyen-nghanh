@@ -69,7 +69,7 @@ const LpHeader = () => {
 
   return (
     <AppBarStyled position="sticky" elevation={y ? 8 : 0}>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <ToolbarStyled>
           <Logo />
           <Box flexGrow={1} />
@@ -79,7 +79,7 @@ const LpHeader = () => {
             </IconButton>
           ) : null}
           {lgUp ? (
-            <Stack spacing={1} direction="row" alignItems="center">
+            <Stack spacing={3} direction="row" alignItems="center">
               <Navigations />
             </Stack>
           ) : null}
