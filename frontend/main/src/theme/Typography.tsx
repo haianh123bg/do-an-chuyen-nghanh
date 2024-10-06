@@ -2,55 +2,55 @@ const typography: any = {
   fontFamily: "'Plus Jakarta Sans', sans-serif;",
   h1: {
     fontWeight: 600,
-    fontSize: '2.25rem',
-    lineHeight: '2.75rem',
+    fontSize: '2.5rem', // Tăng từ 2.25rem
+    lineHeight: '3rem',
   },
   h2: {
     fontWeight: 600,
-    fontSize: '1.875rem',
-    lineHeight: '2.25rem',
+    fontSize: '2rem', // Tăng từ 1.875rem
+    lineHeight: '2.5rem',
   },
   h3: {
     fontWeight: 600,
-    fontSize: '1.5rem',
-    lineHeight: '1.75rem',
+    fontSize: '1.75rem', // Tăng từ 1.5rem
+    lineHeight: '2rem',
   },
   h4: {
     fontWeight: 600,
-    fontSize: '1.3125rem',
-    lineHeight: '1.6rem',
+    fontSize: '1.5rem', // Tăng từ 1.3125rem
+    lineHeight: '1.8rem',
   },
   h5: {
     fontWeight: 600,
-    fontSize: '1.125rem',
-    lineHeight: '1.6rem',
+    fontSize: '1.25rem', // Tăng từ 1.125rem
+    lineHeight: '1.75rem',
   },
   h6: {
     fontWeight: 600,
-    fontSize: '1rem',
-    lineHeight: '1.2rem',
+    fontSize: '1.125rem', // Tăng từ 1rem
+    lineHeight: '1.4rem',
   },
   button: {
     textTransform: 'capitalize',
     fontWeight: 400,
   },
   body1: {
-    fontSize: '0.875rem',
+    fontSize: '1rem', // Tăng từ 0.875rem
     fontWeight: 400,
-    lineHeight: '1.334rem',
+    lineHeight: '1.5rem',
   },
   body2: {
-    fontSize: '0.75rem',
+    fontSize: '0.875rem', // Tăng từ 0.75rem
     letterSpacing: '0rem',
     fontWeight: 400,
-    lineHeight: '1rem',
+    lineHeight: '1.25rem',
   },
   subtitle1: {
-    fontSize: '0.875rem',
+    fontSize: '1rem', // Tăng từ 0.875rem
     fontWeight: 400,
   },
   subtitle2: {
-    fontSize: '0.875rem',
+    fontSize: '1rem', // Tăng từ 0.875rem
     fontWeight: 400,
   },
 };

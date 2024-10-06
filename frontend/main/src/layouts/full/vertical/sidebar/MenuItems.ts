@@ -70,10 +70,9 @@ const Menuitems: MenuitemsType[] = [
     navlabel: true,
     subheader: 'Home',
   },
-
   {
     id: uniqueId(),
-    title: 'Modern',
+    title: 'Dashboard',
     icon: IconAperture,
     href: '/dashboards/modern',
     chip: 'New',
@@ -81,9 +80,37 @@ const Menuitems: MenuitemsType[] = [
   },
   {
     id: uniqueId(),
-    title: 'eCommerce',
+    title: 'Danh mục khóa học',
     icon: IconShoppingCart,
-    href: '/dashboards/ecommerce',
+    href: '/categories',
+  },
+  {
+    id: uniqueId(),
+    title: 'Khóa học của tôi',
+    icon: IconPackage,
+    chip: '2',
+    chipColor: 'secondary',
+    href: '/my/courses',
+  },
+  {
+    id: uniqueId(),
+    title: 'Diễn đàn và thảo luận',
+    icon: IconAperture,
+    href: '/dashboards/modern',
+    chip: 'New',
+    chipColor: 'secondary',
+  },
+  {
+    id: uniqueId(),
+    title: 'Blog',
+    icon: IconShoppingCart,
+    href: '/blogs',
+  },
+  {
+    id: uniqueId(),
+    title: 'Liên kết hỗ trợ',
+    icon: IconShoppingCart,
+    href: '/tickets',
   },
   {
     navlabel: true,

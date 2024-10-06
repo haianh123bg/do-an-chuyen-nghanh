@@ -92,7 +92,7 @@ const RevenueUpdates = () => {
 
   return (
     <DashboardCard
-      title="Revenue Updates"
+      title="Cập nhật doanh thu"
       subtitle="Overview of Profit"
       action={
         <CustomSelect

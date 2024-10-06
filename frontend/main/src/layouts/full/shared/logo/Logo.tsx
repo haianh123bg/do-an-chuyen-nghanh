@@ -12,6 +12,9 @@ import { ReactComponent as LogoDarkRTL } from 'src/assets/images/logos/dark-rtl-
 import { ReactComponent as LogoLight } from 'src/assets/images/logos/light-logo.svg';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
+import { ReactComponent as LogoProgrammingLight } from 'src/assets/images/logos/logo-program-light.svg';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { ReactComponent as LogoLightRTL } from 'src/assets/images/logos/light-logo-rtl.svg';
 import { styled } from '@mui/material';
 import { AppState } from 'src/store/Store';
@@ -34,10 +37,18 @@ const Logo: FC = () => {
           alignItems: 'center',
         }}
       >
-        {customizer.activeMode === 'dark' ? (
-          <LogoLight />
+        {customizer.isCollapse ? ( // Hiển thị logo khác khi thu nhỏ
+          customizer.activeMode === 'dark' ? (
+            <LogoDark />
+          ) : (
+            <LogoDark />
+          )
         ) : (
-          <LogoDark />
+          customizer.activeMode === 'dark' ? (
+            <LogoLight />
+          ) : (
+            <LogoDark />
+          )
         )}
       </LinkStyled>
     );
@@ -51,10 +62,18 @@ const Logo: FC = () => {
         alignItems: 'center',
       }}
     >
-      {customizer.activeMode === 'dark' ? (
-        <LogoDarkRTL />
+      {customizer.isCollapse ? ( // Hiển thị logo khác khi thu nhỏ cho RTL
+        customizer.activeMode === 'dark' ? (
+          <LogoDarkRTL />  
+        ) : (
+          <LogoLightRTL />  
+        )
       ) : (
-        <LogoLightRTL />
+        customizer.activeMode === 'dark' ? (
+          <LogoLightRTL /> 
+        ) : (
+          <LogoLightRTL /> 
+        )
       )}
     </LinkStyled>
   );
