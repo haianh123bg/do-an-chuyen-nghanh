@@ -61,15 +61,12 @@ const Profile = () => {
                     },
                 }}
             >
-                <Typography variant="h5">User Profile</Typography>
+                <Typography variant="h5">Thông tin tài khoản</Typography>
                 <Stack direction="row" py={3} spacing={2} alignItems="center">
                     <Avatar src={ProfileImg} alt={ProfileImg} sx={{ width: 95, height: 95 }} />
                     <Box>
                         <Typography variant="subtitle2" color="textPrimary" fontWeight={600}>
                             Nguyễn Ngọc Hải Anh
-                        </Typography>
-                        <Typography variant="subtitle2" color="textSecondary">
-                            Developer
                         </Typography>
                         <Typography
                             variant="subtitle2"
@@ -86,7 +83,7 @@ const Profile = () => {
                 <Divider />
                 {dropdownData.profile.map((profile) => (
                     <Box key={profile.title}>
-                        <Box sx={{ py: 2, px: 0 }} className="hover-text-primary">
+                        <Box sx={{ py: 0.5, px: 0 }} className="hover-text-primary">
                             <Link to={profile.href}>
                                 <Stack direction="row" spacing={2}>
                                     <Box
@@ -107,28 +104,24 @@ const Profile = () => {
                                             }}
                                         />
                                     </Box>
-                                    <Box>
+                                    <Box
+                                        sx={{
+                                            textAlign: 'start',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                        }}
+                                    >
                                         <Typography
-                                            variant="subtitle2"
-                                            fontWeight={600}
+                                            fontWeight={800}
                                             color="textPrimary"
-                                            className="text-hover"
+                                            fontSize={'16px'}
+                                            className="text-hover-red"
                                             noWrap
                                             sx={{
                                                 width: '240px',
                                             }}
                                         >
                                             {profile.title}
-                                        </Typography>
-                                        <Typography
-                                            color="textSecondary"
-                                            variant="subtitle2"
-                                            sx={{
-                                                width: '240px',
-                                            }}
-                                            noWrap
-                                        >
-                                            {profile.subtitle}
                                         </Typography>
                                     </Box>
                                 </Stack>
@@ -137,20 +130,6 @@ const Profile = () => {
                     </Box>
                 ))}
                 <Box mt={2}>
-                    <Box bgcolor="primary.light" p={3} mb={3} overflow="hidden" position="relative">
-                        <Box display="flex" justifyContent="space-between">
-                            <Box>
-                                <Typography variant="h5" mb={2}>
-                                    Đề xuất <br />
-                                    Nâng cấp hệ thống
-                                </Typography>
-                                <Button variant="contained" color="primary">
-                                    Đề xuất
-                                </Button>
-                            </Box>
-                            <img src={unlimitedImg} alt="unlimited" className="signup-bg"></img>
-                        </Box>
-                    </Box>
                     <Button
                         to="/auth/login"
                         variant="outlined"
