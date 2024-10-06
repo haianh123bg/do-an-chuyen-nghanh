@@ -6,7 +6,6 @@ import PageContainer from 'src/components/container/PageContainer';
 
 import TopCards from 'src/components/dashboards/modern/TopCards';
 import Social from 'src/components/dashboards/modern/Social';
-import WeeklyStats from 'src/components/dashboards/modern/WeeklyStats';
 import TopPerformers from 'src/components/dashboards/modern/TopPerformers';
 import Welcome from 'src/layouts/full/shared/welcome/Welcome';
 import { RevenueChart } from 'src/components/dashboards/modern/RevenueChart';
@@ -14,7 +13,6 @@ import YearlyBreakupCustom from 'src/components/dashboards/modern/YearlyBreakupC
 import MonthlyEarningsCustom from 'src/components/dashboards/modern/MonthlyEarningsCustom';
 import CustomersCustom from 'src/components/dashboards/modern/CustomersCustom';
 import ProjectsCustom from 'src/components/dashboards/modern/ProjectsCustom';
-import SellingProductsCustom from 'src/components/dashboards/modern/SellingProductsCustom';
 import WebsiteTraffic from 'src/components/dashboards/modern/WebsiteTraffic';
 import UserOnline from 'src/components/dashboards/modern/UserOnline';
 
