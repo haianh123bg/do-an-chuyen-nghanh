@@ -21,19 +21,19 @@ interface locationType {
 const locations: locationType[] = [
   {
     value: 'us',
-    label: 'United States',
+    label: 'Hoa Kỳ',
   },
   {
     value: 'uk',
-    label: 'United Kingdom',
+    label: 'Vương Quốc Anh',
   },
   {
     value: 'india',
-    label: 'India',
+    label: 'Ấn Độ',
   },
   {
     value: 'russia',
-    label: 'Russia',
+    label: 'Nga',
   },
 ];
 
@@ -41,19 +41,19 @@ const locations: locationType[] = [
 const currencies: locationType[] = [
   {
     value: 'us',
-    label: 'US Dollar ($)',
+    label: 'Đô la Mỹ ($)',
   },
   {
     value: 'uk',
-    label: 'United Kingdom (Pound)',
+    label: 'Bảng Anh',
   },
   {
     value: 'india',
-    label: 'India (INR)',
+    label: 'Rupee Ấn Độ (INR)',
   },
   {
     value: 'russia',
-    label: 'Russia (Ruble)',
+    label: 'Ruble Nga',
   },
 ];
 
@@ -64,7 +64,7 @@ const AccountTab = () => {
     setLocation(event.target.value);
   };
 
-  //   currency
+  // currency
   const [currency, setCurrency] = React.useState('india');
 
   const handleChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,14 +73,14 @@ const AccountTab = () => {
 
   return (
     <Grid container spacing={3}>
-      {/* Change Profile */}
+      {/* Thay Đổi Hồ Sơ */}
       <Grid item xs={12} lg={6}>
         <BlankCard>
           <CardContent>
             <Typography variant="h5" mb={1}>
-              Change Profile
+              Thay Đổi Hồ Sơ
             </Typography>
-            <Typography color="textSecondary" mb={3}>Change your profile picture from here</Typography>
+            <Typography color="textSecondary" mb={3}>Thay đổi hình đại diện của bạn tại đây</Typography>
             <Box textAlign="center" display="flex" justifyContent="center">
               <Box>
                 <Avatar
@@ -90,29 +90,29 @@ const AccountTab = () => {
                 />
                 <Stack direction="row" justifyContent="center" spacing={2} my={3}>
                   <Button variant="contained" color="primary" component="label">
-                    Upload
+                    Tải lên
                     <input hidden accept="image/*" multiple type="file" />
                   </Button>
                   <Button variant="outlined" color="error">
-                    Reset
+                    Đặt lại
                   </Button>
                 </Stack>
                 <Typography variant="subtitle1" color="textSecondary" mb={4}>
-                  Allowed JPG, GIF or PNG. Max size of 800K
+                  Chấp nhận JPG, GIF hoặc PNG. Kích thước tối đa 800K
                 </Typography>
               </Box>
             </Box>
           </CardContent>
         </BlankCard>
       </Grid>
-      {/*  Change Password */}
+      {/* Thay Đổi Mật Khẩu */}
       <Grid item xs={12} lg={6}>
         <BlankCard>
           <CardContent>
             <Typography variant="h5" mb={1}>
-              Change Password
+              Thay Đổi Mật Khẩu
             </Typography>
-            <Typography color="textSecondary" mb={3}>To change your password please confirm here</Typography>
+            <Typography color="textSecondary" mb={3}>Để thay đổi mật khẩu của bạn, vui lòng xác nhận tại đây</Typography>
             <form>
               <CustomFormLabel
                 sx={{
@@ -120,7 +120,7 @@ const AccountTab = () => {
                 }}
                 htmlFor="text-cpwd"
               >
-                Current Password
+                Mật Khẩu Hiện Tại
               </CustomFormLabel>
               <CustomTextField
                 id="text-cpwd"
@@ -130,7 +130,7 @@ const AccountTab = () => {
                 type="password"
               />
               {/* 2 */}
-              <CustomFormLabel htmlFor="text-npwd">New Password</CustomFormLabel>
+              <CustomFormLabel htmlFor="text-npwd">Mật Khẩu Mới</CustomFormLabel>
               <CustomTextField
                 id="text-npwd"
                 value="MathewAnderson"
@@ -139,7 +139,7 @@ const AccountTab = () => {
                 type="password"
               />
               {/* 3 */}
-              <CustomFormLabel htmlFor="text-conpwd">Confirm Password</CustomFormLabel>
+              <CustomFormLabel htmlFor="text-conpwd">Xác Nhận Mật Khẩu</CustomFormLabel>
               <CustomTextField
                 id="text-conpwd"
                 value="MathewAnderson"
@@ -151,14 +151,14 @@ const AccountTab = () => {
           </CardContent>
         </BlankCard>
       </Grid>
-      {/* Edit Details */}
+      {/* Chỉnh Sửa Chi Tiết */}
       <Grid item xs={12}>
         <BlankCard>
           <CardContent>
             <Typography variant="h5" mb={1}>
-              Personal Details
+              Thông Tin Cá Nhân
             </Typography>
-            <Typography color="textSecondary" mb={3}>To change your personal detail , edit and save from here</Typography>
+            <Typography color="textSecondary" mb={3}>Để thay đổi thông tin cá nhân, chỉnh sửa và lưu tại đây</Typography>
             <form>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
@@ -168,7 +168,7 @@ const AccountTab = () => {
                     }}
                     htmlFor="text-name"
                   >
-                    Your Name
+                    Họ Tên
                   </CustomFormLabel>
                   <CustomTextField
                     id="text-name"
@@ -185,7 +185,7 @@ const AccountTab = () => {
                     }}
                     htmlFor="text-store-name"
                   >
-                    Store Name
+                    Tên Cửa Hàng
                   </CustomFormLabel>
                   <CustomTextField
                     id="text-store-name"
@@ -202,7 +202,7 @@ const AccountTab = () => {
                     }}
                     htmlFor="text-location"
                   >
-                    Location
+                    Địa Điểm
                   </CustomFormLabel>
                   <CustomSelect
                     fullWidth
@@ -226,7 +226,7 @@ const AccountTab = () => {
                     }}
                     htmlFor="text-currency"
                   >
-                    Currency
+                    Tiền Tệ
                   </CustomFormLabel>
                   <CustomSelect
                     fullWidth
@@ -267,7 +267,7 @@ const AccountTab = () => {
                     }}
                     htmlFor="text-phone"
                   >
-                    Phone
+                    Điện Thoại
                   </CustomFormLabel>
                   <CustomTextField
                     id="text-phone"
@@ -284,11 +284,11 @@ const AccountTab = () => {
                     }}
                     htmlFor="text-address"
                   >
-                    Address
+                    Địa Chỉ
                   </CustomFormLabel>
                   <CustomTextField
                     id="text-address"
-                    value="814 Howard Street, 120065, India"
+                    value="814 Howard Street, 120065, Ấn Độ"
                     variant="outlined"
                     fullWidth
                   />
@@ -299,10 +299,10 @@ const AccountTab = () => {
         </BlankCard>
         <Stack direction="row" spacing={2} sx={{ justifyContent: 'end' }} mt={3}>
           <Button size="large" variant="contained" color="primary">
-            Save
+            Lưu
           </Button>
           <Button size="large" variant="text" color="error">
-            Cancel
+            Hủy
           </Button>
         </Stack>
       </Grid>

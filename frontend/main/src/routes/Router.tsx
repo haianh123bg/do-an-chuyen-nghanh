@@ -114,6 +114,8 @@ const Maintenance = Loadable(lazy(() => import('../views/authentication/Maintena
 // landingpage
 const Landingpage = Loadable(lazy(() => import('../views/pages/landingpage/Landingpage')));
 
+
+
 const Router = [
   {
     path: '/',
@@ -138,7 +140,7 @@ const Router = [
       { path: '/apps/gallery', element: <Gallery /> },
       { path: '/user-profile', element: <UserProfile /> },
       { path: '/apps/calendar', element: <Calendar /> },
-      { path: '/ui-components/alert', element: <MuiAlert /> },
+     { path: '/ui-components/alert', element: <MuiAlert /> },
       { path: '/ui-components/accordion', element: <MuiAccordion /> },
       { path: '/ui-components/avatar', element: <MuiAvatar /> },
       { path: '/ui-components/chip', element: <MuiChip /> },

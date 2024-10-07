@@ -27,13 +27,13 @@ const BillsTab = () => {
           <BlankCard>
             <CardContent>
               <Typography variant="h4" mb={2}>
-                Billing Information
+                Thông Tin Thanh Toán
               </Typography>
 
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <CustomFormLabel sx={{ mt: 0 }} htmlFor="text-bname">
-                    Business Name*
+                    Tên Doanh Nghiệp*
                   </CustomFormLabel>
                   <CustomTextField
                     id="text-bname"
@@ -44,36 +44,36 @@ const BillsTab = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <CustomFormLabel sx={{ mt: 0 }} htmlFor="text-bsector">
-                    Business Sector*
+                    Ngành Nghề Doanh Nghiệp*
                   </CustomFormLabel>
                   <CustomTextField
                     id="text-bsector"
-                    value="Arts, Media & Entertainment"
+                    value="Nghệ Thuật, Truyền Thông & Giải Trí"
                     variant="outlined"
                     fullWidth
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <CustomFormLabel sx={{ mt: 0 }} htmlFor="text-baddress">
-                    Business Address*
+                    Địa Chỉ Doanh Nghiệp*
                   </CustomFormLabel>
                   <CustomTextField id="text-baddress" value="" variant="outlined" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <CustomFormLabel sx={{ mt: 0 }} htmlFor="text-bcy">
-                    Country*
+                    Quốc Gia*
                   </CustomFormLabel>
                   <CustomTextField id="text-bcy" value="Romania" variant="outlined" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <CustomFormLabel sx={{ mt: 0 }} htmlFor="text-fname">
-                    First Name*
+                    Tên*
                   </CustomFormLabel>
                   <CustomTextField id="text-fname" value="" variant="outlined" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <CustomFormLabel sx={{ mt: 0 }} htmlFor="text-lname">
-                    Last Name*
+                    Họ*
                   </CustomFormLabel>
                   <CustomTextField id="text-lname" value="" variant="outlined" fullWidth />
                 </Grid>
@@ -87,13 +87,13 @@ const BillsTab = () => {
           <BlankCard>
             <CardContent>
               <Typography variant="h4" display="flex" mb={2}>
-                Current Plan :
+                Kế Hoạch Hiện Tại :
                 <Typography variant="h4" component="div" ml="2px" color="success.main">
                   Executive
                 </Typography>
               </Typography>
               <Typography color="textSecondary">
-                Thanks for being a premium member and supporting our development.
+                Cảm ơn bạn đã là thành viên cao cấp và hỗ trợ sự phát triển của chúng tôi.
               </Typography>
 
               {/* list 1 */}
@@ -106,14 +106,14 @@ const BillsTab = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="subtitle1" color="textSecondary">
-                    Current Plan
+                    Kế Hoạch Hiện Tại
                   </Typography>
                   <Typography variant="h6" mb={1}>
-                    750.000 Monthly Visits
+                    750.000 Lượt Truy Cập Hàng Tháng
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
-                  <Tooltip title="Add">
+                  <Tooltip title="Thêm">
                     <IconButton>
                       <IconCirclePlus size="22" />
                     </IconButton>
@@ -123,10 +123,10 @@ const BillsTab = () => {
 
               <Stack direction="row" spacing={2}>
                 <Button variant="contained" color="primary">
-                  Change Plan
+                  Thay Đổi Kế Hoạch
                 </Button>
                 <Button variant="outlined" color="error">
-                  Reset Plan
+                  Đặt Lại Kế Hoạch
                 </Button>
               </Stack>
             </CardContent>
@@ -138,9 +138,9 @@ const BillsTab = () => {
           <BlankCard>
             <CardContent>
               <Typography variant="h4" mb={2}>
-                Payment Method
+                Phương Thức Thanh Toán
               </Typography>
-              <Typography color="textSecondary">On 26 December, 2023</Typography>
+              <Typography color="textSecondary">Vào ngày 26 tháng 12, 2023</Typography>
               {/* list 1 */}
               <Stack direction="row" spacing={2} mt={4}>
                 <Avatar
@@ -158,7 +158,7 @@ const BillsTab = () => {
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
-                  <Tooltip title="Edit">
+                  <Tooltip title="Chỉnh sửa">
                     <IconButton>
                       <IconPencilMinus size="22" />
                     </IconButton>
@@ -166,11 +166,11 @@ const BillsTab = () => {
                 </Box>
               </Stack>
               <Typography color="textSecondary" my={1}>
-                If you updated your payment method, it will only be dislpayed here after your next
-                billing cycle.
+                Nếu bạn cập nhật phương thức thanh toán của mình, nó sẽ chỉ được hiển thị ở đây sau chu kỳ
+                thanh toán tiếp theo của bạn.
               </Typography>
               <Button variant="outlined" color="error">
-                Cancel Subscription
+                Hủy Đăng Ký
               </Button>
             </CardContent>
           </BlankCard>
@@ -179,10 +179,10 @@ const BillsTab = () => {
 
       <Stack direction="row" spacing={2} sx={{ justifyContent: 'end' }} mt={3}>
         <Button size="large" variant="contained" color="primary">
-          Save
+          Lưu
         </Button>
         <Button size="large" variant="text" color="error">
-          Cancel
+          Hủy
         </Button>
       </Stack>
     </>
