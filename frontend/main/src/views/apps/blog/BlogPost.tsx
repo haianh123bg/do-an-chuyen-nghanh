@@ -6,7 +6,7 @@ import PageContainer from 'src/components/container/PageContainer';
 
 const BlogPost = () => {
   return (
-    <PageContainer title="Blog" description="this is Blog page">
+    <PageContainer title="Quản lý khóa học" description="this is Blog page">
       {/* ------------------------------------------- */}
       {/* Blog Listing */}
       {/* ------------------------------------------- */}

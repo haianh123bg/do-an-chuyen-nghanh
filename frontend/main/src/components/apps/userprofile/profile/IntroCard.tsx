@@ -9,7 +9,7 @@ import { IconBriefcase, IconDeviceDesktop, IconMail, IconMapPin } from '@tabler/
 const IntroCard = () => (
   <ChildCard>
     <Typography fontWeight={600} variant="h4" mb={2}>
-      Introduction
+     Giới thiệu
     </Typography>
     <Typography color="textSecondary" variant="subtitle2" mb={2}>
       Hello, I am Julia Roberts. I love making websites and graphics. Lorem ipsum dolor sit amet,

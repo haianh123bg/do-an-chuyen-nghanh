@@ -7,8 +7,8 @@ import BlogListing from 'src/components/apps/blog/BlogListing';
 
 const Blog = () => {
   return (
-    <PageContainer title="Blog" description="this is Blog page">
-      <Breadcrumb title="Blog app" subtitle="Get the latest news" />
+    <PageContainer title="Quản lý khóa học" description="this is Blog page">
+      <Breadcrumb title="Khóa học" subtitle="Get the latest news" />
       {/* ------------------------------------------- */}
       {/* Blog Listing */}
       {/* ------------------------------------------- */}

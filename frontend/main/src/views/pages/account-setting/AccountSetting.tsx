@@ -16,10 +16,10 @@ import SecurityTab from '../../../components/pages/account-setting/SecurityTab';
 const BCrumb = [
   {
     to: '/',
-    title: 'Home',
+    title: 'Trang chủ',
   },
   {
-    title: 'Account Setting',
+    title: 'Cài đặt tài khoản',
   },
 ];
 
@@ -52,6 +52,7 @@ function a11yProps(index: number) {
   };
 }
 
+
 const AccountSetting = () => {
   const [value, setValue] = React.useState(0);
 
@@ -62,45 +63,47 @@ const AccountSetting = () => {
   };
 
   return (
-    <PageContainer title="Account Setting" description="this is Account Setting page">
+    <PageContainer title="Cài đặt tài khoản" description="this is Account Setting page">
       {/* breadcrumb */}
-      <Breadcrumb title="Account Setting" items={BCrumb} />
+      <Breadcrumb title="Cài đặt tài khoản" items={BCrumb} />
       {/* end breadcrumb */}
 
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <BlankCard>
             <Box sx={{ maxWidth: { xs: 320, sm: 480 } }}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                variant="scrollable"
-                scrollButtons="auto"
-                aria-label="basic tabs example"
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              variant="scrollable"
+              scrollButtons="auto"
+              aria-label="basic tabs example"
+              sx={{ '& .MuiTab-root': { padding: '4px 8px' } }} // Điều chỉnh padding cho các tab
               >
+
                 <Tab
                   iconPosition="start"
                   icon={<IconUserCircle size="22" />}
-                  label="Account"
+                  label="Tài khoản"
                   {...a11yProps(0)}
                 />
 
                 <Tab
                   iconPosition="start"
                   icon={<IconBell size="22" />}
-                  label="Notifications"
+                  label="Thông báo"
                   {...a11yProps(1)}
                 />
                 <Tab
                   iconPosition="start"
                   icon={<IconArticle size="22" />}
-                  label="Bills"
+                  label="Hóa đơn"
                   {...a11yProps(2)}
                 />
                 <Tab
                   iconPosition="start"
                   icon={<IconLock size="22" />}
-                  label="Security"
+                  label="Bảo mật"
                   {...a11yProps(3)}
                 />
               </Tabs>

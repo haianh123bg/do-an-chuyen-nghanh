@@ -26,19 +26,17 @@ const NotificationTab = () => {
           <BlankCard>
             <CardContent>
               <Typography variant="h4" mb={2}>
-                Notification Preferences
+                Tùy Chọn Thông Báo
               </Typography>
               <Typography color="textSecondary">
-                Select the notificaitons ou would like to receive via email. Please note that you
-                cannot opt out of receving service messages, such as payment, security or legal
-                notifications.
+                Chọn các thông báo bạn muốn nhận qua email. Xin lưu ý rằng bạn không thể từ chối nhận các thông báo dịch vụ, chẳng hạn như thanh toán, bảo mật hoặc thông báo pháp lý.
               </Typography>
 
-              <CustomFormLabel htmlFor="text-email">Email Address*</CustomFormLabel>
+              <CustomFormLabel htmlFor="text-email">Địa Chỉ Email*</CustomFormLabel>
               <CustomTextField id="text-email" variant="outlined" fullWidth />
-              <Typography color="textSecondary">Required for notificaitons.</Typography>
+              <Typography color="textSecondary">Bắt buộc cho các thông báo.</Typography>
 
-              {/* list 1 */}
+              {/* danh sách 1 */}
               <Stack direction="row" spacing={2} mt={4}>
                 <Avatar
                   variant="rounded"
@@ -48,10 +46,10 @@ const NotificationTab = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="h6" mb={1}>
-                    Our newsletter
+                    Bản tin của chúng tôi
                   </Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    We'll always let you know about important changes
+                    Chúng tôi sẽ luôn thông báo cho bạn về những thay đổi quan trọng
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
@@ -59,7 +57,7 @@ const NotificationTab = () => {
                 </Box>
               </Stack>
 
-              {/* list 2 */}
+              {/* danh sách 2 */}
               <Stack direction="row" spacing={2} mt={3}>
                 <Avatar
                   variant="rounded"
@@ -69,10 +67,10 @@ const NotificationTab = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="h6" mb={1}>
-                    Order Confirmation
+                    Xác Nhận Đơn Hàng
                   </Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    You will be notified when customer order any product
+                    Bạn sẽ nhận được thông báo khi khách hàng đặt hàng bất kỳ sản phẩm nào
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
@@ -80,7 +78,7 @@ const NotificationTab = () => {
                 </Box>
               </Stack>
 
-              {/* list 3 */}
+              {/* danh sách 3 */}
               <Stack direction="row" spacing={2} mt={3}>
                 <Avatar
                   variant="rounded"
@@ -90,10 +88,10 @@ const NotificationTab = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="h6" mb={1}>
-                    Order Status Changed
+                    Thay Đổi Trạng Thái Đơn Hàng
                   </Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    You will be notified when customer make changes to the order
+                    Bạn sẽ nhận được thông báo khi khách hàng thay đổi đơn hàng
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
@@ -101,7 +99,7 @@ const NotificationTab = () => {
                 </Box>
               </Stack>
 
-              {/* list 4 */}
+              {/* danh sách 4 */}
               <Stack direction="row" spacing={2} mt={3}>
                 <Avatar
                   variant="rounded"
@@ -111,10 +109,10 @@ const NotificationTab = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="h6" mb={1}>
-                    Order Delivered
+                    Đơn Hàng Đã Giao
                   </Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    You will be notified once the order is delivered
+                    Bạn sẽ nhận được thông báo khi đơn hàng được giao
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
@@ -122,7 +120,7 @@ const NotificationTab = () => {
                 </Box>
               </Stack>
 
-              {/* list 5 */}
+              {/* danh sách 5 */}
               <Stack direction="row" spacing={2} mt={3}>
                 <Avatar
                   variant="rounded"
@@ -132,10 +130,10 @@ const NotificationTab = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="h6" mb={1}>
-                    Email Notification
+                    Thông Báo Qua Email
                   </Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    Turn on email notificaiton to get updates through email
+                    Bật thông báo qua email để nhận cập nhật qua email
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
@@ -151,13 +149,13 @@ const NotificationTab = () => {
           <BlankCard>
             <CardContent>
               <Typography variant="h4" mb={2}>
-                Date & Time
+                Ngày & Giờ
               </Typography>
               <Typography color="textSecondary">
-                Time zones and calendar display settings.
+                Cài đặt múi giờ và hiển thị lịch.
               </Typography>
 
-              {/* list 1 */}
+              {/* danh sách 1 */}
               <Stack direction="row" spacing={2} mt={4}>
                 <Avatar
                   variant="rounded"
@@ -167,14 +165,14 @@ const NotificationTab = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="subtitle1" color="textSecondary">
-                    Time zone
+                    Múi giờ
                   </Typography>
                   <Typography variant="h6" mb={1}>
                     (UTC + 02:00) Athens, Bucharet
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
-                  <Tooltip title="Download">
+                  <Tooltip title="Tải xuống">
                     <IconButton>
                       <IconDownload size="22" />
                     </IconButton>
@@ -190,10 +188,10 @@ const NotificationTab = () => {
           <BlankCard>
             <CardContent>
               <Typography variant="h4" mb={2}>
-                Ignore Tracking
+                Bỏ Qua Theo Dõi
               </Typography>
 
-              {/* list 1 */}
+              {/* danh sách 1 */}
               <Stack direction="row" spacing={2} mt={4}>
                 <Avatar
                   variant="rounded"
@@ -203,10 +201,10 @@ const NotificationTab = () => {
                 </Avatar>
                 <Box>
                   <Typography variant="h6" mb={1}>
-                    Ignore Browser Tracking
+                    Bỏ Qua Theo Dõi Trình Duyệt
                   </Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    Browser Cookie
+                    Cookie Trình Duyệt
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
@@ -220,10 +218,10 @@ const NotificationTab = () => {
 
       <Stack direction="row" spacing={2} sx={{ justifyContent: 'end' }} mt={3}>
         <Button size="large" variant="contained" color="primary">
-          Save
+          Lưu
         </Button>
         <Button size="large" variant="text" color="error">
-          Cancel
+          Hủy
         </Button>
       </Stack>
     </>

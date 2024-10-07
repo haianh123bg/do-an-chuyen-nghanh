@@ -25,7 +25,7 @@ const SecurityTab = () => {
           <BlankCard>
             <CardContent>
               <Typography variant="h4" mb={2}>
-                Two-factor Authentication
+                Xác Thực Hai Yếu Tố
               </Typography>
               <Stack direction="row" justifyContent="space-between" alignItems="center" mb={4}>
                 <Typography variant="subtitle1" color="textSecondary">
@@ -33,53 +33,53 @@ const SecurityTab = () => {
                   earum officiis laboriosam ut.
                 </Typography>
                 <Button variant="contained" color="primary">
-                  Enable
+                  OK
                 </Button>
               </Stack>
 
               <Divider />
 
-              {/* list 1 */}
+              {/* danh sách 1 */}
               <Stack direction="row" spacing={2} py={2} alignItems="center">
                 <Box>
-                  <Typography variant="h6">Authentication App</Typography>
+                  <Typography variant="h6">Ứng Dụng Xác Thực</Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    Google auth app
+                    Ứng dụng Google auth
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
                   <Button variant="text" color="primary">
-                    Setup
+                    Thiết Lập
                   </Button>
                 </Box>
               </Stack>
               <Divider />
-              {/* list 2 */}
+              {/* danh sách 2 */}
               <Stack direction="row" spacing={2} py={2} alignItems="center">
                 <Box>
-                  <Typography variant="h6">Another e-mail</Typography>
+                  <Typography variant="h6">E-mail Khác</Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    E-mail to send verification link
+                    E-mail để gửi liên kết xác minh
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
                   <Button variant="text" color="primary">
-                    Setup
+                    Thiết Lập
                   </Button>
                 </Box>
               </Stack>
               <Divider />
-              {/* list 3 */}
+              {/* danh sách 3 */}
               <Stack direction="row" spacing={2} py={2} alignItems="center">
                 <Box>
-                  <Typography variant="h6">SMS Recovery</Typography>
+                  <Typography variant="h6">Khôi Phục Qua SMS</Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    Your phone number or something
+                    Số điện thoại của bạn hoặc thông tin khác
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
                   <Button variant="text" color="primary">
-                    Setup
+                    Thiết Lập
                   </Button>
                 </Box>
               </Stack>
@@ -97,23 +97,23 @@ const SecurityTab = () => {
               </Avatar>
 
               <Typography variant="h5" mt={2}>
-                Devices
+                Thiết Bị
               </Typography>
               <Typography color="textSecondary" mt={1} mb={2}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit Rem.
               </Typography>
               <Button variant="contained" color="primary">
-                Sign out from all devices
+                Đăng Xuất Khỏi Thiết Bị
               </Button>
 
-              {/* list 1 */}
+              {/* danh sách 1 */}
               <Stack direction="row" spacing={2} py={2} mt={3} alignItems="center">
                 <IconDeviceMobile size="26" />
 
                 <Box>
                   <Typography variant="h6">iPhone 14</Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    London UK, Oct 23 at 1:15 AM
+                    London UK, 23 tháng 10 lúc 1:15 AM
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
@@ -123,14 +123,14 @@ const SecurityTab = () => {
                 </Box>
               </Stack>
               <Divider />
-              {/* list 2 */}
+              {/* danh sách 2 */}
               <Stack direction="row" spacing={2} py={2} alignItems="center">
                 <IconDeviceLaptop size="26" />
 
                 <Box>
                   <Typography variant="h6">Macbook Air </Typography>
                   <Typography variant="subtitle1" color="textSecondary">
-                    Gujarat India, Oct 24 at 3:15 AM
+                    Gujarat Ấn Độ, 24 tháng 10 lúc 3:15 AM
                   </Typography>
                 </Box>
                 <Box sx={{ ml: 'auto !important' }}>
@@ -141,7 +141,7 @@ const SecurityTab = () => {
               </Stack>
               <Stack>
                 <Button variant="text" color="primary">
-                  Need Help ?
+                  Cần Giúp Đỡ?
                 </Button>
               </Stack>
             </CardContent>
@@ -151,10 +151,10 @@ const SecurityTab = () => {
 
       <Stack direction="row" spacing={2} sx={{ justifyContent: 'end' }} mt={3}>
         <Button size="large" variant="contained" color="primary">
-          Save
+          Lưu
         </Button>
         <Button size="large" variant="text" color="error">
-          Cancel
+          Hủy
         </Button>
       </Stack>
     </>
