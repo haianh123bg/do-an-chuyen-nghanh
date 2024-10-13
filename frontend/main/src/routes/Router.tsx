@@ -117,6 +117,8 @@ const Maintenance = Loadable(lazy(() => import('../views/authentication/Maintena
 // landingpage
 const Landingpage = Loadable(lazy(() => import('../views/pages/landingpage/Landingpage')));
 
+
+
 const Router = [
   {
     path: '/',
@@ -141,9 +143,11 @@ const Router = [
       { path: '/apps/followers', element: <Followers /> },
       { path: '/apps/friends', element: <Friends /> },
       { path: '/apps/gallery', element: <Gallery /> },
-      { path: '/user-profile', element: <UserProfile /> },
+      // { path: '/user-profile', element: <UserProfile /> },
+      { path: '/user-profile', element: <AccountSetting /> },
+
       { path: '/apps/calendar', element: <Calendar /> },
-      { path: '/ui-components/alert', element: <MuiAlert /> },
+     { path: '/ui-components/alert', element: <MuiAlert /> },
       { path: '/ui-components/accordion', element: <MuiAccordion /> },
       { path: '/ui-components/avatar', element: <MuiAvatar /> },
       { path: '/ui-components/chip', element: <MuiChip /> },
@@ -159,7 +163,7 @@ const Router = [
       { path: '/pages/treeview', element: <Treeview /> },
       { path: '/pages/pricing', element: <Pricing /> },
       { path: '/pages/faq', element: <Faq /> },
-      { path: '/pages/account-settings', element: <AccountSetting /> },
+      // { path: '/pages/account-settings', element: <AccountSetting /> },
       { path: '/tables/basic', element: <BasicTable /> },
       { path: '/tables/enhanced', element: <EnhanceTable /> },
       { path: '/tables/pagination', element: <PaginationTable /> },

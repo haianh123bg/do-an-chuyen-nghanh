@@ -37,6 +37,7 @@
     "framer-motion": "^8.5.2",
     "i18next": "22.0.6",
     "lodash": "4.17.21",
+    "main-vite-ts": "file:",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-apexcharts": "1.4.0",
