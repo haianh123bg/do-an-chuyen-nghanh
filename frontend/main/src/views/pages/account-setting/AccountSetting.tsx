@@ -9,8 +9,8 @@ import { Grid, Tabs, Tab, Box, CardContent, Divider } from '@mui/material';
 import AccountTab from '../../../components/pages/account-setting/AccountTab';
 import { IconArticle, IconBell, IconLock, IconUserCircle } from '@tabler/icons-react';
 import BlankCard from '../../../components/shared/BlankCard';
-import NotificationTab from '../../../components/pages/account-setting/NotificationTab';
-import BillsTab from '../../../components/pages/account-setting/BillsTab';
+// import NotificationTab from '../../../components/pages/account-setting/NotificationTab';
+// import BillsTab from '../../../components/pages/account-setting/BillsTab';
 import SecurityTab from '../../../components/pages/account-setting/SecurityTab';
 
 const BCrumb = [
@@ -88,18 +88,7 @@ const AccountSetting = () => {
                   {...a11yProps(0)}
                 />
 
-                <Tab
-                  iconPosition="start"
-                  icon={<IconBell size="22" />}
-                  label="Thông báo"
-                  {...a11yProps(1)}
-                />
-                <Tab
-                  iconPosition="start"
-                  icon={<IconArticle size="22" />}
-                  label="Hóa đơn"
-                  {...a11yProps(2)}
-                />
+                
                 <Tab
                   iconPosition="start"
                   icon={<IconLock size="22" />}
@@ -113,13 +102,8 @@ const AccountSetting = () => {
               <TabPanel value={value} index={0}>
                 <AccountTab />
               </TabPanel>
+             
               <TabPanel value={value} index={1}>
-                <NotificationTab />
-              </TabPanel>
-              <TabPanel value={value} index={2}>
-                <BillsTab />
-              </TabPanel>
-              <TabPanel value={value} index={3}>
                 <SecurityTab />
               </TabPanel>
             </CardContent>
