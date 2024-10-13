@@ -27,9 +27,9 @@ const DemoTitle = () => {
                 <Avatar alt="Travis Howard" src={img2} sx={{ width: 28, height: 28 }} />
                 <Avatar alt="Cindy Baker" src={img3} sx={{ width: 28, height: 28 }} />
               </AvatarGroup>
-              <Typography variant="h6">52,589+</Typography>
+              <Typography variant="h6">3,589+</Typography>
               <Typography variant="h6" color="textSecondary">
-                developers & agencies using our templates
+                các nhà phát triển đang trải nghiệm dịch vụ của chúng tôi
               </Typography>
             </Stack>
             <Typography
@@ -47,7 +47,7 @@ const DemoTitle = () => {
                 },
               }}
             >
-              Production Ready & Developer Friendly Material UI React Admin Template
+              Nếu bạn muốn thử thách bản thân, các khóa học đang chờ đón bạn.
             </Typography>
           </>
         </AnimationFadeIn>

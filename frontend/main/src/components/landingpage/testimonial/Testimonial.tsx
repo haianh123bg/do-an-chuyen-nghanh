@@ -107,7 +107,7 @@ const Testimonial = () => {
   };
 
   return (
-    <Box pt={14} pb={11}>
+    <Box pt={11} pb={11}>
       <Container maxWidth="lg">
         <TestimonialTitle />
         <Box mt={5}>

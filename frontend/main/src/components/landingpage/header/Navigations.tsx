@@ -20,12 +20,32 @@ const Navigations = () => {
     // demos
     const [open, setOpen] = useState(false);
 
+    const [hoverBlog, setHoverBlog] = useState(false);
+
+    const [hoverContact, setHoverContact] = useState(false);
+
     const handleOpen = () => {
         setOpen(true);
     };
 
     const handleClose = () => {
         setOpen(false);
+    };
+
+    const handleMouseEnterBlog = () => {
+        setHoverBlog(true);
+    };
+    
+    const handleMouseLeaveBlog = () => {
+        setHoverBlog(false);
+    };
+
+    const handleMouseEnterContact = () => {
+        setHoverContact(true);
+    };
+    
+    const handleMouseLeaveContact = () => {
+        setHoverContact(false);
     };
 
     // pages
@@ -113,10 +133,16 @@ const Navigations = () => {
                     <DemosDD />
                 </Paper>
             )}
-            <StyledButton color="inherit" variant="text" href="https://demos.adminmart.com/premium/react/modernize-react/docs/index.html">
+            <StyledButton color="inherit" variant="text" onMouseEnter={handleMouseEnterBlog} 
+          onMouseLeave={handleMouseLeaveBlog}  sx={{
+            color: hoverBlog ? 'primary.main' : (theme) => theme.palette.text.secondary,
+          }} href="https://demos.adminmart.com/premium/react/modernize-react/docs/index.html">
                 Blog
             </StyledButton>
-            <StyledButton color="inherit" variant="text" href="https://adminmart.com/support/">
+            <StyledButton color="inherit" variant="text" onMouseEnter={handleMouseEnterContact} 
+          onMouseLeave={handleMouseLeaveContact}  sx={{
+            color: hoverContact ? 'primary.main' : (theme) => theme.palette.text.secondary,
+          }} href="https://adminmart.com/support/">
                 Liên hệ
             </StyledButton>
             <Stack spacing={1} direction="row" alignItems="center">
