@@ -1,9 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
-import { Typography, Box, Button, Stack, styled, useMediaQuery, Theme } from '@mui/material';
+import { Typography, Box, Button, Stack, styled, useMediaQuery, Theme, Link } from '@mui/material';
 import { IconRocket } from '@tabler/icons-react';
-
 
 // third party
 
@@ -15,9 +14,8 @@ const StyledButton = styled(Button)(() => ({
 }));
 
 const BannerContent = () => {
-
   const lgDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
-  
+
   return (
     <Box mt={lgDown ? 8 : 0}>
       <motion.div
@@ -33,7 +31,7 @@ const BannerContent = () => {
           <Typography color={'secondary'}>
             <IconRocket size={'21'} />
           </Typography>{' '}
-          Kick start your project with
+          Bắt đầu sự nghiệp của bạn với
         </Typography>
 
         <Typography
@@ -48,11 +46,11 @@ const BannerContent = () => {
             },
           }}
         >
-          Most powerful &{' '}
+          999+ khóa học <br />
           <Typography component={'span'} variant="inherit" color={'primary'}>
-            Developer friendly
-          </Typography>{' '}
-          React dashboard
+            Chất lượng
+          </Typography>
+          , phù hợp với mọi trình độ
         </Typography>
       </motion.div>
       <Box pt={4} pb={3}>
@@ -67,8 +65,13 @@ const BannerContent = () => {
           }}
         >
           <Typography variant="h5" fontWeight={300}>
-            Modernize comes with light & dark color skins, well designed dashboards, applications
-            and pages.
+            Các khóa học trải đều các lĩnh vực trong công nghệ thông tin. <br />
+            <Typography component={'span'} variant="inherit" color={'primary'}>
+              <Link href="/auth/login" color="primary" underline="none">
+                Đăng nhập
+              </Link>{' '}
+            </Typography>
+            để học ngay !!!
           </Typography>
         </motion.div>
       </Box>
@@ -84,11 +87,11 @@ const BannerContent = () => {
       >
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} mt={3}>
           <StyledButton variant="contained" color="primary" href="/auth/login">
-            Login
+            Đăng nhập
           </StyledButton>
 
           <StyledButton variant="outlined" href="/dashboards/modern">
-            Live Preview
+            Danh sách khóa học
           </StyledButton>
         </Stack>
       </motion.div>
