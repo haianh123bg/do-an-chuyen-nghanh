@@ -33,8 +33,8 @@ const Landingpage = () => {
       {/* <Frameworks /> */}
       <Testimonial />
       <Features />
-      <C2a />
-      <C2a2 />
+      {/* <C2a /> */}
+      {/* <C2a2 /> */}
       <Footer />
     </PageContainer>
   );
