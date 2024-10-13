@@ -1,9 +1,7 @@
 package com.haianh123bg.elearn_programming.dto.request;
 
 import com.haianh123bg.elearn_programming.validator.ValidEmail;
-import com.haianh123bg.elearn_programming.validator.ValidPassword;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Setter

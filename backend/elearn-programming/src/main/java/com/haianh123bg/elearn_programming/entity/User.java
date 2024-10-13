@@ -1,58 +1,65 @@
 package com.haianh123bg.elearn_programming.entity;
 
-import com.haianh123bg.elearn_programming.utils.GenderEnum;
-import com.haianh123bg.elearn_programming.utils.RoleEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
-@Entity
-@Table(name = "tbluser")
-@Setter
 @Getter
+@Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "user")
 public class User implements UserDetails {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "user_id", nullable = false)
+    private Integer id;
 
-    @Column(name = "username")
-    private String username;
+    @Size(max = 40)
+    @Column(name = "name", length = 40)
+    private String name;
 
-    @Column(name = "password")
-    private String password;
+    @Size(max = 20)
+    @Column(name = "phone_number", length = 20)
+    private String phoneNumber;
 
-    @Column(name = "email")
+    @Size(max = 10)
+    @Column(name = "gender", length = 10)
+    private String gender;
+
+    @Size(max = 45)
+    @Column(name = "email", length = 45)
     private String email;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @Column(name = "is_verify")
+    private Boolean isVerify;
 
     @Column(name = "is_enable")
     private Boolean isEnable;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "gender")
-    private GenderEnum gender;
+    @OneToOne(mappedBy = "user")
+    private User2faSetting user2faSetting;
 
-    //ORM
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<UserOtpLog> otpLogs = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private Set<UserHasCourse> userHasCourses = new LinkedHashSet<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> role = new HashSet<>();
+    @ManyToMany(mappedBy = "users")
+    private Set<Permission> permissions = new LinkedHashSet<>();
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Role> roles = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "userUser")
+    private Set<UserOtp> userOtps = new LinkedHashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -61,12 +68,12 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "";
+        return this.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.username;
+        return this.email;
     }
 
     @Override

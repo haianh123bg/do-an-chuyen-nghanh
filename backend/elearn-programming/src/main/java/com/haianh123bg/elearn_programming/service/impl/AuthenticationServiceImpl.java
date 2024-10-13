@@ -8,7 +8,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public LoginResponse login(LoginFormRequest request) {
-        return null;
+
+        return new LoginResponse();
     }
 
     @Override

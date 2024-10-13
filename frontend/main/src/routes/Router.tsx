@@ -11,6 +11,10 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 /* ****Pages***** */
 const ModernDash = Loadable(lazy(() => import('../views/dashboard/Modern')));
 const EcommerceDash = Loadable(lazy(() => import('../views/dashboard/Ecommerce')));
+const AdminCourse = Loadable(lazy(() => import('../views/admin/course/CourseManagement')));
+const AdminCategory = Loadable(lazy(() => import('../views/admin/category/CategoryManagement')));
+const AdminAccountUser = Loadable(lazy(() => import('../views/admin/account/user/AccountUserManagement')));
+const AdminAccountTeacher = Loadable(lazy(() => import('../views/admin/account/teacher/AccountTeacherManagement')));
 
 /* ****Apps***** */
 const Blog = Loadable(lazy(() => import('../views/apps/blog/Blog')));
@@ -192,6 +196,11 @@ const Router = [
       { path: '/widgets/banners', element: <WidgetBanners /> },
       { path: '/widgets/charts', element: <WidgetCharts /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
+      // admin
+      { path: '/admin/course', element: <AdminCourse /> },
+      { path: '/admin/category', element: <AdminCategory /> },
+      { path: '/admin/account/user', element: <AdminAccountUser /> },
+      { path: '/admin/account/teacher', element: <AdminAccountTeacher /> },
     ],
   },
   {

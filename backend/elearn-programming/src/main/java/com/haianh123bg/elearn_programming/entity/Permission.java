@@ -13,20 +13,21 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name = "permission")
+public class Permission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Size(max = 45)
-    @Column(name = "role_name", length = 45)
-    private String roleName;
+    @Column(name = "name", length = 45)
+    private String name;
 
-    @OneToMany(mappedBy = "role")
-    private Set<RoleHasPermission> roleHasPermissions = new LinkedHashSet<>();
+    @Size(max = 100)
+    @Column(name = "description", length = 100)
+    private String description;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "permissions", fetch = FetchType.LAZY)
     private Set<User> users = new LinkedHashSet<>();
 }
