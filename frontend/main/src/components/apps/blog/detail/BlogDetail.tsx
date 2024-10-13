@@ -43,14 +43,14 @@ const BlogDetail = () => {
   const BCrumb = [
     {
       to: '/',
-      title: 'Home',
+      title: 'Trang chủ',
     },
     {
       to: '/apps/blog/posts',
-      title: 'Blog',
+      title: 'Khóa học',
     },
     {
-      title: 'Blog post',
+      title: 'Chi tiết khóa học',
     },
   ];
 
@@ -85,7 +85,7 @@ const BlogDetail = () => {
 
   return (
     <Box>
-      <Breadcrumb title="Blog Detail" items={BCrumb} />
+      <Breadcrumb title="Chi tiết khóa học" items={BCrumb} />
       <BlankCard>
         <>
           {isLoading ? (
