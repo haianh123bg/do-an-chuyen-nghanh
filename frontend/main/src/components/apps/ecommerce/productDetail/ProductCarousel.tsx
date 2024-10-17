@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { useSelector, useDispatch } from 'src/store/Store';
 import { useParams } from 'react-router-dom';
 
-//Carousel slider for product
+//Carousel slider for video
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -30,7 +30,7 @@ const ProductCarousel = () => {
 
   // Get Products
   const product: ProductType = useSelector((state) => state.ecommerceReducer.products[Id.id - 1]);
-  const getProductImage = product ? product.photo : '';
+  const getProductVideo = product ? product.video : '';
 
   useEffect(() => {
     setState({
@@ -54,43 +54,58 @@ const ProductCarousel = () => {
 
   return (
     <Box>
+      {/* Slider chính hiển thị video */}
       <Slider asNavFor={nav2} ref={(slider: any) => (slider1.current = slider)}>
         <Box>
-          <img
-            src={getProductImage}
-            alt={getProductImage}
+          {/* Hiển thị video sản phẩm */}
+          <video
+            controls
             width="100%"
             style={{ borderRadius: '5px' }}
-          />
+            src={getProductVideo}
+          >
+            Your browser does not support the video tag.
+          </video>
         </Box>
         {SliderData.map((step) => (
           <Box key={step.id}>
-            <img
-              src={step.imgPath}
-              alt={step.imgPath}
+            {/* Hiển thị các video khác từ SliderData */}
+            <video
+              controls
               width="100%"
               style={{ borderRadius: '5px' }}
-            />
+              src={step.videoPath}
+            >
+              Your browser does not support the video tag.
+            </video>
           </Box>
         ))}
       </Slider>
+
+      {/* Slider điều khiển */}
       <Slider asNavFor={nav1} ref={(slider: any) => (slider2.current = slider)} {...settings}>
         <Box sx={{ p: 1, cursor: 'pointer' }}>
-          <img
-            src={getProductImage}
-            alt={getProductImage}
+          {/* Hiển thị video sản phẩm điều khiển */}
+          <video
+            controls
             width="100%"
             style={{ borderRadius: '5px' }}
-          />
+            src={getProductVideo}
+          >
+            Your browser does not support the video tag.
+          </video>
         </Box>
         {SliderData.map((step) => (
           <Box key={step.id} sx={{ p: 1, cursor: 'pointer' }}>
-            <img
-              src={step.imgPath}
-              alt={step.imgPath}
+            {/* Hiển thị các video nhỏ từ SliderData */}
+            <video
+              controls
               width="100%"
               style={{ borderRadius: '5px' }}
-            />
+              src={step.videoPath}
+            >
+              Your browser does not support the video tag.
+            </video>
           </Box>
         ))}
       </Slider>
