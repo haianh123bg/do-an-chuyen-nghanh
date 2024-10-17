@@ -10,6 +10,7 @@ import {
   ListItemIcon,
   Box,
   Typography,
+  Tooltip,
 } from '@mui/material';
 
 import { setVisibilityFilter } from '../../../store/apps/email/EmailSlice';
@@ -45,79 +46,37 @@ const EmailFilter = () => {
   const filterData: fitlerType[] = [
     {
       id: 2,
-      name: 'inbox',
+      name: 'Hộp thư đến',
       icon: IconMail,
       color: 'inherit',
     },
     {
       id: 3,
-      name: 'sent',
+      name: 'Đã gửi',
       icon: IconSend,
       color: 'inherit',
     },
     {
       id: 4,
-      name: 'draft',
+      name: 'Thư nháp',
       icon: IconNote,
       color: 'inherit',
     },
     {
       id: 4,
-      name: 'spam',
+      name: 'Thư rác',
       icon: IconFlag,
       color: 'inherit',
     },
     {
       id: 5,
-      name: 'trash',
+      name: 'Thùng rác',
       icon: IconTrash,
       color: 'inherit',
     },
     {
       id: 6,
       divider: true,
-    },
-    {
-      id: 1,
-      filterbyTitle: 'Sort By',
-    },
-    {
-      id: 7,
-      name: 'starred',
-      icon: IconStar,
-      color: 'inherit',
-    },
-    {
-      id: 8,
-      name: 'important',
-      icon: IconAlertCircle,
-      color: 'inherit',
-    },
-    {
-      id: 9,
-      divider: true,
-    },
-    {
-      id: 13,
-      filterbyTitle: 'Labels',
-    },
-    {
-      id: 10,
-      name: 'Promotional',
-      icon: IconFolder,
-      color: 'primary.main',
-    },
-    {
-      id: 11,
-      name: 'Social',
-      icon: IconFolder,
-      color: 'error.main',
-    },
-    {
-      id: 12,
-      name: 'Health',
-      icon: IconFolder,
-      color: 'success.main',
     },
   ];
 
@@ -136,7 +95,7 @@ const EmailFilter = () => {
               return (
                 <Typography
                   variant="subtitle2"
-                  p={3}
+                  p={2}
                   pb={1}
                   pl={5.5}
                   fontWeight={600}
@@ -152,9 +111,9 @@ const EmailFilter = () => {
             return (
               <ListItemButton
                 sx={{
-                  mb: 1,
+                  //mb: 1,
                   px: '20px',
-                  mx: 3,
+                  mx: 1,
                   borderRadius: br,
                 }}
                 selected={active === `${filter.name}`}
@@ -164,10 +123,9 @@ const EmailFilter = () => {
                 {/* ------------------------------------------- */}
                 {/* If list to filter */}
                 {/* ------------------------------------------- */}
-                <ListItemIcon sx={{ minWidth: '30px', color: filter.color }}>
-                  <filter.icon stroke="1.5" size={19} />
+                <ListItemIcon sx={{ minWidth: '30px', color: filter.color, padding:"0px" }}>
+                  <Tooltip title={filter.name}><filter.icon stroke="1.5" size={25} /></Tooltip>
                 </ListItemIcon>
-                <ListItemText sx={{ textTransform: 'capitalize' }}>{filter.name}</ListItemText>
               </ListItemButton>
             );
           })}

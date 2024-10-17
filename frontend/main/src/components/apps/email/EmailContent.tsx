@@ -91,7 +91,7 @@ const EmailContent = () => {
                         <Typography variant="h6">{emailDetails.from}</Typography>
                         <Typography variant="body2">{emailDetails.To}</Typography>
                     </Box>
-                    <Chip
+                    {/* <Chip
                         label={emailDetails.label}
                         sx={{ ml: 'auto', height: '21px' }}
                         size="small"
@@ -99,10 +99,10 @@ const EmailContent = () => {
                             emailDetails.label === 'Promotional'
                                 ? 'primary'
                                 : emailDetails.label === 'Social'
-                                ? 'error'
-                                : 'success'
+                                    ? 'error'
+                                    : 'success'
                         }
-                    />
+                    /> */}
                 </Box>
                 {/* ------------------------------------------- */}
                 {/* Email Detail page */}
@@ -117,10 +117,12 @@ const EmailContent = () => {
                                     aria-controls="panel2a-content"
                                     id="panel2a-header"
                                 >
-                                    <Typography variant="h6">{emailDetails.subject}</Typography>
-                                    <Typography sx={{
-                                      marginLeft:'10px'
-                                    }}>{emailDetails.time}</Typography>
+                                    <Stack>
+                                        <Typography variant="h6">{emailDetails.subject}</Typography>
+                                        <Typography sx={{
+                                            fontSize:'10px'
+                                        }}>{emailDetails.time}</Typography>
+                                    </Stack>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                     <Typography
@@ -130,6 +132,14 @@ const EmailContent = () => {
                                             __html: emailDetails.emailContent,
                                         }}
                                     ></Typography>
+                                    <Grid sx={{ display: 'flex', gap: '10px' }}>
+                                        <Button variant="outlined" size="small" color="primary" onClick={toggleEditor}>
+                                            Reply
+                                        </Button>
+                                        <Button variant="outlined" size="small">
+                                            Forward
+                                        </Button>
+                                    </Grid>
                                 </AccordionDetails>
                             </Accordion>
                             <Divider />
@@ -142,8 +152,54 @@ const EmailContent = () => {
                     <Divider />
                     <Box p={3}>
                         <Typography variant="h6">
-                            Attachments ({emailDetails?.attchments?.length})
+                            file ({emailDetails?.attchments?.length})
                         </Typography>
+
+
+                        <Grid container spacing={3}>
+                            {emailDetails.attchments?.map((attach) => {
+                                return (
+                                    <Grid item lg={4} key={attach.id}>
+                                        <Stack direction="row" gap={2} mt={2}>
+                                            <Avatar
+                                                variant="rounded"
+                                                sx={{
+                                                    width: '48px',
+                                                    height: '48px',
+                                                    bgcolor: (theme: any) =>
+                                                        theme.palette.grey[100],
+                                                }}
+                                            >
+                                                <Avatar
+                                                    src={attach.image}
+                                                    alt="av"
+                                                    variant="rounded"
+                                                    sx={{ width: '24px', height: '24px' }}
+                                                ></Avatar>
+                                            </Avatar>
+                                            <Box mr={'auto'}>
+                                                <Typography
+                                                    variant="subtitle2"
+                                                    fontWeight={600}
+                                                    mb={1}
+                                                >
+                                                    {attach.title}
+                                                </Typography>
+                                                <Typography variant="body2">
+                                                    {attach.fileSize}
+                                                </Typography>
+                                            </Box>
+                                        </Stack>
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </Box>
+                    <Box p={3}>
+                        <Typography variant="h6">
+                            link ({emailDetails?.attchments?.length})
+                        </Typography>
+
 
                         <Grid container spacing={3}>
                             {emailDetails.attchments?.map((attach) => {
@@ -189,15 +245,6 @@ const EmailContent = () => {
             )}
 
             <Box p={3}>
-                <Stack direction="row" gap={2}>
-                    <Button variant="outlined" size="small" color="primary" onClick={toggleEditor}>
-                        Reply
-                    </Button>
-                    <Button variant="outlined" size="small">
-                        Forward
-                    </Button>
-                </Stack>
-
                 {/* Editor */}
                 {show ? (
                     <Box mt={3}>

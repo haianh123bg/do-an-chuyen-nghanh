@@ -67,11 +67,6 @@ const EmailListItem = ({
           <Typography variant="subtitle2" mb={0.5} fontWeight={600} mr={'auto'}>
             {from}
           </Typography>
-          <Chip
-            label={label}
-            size="small"
-            color={label === 'Promotional' ? 'primary' : label === 'Social' ? 'error' : 'success'}
-          />
         </Stack>
         <Typography variant="subtitle2" noWrap width={'80%'} color="text.secondary">
           {subject}
