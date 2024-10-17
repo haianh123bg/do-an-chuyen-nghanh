@@ -41,7 +41,7 @@ const EmailCompose = () => {
       {/* ------------------------------------------- */}
       <Box p={3} pb={1}>
         <Button variant="contained" fullWidth color="primary" onClick={handleClickOpen}>
-          Compose
+          Gửi mail
         </Button>
       </Box>
       {/* ------------------------------------------- */}

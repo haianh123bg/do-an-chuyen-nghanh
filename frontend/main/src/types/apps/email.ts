@@ -26,3 +26,18 @@ export interface EmailType {
   label: string;
   attchments?: AttachType[];
 }
+
+export interface EmailTypeV2 {
+  id: number;
+  from: string;
+  To: string;
+  thumbnail?: string;
+  listMessages: Message[];
+}
+
+export interface Message {
+  emailContent: string;
+  attchments?: AttachType[];
+  subject: string;
+  time: string;
+}
