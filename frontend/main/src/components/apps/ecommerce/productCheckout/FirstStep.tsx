@@ -12,9 +12,9 @@ interface Props {
 const FirstStep = ({ total, Discount }: Props) => {
   return (
     <>
-      <Box my={3}>
+      <Box my={1}>
         <ChildCard>
-          <Box p={2}>
+          <Box px={2}>
             <Typography variant="h5" fontWeight={600} mb={3}>
               Order Summary
             </Typography>
