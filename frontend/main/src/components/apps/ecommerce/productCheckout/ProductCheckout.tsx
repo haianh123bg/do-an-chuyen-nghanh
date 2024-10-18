@@ -14,7 +14,7 @@ import ThirdStep from './ThirdStep';
 import FinalStep from './FinalStep';
 import { ProductType } from 'src/types/apps/eCommerce';
 
-const ProductChecout = () => {
+const ProductCheckout = () => {
   const checkout = useSelector((state) => state.ecommerceReducer.cart);
   const steps = ['Cart', 'Billing & address', 'Payment'];
   const [activeStep, setActiveStep] = React.useState(0);
@@ -45,7 +45,7 @@ const ProductChecout = () => {
         {/* ------------------------------------------- */}
         {activeStep === 0 ? (
           <>
-            <Box my={3}>
+            <Box my={0}>
               <AddToCart />
             </Box>
             {checkout.length > 0 ? (
@@ -110,4 +110,4 @@ const ProductChecout = () => {
   );
 };
 
-export default ProductChecout;
+export default ProductCheckout;
