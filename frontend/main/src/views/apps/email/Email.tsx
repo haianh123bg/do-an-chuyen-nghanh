@@ -11,7 +11,7 @@ import PageContainer from 'src/components/container/PageContainer';
 import AppCard from 'src/components/shared/AppCard';
 import emailIcon from 'src/assets/images/breadcrumb/emailSv.png';
 
-const drawerWidth = 240;
+const drawerWidth = 80;
 const secdrawerWidth = 340;
 
 const Email = () => {
@@ -51,7 +51,7 @@ const Email = () => {
         <Box
           sx={{
             minWidth: secdrawerWidth,
-            width: { xs: '100%', md: secdrawerWidth, lg: secdrawerWidth },
+            width: { xs: '80%', md: '', lg: secdrawerWidth},
             flexShrink: 0,
           }}
         >

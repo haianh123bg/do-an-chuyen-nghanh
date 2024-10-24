@@ -11,9 +11,11 @@ import {
   DialogContent,
   DialogActions,
   DialogContentText,
+  Tooltip,
 } from '@mui/material';
 import CustomFormLabel from 'src/components/forms/theme-elements/CustomFormLabel';
 import { TransitionProps } from '@mui/material/transitions';
+import { IconAdCircle, IconCirclePlus } from '@tabler/icons-react';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -39,10 +41,10 @@ const EmailCompose = () => {
       {/* ------------------------------------------- */}
       {/* Compose Email */}
       {/* ------------------------------------------- */}
-      <Box p={3} pb={1}>
-        <Button variant="contained" fullWidth color="primary" onClick={handleClickOpen}>
-          Gửi mail
-        </Button>
+      <Box p={3} pb={1}sx={{textAlign:'center'}}>
+        <Tooltip title={'Gửi email'}>
+          <IconCirclePlus cursor={'pointer'} color='#49beff' onClick={handleClickOpen} />
+        </Tooltip>
       </Box>
       {/* ------------------------------------------- */}
       {/* Dialog for compose */}
