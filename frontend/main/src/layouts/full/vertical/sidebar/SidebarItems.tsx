@@ -49,7 +49,7 @@ const SidebarItems = () => {
               <NavItem item={item} key={item.id} pathDirect={pathDirect} hideMenu={hideMenu}
               onClick={() => dispatch(toggleMobileSidebar())} />
             );
-          }
+          } 
         })}
       </List>
     </Box>

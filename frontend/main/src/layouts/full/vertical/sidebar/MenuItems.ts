@@ -74,25 +74,10 @@ const Menuitems: MenuitemsType[] = [
     id: uniqueId(),
     title: 'Dashboard',
     icon: IconAperture,
-    href: '/dashboards/modern',
+    href: '/admin/dashboards/modern',
     chip: 'New',
     chipColor: 'secondary',
   },
-  {
-    id: uniqueId(),
-    title: 'Danh mục khóa học',
-    icon: IconShoppingCart,
-    href: '/categories',
-  },
-  {
-    id: uniqueId(),
-    title: 'Khóa học của tôi',
-    icon: IconPackage,
-    chip: '2',
-    chipColor: 'secondary',
-    href: '/my-course',
-  },
-
   {
     id: uniqueId(),
     title: 'Diễn đàn-Thảo luận',
@@ -143,15 +128,9 @@ const Menuitems: MenuitemsType[] = [
   },
   {
     id: uniqueId(),
-    title: 'Blog',
-    icon: IconShoppingCart,
-    href: '/blogs',
-  },
-  {
-    id: uniqueId(),
     title: 'Liên kết hỗ trợ',
     icon: IconShoppingCart,
-    href: '/tickets',
+    href: '/admin/tickets',
   },
   {
     navlabel: true,
@@ -165,7 +144,6 @@ const Menuitems: MenuitemsType[] = [
     chipColor: 'secondary',
     href: '/apps/contacts',
   },
-
   {
     id: uniqueId(),
     title: 'Blog',
