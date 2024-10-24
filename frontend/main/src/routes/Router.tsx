@@ -3,6 +3,7 @@
 import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
+import UserLayout from 'src/layouts/user/UserLayout';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -126,15 +127,14 @@ const Landingpage = Loadable(lazy(() => import('../views/pages/landingpage/Landi
 const Router = [
   {
     path: '/',
-    element: <FullLayout />,
+    element: <UserLayout />,
     children: [
-      { path: '/', element: <Navigate to="/dashboards/modern" /> },
+      { path: '/', element: <Navigate to="/homepage" /> },
       { path: '/homepage', exact: true, element: <HomePage /> },
-      { path: '/dashboards/modern', exact: true, element: <ModernDash /> },
       { path: '/dashboards/ecommerce', exact: true, element: <EcommerceDash /> },
       { path: '/apps/contacts', element: <Contacts /> },
       { path: '/course/management', element: <CourseManage /> },
-      { path: '/apps/blog/posts', element: <Blog /> },
+      { path: '/my-course', element: <Blog /> },
       { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
       { path: '/apps/chats', element: <Chats /> },
       { path: '/apps/email', element: <Email /> },
@@ -147,9 +147,7 @@ const Router = [
       { path: '/apps/followers', element: <Followers /> },
       { path: '/apps/friends', element: <Friends /> },
       { path: '/apps/gallery', element: <Gallery /> },
-      // { path: '/user-profile', element: <UserProfile /> },
       { path: '/user-profile', element: <AccountSetting /> },
-
       { path: '/apps/calendar', element: <Calendar /> },
      { path: '/ui-components/alert', element: <MuiAlert /> },
       { path: '/ui-components/accordion', element: <MuiAccordion /> },
@@ -167,7 +165,6 @@ const Router = [
       { path: '/pages/treeview', element: <Treeview /> },
       { path: '/pages/pricing', element: <Pricing /> },
       { path: '/pages/faq', element: <Faq /> },
-      // { path: '/pages/account-settings', element: <AccountSetting /> },
       { path: '/tables/basic', element: <BasicTable /> },
       { path: '/tables/enhanced', element: <EnhanceTable /> },
       { path: '/tables/pagination', element: <PaginationTable /> },
@@ -200,7 +197,13 @@ const Router = [
       { path: '/widgets/banners', element: <WidgetBanners /> },
       { path: '/widgets/charts', element: <WidgetCharts /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
-      // admin
+    ],
+  },
+  {
+    path: '/admin',
+    element: <FullLayout />,
+    children: [
+      { path: '/admin/dashboards/modern', exact: true, element: <ModernDash /> },
       { path: '/admin/course', element: <AdminCourse /> },
       { path: '/admin/category', element: <AdminCategory /> },
       { path: '/admin/account/user', element: <AdminAccountUser /> },

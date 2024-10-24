@@ -90,8 +90,9 @@ const Menuitems: MenuitemsType[] = [
     icon: IconPackage,
     chip: '2',
     chipColor: 'secondary',
-    href: '/my/courses',
+    href: '/my-course',
   },
+
   {
     id: uniqueId(),
     title: 'Diễn đàn-Thảo luận',
