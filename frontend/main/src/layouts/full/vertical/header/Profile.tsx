@@ -56,8 +56,8 @@ const Profile = () => {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 sx={{
                     '& .MuiMenu-paper': {
-                        width: '400px',
-                        p: 4,
+                        width: '350px',
+                        p: 2,
                     },
                 }}
             >
@@ -75,8 +75,6 @@ const Profile = () => {
                             alignItems="center"
                             gap={1}
                         >
-                            <IconMail width={15} height={15} />
-                            nguyenngochaianh33@gmail.com
                         </Typography>
                     </Box>
                 </Stack>

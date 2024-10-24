@@ -35,13 +35,13 @@ const topcards: cardType[] = [
   },
   {
     icon: icon5,
-    title: 'GG Adsense',
+    title: 'Adsense',
     digits: '696',
     bgcolor: 'error',
   },
   {
     icon: icon6,
-    title: 'Tổng doanh thu',
+    title: 'Doanh thu',
     digits: '$96k',
     bgcolor: 'success',
   },

@@ -32,6 +32,9 @@ public class User implements UserDetails {
     @Column(name = "phone_number", length = 20)
     private String phoneNumber;
 
+    @Column
+    private String password;
+
     @Size(max = 10)
     @Column(name = "gender", length = 10)
     private String gender;
@@ -64,11 +67,6 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
-    }
-
-    @Override
-    public String getPassword() {
-        return this.getPassword();
     }
 
     @Override
