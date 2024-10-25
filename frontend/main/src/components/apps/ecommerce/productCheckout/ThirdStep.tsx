@@ -33,23 +33,29 @@ const Delivery: deliveryType[] = [
 ];
 
 const Payment: paymentType[] = [
+  // {
+  //   value: 'paypal',
+  //   title: 'Pay with Paypal',
+  //   description: 'You will be redirected to PayPal website to complete your purchase securely.',
+  //   icons: Paypal,
+  // },
+  // {
+  //   value: 'credit_card',
+  //   title: 'Credit / Debit Card',
+  //   description: 'We support Mastercard, Visa, Discover and Stripe.',
+  //   icons: mastercard,
+  // },
+  // {
+  //   value: 'cash',
+  //   title: 'Cash on Delivery',
+  //   description: 'Pay with cash when your order is delivered.',
+  //   icons: '',
+  // },
   {
-    value: 'paypal',
-    title: 'Pay with Paypal',
-    description: 'You will be redirected to PayPal website to complete your purchase securely.',
-    icons: Paypal,
-  },
-  {
-    value: 'credit_card',
-    title: 'Credit / Debit Card',
-    description: 'We support Mastercard, Visa, Discover and Stripe.',
+    value: 'qr_code',
+    title: 'Quét mã QR của ngân hàng',
+    description: 'Quét mã bên phải để thanh toán đơn hàng',
     icons: mastercard,
-  },
-  {
-    value: 'cash',
-    title: 'Cash on Delivery',
-    description: 'Pay with cash when your order is delivered.',
-    icons: '',
   },
 ];
 
@@ -70,7 +76,8 @@ const ThirdStep = () => {
       {/* ------------------------------------------- */}
       {/* Delivery Option */}
       {/* ------------------------------------------- */}
-      <Paper variant="outlined" sx={{ p: 3, mt: 4 }}>
+
+      {/* <Paper variant="outlined" sx={{ p: 3, mt: 4 }}>
         <Typography variant="h6">Delivery Option</Typography>
         <Grid container spacing={3} mt={1}>
           {Delivery.map((option) => (
@@ -100,15 +107,16 @@ const ThirdStep = () => {
             </Grid>
           ))}
         </Grid>
-      </Paper>
+      </Paper> */}
+
       {/* ------------------------------------------- */}
       {/* Payment Option */}
       {/* ------------------------------------------- */}
-      <Paper variant="outlined" sx={{ p: 3, mt: 4 }}>
+      <Paper variant="outlined" sx={{ p: 3, mt: 1 }}>
         <Typography variant="h6">Payment Option</Typography>
         <Grid container spacing={3} alignItems="center">
           <Grid lg={8} xs={12} item>
-            <Grid container spacing={3} mt={2}>
+            <Grid container spacing={2} mt={1}>
               {Payment.map((option) => (
                 <Grid item lg={12} xs={12} key={option.value}>
                   <Paper
@@ -121,7 +129,8 @@ const ThirdStep = () => {
                   >
                     <Stack direction={'row'} alignItems="center" gap={1}>
                       <Radio
-                        checked={selectedPyament === option.value}
+                        // checked={selectedPyament === option.value}
+                        checked={true}
                         onChange={handlePChange}
                         value={option.value}
                         name="radio-buttons"
