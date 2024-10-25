@@ -1,19 +1,32 @@
 package com.haianh123bg.elearn_programming.entity;
 
-import com.haianh123bg.elearn_programming.utils.RoleEnum;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
-@Entity
-@Table(name = "tblrole")
-@Setter
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Getter
+@Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "role")
 public class Role {
     @Id
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role_name")
-    private RoleEnum roleName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id", nullable = false)
+    private Integer id;
+
+    @Size(max = 45)
+    @Column(name = "role_name", length = 45)
+    private String roleName;
+
+    @OneToMany(mappedBy = "role")
+    private Set<RoleHasPermission> roleHasPermissions = new LinkedHashSet<>();
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users = new LinkedHashSet<>();
 }

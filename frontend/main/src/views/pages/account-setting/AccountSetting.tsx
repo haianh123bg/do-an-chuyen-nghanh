@@ -9,17 +9,17 @@ import { Grid, Tabs, Tab, Box, CardContent, Divider } from '@mui/material';
 import AccountTab from '../../../components/pages/account-setting/AccountTab';
 import { IconArticle, IconBell, IconLock, IconUserCircle } from '@tabler/icons-react';
 import BlankCard from '../../../components/shared/BlankCard';
-import NotificationTab from '../../../components/pages/account-setting/NotificationTab';
-import BillsTab from '../../../components/pages/account-setting/BillsTab';
+// import NotificationTab from '../../../components/pages/account-setting/NotificationTab';
+// import BillsTab from '../../../components/pages/account-setting/BillsTab';
 import SecurityTab from '../../../components/pages/account-setting/SecurityTab';
 
 const BCrumb = [
   {
     to: '/',
-    title: 'Home',
+    title: 'Trang chủ',
   },
   {
-    title: 'Account Setting',
+    title: 'Cài đặt tài khoản',
   },
 ];
 
@@ -52,6 +52,7 @@ function a11yProps(index: number) {
   };
 }
 
+
 const AccountSetting = () => {
   const [value, setValue] = React.useState(0);
 
@@ -62,45 +63,36 @@ const AccountSetting = () => {
   };
 
   return (
-    <PageContainer title="Account Setting" description="this is Account Setting page">
+    <PageContainer title="Cài đặt tài khoản" description="this is Account Setting page">
       {/* breadcrumb */}
-      <Breadcrumb title="Account Setting" items={BCrumb} />
+      <Breadcrumb title="Cài đặt tài khoản" items={BCrumb} />
       {/* end breadcrumb */}
 
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <BlankCard>
             <Box sx={{ maxWidth: { xs: 320, sm: 480 } }}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                variant="scrollable"
-                scrollButtons="auto"
-                aria-label="basic tabs example"
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              variant="scrollable"
+              scrollButtons="auto"
+              aria-label="basic tabs example"
+              sx={{ '& .MuiTab-root': { padding: '4px 8px' } }} // Điều chỉnh padding cho các tab
               >
-                <Tab
-                  iconPosition="start"
-                  icon={<IconUserCircle size="22" />}
-                  label="Account"
-                  {...a11yProps(0)}
-                />
 
                 <Tab
                   iconPosition="start"
-                  icon={<IconBell size="22" />}
-                  label="Notifications"
-                  {...a11yProps(1)}
+                  icon={<IconUserCircle size="22" />}
+                  label="Tài khoản"
+                  {...a11yProps(0)}
                 />
-                <Tab
-                  iconPosition="start"
-                  icon={<IconArticle size="22" />}
-                  label="Bills"
-                  {...a11yProps(2)}
-                />
+
+                
                 <Tab
                   iconPosition="start"
                   icon={<IconLock size="22" />}
-                  label="Security"
+                  label="Bảo mật"
                   {...a11yProps(3)}
                 />
               </Tabs>
@@ -110,13 +102,8 @@ const AccountSetting = () => {
               <TabPanel value={value} index={0}>
                 <AccountTab />
               </TabPanel>
+             
               <TabPanel value={value} index={1}>
-                <NotificationTab />
-              </TabPanel>
-              <TabPanel value={value} index={2}>
-                <BillsTab />
-              </TabPanel>
-              <TabPanel value={value} index={3}>
                 <SecurityTab />
               </TabPanel>
             </CardContent>

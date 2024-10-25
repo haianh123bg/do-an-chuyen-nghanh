@@ -21,7 +21,7 @@ const EmailData: EmailType[] = [
     id: 1,
     from: 'James Smith',
     thumbnail: user1,
-    subject: 'Kindly check this latest updated',
+    subject: 'Literature from 45 BC, making',
     time: sub(new Date(), { days: 0, hours: 1, minutes: 45 }),
     To: 'abc@company.com',
     emailExcerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. ',
@@ -40,7 +40,7 @@ const EmailData: EmailType[] = [
     draft: false,
     spam: false,
     trash: false,
-    label: 'Promotional',
+    label: '',
     attchments: [
       {
         id: '#1Attach',
@@ -85,7 +85,7 @@ const EmailData: EmailType[] = [
     draft: true,
     spam: false,
     trash: false,
-    label: 'Social',
+    label: '',
     attchments: [],
   },
   {
@@ -325,7 +325,7 @@ const EmailData: EmailType[] = [
     id: 13,
     from: 'Robert Smith',
     thumbnail: user2,
-    subject: 'If you are going to use a passage.',
+    subject: 'Chào mừng tới với hệ.',
     time: sub(new Date(), { days: 3, hours: 2, minutes: 45 }),
     To: 'abc@company.com',
     emailExcerpt: 'Lorem Ipsum is therefore always free from repetition, injected humour',
@@ -472,7 +472,7 @@ const EmailData: EmailType[] = [
     draft: true,
     spam: false,
     trash: false,
-    label: 'Health',
+    label: '',
     attchments: [],
   },
   {

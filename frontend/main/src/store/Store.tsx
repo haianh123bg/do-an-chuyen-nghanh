@@ -8,6 +8,8 @@ import TicketReducer from './apps/tickets/TicketSlice';
 import ContactsReducer from './apps/contacts/ContactSlice';
 import UserProfileReducer from './apps/userProfile/UserProfileSlice';
 import BlogReducer from './apps/blog/BlogSlice';
+import SelectedReducer from './RouterSlice';
+import usermeSlice from 'src/store/user/userme/usermeSlice';
 import { combineReducers } from 'redux';
 import {
   useDispatch as useAppDispatch,
@@ -39,6 +41,8 @@ const rootReducer = combineReducers({
   ticketReducer: TicketReducer,
   userpostsReducer: UserProfileReducer,
   blogReducer: BlogReducer,
+  selectReducer: SelectedReducer,
+  userme: usermeSlice,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

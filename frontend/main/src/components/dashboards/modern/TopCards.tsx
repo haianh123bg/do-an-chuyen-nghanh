@@ -35,7 +35,7 @@ const topcards: cardType[] = [
   },
   {
     icon: icon5,
-    title: 'Google adsense',
+    title: 'Adsense',
     digits: '696',
     bgcolor: 'error',
   },
@@ -47,7 +47,7 @@ const topcards: cardType[] = [
   },
   {
     icon: icon1,
-    title: 'Chủ đề lập trình',
+    title: 'Bài viết  ',
     digits: '59',
     bgcolor: 'info',
   },

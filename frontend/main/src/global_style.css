@@ -1,0 +1,8 @@
+.text-hover-red:hover {
+    color: rgb(228, 44, 44);
+}
+
+.box__hover-backgroud--green:hover {
+    background-color: rgba(199, 214, 243, 0.616);
+    color: blueviolet;
+}

@@ -1,6 +1,7 @@
 package com.haianh123bg.elearn_programming.configuration;
 
 import com.haianh123bg.elearn_programming.service.JWTService;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -52,28 +53,26 @@ public class PreFilter extends OncePerRequestFilter {
             return;
         }
 
-        // Extract the JWT token from the Authorization header (remove "Bearer " prefix)
-        final String token = authorization.substring("Bearer ".length());
+        try {
+            final String token = authorization.substring("Bearer ".length());
 
-        // Extract the username from the JWT token
-        final String userName = jwtService.extractUsername(token);
+            Claims claims = jwtService.parseToken(token);
+            final String userName = claims.getSubject();
+            final String typeToken = claims.get("type", String.class);
 
-        // If the username is not empty and the user is not yet authenticated, proceed with authentication
-        if (StringUtils.isNoneEmpty(userName) && SecurityContextHolder.getContext().getAuthentication() == null) {
-            // Load user details using the extracted username
-            UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
-
-            // Validate the JWT token with the user details
-            if (jwtService.isValid(token, userDetails)) {
-                // Create an empty security context and set up authentication
-                SecurityContext context = SecurityContextHolder.createEmptyContext();
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
-
-                // Set the authentication in the security context
-                context.setAuthentication(authentication);
-                SecurityContextHolder.setContext(context);
+            if (StringUtils.isNoneEmpty(userName) && SecurityContextHolder.getContext().getAuthentication() == null) {
+                UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
+                if (jwtService.isValid(token, userDetails)) {
+                    SecurityContext context = SecurityContextHolder.createEmptyContext();
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                            userDetails, null, userDetails.getAuthorities());
+                    authentication.setDetails(typeToken);
+                    context.setAuthentication(authentication);
+                    SecurityContextHolder.setContext(context);
+                }
             }
+        } catch (Exception e) {
+            log.error(e.getMessage());
         }
 
         // Continue processing the filter chain
