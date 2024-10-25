@@ -25,6 +25,8 @@ const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/Ecom
 const EcomProductCheckout = Loadable(
   lazy(() => import('../views/apps/eCommerce/EcommerceCheckout')),
 );
+const Checkout = Loadable(lazy(() => import('../views/apps/eCommerce/Checkout')));
+
 const Calendar = Loadable(lazy(() => import('../views/apps/calendar/BigCalendar')));
 const UserProfile = Loadable(lazy(() => import('../views/apps/user-profile/UserProfile')));
 const Followers = Loadable(lazy(() => import('../views/apps/user-profile/Followers')));
@@ -116,6 +118,9 @@ const Maintenance = Loadable(lazy(() => import('../views/authentication/Maintena
 
 // landingpage
 const Landingpage = Loadable(lazy(() => import('../views/pages/landingpage/Landingpage')));
+
+//Home
+const Home = Loadable(lazy(() => import('../views/pages/home/Home')));
 
 const Router = [
   {
@@ -209,6 +214,8 @@ const Router = [
       { path: '/auth/two-steps2', element: <TwoSteps2 /> },
       { path: '/auth/maintenance', element: <Maintenance /> },
       { path: '/landingpage', element: <Landingpage /> },
+      { path: '/home', element: <Home /> },
+      { path: '/checkout', element: <Checkout /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
   },
