@@ -12,9 +12,9 @@ interface Props {
 const FirstStep = ({ total, Discount }: Props) => {
   return (
     <>
-      <Box my={3}>
+      <Box my={1}>
         <ChildCard>
-          <Box p={2}>
+          <Box px={2}>
             <Typography variant="h5" fontWeight={600} mb={3}>
               Order Summary
             </Typography>
@@ -35,14 +35,14 @@ const FirstStep = ({ total, Discount }: Props) => {
               </Typography>
             </Stack>
             {/* Sub Total */}
-            <Stack direction="row" justifyContent="space-between" mb={3}>
+            {/* <Stack direction="row" justifyContent="space-between" mb={3}>
               <Typography variant="h6" fontWeight={400}>
                 Shipping
               </Typography>
               <Typography variant="h6">Free</Typography>
-            </Stack>
+            </Stack> */}
             {/* Sub Total */}
-            <Stack direction="row" justifyContent="space-between" mb={1}>
+            <Stack direction="row" justifyContent="space-between" mb={0}>
               <Typography variant="h6">Total</Typography>
               <Typography variant="h5" color="success">
                 ${total - Discount}

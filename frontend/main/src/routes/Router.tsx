@@ -12,8 +12,12 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 /* ****Pages***** */
 const ModernDash = Loadable(lazy(() => import('../views/dashboard/Modern')));
 const EcommerceDash = Loadable(lazy(() => import('../views/dashboard/Ecommerce')));
-const AdminCourse = Loadable(lazy(() => import('../views/applications/admin/course/CourseManagement')));
-const AdminCategory = Loadable(lazy(() => import('../views/applications/admin/category/CategoryManagement')));
+const AdminCourse = Loadable(
+    lazy(() => import('../views/applications/admin/course/CourseManagement')),
+);
+const AdminCategory = Loadable(
+    lazy(() => import('../views/applications/admin/category/CategoryManagement')),
+);
 const AdminAccountUser = Loadable(
     lazy(() => import('../views/applications/admin/account-user/AccountUserManagement')),
 );
@@ -34,8 +38,12 @@ const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/Ecom
 const EcomProductCheckout = Loadable(
     lazy(() => import('../views/apps/eCommerce/EcommerceCheckout')),
 );
+const Checkout = Loadable(lazy(() => import('../views/apps/eCommerce/Checkout')));
+
 const Calendar = Loadable(lazy(() => import('../views/apps/calendar/BigCalendar')));
-const UserProfile = Loadable(lazy(() => import('../views/applications/user/user-account/UserProfile')));
+const UserProfile = Loadable(
+    lazy(() => import('../views/applications/user/user-account/UserProfile')),
+);
 const Followers = Loadable(lazy(() => import('../views/apps/user-profile/Followers')));
 const Friends = Loadable(lazy(() => import('../views/apps/user-profile/Friends')));
 const Gallery = Loadable(lazy(() => import('../views/apps/user-profile/Gallery')));
@@ -124,6 +132,9 @@ const Maintenance = Loadable(lazy(() => import('../views/authentication/Maintena
 
 // landingpage
 const Landingpage = Loadable(lazy(() => import('../views/pages/landingpage/Landingpage')));
+
+//Home
+const Home = Loadable(lazy(() => import('../views/pages/home/Home')));
 
 const Router = [
     {

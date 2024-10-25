@@ -1,9 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import React from 'react';
 import { Grid, Typography, Box, Button, styled, Container, Stack } from '@mui/material';
 import c2aImg from 'src/assets/images/landingpage/background/c2a.png';
-import GuaranteeCard from './GuaranteeCard';
+import Footer from '../footer/Footer';
 
 const StyledButton = styled(Button)(({ theme }) => ({
   padding: '13px 34px',
@@ -37,20 +35,15 @@ const C2a2 = () => {
       >
         <Container maxWidth="lg">
           <Grid container justifyContent="space-between" spacing={3}>
-            <Grid item xs={12} sm={12} lg={5}>
+            <Grid item xs={12} lg={7}>
               <Typography variant="h2" color="background.paper" fontWeight={700} mt={4}>
                 Build your app with our highly customizable React based Dashboard
               </Typography>
-
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} mt={3}>
                 <StyledButton variant="contained" color="inherit" href="/auth/login">
                   Login
                 </StyledButton>
-                <StyledButton2
-                  variant="outlined"
-                  color="inherit"
-                  href="/auth/register"
-                >
+                <StyledButton2 variant="outlined" color="inherit" href="/auth/register">
                   Register
                 </StyledButton2>
               </Stack>
@@ -64,15 +57,15 @@ const C2a2 = () => {
                   },
                 }}
               >
-                <img src={c2aImg} alt="img" width="330" />
+                <img src={c2aImg} alt="img" width="250" />
               </Box>
             </Grid>
           </Grid>
+          <Box>
+            <Footer />
+          </Box>
         </Container>
       </Box>
-      <Container maxWidth="lg">
-        <GuaranteeCard />
-      </Container>
     </Box>
   );
 };

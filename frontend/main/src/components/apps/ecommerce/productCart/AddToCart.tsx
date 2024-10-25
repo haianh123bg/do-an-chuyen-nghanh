@@ -47,7 +47,6 @@ const AddToCart = () => {
                 <TableHead>
                   <TableRow>
                     <TableCell>Product</TableCell>
-
                     <TableCell align="left">Quantity</TableCell>
                     <TableCell align="right">Price</TableCell>
                   </TableRow>

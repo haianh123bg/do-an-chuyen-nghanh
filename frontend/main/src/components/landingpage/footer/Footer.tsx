@@ -1,28 +1,63 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import React from 'react';
-import { Grid, Link, Typography, Container } from '@mui/material';
-import logoIcon from 'src/assets/images/logos/logoIcon.svg';
+import { Box, Container, Typography, Link } from '@mui/material';
 
-const Footer = () => {
+const linkStyle = {
+  textDecoration: 'none',
+  display: 'block',
+  color: 'white',
+  mb: 1,
+  fontSize: 14,
+};
+
+const sections = [
+  {
+    title: 'Company',
+    links: ['Blog', 'Affiliate Area'],
+  },
+  {
+    title: 'Help & Support',
+    links: ['Contact Us', 'Premium Support', 'Custom Development'],
+  },
+  {
+    title: 'Legal Information',
+    links: ['License', 'Terms & Conditions', 'Privacy Policy'],
+  },
+];
+
+const Footer: React.FC = () => {
   return (
-    <Container maxWidth="lg">
-      <Grid container spacing={3} justifyContent="center" mt={4}>
-        <Grid item xs={12} sm={5} lg={4} textAlign="center">
-          <img src={logoIcon} alt="icon" />
-          <Typography fontSize="16" color="textSecondary" mt={1} mb={4}>
-            All rights reserved by Modernize. Designed & Developed by
-            <Link target="_blank" href="https://adminmart.com/">
-              <Typography color="textSecondary" component="span" display="inline">
-                {' '}
-                AdminMart
-              </Typography>{' '}
-            </Link>
-            .
-          </Typography>
-        </Grid>
-      </Grid>
-    </Container>
+    <Box
+      component="footer"
+      sx={{
+        py: 3,
+        px: 2,
+        mt: 'auto',
+        backgroundColor: 'primary.main', // Đặt nền tùy ý nếu cần
+        color: 'white',
+      }}
+    >
+      <Container maxWidth="lg">
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2, mb: 2 }}>
+          {sections.map((section) => (
+            <Box key={section.title} sx={{ mr: 4 }}>
+              {' '}
+              {/* Tạo khoảng cách giữa các cột */}
+              <Typography variant="h6" color="inherit" sx={{ mb: 2, fontSize: 18 }}>
+                {section.title}
+              </Typography>
+              {section.links.map((link) => (
+                <Link key={link} href="#" variant="body2" sx={linkStyle}>
+                  {link}
+                </Link>
+              ))}
+            </Box>
+          ))}
+        </Box>
+        <Typography variant="body1" color="inherit" sx={{ fontSize: 16 }}>
+          Ngo Anh Tien © 2024
+        </Typography>
+      </Container>
+    </Box>
   );
 };
 
