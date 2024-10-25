@@ -41,7 +41,7 @@ const Checkout = () => {
         <Box maxWidth="md" width="100%">
           <Breadcrumb title="Checkout" items={BCrumb} />
           <ChildCard>
-            <Box p={2} flexGrow={1}>
+            <Box px={2} flexGrow={1}>
               <ProductCheckout />
             </Box>
           </ChildCard>

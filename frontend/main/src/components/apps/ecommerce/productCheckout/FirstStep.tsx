@@ -35,14 +35,14 @@ const FirstStep = ({ total, Discount }: Props) => {
               </Typography>
             </Stack>
             {/* Sub Total */}
-            <Stack direction="row" justifyContent="space-between" mb={3}>
+            {/* <Stack direction="row" justifyContent="space-between" mb={3}>
               <Typography variant="h6" fontWeight={400}>
                 Shipping
               </Typography>
               <Typography variant="h6">Free</Typography>
-            </Stack>
+            </Stack> */}
             {/* Sub Total */}
-            <Stack direction="row" justifyContent="space-between" mb={1}>
+            <Stack direction="row" justifyContent="space-between" mb={0}>
               <Typography variant="h6">Total</Typography>
               <Typography variant="h5" color="success">
                 ${total - Discount}
