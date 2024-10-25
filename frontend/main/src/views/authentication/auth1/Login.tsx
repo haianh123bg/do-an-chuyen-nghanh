@@ -1,22 +1,53 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Box, Stack, Typography } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Grid, Box, Card, Stack, Typography } from '@mui/material';
+
+// components
 import PageContainer from 'src/components/container/PageContainer';
-import img1 from 'src/assets/images/backgrounds/login-bg.svg';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import AuthLogin from '../authForms/AuthLogin';
+import ApiService from 'src/service/ApiService';
 
-const Login = () => (
-  <PageContainer title="Login" description="this is Login page">
-    <Grid container spacing={0} sx={{ overflowX: 'hidden' }}>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        lg={7}
-        xl={8}
+const Login2 = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   // Lấy mã `code` từ URL
+  //   const urlParams = new URLSearchParams(location.search);
+  //   const code = urlParams.get('code');
+
+  //   console.log(code);
+
+  //   // Nếu có mã `code`, gọi API trên server để đổi lấy access token
+  //   if (code) {
+  //     const handleLogin = async () => {
+  //       const response = await ApiService.loginWithGoogle(code);
+
+  //       if (response.code == 200) {
+  //         const { accessToken, refreshToken, roles, userId, tokenExpired } = response.result;
+
+  //         // Lưu token và roles vào localStorage
+  //         localStorage.setItem('accessToken', accessToken);
+  //         localStorage.setItem('refreshToken', refreshToken);
+  //         localStorage.setItem('refreshToken', refreshToken);
+  //         localStorage.setItem('roles', JSON.stringify(roles));
+  //         localStorage.setItem('userId', JSON.stringify(userId));
+  //         localStorage.setItem('tokenExpired', tokenExpired);
+
+  //         // Chuyển hướng người dùng đến trang chính (hoặc trang dashboard)
+  //         navigate('/dashboards');
+  //       }
+  //     };
+  //     handleLogin();
+  //   }
+  // }, []);
+
+  return (
+    <PageContainer title="Login" description="this is Login page">
+      <Box
         sx={{
           position: 'relative',
           '&:before': {
@@ -31,73 +62,47 @@ const Login = () => (
           },
         }}
       >
-        <Box position="relative">
-          <Box px={3}>
-            <Logo />
-          </Box>
-          <Box
-            alignItems="center"
+        <Grid container spacing={0} justifyContent="center" sx={{ height: '100vh' }}>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            lg={5}
+            xl={4}
+            display="flex"
             justifyContent="center"
-            height={'calc(100vh - 75px)'}
-            sx={{
-              display: {
-                xs: 'none',
-                lg: 'flex',
-              },
-            }}
+            alignItems="center"
           >
-            <img
-              src={img1}
-              alt="bg"
-              style={{
-                width: '100%',
-                maxWidth: '500px',
-              }}
-            />
-          </Box>
-        </Box>
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        lg={5}
-        xl={4}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Box p={4}>
-          <AuthLogin
-            title="Welcome to Modernize"
-            subtext={
-              <Typography variant="subtitle1" color="textSecondary" mb={1}>
-                Your Admin Dashboard
-              </Typography>
-            }
-            subtitle={
-              <Stack direction="row" spacing={1} mt={3}>
-                <Typography color="textSecondary" variant="h6" fontWeight="500">
-                  New to Modernize?
-                </Typography>
-                <Typography
-                  component={Link}
-                  to="/auth/register"
-                  fontWeight="500"
-                  sx={{
-                    textDecoration: 'none',
-                    color: 'primary.main',
-                  }}
-                >
-                  Create an account
-                </Typography>
-              </Stack>
-            }
-          />
-        </Box>
-      </Grid>
-    </Grid>
-  </PageContainer>
-);
+            <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%', maxWidth: '450px' }}>
+              <Box display="flex" alignItems="center" justifyContent="center">
+                <Logo />
+              </Box>
+              <AuthLogin
+                subtitle={
+                  <Stack direction="row" spacing={1} justifyContent="center" mt={3}>
+                    <Typography color="textSecondary" variant="h6" fontWeight="500">
+                      Bạn chưa có tài khoản ?
+                    </Typography>
+                    <Typography
+                      component={Link}
+                      to="/auth/register"
+                      fontWeight="500"
+                      sx={{
+                        textDecoration: 'none',
+                        color: 'primary.main',
+                      }}
+                    >
+                      Đăng ký ngay
+                    </Typography>
+                  </Stack>
+                }
+              />
+            </Card>
+          </Grid>
+        </Grid>
+      </Box>
+    </PageContainer>
+  );
+};
 
-export default Login;
+export default Login2;

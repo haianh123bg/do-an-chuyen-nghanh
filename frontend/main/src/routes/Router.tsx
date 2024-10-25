@@ -12,10 +12,14 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 /* ****Pages***** */
 const ModernDash = Loadable(lazy(() => import('../views/dashboard/Modern')));
 const EcommerceDash = Loadable(lazy(() => import('../views/dashboard/Ecommerce')));
-const AdminCourse = Loadable(lazy(() => import('../views/admin/course/CourseManagement')));
-const AdminCategory = Loadable(lazy(() => import('../views/admin/category/CategoryManagement')));
-const AdminAccountUser = Loadable(lazy(() => import('../views/admin/account/user/AccountUserManagement')));
-const AdminAccountTeacher = Loadable(lazy(() => import('../views/admin/account/teacher/AccountTeacherManagement')));
+const AdminCourse = Loadable(lazy(() => import('../views/applications/admin/course/CourseManagement')));
+const AdminCategory = Loadable(lazy(() => import('../views/applications/admin/category/CategoryManagement')));
+const AdminAccountUser = Loadable(
+    lazy(() => import('../views/applications/admin/account-user/AccountUserManagement')),
+);
+const AdminAccountTeacher = Loadable(
+    lazy(() => import('../views/applications/admin/account-teacher/AccountTeacherManagement')),
+);
 
 /* ****Apps***** */
 const Blog = Loadable(lazy(() => import('../views/apps/blog/Blog')));
@@ -28,10 +32,10 @@ const Ecommerce = Loadable(lazy(() => import('../views/apps/eCommerce/Ecommerce'
 const EcommerceDetail = Loadable(lazy(() => import('../views/apps/eCommerce/EcommerceDetail')));
 const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/EcomProductList')));
 const EcomProductCheckout = Loadable(
-  lazy(() => import('../views/apps/eCommerce/EcommerceCheckout')),
+    lazy(() => import('../views/apps/eCommerce/EcommerceCheckout')),
 );
 const Calendar = Loadable(lazy(() => import('../views/apps/calendar/BigCalendar')));
-const UserProfile = Loadable(lazy(() => import('../views/apps/user-profile/UserProfile')));
+const UserProfile = Loadable(lazy(() => import('../views/applications/user/user-account/UserProfile')));
 const Followers = Loadable(lazy(() => import('../views/apps/user-profile/Followers')));
 const Friends = Loadable(lazy(() => import('../views/apps/user-profile/Friends')));
 const Gallery = Loadable(lazy(() => import('../views/apps/user-profile/Gallery')));
@@ -53,7 +57,7 @@ const MuiTypography = Loadable(lazy(() => import('../views/ui-components/MuiTypo
 
 // form elements
 const MuiAutoComplete = Loadable(
-  lazy(() => import('../views/forms/form-elements/MuiAutoComplete')),
+    lazy(() => import('../views/forms/form-elements/MuiAutoComplete')),
 );
 const MuiButton = Loadable(lazy(() => import('../views/forms/form-elements/MuiButton')));
 const MuiCheckbox = Loadable(lazy(() => import('../views/forms/form-elements/MuiCheckbox')));
@@ -77,11 +81,10 @@ const Treeview = Loadable(lazy(() => import('../views/pages/treeview/Treeview'))
 const Faq = Loadable(lazy(() => import('../views/pages/faq/Faq')));
 const Pricing = Loadable(lazy(() => import('../views/pages/pricing/Pricing')));
 const AccountSetting = Loadable(
-  lazy(() => import('../views/pages/account-setting/AccountSetting')),
+    lazy(() => import('../views/pages/account-setting/AccountSetting')),
 );
 const HomePage = Loadable(lazy(() => import('../views/apps/home/HomePage')));
 const CourseManage = Loadable(lazy(() => import('../views/course/CourseManage')));
-
 
 // charts
 const AreaChart = Loadable(lazy(() => import('../views/charts/AreaChart')));
@@ -112,7 +115,7 @@ const Register = Loadable(lazy(() => import('../views/authentication/auth1/Regis
 const Register2 = Loadable(lazy(() => import('../views/authentication/auth2/Register2')));
 const ForgotPassword = Loadable(lazy(() => import('../views/authentication/auth1/ForgotPassword')));
 const ForgotPassword2 = Loadable(
-  lazy(() => import('../views/authentication/auth2/ForgotPassword2')),
+    lazy(() => import('../views/authentication/auth2/ForgotPassword2')),
 );
 const TwoSteps = Loadable(lazy(() => import('../views/authentication/auth1/TwoSteps')));
 const TwoSteps2 = Loadable(lazy(() => import('../views/authentication/auth2/TwoSteps2')));
@@ -122,113 +125,112 @@ const Maintenance = Loadable(lazy(() => import('../views/authentication/Maintena
 // landingpage
 const Landingpage = Loadable(lazy(() => import('../views/pages/landingpage/Landingpage')));
 
-
-
 const Router = [
-  {
-    path: '/',
-    element: <UserLayout />,
-    children: [
-      { path: '/', element: <Navigate to="/homepage" /> },
-      { path: '/homepage', exact: true, element: <HomePage /> },
-      { path: '/dashboards/ecommerce', exact: true, element: <EcommerceDash /> },
-      { path: '/course/management', element: <CourseManage /> },
-      { path: '/my-course', element: <Blog /> },
-      { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
-      { path: '/apps/chats', element: <Chats /> },
-      { path: '/apps/email', element: <Email /> },
-      { path: '/apps/notes', element: <Notes /> },
-      { path: '*', element: <Navigate to="/auth/404" /> },
-    ],
-  },
-  {
-    path: '/',
-    element: <FullLayout />,
-    children: [
-      { path: '/admin/dashboards/modern', exact: true, element: <ModernDash /> },
-      { path: '/admin', element: <Navigate to="/admin/dashboards/modern" /> },
-      { path: '/admin/course', element: <AdminCourse /> },
-      { path: '/apps/contacts', element: <Contacts /> },
-      { path: '/admin/category', element: <AdminCategory /> },
-      { path: '/admin/account/user', element: <AdminAccountUser /> },
-      { path: '/admin/account/teacher', element: <AdminAccountTeacher /> },
-      { path: '/apps/tickets', element: <Tickets /> },
-      { path: '/apps/ecommerce/shop', element: <Ecommerce /> },
-      { path: '/apps/ecommerce/eco-product-list', element: <EcomProductList /> },
-      { path: '/apps/ecommerce/eco-checkout', element: <EcomProductCheckout /> },
-      { path: '/apps/ecommerce/detail/:id', element: <EcommerceDetail /> },
-      { path: '/apps/followers', element: <Followers /> },
-      { path: '/apps/friends', element: <Friends /> },
-      { path: '/apps/gallery', element: <Gallery /> },
-      { path: '/user-profile', element: <AccountSetting /> },
-      { path: '/apps/calendar', element: <Calendar /> },
-     { path: '/ui-components/alert', element: <MuiAlert /> },
-      { path: '/ui-components/accordion', element: <MuiAccordion /> },
-      { path: '/ui-components/avatar', element: <MuiAvatar /> },
-      { path: '/ui-components/chip', element: <MuiChip /> },
-      { path: '/ui-components/dialog', element: <MuiDialog /> },
-      { path: '/ui-components/list', element: <MuiList /> },
-      { path: '/ui-components/popover', element: <MuiPopover /> },
-      { path: '/ui-components/rating', element: <MuiRating /> },
-      { path: '/ui-components/tabs', element: <MuiTabs /> },
-      { path: '/ui-components/tooltip', element: <MuiTooltip /> },
-      { path: '/ui-components/transfer-list', element: <MuiTransferList /> },
-      { path: '/ui-components/typography', element: <MuiTypography /> },
-      { path: '/pages/casl', element: <RollbaseCASL /> },
-      { path: '/pages/treeview', element: <Treeview /> },
-      { path: '/pages/pricing', element: <Pricing /> },
-      { path: '/pages/faq', element: <Faq /> },
-      { path: '/tables/basic', element: <BasicTable /> },
-      { path: '/tables/enhanced', element: <EnhanceTable /> },
-      { path: '/tables/pagination', element: <PaginationTable /> },
-      { path: '/tables/fixed-header', element: <FixedHeaderTable /> },
-      { path: '/tables/collapsible', element: <CollapsibleTable /> },
-      { path: '/tables/search', element: <SearchTable /> },
-      { path: '/forms/form-elements/autocomplete', element: <MuiAutoComplete /> },
-      { path: '/forms/form-elements/button', element: <MuiButton /> },
-      { path: '/forms/form-elements/checkbox', element: <MuiCheckbox /> },
-      { path: '/forms/form-elements/radio', element: <MuiRadio /> },
-      { path: '/forms/form-elements/slider', element: <MuiSlider /> },
-      { path: '/forms/form-elements/date-time', element: <MuiDateTime /> },
-      { path: '/forms/form-elements/switch', element: <MuiSwitch /> },
-      { path: '/forms/form-elements/switch', element: <MuiSwitch /> },
-      { path: '/forms/form-layouts', element: <FormLayouts /> },
-      { path: '/forms/form-custom', element: <FormCustom /> },
-      { path: '/forms/form-wizard', element: <FormWizard /> },
-      { path: '/forms/form-validation', element: <FormValidation /> },
-      { path: '/forms/form-horizontal', element: <FormHorizontal /> },
-      { path: '/forms/form-vertical', element: <FormVertical /> },
-      { path: '/forms/quill-editor', element: <QuillEditor /> },
-      { path: '/charts/area-chart', element: <AreaChart /> },
-      { path: '/charts/line-chart', element: <LineChart /> },
-      { path: '/charts/gredient-chart', element: <GredientChart /> },
-      { path: '/charts/candlestick-chart', element: <CandlestickChart /> },
-      { path: '/charts/column-chart', element: <ColumnChart /> },
-      { path: '/charts/doughnut-pie-chart', element: <DoughnutChart /> },
-      { path: '/charts/radialbar-chart', element: <RadialbarChart /> },
-      { path: '/widgets/cards', element: <WidgetCards /> },
-      { path: '/widgets/banners', element: <WidgetBanners /> },
-      { path: '/widgets/charts', element: <WidgetCharts /> },
-    ],
-  },
-  {
-    path: '/',
-    element: <BlankLayout />,
-    children: [
-      { path: '/auth/404', element: <Error /> },
-      { path: '/auth/login', element: <Login /> },
-      { path: '/auth/login2', element: <Login2 /> },
-      { path: '/auth/register', element: <Register /> },
-      { path: '/auth/register2', element: <Register2 /> },
-      { path: '/auth/forgot-password', element: <ForgotPassword /> },
-      { path: '/auth/forgot-password2', element: <ForgotPassword2 /> },
-      { path: '/auth/two-steps', element: <TwoSteps /> },
-      { path: '/auth/two-steps2', element: <TwoSteps2 /> },
-      { path: '/auth/maintenance', element: <Maintenance /> },
-      { path: '/landingpage', element: <Landingpage /> },
-      { path: '*', element: <Navigate to="/auth/404" /> },
-    ],
-  },
+    {
+        path: '/',
+        element: <UserLayout />,
+        children: [
+            { path: '/', element: <Navigate to="/homepage" /> },
+            { path: '/homepage', exact: true, element: <HomePage /> },
+            { path: '/user-profile', element: <UserProfile /> },
+            { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
+            { path: '/course/management', element: <CourseManage /> },
+            { path: '/my-course', element: <Blog /> },
+            { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
+            { path: '/apps/chats', element: <Chats /> },
+            { path: '/apps/email', element: <Email /> },
+            { path: '/apps/notes', element: <Notes /> },
+            { path: '*', element: <Navigate to="/auth/404" /> },
+        ],
+    },
+    {
+        path: '/',
+        element: <FullLayout />,
+        children: [
+            { path: '/admin/dashboards/modern', exact: true, element: <ModernDash /> },
+            { path: '/admin', element: <Navigate to="/admin/dashboards/modern" /> },
+            { path: '/admin/course', element: <AdminCourse /> },
+            { path: '/apps/contacts', element: <Contacts /> },
+            { path: '/admin/category', element: <AdminCategory /> },
+            { path: '/admin/account/user', element: <AdminAccountUser /> },
+            { path: '/admin/account/teacher', element: <AdminAccountTeacher /> },
+            { path: '/apps/tickets', element: <Tickets /> },
+            { path: '/apps/ecommerce/shop', element: <Ecommerce /> },
+            { path: '/apps/ecommerce/eco-product-list', element: <EcomProductList /> },
+            { path: '/apps/ecommerce/eco-checkout', element: <EcomProductCheckout /> },
+            { path: '/apps/ecommerce/detail/:id', element: <EcommerceDetail /> },
+            { path: '/apps/followers', element: <Followers /> },
+            { path: '/apps/friends', element: <Friends /> },
+            { path: '/apps/gallery', element: <Gallery /> },
+            { path: '/user-profile', element: <AccountSetting /> },
+            { path: '/apps/calendar', element: <Calendar /> },
+            { path: '/ui-components/alert', element: <MuiAlert /> },
+            { path: '/ui-components/accordion', element: <MuiAccordion /> },
+            { path: '/ui-components/avatar', element: <MuiAvatar /> },
+            { path: '/ui-components/chip', element: <MuiChip /> },
+            { path: '/ui-components/dialog', element: <MuiDialog /> },
+            { path: '/ui-components/list', element: <MuiList /> },
+            { path: '/ui-components/popover', element: <MuiPopover /> },
+            { path: '/ui-components/rating', element: <MuiRating /> },
+            { path: '/ui-components/tabs', element: <MuiTabs /> },
+            { path: '/ui-components/tooltip', element: <MuiTooltip /> },
+            { path: '/ui-components/transfer-list', element: <MuiTransferList /> },
+            { path: '/ui-components/typography', element: <MuiTypography /> },
+            { path: '/pages/casl', element: <RollbaseCASL /> },
+            { path: '/pages/treeview', element: <Treeview /> },
+            { path: '/pages/pricing', element: <Pricing /> },
+            { path: '/pages/faq', element: <Faq /> },
+            { path: '/tables/basic', element: <BasicTable /> },
+            { path: '/tables/enhanced', element: <EnhanceTable /> },
+            { path: '/tables/pagination', element: <PaginationTable /> },
+            { path: '/tables/fixed-header', element: <FixedHeaderTable /> },
+            { path: '/tables/collapsible', element: <CollapsibleTable /> },
+            { path: '/tables/search', element: <SearchTable /> },
+            { path: '/forms/form-elements/autocomplete', element: <MuiAutoComplete /> },
+            { path: '/forms/form-elements/button', element: <MuiButton /> },
+            { path: '/forms/form-elements/checkbox', element: <MuiCheckbox /> },
+            { path: '/forms/form-elements/radio', element: <MuiRadio /> },
+            { path: '/forms/form-elements/slider', element: <MuiSlider /> },
+            { path: '/forms/form-elements/date-time', element: <MuiDateTime /> },
+            { path: '/forms/form-elements/switch', element: <MuiSwitch /> },
+            { path: '/forms/form-elements/switch', element: <MuiSwitch /> },
+            { path: '/forms/form-layouts', element: <FormLayouts /> },
+            { path: '/forms/form-custom', element: <FormCustom /> },
+            { path: '/forms/form-wizard', element: <FormWizard /> },
+            { path: '/forms/form-validation', element: <FormValidation /> },
+            { path: '/forms/form-horizontal', element: <FormHorizontal /> },
+            { path: '/forms/form-vertical', element: <FormVertical /> },
+            { path: '/forms/quill-editor', element: <QuillEditor /> },
+            { path: '/charts/area-chart', element: <AreaChart /> },
+            { path: '/charts/line-chart', element: <LineChart /> },
+            { path: '/charts/gredient-chart', element: <GredientChart /> },
+            { path: '/charts/candlestick-chart', element: <CandlestickChart /> },
+            { path: '/charts/column-chart', element: <ColumnChart /> },
+            { path: '/charts/doughnut-pie-chart', element: <DoughnutChart /> },
+            { path: '/charts/radialbar-chart', element: <RadialbarChart /> },
+            { path: '/widgets/cards', element: <WidgetCards /> },
+            { path: '/widgets/banners', element: <WidgetBanners /> },
+            { path: '/widgets/charts', element: <WidgetCharts /> },
+        ],
+    },
+    {
+        path: '/',
+        element: <BlankLayout />,
+        children: [
+            { path: '/auth/404', element: <Error /> },
+            { path: '/auth/login', element: <Login /> },
+            { path: '/auth/login2', element: <Login2 /> },
+            { path: '/auth/register', element: <Register /> },
+            { path: '/auth/register2', element: <Register2 /> },
+            { path: '/auth/forgot-password', element: <ForgotPassword /> },
+            { path: '/auth/forgot-password2', element: <ForgotPassword2 /> },
+            { path: '/auth/two-steps', element: <TwoSteps /> },
+            { path: '/auth/two-steps2', element: <TwoSteps2 /> },
+            { path: '/auth/maintenance', element: <Maintenance /> },
+            { path: '/landingpage', element: <Landingpage /> },
+            { path: '*', element: <Navigate to="/auth/404" /> },
+        ],
+    },
 ];
 
 export default Router;

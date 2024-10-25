@@ -1,17 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import React from 'react';
+// import React from 'react';
 import { Grid, Box, Typography } from '@mui/material';
 
 import PageContainer from 'src/components/container/PageContainer';
 import img1 from 'src/assets/images/backgrounds/login-bg.svg';
 import Logo from 'src/layouts/full/shared/logo/Logo';
-
 import AuthTwoSteps from '../authForms/AuthTwoSteps';
 
 const TwoSteps = () => (
-  <PageContainer title="Two Steps" description="this is Two Steps page">
-    <Grid container spacing={0} justifyContent="center" sx={{ overflowX: 'hidden' }}>
+  <PageContainer title="Two Steps" description="This is Two Steps page">
+    <Grid container spacing={0} sx={{ height: '100vh', overflowX: 'hidden' }}>
       <Grid
         item
         xs={12}
@@ -20,6 +17,9 @@ const TwoSteps = () => (
         xl={9}
         sx={{
           position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           '&:before': {
             content: '""',
             background: 'radial-gradient(#d2f1df, #d3d7fa, #bad8f4)',
@@ -29,35 +29,32 @@ const TwoSteps = () => (
             height: '100%',
             width: '100%',
             opacity: '0.3',
+            zIndex: 1,
           },
         }}
       >
-        <Box position="relative">
-          <Box px={3}>
-            <Logo />
-          </Box>
-          <Box
-            alignItems="center"
-            justifyContent="center"
-            height={'calc(100vh - 75px)'}
-            sx={{
-              display: {
-                xs: 'none',
-                lg: 'flex',
-              },
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: '500px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative',
+            zIndex: 2,
+          }}
+        >
+          <img
+            src={img1}
+            alt="background"
+            style={{
+              width: '100%',
+              height: 'auto',
             }}
-          >
-            <img
-              src={img1}
-              alt="bg"
-              style={{
-                width: '100%',
-                maxWidth: '500px',
-              }}
-            />
-          </Box>
+          />
         </Box>
       </Grid>
+
       <Grid
         item
         xs={12}
@@ -65,21 +62,29 @@ const TwoSteps = () => (
         lg={4}
         xl={3}
         display="flex"
+        flexDirection="column"
         justifyContent="center"
         alignItems="center"
+        sx={{ height: '100%', px: 6, backgroundColor: '#ffffff', borderLeft: '1px solid #e0e0e0' }}
       >
-        <Box p={4}>
-        <Typography variant="h4" fontWeight="700">
-            Two Step Verification
+        <Box mb={6} textAlign="center">
+          <Logo />
+        </Box>
+
+        <Box textAlign="center" sx={{ width: '100%', maxWidth: '360px' }}>
+          <Typography variant="h4" fontWeight="700" mb={2}>
+            Xác minh hai bước
           </Typography>
 
-          <Typography variant="subtitle1" color="textSecondary" mt={2} mb={1}>
-            We sent a verification code to your mobile. Enter the code from the mobile in the field
-            below.
+          <Typography variant="subtitle1" color="textSecondary" mb={2}>
+            Chúng tôi đã gửi mã xác minh đến điện thoại di động của bạn. Nhập mã từ điện thoại di
+            động vào ô bên dưới.
           </Typography>
-          <Typography variant="subtitle1" fontWeight="700" mb={1}>
-            ******1234
+
+          <Typography variant="subtitle1" fontWeight="700" mb={3}>
+            nqton301004@gmail.com
           </Typography>
+
           <AuthTwoSteps />
         </Box>
       </Grid>

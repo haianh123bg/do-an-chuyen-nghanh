@@ -8,49 +8,52 @@ import CustomTextField from '../../../components/forms/theme-elements/CustomText
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
 import { registerType } from 'src/types/auth/auth';
 import AuthSocialButtons from './AuthSocialButtons';
+import logo from 'src/assets/images/logos/dark-logo.svg';
 
+const AuthRegister = ({ subtitle }: registerType) => (
+    <>
+        <Box sx={{textAlign:'center'}}>
+            <img src={logo} />
+        </Box>
+        <AuthSocialButtons title="Đăng nhập với" />
 
-const AuthRegister = ({ title, subtitle, subtext }: registerType) => (
-  <>
-    {title ? (
-      <Typography fontWeight="700" variant="h3" mb={1}>
-        {title}
-      </Typography>
-    ) : null}
+        <Box mt={3}>
+            <Divider>
+                <Typography
+                    component="span"
+                    color="textSecondary"
+                    variant="h6"
+                    fontWeight="400"
+                    position="relative"
+                    px={2}
+                >
+                    Tạo tài khoản
+                </Typography>
+            </Divider>
+        </Box>
 
-    {subtext}
-    <AuthSocialButtons title="Sign up with" />
-
-    <Box mt={3}>
-      <Divider>
-        <Typography
-          component="span"
-          color="textSecondary"
-          variant="h6"
-          fontWeight="400"
-          position="relative"
-          px={2}
-        >
-          or sign up with
-        </Typography>
-      </Divider>
-    </Box>
-
-    <Box>
-      <Stack mb={3}>
-        <CustomFormLabel htmlFor="name">Name</CustomFormLabel>
-        <CustomTextField id="name" variant="outlined" fullWidth />
-        <CustomFormLabel htmlFor="email">Email Adddress</CustomFormLabel>
-        <CustomTextField id="email" variant="outlined" fullWidth />
-        <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
-        <CustomTextField id="password" variant="outlined" fullWidth />
-      </Stack>
-      <Button color="primary" variant="contained" size="large" fullWidth component={Link} to="/auth/login">
-        Sign Up
-      </Button>
-    </Box>
-    {subtitle}
-  </>
+        <Box>
+            <Stack mb={3}>
+                <CustomFormLabel htmlFor="name">Tên</CustomFormLabel>
+                <CustomTextField id="name" variant="outlined" fullWidth />
+                <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
+                <CustomTextField id="email" variant="outlined" fullWidth />
+                <CustomFormLabel htmlFor="password">Mật khẩu</CustomFormLabel>
+                <CustomTextField id="password" variant="outlined" fullWidth />
+            </Stack>
+            <Button
+                color="primary"
+                variant="contained"
+                size="large"
+                fullWidth
+                component={Link}
+                to="/auth/login"
+            >
+                Đăng ký
+            </Button>
+        </Box>
+        {subtitle}
+    </>
 );
 
 export default AuthRegister;

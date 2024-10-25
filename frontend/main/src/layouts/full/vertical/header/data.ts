@@ -137,7 +137,7 @@ const profile: ProfileType[] = [
     icon: icon3,
   },
   {
-    href: '/apps/notes',
+    href: '/user-profile',
     title: 'Đổi mật khẩu',
     subtitle: 'Giao diện quản trị viên',
     icon: icon3,
