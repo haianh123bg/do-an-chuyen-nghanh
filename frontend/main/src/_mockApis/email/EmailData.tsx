@@ -19,17 +19,17 @@ import { sub } from 'date-fns';
 const EmailData: EmailType[] = [
   {
     id: 1,
-    from: 'James Smith',
+    from: 'Nguyễn Ngọc Hải Anh',
     thumbnail: user1,
-    subject: 'Literature from 45 BC, making',
+    subject: 'Đăng kí khóa học java',
     time: sub(new Date(), { days: 0, hours: 1, minutes: 45 }),
     To: 'abc@company.com',
-    emailExcerpt: 'Contrary to popular belief, Lorem Ipsum is not simply random text. ',
-    emailContent: `<p>Hello Andrew, </p>
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque bibendum hendrerit lobortis. Nullam ut lacus eros. Sed at luctus urna, eu fermentum diam. In et tristique mauris.</p>
-       <p>Ut id ornare metus, sed auctor enim. Pellentesque nisi magna, laoreet a augue eget, 
-       tempor volutpat diam.</p>
-       <p>Regards,<br/> <b>James Smith</b></p>
+    emailExcerpt: 'Thông tin về khóa học Java bạn đã quan tâm.',
+    emailContent: `<p>Xin chào Andrew,</p>
+   <p>Chúng tôi rất vui được thông báo rằng khóa học Java của chúng tôi hiện đã sẵn sàng cho đăng ký! Trong khóa học này, bạn sẽ học cách phát triển các ứng dụng Java từ cơ bản đến nâng cao, bao gồm lập trình hướng đối tượng, quản lý bộ nhớ, và tích hợp với các cơ sở dữ liệu.</p>
+   <p>Nếu bạn quan tâm, vui lòng nhấp vào liên kết dưới đây để đăng ký và giữ chỗ của bạn:</p>
+   <p><a href="https://yourwebsite.com/course/java">Đăng ký khóa học Java</a></p>
+   <p>Trân trọng,<br/><b>James Smith</b><br/>Đội ngũ Hỗ trợ Học tập</p>
        `,
     unread: true,
     attachment: false,
@@ -64,17 +64,19 @@ const EmailData: EmailType[] = [
   },
   {
     id: 2,
-    from: 'Michael Smith',
+    from: 'Nguyễn Thị Hường',
     thumbnail: user2,
-    subject: 'Fact that a reader will be distracted.',
+    subject: 'Hỗ trợ mở lớp C#',
     time: sub(new Date(), { days: 0, hours: 3, minutes: 45 }),
     To: 'abc@company.com',
-    emailExcerpt: 'It has roots in a piece of classical Latin literature from 45 BC',
-    emailContent: `<p>Hello Andrew, </p>
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque bibendum hendrerit lobortis. Nullam ut lacus eros. Sed at luctus urna, eu fermentum diam. In et tristique mauris.</p>
-       <p>Ut id ornare metus, sed auctor enim. Pellentesque nisi magna, laoreet a augue eget, 
-       tempor volutpat diam.</p>
-       <p>Regards,<br/> <b>Michael Smith</b></p>
+    emailExcerpt: 'Thông tin về việc hỗ trợ mở lớp C#.',
+    emailContent: `<p>Xin chào Andrew,</p>
+   <p>Chúng tôi nhận thấy bạn đã quan tâm đến việc mở lớp C# và muốn hỗ trợ bạn trong quá trình này. Lớp học C# của chúng tôi cung cấp các kiến thức từ căn bản đến nâng cao, bao gồm lập trình hướng đối tượng, thao tác với dữ liệu, và phát triển ứng dụng đa nền tảng.</p>
+   <p>Nếu bạn cần thêm thông tin hoặc hỗ trợ trong việc mở lớp, vui lòng liên hệ với chúng tôi qua email hoặc số điện thoại dưới đây:</p>
+   <p>Email: <a href="mailto:support@yourwebsite.com">support@yourwebsite.com</a></p>
+   <p>Điện thoại: 0123-456-789</p>
+   <p>Chúng tôi sẵn sàng hỗ trợ để lớp học của bạn diễn ra thành công!</p>
+   <p>Trân trọng,<br/><b>James Smith</b><br/>Đội ngũ Hỗ trợ Học tập</p>
        `,
     unread: true,
     attachment: false,

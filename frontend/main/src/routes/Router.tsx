@@ -149,7 +149,7 @@ const Router = [
             { path: '/my-course', element: <Blog /> },
             { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
             { path: '/apps/chats', element: <Chats /> },
-            { path: '/apps/email', element: <Email /> },
+            { path: '/Ticket', element: <Email /> },
             { path: '/apps/notes', element: <Notes /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
         ],
