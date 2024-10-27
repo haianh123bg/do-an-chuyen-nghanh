@@ -146,6 +146,7 @@ const Router = [
             { path: '/user-profile', element: <UserProfile /> },
             { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
             { path: '/course/management', element: <CourseManage /> },
+            { path: '/learning/course/:id', element: <LearningCourse /> },
             { path: '/my-course', element: <Blog /> },
             { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
             { path: '/apps/chats', element: <Chats /> },
@@ -169,7 +170,7 @@ const Router = [
             { path: '/apps/ecommerce/shop', element: <Ecommerce /> },
             { path: '/apps/ecommerce/eco-product-list', element: <EcomProductList /> },
             { path: '/apps/ecommerce/eco-checkout', element: <EcomProductCheckout /> },
-            { path: '/learning/course/:id', element: <LearningCourse /> },
+
             { path: '/apps/followers', element: <Followers /> },
             { path: '/apps/friends', element: <Friends /> },
             { path: '/apps/gallery', element: <Gallery /> },
