@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React, { useEffect } from 'react';
-
+import { vi } from 'date-fns/locale';
 // third-party
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
@@ -74,13 +74,13 @@ const BlogCard = ({ post }: Btype) => {
                 <Tooltip title={author?.name} placement="top">
                   <Avatar aria-label="recipe" src={author?.avatar}></Avatar>
                 </Tooltip>
-                <Chip
+                {/* <Chip
                   sx={{ marginLeft: 'auto', marginTop: '-21px', backgroundColor: 'white' }}
                   label="2 min Read"
                   size="small"
-                ></Chip>
+                ></Chip> */}
               </Stack>
-              <Chip label={category} size="small" sx={{ marginTop: 2 }}></Chip>
+              {/* <Chip label={category} size="small" sx={{ marginTop: 2 }}></Chip> */}
               <Box my={3}>
                 <Typography
                   gutterBottom
@@ -104,7 +104,7 @@ const BlogCard = ({ post }: Btype) => {
 
                 <Stack direction="row" ml="auto" alignItems="center">
                   <IconPoint size="16" />
-                  <small>{format(new Date(createdAt), 'E, MMM d')}</small>
+                    <small>{format(new Date(createdAt), 'E, MMM d', { locale: vi })}</small>
                 </Stack>
               </Stack>
             </CardContent>
