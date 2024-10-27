@@ -71,7 +71,7 @@ const a11yProps = (index: number) => {
     };
 };
 
-const ProductDesc = () => {
+const CourseDesc = () => {
     const [value, setValue] = React.useState(0);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -190,4 +190,4 @@ const ProductDesc = () => {
     );
 };
 
-export default ProductDesc;
+export default CourseDesc;

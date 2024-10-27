@@ -33,7 +33,7 @@ const Chats = Loadable(lazy(() => import('../views/apps/chat/Chat')));
 const Notes = Loadable(lazy(() => import('../views/apps/notes/Notes')));
 const Tickets = Loadable(lazy(() => import('../views/apps/tickets/Tickets')));
 const Ecommerce = Loadable(lazy(() => import('../views/apps/eCommerce/Ecommerce')));
-const EcommerceDetail = Loadable(lazy(() => import('../views/apps/eCommerce/EcommerceDetail')));
+const LearningCourse = Loadable(lazy(() => import('../views/apps/course/LearningCourse')));
 const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/EcomProductList')));
 const EcomProductCheckout = Loadable(
     lazy(() => import('../views/apps/eCommerce/EcommerceCheckout')),
@@ -169,7 +169,7 @@ const Router = [
             { path: '/apps/ecommerce/shop', element: <Ecommerce /> },
             { path: '/apps/ecommerce/eco-product-list', element: <EcomProductList /> },
             { path: '/apps/ecommerce/eco-checkout', element: <EcomProductCheckout /> },
-            { path: '/apps/ecommerce/detail/:id', element: <EcommerceDetail /> },
+            { path: '/learning/course/:id', element: <LearningCourse /> },
             { path: '/apps/followers', element: <Followers /> },
             { path: '/apps/friends', element: <Friends /> },
             { path: '/apps/gallery', element: <Gallery /> },
