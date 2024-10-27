@@ -242,6 +242,7 @@ const Router = [
             { path: '*', element: <Navigate to="/auth/404" /> },
         ],
     },
+
 ];
 
 export default Router;

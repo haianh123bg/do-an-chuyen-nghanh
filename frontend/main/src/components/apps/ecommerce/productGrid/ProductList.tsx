@@ -52,13 +52,13 @@ const ProductList = ({ onClick }: Props) => {
     if (sortBy === 'newest') {
       products = orderBy(products, ['created'], ['desc']);
     }
-    if (sortBy === 'priceDesc') {
+    if (sortBy === 'elementary') {
       products = orderBy(products, ['price'], ['desc']);
     }
     if (sortBy === 'priceAsc') {
       products = orderBy(products, ['price'], ['asc']);
     }
-    if (sortBy === 'discount') {
+    if (sortBy === 'Expert') {
       products = orderBy(products, ['discount'], ['desc']);
     }
 
