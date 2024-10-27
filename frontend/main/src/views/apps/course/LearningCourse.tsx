@@ -1,17 +1,18 @@
 import { Grid, Typography, IconButton, Button } from '@mui/material';
-import ProductCarousel from 'src/components/apps/ecommerce/productDetail/ProductCarousel';
+import CourseVideo from 'src/components/apps/course/courseDetail/CourseVideo';
 import PageContainer from 'src/components/container/PageContainer';
-import ProductDetail from 'src/components/apps/ecommerce/productDetail/ProductDetail';
-import ProductDesc from 'src/components/apps/ecommerce/productDetail/ProductDesc';
+import CourseContent from 'src/components/apps/course/courseDetail/CourseContent';
+import CourseDesc from 'src/components/apps/course/courseDetail/CourseDesc';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ExpandMore, ExpandLess } from '@mui/icons-material';
+import { ExpandMore, Close, ArrowForward } from '@mui/icons-material'; // Import icon mới
 
 // EcommerceDetail component
 const LearningCourse: React.FC = () => {
     const { id } = useParams();
-    const [showDetail, setShowDetail] = useState(true); // State để quản lý việc hiển thị ProductDetail
+    const [showDetail, setShowDetail] = useState(true); // State để quản lý việc hiển thị CourseContent
     const [openTabCategory, setOpenTabCategory] = useState(true);
+    const [isHovered, setIsHovered] = useState(false); // State để quản lý trạng thái hover
 
     const handleOpenTabCategory = () => {
         setOpenTabCategory(!openTabCategory);
@@ -59,14 +60,7 @@ const LearningCourse: React.FC = () => {
 
     return (
         <PageContainer title="Chi tiết khóa học" description="Chi tiết về khóa học đã chọn">
-            <Grid container spacing={3} sx={{ width: '100%ơ', maxWidth: '100vw', margin: 0 }}>
-                {/* Phần ProductCarousel và ProductDesc đứng yên khi cuộn trang */}
-                <Button
-                    sx={{ position: 'fixed', right: '100px', zIndex: '1' }}
-                    onClick={handleOpenTabCategory}
-                >
-                    Bật tắt
-                </Button>
+            <Grid container spacing={3} sx={{ width: '100%', maxWidth: '100vw', margin: 0 }}>
                 <Grid
                     item
                     xs={12}
@@ -77,17 +71,40 @@ const LearningCourse: React.FC = () => {
                     <div
                         style={{ position: 'sticky', top: '0', height: '100%', overflowY: 'auto' }}
                     >
-                        {/* Phần ProductCarousel */}
+                        {/* Phần CourseVideo */}
                         <div style={{ marginBottom: '20px' }}>
-                            <ProductCarousel />
+                            <CourseVideo />
                         </div>
 
-                        {/* Phần ProductDesc */}
-                        <ProductDesc />
+                        {/* Nút để hiện lại nội dung CourseContent */}
+                        <Button
+                            onClick={() => {
+                                setShowDetail(!showDetail);
+                                handleOpenTabCategory();
+                            }}
+                            onMouseEnter={() => setIsHovered(true)} // Bắt đầu hover
+                            onMouseLeave={() => setIsHovered(false)} // Kết thúc hover
+                            variant="contained"
+                            sx={{
+                                position: 'absolute',
+                                bottom: '50px',
+                                left: '96%',
+                                transform: 'translateX(-50%)',
+                                backgroundColor: 'transparent',
+                                zIndex: 1200,
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <ArrowForward sx={{ marginRight: '8px', color: 'blue' }} />
+                        </Button>
+
+                        {/* Phần CourseDesc */}
+                        <CourseDesc />
                     </div>
                 </Grid>
 
-                {/* Phần ProductDetail có thể cuộn */}
+                {/* Phần CourseContent có thể cuộn */}
                 {openTabCategory && (
                     <Grid
                         item
@@ -99,26 +116,43 @@ const LearningCourse: React.FC = () => {
                             top: '80px',
                             alignSelf: 'flex-start',
                             right: '0px',
-                            height: 'calc(100vh - 80px)', // Chiều cao của ProductDetail
+                            height: 'calc(100vh - 80px)', // Chiều cao của CourseContent
                             overflowY: 'hidden',
                             padding: 0,
-                            backgroundColor: 'red',
                         }}
                     >
-                        {/* Nút để ẩn/hiện ProductDetail */}
+                        {/* Nút đóng/mở tab bên trong CourseContent */}
                         <IconButton
-                            onClick={() => setShowDetail(!showDetail)} // Cập nhật state khi nút được nhấn
-                            sx={{ position: 'absolute', top: 10, right: 10 }} // Đặt vị trí cho nút
+                            onClick={() => {
+                                setShowDetail(!showDetail);
+                                handleOpenTabCategory();
+                            }}
+                            sx={{
+                                position: 'absolute',
+                                top: '10px',
+                                right: '10px',
+                                zIndex: 1200,
+                                backgroundColor: 'white',
+                                borderRadius: '50%',
+                                boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)',
+                            }}
                         >
-                            {showDetail ? <ExpandLess /> : <ExpandMore />}{' '}
-                            {/* Thay đổi icon dựa trên trạng thái */}
+                            {isHovered ? (
+                                <Typography variant="body2">
+                                    {showDetail ? 'Đóng' : 'Mở'}
+                                </Typography>
+                            ) : showDetail ? (
+                                <Close />
+                            ) : (
+                                <ExpandMore />
+                            )}
                         </IconButton>
 
-                        {/* Nội dung ProductDetail */}
-                        {showDetail && ( // Chỉ hiển thị nếu showDetail là true
+                        {/* Nội dung CourseContent */}
+                        {showDetail && (
                             <div style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
                                 {selectedProduct ? (
-                                    <ProductDetail course={selectedProduct} />
+                                    <CourseContent course={selectedProduct} />
                                 ) : (
                                     <Typography>Không tìm thấy khóa học này.</Typography>
                                 )}
