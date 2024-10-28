@@ -20,7 +20,7 @@ public class Cart {
     private Integer id;
 
     @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne
     @JoinColumn(name = "cart_id", nullable = false)
     private User user;
 

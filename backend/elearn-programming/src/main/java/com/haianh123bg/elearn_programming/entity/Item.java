@@ -53,7 +53,7 @@ public class Item {
     private CodingExercise codingExercise;
 
     @OneToMany(mappedBy = "item")
-    private Set<Comment> comments = new LinkedHashSet<>();
+    private Set<Comment> comments;
 
     @OneToOne(mappedBy = "item")
     private VideoLecture videoLecture;

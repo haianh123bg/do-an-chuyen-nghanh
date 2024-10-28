@@ -22,15 +22,11 @@ public class Message {
     @Column(name = "message_id", nullable = false)
     private Long id;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "`to`", nullable = false)
-    private User to;
+    @Column(name = "to")
+    private Integer to;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "`from`", nullable = false)
-    private User from;
+    @Column(name = "from")
+    private Integer from;
 
     @Lob
     @Column(name = "content")

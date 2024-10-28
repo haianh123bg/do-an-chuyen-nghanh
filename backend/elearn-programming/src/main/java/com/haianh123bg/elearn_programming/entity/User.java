@@ -52,6 +52,9 @@ public class User implements UserDetails {
     @OneToOne(mappedBy = "user")
     private User2faSetting user2faSetting;
 
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
+
     @OneToMany(mappedBy = "user")
     private Set<UserHasCourse> userHasCourses = new LinkedHashSet<>();
 
@@ -61,7 +64,7 @@ public class User implements UserDetails {
     @ManyToMany(mappedBy = "users")
     private Set<Role> roles = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "userUser")
+    @OneToMany(mappedBy = "user")
     private Set<UserOtp> userOtps = new LinkedHashSet<>();
 
     @Override

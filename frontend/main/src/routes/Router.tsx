@@ -239,6 +239,8 @@ const Router = [
             { path: '/auth/two-steps2', element: <TwoSteps2 /> },
             { path: '/auth/maintenance', element: <Maintenance /> },
             { path: '/landingpage', element: <Landingpage /> },
+            { path: '/home', element: <Home /> },
+            { path: '/checkout', element: <Checkout /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
         ],
     },

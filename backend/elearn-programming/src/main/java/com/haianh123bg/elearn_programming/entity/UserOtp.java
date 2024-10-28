@@ -46,7 +46,7 @@ public class UserOtp {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_user_id", nullable = false)
-    private User userUser;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 }

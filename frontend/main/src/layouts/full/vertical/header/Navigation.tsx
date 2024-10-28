@@ -87,7 +87,7 @@ const AppDD = () => {
                 color="inherit"
                 sx={{ color: (theme) => theme.palette.text.secondary }}
                 variant="text"
-                to="/apps/chats"
+                to="/home"
                 component={Link}
             >
                 Nâng cấp hội viên
