@@ -16,7 +16,7 @@ import SliderData from './SliderData';
 import { fetchProducts } from 'src/store/apps/eCommerce/ECommerceSlice';
 import { ProductType } from 'src/types/apps/eCommerce';
 
-const ProductCarousel = () => {
+const CourseVideo = () => {
     const [state, setState] = React.useState<any>({ nav1: null, nav2: null });
     const slider1 = useRef();
     const slider2 = useRef();
@@ -113,4 +113,4 @@ const ProductCarousel = () => {
     );
 };
 
-export default ProductCarousel;
+export default CourseVideo;
