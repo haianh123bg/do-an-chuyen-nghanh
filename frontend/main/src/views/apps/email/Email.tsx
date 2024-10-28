@@ -21,8 +21,8 @@ const Email = () => {
   const mdUp = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'));
 
   return (
-    <PageContainer title="Email App" description="this is email page">
-      <Breadcrumb title="Email app" subtitle="Look at Inbox">
+    <PageContainer title="Ticket hỗ trợ" description="this is email page">
+      <Breadcrumb title="Ticket hỗ trợ" subtitle="Hộp thư mục">
         <img src={emailIcon} alt={emailIcon} width={'165px'} />
       </Breadcrumb>
 

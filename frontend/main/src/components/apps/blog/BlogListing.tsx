@@ -6,7 +6,7 @@ import BlogCard from './BlogCard';
 import { orderBy } from 'lodash';
 import { useSelector, useDispatch } from 'src/store/Store';
 import { fetchBlogPosts } from 'src/store/apps/blog/BlogSlice';
-import BlogFeaturedCard from './BlogFeaturedCard';
+// import BlogFeaturedCard from './BlogFeaturedCard';
 import { BlogPostType } from 'src/types/apps/blog';
 
 const BlogListing = () => {
@@ -51,9 +51,9 @@ const BlogListing = () => {
 
   return (
     <Grid container spacing={3}>
-      {featuredPost.map((post, index) => {
-        return <BlogFeaturedCard index={index} post={post} key={post.title} />;
-      })}
+      {/* {featuredPost.map((post, index) => {
+        // return <BlogFeaturedCard index={index} post={post} key={post.title} />;
+      })} */}
       {blogPosts.map((post) => {
         return <BlogCard post={post} key={post.id} />;
       })}

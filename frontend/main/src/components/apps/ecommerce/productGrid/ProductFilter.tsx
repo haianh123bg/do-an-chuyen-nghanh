@@ -58,8 +58,8 @@ const ProductFilter = () => {
     return (newVal = ['All', ...Array.from(new Set(newVal))]);
   };
 
-  const filterbyGender = getUniqueData(products, 'gender');
-  // const filterbyColors = getUniqueData(products, 'colors');
+  // const filterbyGender = getUniqueData(products, 'gender');
+  // // const filterbyColors = getUniqueData(products, 'colors');
 
   const filterCategory: ProductFiterType[] = [
     {
@@ -202,7 +202,7 @@ const ProductFilter = () => {
         {/* ------------------------------------------- */}
         {/* Filter By Gender */}
         {/* ------------------------------------------- */}
-        <Box p={3}>
+        {/* <Box p={3}>
           <Typography variant="subtitle2" fontWeight={600}>
             By Gender
           </Typography>
@@ -222,7 +222,7 @@ const ProductFilter = () => {
               />
             ))}
           </FormGroup>
-        </Box>
+        </Box> */}
         <Divider></Divider>
         {/* ------------------------------------------- */}
         {/* Filter By Pricing */}
