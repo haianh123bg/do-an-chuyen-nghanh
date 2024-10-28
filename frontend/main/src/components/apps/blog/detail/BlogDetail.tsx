@@ -106,11 +106,11 @@ const BlogDetail = () => {
               <Tooltip title={post ? post?.author.name : ''} placement="top">
                 <Avatar aria-label="recipe" src={post?.author.avatar}></Avatar>
               </Tooltip>
-              <Chip
+              {/* <Chip
                 sx={{ marginLeft: 'auto', marginTop: '-21px', backgroundColor: 'white' }}
                 label="2 min Read"
                 size="small"
-              ></Chip>
+              ></Chip> */}
             </Stack>
             <Chip label={post?.category} size="small" sx={{ marginTop: 2 }}></Chip>
             <Box my={3}>

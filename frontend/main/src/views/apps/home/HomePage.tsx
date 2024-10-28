@@ -11,10 +11,10 @@ import AppCard from 'src/components/shared/AppCard';
 const BCrumb = [
   {
     to: '/',
-    title: 'Home',
+    title: 'Trang Chủ',
   },
   {
-    title: 'Shop',
+    title: 'Khóa học',
   },
 ];
 const HomePage = () => {
@@ -23,7 +23,7 @@ const HomePage = () => {
   return (
     <PageContainer title="Shop List" description="this is Shop List page">
       {/* breadcrumb */}
-      <Breadcrumb title="Ecom-Shop" items={BCrumb} />
+      <Breadcrumb title="Danh sách hóa học" items={BCrumb} />
       <AppCard>
         {/* ------------------------------------------- */}
         {/* Left part */}

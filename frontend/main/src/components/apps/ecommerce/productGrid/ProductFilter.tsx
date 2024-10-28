@@ -13,30 +13,31 @@ import {
   Radio,
   Typography,
   Box,
-  Avatar,
+  // Avatar,
   Button,
-  Stack
+  // Stack
 } from '@mui/material';
 import {
   filterProducts,
   sortByProducts,
   sortByGender,
-  sortByColor,
+  // sortByColor,
   sortByPrice,
   filterReset,
 } from 'src/store/apps/eCommerce/ECommerceSlice';
 import {
-  IconHanger,
+
   IconCircles,
   IconNotebook,
-  IconMoodSmile,
   IconDeviceLaptop,
   IconSortAscending2,
   IconSortDescending2,
   IconAd2,
-  IconCheck
+  // IconCheck,
+  IconSettings
 } from '@tabler/icons-react';
 import { ProductFiterType } from 'src/types/apps/eCommerce';
+import { IconAdjustmentsCode } from '@tabler/icons-react';
 
 const ProductFilter = () => {
   const dispatch = useDispatch();
@@ -57,42 +58,42 @@ const ProductFilter = () => {
     return (newVal = ['All', ...Array.from(new Set(newVal))]);
   };
 
-  const filterbyGender = getUniqueData(products, 'gender');
-  const filterbyColors = getUniqueData(products, 'colors');
+  // const filterbyGender = getUniqueData(products, 'gender');
+  // // const filterbyColors = getUniqueData(products, 'colors');
 
   const filterCategory: ProductFiterType[] = [
     {
       id: 1,
-      filterbyTitle: 'Filter by Category',
+      filterbyTitle: 'Chủ đề',
     },
     {
       id: 2,
-      name: 'All',
+      name: 'Tất cả',
       sort: 'All',
       icon: IconCircles,
     },
     {
       id: 3,
-      name: 'Fashion',
-      sort: 'fashion',
-      icon: IconHanger,
+      name: 'python',
+      sort: 'python',
+      icon: IconAdjustmentsCode,
     },
     {
       id: 9,
-      name: 'Books',
-      sort: 'books',
+      name: 'Java',
+      sort: 'Java',
       icon: IconNotebook,
     },
     {
       id: 10,
-      name: 'Toys',
-      sort: 'toys',
-      icon: IconMoodSmile,
+      name: 'SQL',
+      sort: 'sql',
+      icon: IconSettings,
     },
     {
       id: 11,
-      name: 'Electronics',
-      sort: 'electronics',
+      name: 'HTML, CSS',
+      sort: 'html',
       icon: IconDeviceLaptop,
     },
     {
@@ -101,15 +102,15 @@ const ProductFilter = () => {
     },
   ];
   const filterbySort = [
-    { id: 1, value: 'newest', label: 'Newest', icon: IconAd2 },
-    { id: 2, value: 'priceDesc', label: 'Price: High-Low', icon: IconSortAscending2 },
-    { id: 3, value: 'priceAsc', label: 'Price: Low-High', icon: IconSortDescending2 },
-    { id: 4, value: 'discount', label: 'Discounted', icon: IconAd2 },
+    { id: 1, value: 'All', label: 'All', icon: IconAd2 },
+    { id: 2, value: 'elementary', label: 'Cơ cấp', icon: IconSortAscending2 },
+    { id: 3, value: 'intermediate', label: 'Trung cấp', icon: IconSortDescending2 },
+    { id: 4, value: 'Expert', label: 'Chuyên gia', icon: IconAd2 },
   ];
   const filterbyPrice = [
     {
       id: 0,
-      label: 'All',
+      label: 'Tất cả',
       value: 'All',
     },
     {
@@ -129,7 +130,7 @@ const ProductFilter = () => {
     },
     {
       id: 5,
-      label: 'Over 200',
+      label: 'Trên 200',
       value: '200-99999',
     },
   ];
@@ -180,7 +181,7 @@ const ProductFilter = () => {
         {/* Sort by */}
         {/* ------------------------------------------- */}
         <Typography variant="subtitle2" fontWeight={600} px={3} mt={3} pb={2}>
-          Sort By
+          Cấp độ
         </Typography>
         {filterbySort.map((filter) => {
           return (
@@ -201,7 +202,7 @@ const ProductFilter = () => {
         {/* ------------------------------------------- */}
         {/* Filter By Gender */}
         {/* ------------------------------------------- */}
-        <Box p={3}>
+        {/* <Box p={3}>
           <Typography variant="subtitle2" fontWeight={600}>
             By Gender
           </Typography>
@@ -221,13 +222,13 @@ const ProductFilter = () => {
               />
             ))}
           </FormGroup>
-        </Box>
+        </Box> */}
         <Divider></Divider>
         {/* ------------------------------------------- */}
         {/* Filter By Pricing */}
         {/* ------------------------------------------- */}
         <Typography variant="h6" px={3} mt={3} pb={2}>
-          By Pricing
+          Gía khóa học
         </Typography>
         <Box p={3} pt={0}>
           <FormGroup>
@@ -247,13 +248,13 @@ const ProductFilter = () => {
           </FormGroup>
         </Box>
         <Divider></Divider>
-        <Typography variant="h6" px={3} mt={3} pb={2}>
+        {/* <Typography variant="h6" px={3} mt={3} pb={2}>
           By Colors
-        </Typography>
+        </Typography> */}
         {/* ------------------------------------------- */}
         {/* Filter By colors */}
         {/* ------------------------------------------- */}
-        <Box p={3} pt={0}>
+        {/* <Box p={3} pt={0}>
           <Stack direction={'row'} flexWrap="wrap" gap={1}>
             {filterbyColors.map((curColor) => {
               if (curColor !== 'All') {
@@ -281,7 +282,7 @@ const ProductFilter = () => {
               }
             })}
           </Stack>
-        </Box>
+        </Box> */}
         <Divider></Divider>
         {/* ------------------------------------------- */}
         {/* Reset */}
