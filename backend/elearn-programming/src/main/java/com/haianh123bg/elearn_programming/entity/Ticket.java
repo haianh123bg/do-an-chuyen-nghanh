@@ -69,5 +69,4 @@ public class Ticket {
 
     @Column(name = "feedback")
     private Float feedback;
-
 }

@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.time.Instant;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -53,6 +54,6 @@ public class Order {
     private String vndRef;
 
     @OneToMany(mappedBy = "order")
-    private Set<OrderLine> orderLines = new LinkedHashSet<>();
+    private List<OrderLine> orderLines;
 
 }

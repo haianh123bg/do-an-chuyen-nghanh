@@ -6,7 +6,9 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -32,10 +34,10 @@ public class Item {
     private String description;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    private LocalDateTime updatedAt;
 
     @Size(max = 45)
     @NotNull
@@ -53,7 +55,7 @@ public class Item {
     private CodingExercise codingExercise;
 
     @OneToMany(mappedBy = "item")
-    private Set<Comment> comments;
+    private List<Comment> comments;
 
     @OneToOne(mappedBy = "item")
     private VideoLecture videoLecture;

@@ -28,5 +28,4 @@ public class VideoLecture {
     @Size(max = 255)
     @Column(name = "url")
     private String url;
-
 }

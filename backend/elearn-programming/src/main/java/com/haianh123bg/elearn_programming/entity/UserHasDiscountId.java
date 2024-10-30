@@ -29,10 +29,13 @@ public class UserHasDiscountId implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        UserHasDiscountId entity = (UserHasDiscountId) o;
-        return Objects.equals(this.discount, entity.discount) &&
-                Objects.equals(this.userId, entity.userId);
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserHasDiscountId that = (UserHasDiscountId) o;
+
+        if (!Objects.equals(discount, that.discount))
+            return false;
+        return Objects.equals(userId, that.userId);
     }
 
     @Override

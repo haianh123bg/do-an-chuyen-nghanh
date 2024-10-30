@@ -27,7 +27,4 @@ public class Permission {
     @Size(max = 100)
     @Column(name = "description", length = 100)
     private String description;
-
-    @ManyToMany(mappedBy = "permissions", fetch = FetchType.LAZY)
-    private Set<User> users = new LinkedHashSet<>();
 }

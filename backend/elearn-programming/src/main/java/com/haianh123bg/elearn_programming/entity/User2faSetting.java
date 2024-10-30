@@ -25,15 +25,12 @@ public class User2faSetting {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ColumnDefault("0")
     @Column(name = "otp_sms_enabled")
     private Boolean otpSmsEnabled;
 
-    @ColumnDefault("0")
     @Column(name = "otp_email_enabled")
     private Boolean otpEmailEnabled;
 
-    @ColumnDefault("0")
     @Column(name = "google_authenticator_enabled")
     private Boolean googleAuthenticatorEnabled;
 
@@ -41,11 +38,9 @@ public class User2faSetting {
     @Column(name = "google_authenticator_secret", length = 500)
     private String googleAuthenticatorSecret;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "update_at")
     private LocalDateTime updateAt;
 

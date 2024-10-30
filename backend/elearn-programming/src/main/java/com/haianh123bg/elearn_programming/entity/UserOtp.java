@@ -20,10 +20,6 @@ public class UserOtp {
     @Column(name = "otp_id", nullable = false)
     private Long id;
 
-    @NotNull
-    @Column(name = "user_id", nullable = false)
-    private Integer userId;
-
     @Size(max = 45)
     @Column(name = "otp_code", length = 45)
     private String otpCode;
@@ -44,9 +40,7 @@ public class UserOtp {
     @Column(name = "max_attempts")
     private Integer maxAttempts;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
-
 }

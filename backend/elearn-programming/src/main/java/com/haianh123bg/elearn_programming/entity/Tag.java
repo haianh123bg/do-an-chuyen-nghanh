@@ -28,8 +28,4 @@ public class Tag {
 
     @Column(name = "total_course")
     private Integer totalCourse;
-
-    @ManyToMany(mappedBy = "tags")
-    private Set<Course> courses = new LinkedHashSet<>();
-
 }

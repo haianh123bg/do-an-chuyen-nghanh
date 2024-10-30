@@ -29,10 +29,13 @@ public class UserHasCourseId implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        UserHasCourseId entity = (UserHasCourseId) o;
-        return Objects.equals(this.userId, entity.userId) &&
-                Objects.equals(this.courseId, entity.courseId);
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserHasCourseId that = (UserHasCourseId) o;
+
+        if (!Objects.equals(courseId, that.courseId))
+            return false;
+        return Objects.equals(userId, that.userId);
     }
 
     @Override

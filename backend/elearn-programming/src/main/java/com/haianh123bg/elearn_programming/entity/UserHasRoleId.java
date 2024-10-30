@@ -18,21 +18,23 @@ import java.util.Objects;
 @Embeddable
 public class UserHasRoleId implements Serializable {
     private static final long serialVersionUID = 168634642915131889L;
-    @NotNull
+
     @Column(name = "user_id", nullable = false)
     private Integer userId;
 
-    @NotNull
     @Column(name = "role_id", nullable = false)
     private Integer roleId;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        UserHasRoleId entity = (UserHasRoleId) o;
-        return Objects.equals(this.roleId, entity.roleId) &&
-                Objects.equals(this.userId, entity.userId);
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserHasRoleId that = (UserHasRoleId) o;
+
+        if (!Objects.equals(roleId, that.roleId))
+            return false;
+        return Objects.equals(userId, that.userId);
     }
 
     @Override

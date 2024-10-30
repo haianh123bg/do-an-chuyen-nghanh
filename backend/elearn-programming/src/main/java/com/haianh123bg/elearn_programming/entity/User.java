@@ -7,9 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -49,23 +47,8 @@ public class User implements UserDetails {
     @Column(name = "is_enable")
     private Boolean isEnable;
 
-    @OneToOne(mappedBy = "user")
-    private User2faSetting user2faSetting;
-
-    @OneToOne(mappedBy = "user")
-    private Cart cart;
-
     @OneToMany(mappedBy = "user")
-    private Set<UserHasCourse> userHasCourses = new LinkedHashSet<>();
-
-    @ManyToMany(mappedBy = "users")
-    private Set<Permission> permissions = new LinkedHashSet<>();
-
-    @ManyToMany(mappedBy = "users")
-    private Set<Role> roles = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "user")
-    private Set<UserOtp> userOtps = new LinkedHashSet<>();
+    private List<UserOtp> userOtps;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
