@@ -28,10 +28,13 @@ public class CourseHasTagId implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        CourseHasTagId entity = (CourseHasTagId) o;
-        return Objects.equals(this.tagId, entity.tagId) &&
-                Objects.equals(this.courseId, entity.courseId);
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CourseHasTagId that = (CourseHasTagId) o;
+
+        if (!Objects.equals(courseId, that.courseId))
+            return false;
+        return Objects.equals(tagId, that.tagId);
     }
 
     @Override

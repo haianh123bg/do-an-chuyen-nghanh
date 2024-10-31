@@ -50,7 +50,7 @@ const MobileRightSidebar = () => {
                             </Typography>
                         </ListItemText>
                     </ListItemButton>
-                    <ListItemButton component={Link} to="/apps/calendar">
+                    <ListItemButton component={Link} to="/home">
                         <ListItemIcon sx={{ minWidth: 35 }}>
                             <IconCalendarEvent size="21" stroke="1.5" />
                         </ListItemIcon>

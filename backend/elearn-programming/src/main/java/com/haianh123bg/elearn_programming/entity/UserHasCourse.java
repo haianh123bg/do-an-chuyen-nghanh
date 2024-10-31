@@ -37,6 +37,5 @@ public class UserHasCourse {
     private LocalDateTime expiredTime;
 
     @Column(name = "progress")
-    private LocalDateTime progress;
-
+    private Integer progress;
 }

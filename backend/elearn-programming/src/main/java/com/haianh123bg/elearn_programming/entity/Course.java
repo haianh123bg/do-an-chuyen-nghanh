@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -19,7 +20,7 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "course_id", nullable = false)
-    private Integer id;
+    private Integer courseId;
 
     @Size(max = 255)
     @Column(name = "name")
@@ -66,10 +67,7 @@ public class Course {
     @Column(name = "price_real")
     private Integer priceReal;
 
-    @ManyToMany(mappedBy = "courses")
-    private Set<Tag> tags = new LinkedHashSet<>();
-
     @OneToMany(mappedBy = "course")
-    private Set<Module> modules = new LinkedHashSet<>();
+    private List<Module> modules;
 
 }

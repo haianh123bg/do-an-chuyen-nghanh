@@ -28,10 +28,13 @@ public class RoleHasPermissionId implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        RoleHasPermissionId entity = (RoleHasPermissionId) o;
-        return Objects.equals(this.permissionId, entity.permissionId) &&
-                Objects.equals(this.roleId, entity.roleId);
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RoleHasPermissionId that = (RoleHasPermissionId) o;
+
+        if (!Objects.equals(roleId, that.roleId))
+            return false;
+        return Objects.equals(permissionId, that.permissionId);
     }
 
     @Override

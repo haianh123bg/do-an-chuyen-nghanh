@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -30,6 +31,5 @@ public class UserHasDiscount {
     private Integer quantity;
 
     @Column(name = "expired_date")
-    private Instant expiredDate;
-
+    private LocalDateTime expiredDate;
 }

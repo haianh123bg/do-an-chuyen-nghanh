@@ -49,16 +49,16 @@ const ProductList = ({ onClick }: Props) => {
     search: string,
   ) => {
     // SORT BY
-    if (sortBy === 'newest') {
-      products = orderBy(products, ['created'], ['desc']);
+    if (sortBy === 'All') {
+      return products ;
     }
-    if (sortBy === 'priceDesc') {
+    if (sortBy === 'elementary') {
       products = orderBy(products, ['price'], ['desc']);
     }
     if (sortBy === 'priceAsc') {
       products = orderBy(products, ['price'], ['asc']);
     }
-    if (sortBy === 'discount') {
+    if (sortBy === 'Expert') {
       products = orderBy(products, ['discount'], ['desc']);
     }
 
@@ -136,13 +136,13 @@ const ProductList = ({ onClick }: Props) => {
       {/* Header Detail page */}
       {/* ------------------------------------------- */}
       <Stack direction="row" justifyContent="space-between" pb={3}>
-        {lgUp ? (
+        {/* {lgUp ? (
           <Typography variant="h5">Products</Typography>
         ) : (
           <Fab onClick={onClick} color="primary" size="small">
             <IconMenu2 width="16" />
           </Fab>
-        )}
+        )} */}
         <Box>
           <ProductSearch />
         </Box>

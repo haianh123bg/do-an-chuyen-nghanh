@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -15,12 +16,11 @@ import java.util.Set;
 @Table(name = "cart")
 public class Cart {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cart_id", nullable = false)
-    private Integer id;
+    @Column(name = "cart_id")
+    private Integer cartId;
 
     @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne
     @JoinColumn(name = "cart_id", nullable = false)
     private User user;
 
@@ -31,6 +31,6 @@ public class Cart {
     private Integer totalCourse;
 
     @OneToMany(mappedBy = "cart")
-    private Set<CartDetail> cartDetails = new LinkedHashSet<>();
+    private List<CartDetail> cartDetails;
 
 }

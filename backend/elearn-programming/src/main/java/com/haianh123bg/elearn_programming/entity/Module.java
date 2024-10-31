@@ -5,10 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
@@ -43,6 +41,6 @@ public class Module {
     private Course course;
 
     @OneToMany(mappedBy = "module")
-    private Set<Item> items = new LinkedHashSet<>();
+    private List<Item> items;
 
 }

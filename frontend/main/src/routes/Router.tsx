@@ -33,7 +33,7 @@ const Chats = Loadable(lazy(() => import('../views/apps/chat/Chat')));
 const Notes = Loadable(lazy(() => import('../views/apps/notes/Notes')));
 const Tickets = Loadable(lazy(() => import('../views/apps/tickets/Tickets')));
 const Ecommerce = Loadable(lazy(() => import('../views/apps/eCommerce/Ecommerce')));
-const EcommerceDetail = Loadable(lazy(() => import('../views/apps/eCommerce/EcommerceDetail')));
+const LearningCourse = Loadable(lazy(() => import('../views/apps/course/LearningCourse')));
 const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/EcomProductList')));
 const EcomProductCheckout = Loadable(
     lazy(() => import('../views/apps/eCommerce/EcommerceCheckout')),
@@ -146,10 +146,11 @@ const Router = [
             { path: '/user-profile', element: <UserProfile /> },
             { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
             { path: '/course/management', element: <CourseManage /> },
+            { path: '/learning/course/:id', element: <LearningCourse /> },
             { path: '/my-course', element: <Blog /> },
             { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
             { path: '/apps/chats', element: <Chats /> },
-            { path: '/apps/email', element: <Email /> },
+            { path: '/ticket', element: <Email /> },
             { path: '/apps/notes', element: <Notes /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
         ],
@@ -169,7 +170,7 @@ const Router = [
             { path: '/apps/ecommerce/shop', element: <Ecommerce /> },
             { path: '/apps/ecommerce/eco-product-list', element: <EcomProductList /> },
             { path: '/apps/ecommerce/eco-checkout', element: <EcomProductCheckout /> },
-            { path: '/apps/ecommerce/detail/:id', element: <EcommerceDetail /> },
+
             { path: '/apps/followers', element: <Followers /> },
             { path: '/apps/friends', element: <Friends /> },
             { path: '/apps/gallery', element: <Gallery /> },
@@ -239,9 +240,12 @@ const Router = [
             { path: '/auth/two-steps2', element: <TwoSteps2 /> },
             { path: '/auth/maintenance', element: <Maintenance /> },
             { path: '/landingpage', element: <Landingpage /> },
+            { path: '/home', element: <Home /> },
+            { path: '/checkout', element: <Checkout /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
         ],
     },
+
 ];
 
 export default Router;

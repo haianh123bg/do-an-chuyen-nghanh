@@ -1,6 +1,7 @@
 package com.haianh123bg.elearn_programming.configuration;
 
 import com.haianh123bg.elearn_programming.service.JWTService;
+import com.haianh123bg.elearn_programming.service.impl.UserDetailsServiceImpl;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -28,7 +29,7 @@ public class PreFilter extends OncePerRequestFilter {
     private final JWTService jwtService;
 
     // Service to load user details from the database or another source
-    private final UserDetailsService userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
 
     /**
      * This method filters each request to check for a valid JWT token.
