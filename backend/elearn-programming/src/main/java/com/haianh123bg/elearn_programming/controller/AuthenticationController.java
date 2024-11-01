@@ -30,11 +30,24 @@ public class AuthenticationController {
     @Operation(summary = "đăng nhập")
     @PostMapping("/login")
     public ApiResponse<LoginResponse> login(
-            @Valid @RequestBody LoginFormRequest request
+            @Valid @RequestBody LoginFormRequest request,
+            HttpServletResponse response
             ) {
+        LoginResponse loginResponse = authenticationService.login(request);
+
+        Cookie refreshTokenCookie = new Cookie("refreshToken", loginResponse.getRefreshToken());
+        refreshTokenCookie.setHttpOnly(true);
+        //refreshTokenCookie.setSecure(true); // Chỉ dùng cho HTTPS
+        refreshTokenCookie.setPath("/auth/refresh-token"); // Chỉ gửi tới đường dẫn này
+        refreshTokenCookie.setMaxAge(timeHoursRefresh);
+
+        response.addCookie(refreshTokenCookie);
+
+        loginResponse.setRefreshToken(null);
+
         return ApiResponse.<LoginResponse>builder()
                 .code(200)
-                .result(authenticationService.login(request))
+                .result(loginResponse)
                 .build();
     }
 
@@ -50,6 +63,7 @@ public class AuthenticationController {
                 .build();
     }
 
+    @Operation(summary = "lấy refresh token đổi lấy access token")
     @PostMapping("/refresh-token")
     public ApiResponse<LoginResponse> refreshToken(
             HttpServletRequest request,
