@@ -9,4 +9,6 @@ public interface AuthenticationService {
     LoginResponse login(LoginFormRequest request);
 
     void register(RegisterFormRequest request);
+
+    LoginResponse refreshToken(String refreshToken);
 }

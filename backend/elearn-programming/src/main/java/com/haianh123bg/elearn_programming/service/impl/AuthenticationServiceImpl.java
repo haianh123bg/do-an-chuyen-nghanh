@@ -16,7 +16,9 @@ import com.haianh123bg.elearn_programming.repository.client.google.RecaptchaV2Cl
 import com.haianh123bg.elearn_programming.service.AuthenticationService;
 import com.haianh123bg.elearn_programming.service.JWTService;
 import com.haianh123bg.elearn_programming.utils.RoleUtils;
+import com.haianh123bg.elearn_programming.utils.TypeTokenEnum;
 import com.haianh123bg.elearn_programming.utils.UserUtils;
+import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -111,5 +113,47 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .otpSmsEnabled(false)
                 .build();
         user2faSettingRepository.save(user2faSetting);
+    }
+
+    @Override
+    public LoginResponse refreshToken(String refreshToken) {
+
+        Claims claims = jwtService.parseToken(refreshToken);
+        final String email = claims.getSubject();
+        final String typeToken = claims.get("type", String.class);
+
+        User user = userRepository.findByEmail(email).orElseThrow(
+                () -> new AppException(ErrorCode.USER_NOT_EXISTED)
+        );
+
+        if (
+                typeToken == null
+                ||
+                typeToken.isEmpty()
+                ||
+                !typeToken.equals(TypeTokenEnum.REFRESH.name())) {
+            throw new AppException(ErrorCode.UNAUTHENTICATED);
+        }
+
+        if (!jwtService.isValid(refreshToken, user)) {
+            throw new AppException(ErrorCode.UNAUTHENTICATED);
+        }
+
+
+        if (user.getIsEnable()) {
+            String accessToken = jwtService.generateToken(user);
+            String newRefreshToken = jwtService.generateToken(user);
+
+            LocalDateTime expiresAt = LocalDateTime.now().plusHours(timeAccessToken - 1);
+
+            return LoginResponse.builder()
+                    .accessToken(accessToken)
+                    .refreshToken(newRefreshToken)
+                    .roles(UserUtils.getRoles(user.getRoles()))
+                    .userId(user.getId())
+                    .expires(expiresAt)
+                    .build();
+        }
+        throw new AppException(ErrorCode.USER_NOT_EXISTED);
     }
 }
