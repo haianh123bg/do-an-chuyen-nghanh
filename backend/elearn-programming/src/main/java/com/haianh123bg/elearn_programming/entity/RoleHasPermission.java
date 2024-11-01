@@ -28,5 +28,4 @@ public class RoleHasPermission {
     @ColumnDefault("1")
     @Column(name = "status")
     private Boolean status;
-
 }

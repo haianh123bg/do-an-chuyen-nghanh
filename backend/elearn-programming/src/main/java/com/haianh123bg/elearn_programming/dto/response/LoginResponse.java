@@ -3,6 +3,7 @@ package com.haianh123bg.elearn_programming.dto.response;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -15,5 +16,5 @@ public class LoginResponse {
     private String refreshToken;
     private Integer userId;
     private LocalDateTime expires;
-    private Set<String> roles;
+    private List<String> roles;
 }

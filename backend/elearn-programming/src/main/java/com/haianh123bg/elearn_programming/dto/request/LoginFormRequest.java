@@ -15,6 +15,6 @@ public class LoginFormRequest {
 
     private String password;
 
-    @NotBlank
+    //@NotBlank
     private String captchaToken;
 }

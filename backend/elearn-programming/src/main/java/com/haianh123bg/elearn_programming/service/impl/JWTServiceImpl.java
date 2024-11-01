@@ -36,7 +36,7 @@ public class JWTServiceImpl implements JWTService {
 
     @Override
     public String generateRefreshToken(UserDetails user) {
-        return generateCustomToken(new HashMap<>(), user, TypeTokenEnum.ACCESS, timeRefreshToken);
+        return generateCustomToken(new HashMap<>(), user, TypeTokenEnum.REFRESH, timeRefreshToken);
     }
 
     @Override

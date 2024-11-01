@@ -38,9 +38,6 @@ public class User2faSetting {
     @Column(name = "google_authenticator_secret", length = 500)
     private String googleAuthenticatorSecret;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
     @Column(name = "update_at")
     private LocalDateTime updateAt;
 
