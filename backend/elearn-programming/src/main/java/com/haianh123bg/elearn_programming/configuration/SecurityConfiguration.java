@@ -12,6 +12,10 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.GenericToStringSerializer;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -33,6 +37,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
+@EnableAsync
 @RequiredArgsConstructor
 public class SecurityConfiguration {
     private final PreFilter preFilter;
@@ -118,4 +123,11 @@ public class SecurityConfiguration {
         return configuration.getAuthenticationManager();
     }
 
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
+        template.setConnectionFactory(redisConnectionFactory);
+        template.setValueSerializer(new GenericToStringSerializer<>(Object.class));
+        return template;
+    }
 }

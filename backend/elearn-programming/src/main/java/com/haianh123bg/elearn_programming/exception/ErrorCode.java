@@ -31,7 +31,8 @@ public enum ErrorCode {
     ACCOUNT_NOT_VERIFIED(1021, "Account is not verified", HttpStatus.BAD_REQUEST),
     INVALID_AUTH_FA_CODE(1022, "Authentication code is invalid", HttpStatus.BAD_REQUEST),
     CAPTCHA_INVALID(1023, "Recaptcha invalid", HttpStatus.BAD_REQUEST),
-    REFRESH_TOKEN_INVALID(1024, "Refresh token invalid", HttpStatus.BAD_REQUEST),;
+    REFRESH_TOKEN_INVALID(1024, "Refresh token invalid", HttpStatus.BAD_REQUEST),
+    INVALID_TOKEN(1025, "Token invalid", HttpStatus.BAD_REQUEST),;
 
     ErrorCode(int code, String message, HttpStatusCode status) {
         this.code = code;

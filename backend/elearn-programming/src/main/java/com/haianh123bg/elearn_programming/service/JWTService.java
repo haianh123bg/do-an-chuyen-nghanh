@@ -16,7 +16,7 @@ public interface JWTService {
 
     boolean isValid(String token, UserDetails user);
 
-    String generateTokenWithCustomTime(UserDetails user, Date expiration);
-
     String generateUpdateInfoToken(UserDetails userDetails);
+
+    String generateResetPasswordToken(UserDetails userDetails);
 }
