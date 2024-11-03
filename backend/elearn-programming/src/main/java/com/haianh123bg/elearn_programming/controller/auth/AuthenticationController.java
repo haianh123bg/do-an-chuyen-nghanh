@@ -1,4 +1,4 @@
-package com.haianh123bg.elearn_programming.controller;
+package com.haianh123bg.elearn_programming.controller.auth;
 
 import com.haianh123bg.elearn_programming.dto.request.CreateNewPassword;
 import com.haianh123bg.elearn_programming.dto.request.LoginFormRequest;
