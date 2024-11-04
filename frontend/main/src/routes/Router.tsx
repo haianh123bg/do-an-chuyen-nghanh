@@ -84,7 +84,6 @@ const AccountSetting = Loadable(
     lazy(() => import('../views/pages/account-setting/AccountSetting')),
 );
 const HomePage = Loadable(lazy(() => import('../views/apps/home/HomePage')));
-const CourseManage = Loadable(lazy(() => import('../views/course/CourseManage')));
 
 // charts
 const AreaChart = Loadable(lazy(() => import('../views/charts/AreaChart')));
@@ -134,7 +133,7 @@ const Router = [
             { path: '/homepage', exact: true, element: <HomePage /> },
             { path: '/dashboards/ecommerce', exact: true, element: <EcommerceDash /> },
             { path: '/apps/contacts', element: <Contacts /> },
-            { path: '/course/management', element: <CourseManage /> },
+
             { path: '/my-course', element: <Blog /> },
             { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
             { path: '/apps/chats', element: <Chats /> },
