@@ -81,7 +81,7 @@ public class SecurityConfiguration {
                                 .url("http://springdoc.org"))
                 )
                 .servers(List.of(
-                        new Server().url("http://localhost:8080").description("Test Server")
+                        new Server().url("http://localhost:8001").description("Test Server")
                 ))
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
                 .components(new Components()

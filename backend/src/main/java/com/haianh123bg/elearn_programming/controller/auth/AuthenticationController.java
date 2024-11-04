@@ -11,6 +11,7 @@ import com.haianh123bg.elearn_programming.exception.ErrorCode;
 import com.haianh123bg.elearn_programming.service.AuthenticationService;
 import com.haianh123bg.elearn_programming.validator.ValidEmail;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Bảo Mật", description = "Api này dùng để đăng nhập, đăng ký tài khoản")
@@ -150,6 +152,18 @@ public class AuthenticationController {
         return ApiResponse.<LoginResponse>builder()
                 .code(200)
                 .result(authenticationService.createNewPassword(request))
+                .build();
+    }
+
+    @Operation(summary = "đăng nhập bằng google")
+    @PostMapping("/login-google")
+    @ResponseStatus(HttpStatus.OK)
+    public ApiResponse<LoginResponse> loginGoogle(
+            @Parameter(name = "Mã code do google redirect lại frontend") @RequestParam(value = "code") String code) {
+
+        return ApiResponse.<LoginResponse>builder()
+                .code(200)
+                .result(authenticationService.loginWithGoogle(code))
                 .build();
     }
 }

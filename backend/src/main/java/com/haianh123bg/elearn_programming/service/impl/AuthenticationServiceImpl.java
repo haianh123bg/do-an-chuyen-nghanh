@@ -1,5 +1,7 @@
 package com.haianh123bg.elearn_programming.service.impl;
 
+import com.haianh123bg.elearn_programming.dto.client.google.GoogleUserInfoResponse;
+import com.haianh123bg.elearn_programming.dto.client.google.RecaptchaV2;
 import com.haianh123bg.elearn_programming.dto.request.CreateNewPassword;
 import com.haianh123bg.elearn_programming.dto.request.LoginFormRequest;
 import com.haianh123bg.elearn_programming.dto.request.RegisterFormRequest;
@@ -12,6 +14,7 @@ import com.haianh123bg.elearn_programming.exception.AppException;
 import com.haianh123bg.elearn_programming.exception.ErrorCode;
 import com.haianh123bg.elearn_programming.repository.User2faSettingRepository;
 import com.haianh123bg.elearn_programming.repository.UserRepository;
+import com.haianh123bg.elearn_programming.repository.client.google.GoogleClient;
 import com.haianh123bg.elearn_programming.repository.client.google.RecaptchaV2Client;
 import com.haianh123bg.elearn_programming.service.AuthenticationService;
 import com.haianh123bg.elearn_programming.service.JWTService;
@@ -29,6 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -42,6 +46,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final User2faSettingRepository user2faSettingRepository;
     private final RedisService redisService;
     private final EmailService emailService;
+    private final GoogleClient googleClient;
 
     @Value("${jwt.access-token}")
     private Integer timeAccessToken;
@@ -52,14 +57,22 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Value("${jwt.reset-password-token}")
     private int timeResetPasswordToken;
 
+    @Value("${google.client.id}")
+    private String googleClientId;
+
+    @Value("${google.client.secret}")
+    private String googleClientSecret;
+
+    @Value("${google.redirect.uri}")
+    private String googleRedirectUri;
 
     @Override
     public LoginResponse login(LoginFormRequest request) {
-//        RecaptchaV2 recaptchaV2 = recaptchaClient.verifyRecaptcha(recaptchaSecret, request.getCaptchaToken(), null);
-//
-//        if (!recaptchaV2.isSuccess()) {
-//            throw new AppException(ErrorCode.CAPTCHA_INVALID);
-//        }
+        RecaptchaV2 recaptchaV2 = recaptchaClient.verifyRecaptcha(recaptchaSecret, request.getCaptchaToken(), null);
+
+        if (!recaptchaV2.isSuccess()) {
+            throw new AppException(ErrorCode.CAPTCHA_INVALID);
+        }
 
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow(
                 () -> new AppException(ErrorCode.USER_NOT_EXISTED)
@@ -67,19 +80,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             if (user.getIsEnable()) {
-                String accessToken = jwtService.generateToken(user);
-                String refreshToken = jwtService.generateToken(user);
-
-                // Tính thời gian hết hạn cho access token
-                LocalDateTime expiresAt = LocalDateTime.now().plusHours(timeAccessToken - 1);
-
-                return LoginResponse.builder()
-                        .accessToken(accessToken)
-                        .refreshToken(refreshToken)
-                        .roles(UserUtils.getRoles(user.getRoles()))
-                        .userId(user.getId())
-                        .expires(expiresAt)
-                        .build();
+                return buildLoginResponse(user);
             }
         }
         throw new AppException(ErrorCode.USER_NOT_EXISTED);
@@ -88,11 +89,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     @Override
     public void register(RegisterFormRequest request) {
-//        RecaptchaV2 recaptchaV2 = recaptchaClient.verifyRecaptcha(recaptchaSecret, request.getCaptchaToken(), null);
-//
-//        if (!recaptchaV2.isSuccess()) {
-//            throw new AppException(ErrorCode.CAPTCHA_INVALID);
-//        }
+        RecaptchaV2 recaptchaV2 = recaptchaClient.verifyRecaptcha(recaptchaSecret, request.getCaptchaToken(), null);
+
+        if (!recaptchaV2.isSuccess()) {
+            throw new AppException(ErrorCode.CAPTCHA_INVALID);
+        }
 
         User user = userRepository.findByEmail(request.getEmail()).orElse(null);
         if (user != null) {
@@ -244,6 +245,65 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return TokenResponse.builder()
                 .token(token)
                 .expires(LocalDateTime.now().plusMinutes(timeResetPasswordToken))
+                .build();
+    }
+
+    @Override
+    public LoginResponse loginWithGoogle(String code) {
+        try {
+            GoogleUserInfoResponse googleUserInfoResponse =
+                    googleClient.getUserInfo(
+                            googleClient.exchangeToken(googleClientId, googleRedirectUri, googleClientSecret, code, "authorization_code").getAccessToken()
+                    );
+            User user = userRepository.findByEmail(googleUserInfoResponse.getEmail()).orElse(null);
+            String email = googleUserInfoResponse.getEmail();
+            if (user == null && email!= null && !email.isEmpty()) {
+                List<Role> roles = roleUtils.createBasicRole();
+
+                User newUser = User.builder()
+                        .email(email)
+                        .isEnable(true)
+                        .isVerify(true)
+                        .roles(roles)
+                        .createdAt(LocalDateTime.now())
+                        .build();
+
+                User userCreated = userRepository.save(newUser);
+
+                User2faSetting user2faSetting = User2faSetting.builder()
+                        .user(userCreated)
+                        .googleAuthenticatorEnabled(false)
+                        .otpEmailEnabled(false)
+                        .otpSmsEnabled(false)
+                        .build();
+                user2faSettingRepository.save(user2faSetting);
+                return buildLoginResponse(user);
+            }
+
+        } catch (Exception e) {
+            throw new AppException(ErrorCode.UNAUTHENTICATED);
+        }
+
+
+        return null;
+    }
+
+    private LoginResponse buildLoginResponse(User user) {
+        String accessToken = jwtService.generateToken(user);
+        String refreshToken = jwtService.generateRefreshToken(user);
+
+        List<String> roles = user.getRoles().stream()
+                .map(Role::getRoleName)
+                .collect(Collectors.toList());
+
+        LocalDateTime expiresAt = LocalDateTime.now().plusHours(timeAccessToken - 1);
+
+        return LoginResponse.builder()
+                .userId(user.getId())
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .roles(roles)
+                .expires(expiresAt)
                 .build();
     }
 }

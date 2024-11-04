@@ -19,4 +19,6 @@ public interface AuthenticationService {
     LoginResponse createNewPassword(CreateNewPassword request);
 
     TokenResponse verifyCode(String email, String code);
+
+    LoginResponse loginWithGoogle(String code);
 }

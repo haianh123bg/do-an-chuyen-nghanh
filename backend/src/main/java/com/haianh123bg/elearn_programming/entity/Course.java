@@ -26,10 +26,6 @@ public class Course {
     @Column(name = "name")
     private String name;
 
-    @Size(max = 45)
-    @Column(name = "coursecol", length = 45)
-    private String coursecol;
-
     @Size(max = 500)
     @Column(name = "short_description", length = 500)
     private String shortDescription;
@@ -62,10 +58,19 @@ public class Course {
     private String language;
 
     @Column(name = "price")
-    private Integer price;
+    private Double price;
 
     @Column(name = "price_real")
-    private Integer priceReal;
+    private Double priceReal;
+
+    @Column(name = "average_rating")
+    private Float averageRating;
+
+    @Column(name = "total_buyer")
+    private Long totalBuyer;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @OneToMany(mappedBy = "course")
     private List<Module> modules;

@@ -13,7 +13,7 @@ public class PageResponse <T>{
     private Integer pageNo;
     private Integer pageSize;
     private Long totalElements;
-    private Long totalPages;
+    private Integer totalPages;
     private Boolean last;
     private List<T> content;
 }
