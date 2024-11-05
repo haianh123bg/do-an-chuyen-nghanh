@@ -60,4 +60,7 @@ public class Item {
     @OneToOne(mappedBy = "item")
     private VideoLecture videoLecture;
 
+    @Column(name = "order")
+    private Integer order;
+
 }

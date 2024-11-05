@@ -1,14 +1,9 @@
 package com.haianh123bg.elearn_programming.controller.user;
 
-import com.haianh123bg.elearn_programming.dto.response.ApiResponse;
-import com.haianh123bg.elearn_programming.dto.response.CourseResponse;
-import com.haianh123bg.elearn_programming.dto.response.PageResponse;
+import com.haianh123bg.elearn_programming.dto.response.*;
 import com.haianh123bg.elearn_programming.service.CourseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/courses")
@@ -27,7 +22,20 @@ public class CourseController {
                 .code(200)
                 .result(courseService.getPageCourses(pageNo, pageSize, searchKey))
                 .build();
+
+
     }
+    @GetMapping("/course/category/{id}")
+    public ApiResponse<CourseCategoryResponse> getCategoryOfCourse (
+            @PathVariable(value = "id") Integer courseId
+    ){
+
+        return ApiResponse.<CourseCategoryResponse>builder()
+                .code(200)
+                .result(courseService.getCategoryOfCourse(courseId))
+                .build();
+    }
+
 
 
 

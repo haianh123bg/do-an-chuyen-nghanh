@@ -9,7 +9,6 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CourseResponse {
     private Integer courseId;
     private String courseName;

@@ -43,4 +43,6 @@ public class Module {
     @OneToMany(mappedBy = "module")
     private List<Item> items;
 
+    @Column(name = "order")
+    private Integer order;
 }

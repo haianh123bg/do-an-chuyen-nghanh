@@ -1,8 +1,11 @@
 package com.haianh123bg.elearn_programming.service.impl;
 
-import com.haianh123bg.elearn_programming.dto.response.CourseResponse;
-import com.haianh123bg.elearn_programming.dto.response.PageResponse;
+import com.haianh123bg.elearn_programming.dto.response.*;
 import com.haianh123bg.elearn_programming.entity.Course;
+import com.haianh123bg.elearn_programming.entity.Item;
+import com.haianh123bg.elearn_programming.entity.Module;
+import com.haianh123bg.elearn_programming.exception.AppException;
+import com.haianh123bg.elearn_programming.exception.ErrorCode;
 import com.haianh123bg.elearn_programming.repository.CourseRepository;
 import com.haianh123bg.elearn_programming.service.CourseService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -47,4 +51,38 @@ public class CourseServiceImpl implements CourseService {
                 .content(contentResponse)
                 .build();
     }
+
+    @Override
+    public CourseCategoryResponse getCategoryOfCourse(Integer courseId) {
+        Course course = courseRepository.findById(courseId).orElseThrow(
+                () -> new AppException(ErrorCode.COURSE_NOT_EXIST)
+        );
+
+        // Sắp xếp các Module theo thứ tự tăng dần dựa trên order
+        List<ModuleResponse> modulesResponse = course.getModules().stream()
+                .sorted(Comparator.comparing(Module::getOrder)) // Sắp xếp Module
+                .map((module) -> {
+                    // Sắp xếp Item theo thứ tự tăng dần dựa trên order
+                    List<ItemResponse> itemsResponse = module.getItems().stream()
+                            .sorted(Comparator.comparing(Item::getOrder)) // Sắp xếp Item
+                            .map((item) -> ItemResponse.builder()
+                                    .itemId(item.getId())
+                                    .itemName(item.getTitle())
+                                    .build()
+                            ).toList();
+
+                    return ModuleResponse.builder()
+                            .moduleId(module.getId())
+                            .moduleName(module.getName())
+                            .items(itemsResponse)
+                            .build();
+                }).toList();
+
+        return CourseCategoryResponse.builder()
+                .courseId(courseId)
+                .courseName(course.getName())
+                .modules(modulesResponse)
+                .build();
+    }
+
 }
