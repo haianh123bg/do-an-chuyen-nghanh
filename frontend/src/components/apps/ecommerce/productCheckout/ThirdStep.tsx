@@ -2,7 +2,7 @@
 // @ts-ignore
 import React from 'react';
 import { Box, Grid, Paper, Radio, Stack, Typography } from '@mui/material';
-import Paypal from 'src/assets/images/svgs/paypal.svg';
+// import Paypal from 'src/assets/images/svgs/paypal.svg';
 import payment from 'src/assets/images/products/payment.svg';
 import mastercard from 'src/assets/images/svgs/mastercard.svg';
 

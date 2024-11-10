@@ -20,7 +20,14 @@ const ChildCard = ({ title, children }: Props) => (
       ''
     )}
 
-    <CardContent>{children}</CardContent>
+<CardContent
+      sx={{
+        maxHeight: 560, // Adjust this value as needed for your scrollable area
+        overflowY: 'auto',
+      }}
+    >
+      {children}
+    </CardContent>
   </Card>
 );
 
