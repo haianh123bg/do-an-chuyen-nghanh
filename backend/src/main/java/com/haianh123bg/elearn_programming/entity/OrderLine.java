@@ -25,12 +25,12 @@ public class OrderLine {
     private Course course;
 
     @Column(name = "amount")
-    private Integer amount;
+    private Double amount;
 
     @Column(name = "amount_discount")
-    private Integer amountDiscount;
+    private Double amountDiscount;
 
     @Column(name = "total")
-    private Integer total;
+    private Double total;
 
 }

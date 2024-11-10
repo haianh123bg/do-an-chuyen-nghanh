@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 @RequiredArgsConstructor
@@ -58,22 +59,28 @@ public class CourseServiceImpl implements CourseService {
                 () -> new AppException(ErrorCode.COURSE_NOT_EXIST)
         );
 
-        // Sắp xếp các Module theo thứ tự tăng dần dựa trên order
+        AtomicInteger moduleIndex = new AtomicInteger(1);
+        AtomicInteger itemIndex = new AtomicInteger(1); // Đánh số thứ tự cho toàn bộ Item
+
+        // Sắp xếp và đánh số thứ tự cho các Module và Item
         List<ModuleResponse> modulesResponse = course.getModules().stream()
                 .sorted(Comparator.comparing(Module::getOrder)) // Sắp xếp Module
                 .map((module) -> {
-                    // Sắp xếp Item theo thứ tự tăng dần dựa trên order
+
+                    // Sắp xếp và đánh số thứ tự cho các Item (liên tục từ 1 đến hết)
                     List<ItemResponse> itemsResponse = module.getItems().stream()
                             .sorted(Comparator.comparing(Item::getOrder)) // Sắp xếp Item
                             .map((item) -> ItemResponse.builder()
                                     .itemId(item.getId())
                                     .itemName(item.getTitle())
+                                    .index(itemIndex.getAndIncrement()) // Đánh số thứ tự toàn bộ Item liên tục
                                     .build()
                             ).toList();
 
                     return ModuleResponse.builder()
                             .moduleId(module.getId())
                             .moduleName(module.getName())
+                            .index(moduleIndex.getAndIncrement()) // Đánh số thứ tự cho Module
                             .items(itemsResponse)
                             .build();
                 }).toList();
@@ -84,5 +91,11 @@ public class CourseServiceImpl implements CourseService {
                 .modules(modulesResponse)
                 .build();
     }
+
+    @Override
+    public LessionDetailsResponse getLessionDetails(Integer courseId, Integer itemId) {
+        return null;
+    }
+
 
 }

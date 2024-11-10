@@ -25,7 +25,7 @@ public class Discount {
     private Integer id;
 
     @Column(name = "percent")
-    private Integer percent;
+    private Float percent;
 
     @Column(name = "value")
     private Integer value;
@@ -35,7 +35,10 @@ public class Discount {
     private String type;
 
     @Column(name = "lower_limit")
-    private Integer lowerLimit;
+    private Double lowerLimit;
+
+    @Column(name = "upper_limit")
+    private Double upperLimit;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -43,7 +46,6 @@ public class Discount {
     @Column(name = "expired_date")
     private LocalDateTime expiredDate;
 
-    @ColumnDefault("1")
     @Column(name = "activity")
     private Boolean activity;
 

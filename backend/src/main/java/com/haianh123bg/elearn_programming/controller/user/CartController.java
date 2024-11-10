@@ -1,0 +1,59 @@
+package com.haianh123bg.elearn_programming.controller.user;
+
+import com.haianh123bg.elearn_programming.dto.response.ApiResponse;
+import com.haianh123bg.elearn_programming.dto.response.CartsResponse;
+import com.haianh123bg.elearn_programming.service.CartService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+@Tag(name = "Giỏ hàng", description = "Thêm, xóa giỏ hàng")
+@RestController
+@RequestMapping("/carts")
+@RequiredArgsConstructor
+public class CartController {
+    private final CartService cartService;
+
+    @Operation(summary = "Lấy thông tin giỏ hàng")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping
+    public ApiResponse<CartsResponse> getCarts() {
+
+        return ApiResponse.<CartsResponse>builder()
+                .code(200)
+                .result(cartService.getProductsInCartOfUser())
+                .build();
+    }
+
+    @Operation(summary = "Thêm khóa học vào giỏ hàng")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/{course_id}")
+    public ApiResponse<String> addCourseToCart(
+            @PathVariable(value = "course_id") Integer courseId
+    ) {
+        cartService.addCourseToCart(courseId);
+        return ApiResponse.<String>builder()
+                .code(201)
+                .message("Course added to cart successfully")
+                .build();
+    }
+
+    @Operation(summary = "Thêm xóa khóa học khỏi giỏ hàng")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/{course_id}")
+    public ApiResponse<String> deleteCourseToCart(
+            @PathVariable(value = "course_id") Integer courseId
+    ) {
+        cartService.deleteCourseToCart(courseId);
+        return ApiResponse.<String>builder()
+                .code(200)
+                .message("Course added to cart successfully")
+                .build();
+    }
+}

@@ -25,7 +25,7 @@ public class CourseController {
 
 
     }
-    @GetMapping("/course/category/{id}")
+    @GetMapping("/{id}/category-detail")
     public ApiResponse<CourseCategoryResponse> getCategoryOfCourse (
             @PathVariable(value = "id") Integer courseId
     ){
@@ -36,7 +36,15 @@ public class CourseController {
                 .build();
     }
 
-
-
+    @GetMapping("/{courseId}/{itemId}")
+    public ApiResponse<LessionDetailsResponse> getLessionDetails(
+            @PathVariable(value = "courseId") Integer courseId,
+            @PathVariable(value = "itemId") Integer itemId
+    ) {
+        return ApiResponse.<LessionDetailsResponse>builder()
+                .code(200)
+                .result(courseService.getLessionDetails(courseId, itemId))
+                .build();
+    }
 
 }

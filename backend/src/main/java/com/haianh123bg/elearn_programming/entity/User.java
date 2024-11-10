@@ -6,6 +6,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -49,6 +50,15 @@ public class User implements UserDetails {
     @Column(name = "is_enable")
     private Boolean isEnable; // Trạng thái kích hoạt của người dùng (có thể đăng nhập hay không)
 
+    @Column(name = "avatar")
+    private String avatar;
+
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
+
+    @Column(name = "address")
+    private String address;
+
     @OneToMany(mappedBy = "user")
     private List<UserOtp> userOtps; // Danh sách các OTP (One Time Password) của người dùng
 
@@ -62,6 +72,9 @@ public class User implements UserDetails {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt; // Ngày và giờ khi tài khoản người dùng được tạo
+
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -25,7 +25,7 @@ public class MAccountController {
     public ApiResponse<PageResponse<UserResponse>> pageUser(
             @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
             @RequestParam(value = "page_size", required = false, defaultValue = "8") Integer pageSize,
-            @RequestParam(value = "sort_by", required = false, defaultValue = "flashSaleId") String sortBy,
+            @RequestParam(value = "sort_by", required = false, defaultValue = "userId") String sortBy,
             @RequestParam(value = "sort_dir", required = false, defaultValue = "desc") String sortDir,
             @RequestParam(value = "search_key", required = false, defaultValue = "") String searchKey,
             @RequestParam(value = "begin", required = false, defaultValue = "") String begin,

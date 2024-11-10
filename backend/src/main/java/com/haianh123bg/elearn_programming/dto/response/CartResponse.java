@@ -9,9 +9,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ItemResponse {
-    private int itemId;
-    private String itemName;
-    private Integer index;
-    private String type;
+public class CartResponse {
+    private String courseImageUrl;
+    private Integer courseId;
+    private String courseName;
+    private Double retailPrice;
+    private Double discountedPrice;
 }

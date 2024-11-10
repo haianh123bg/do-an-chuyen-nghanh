@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,16 +35,16 @@ public class Order {
     private User user;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 
     @Column(name = "price")
-    private Integer price;
+    private Double price;
 
     @Column(name = "total")
-    private Integer total;
+    private Double total;
 
     @Column(name = "amount_discount")
-    private Integer amountDiscount;
+    private Double amountDiscount;
 
     @Size(max = 45)
     @Column(name = "status", length = 45)

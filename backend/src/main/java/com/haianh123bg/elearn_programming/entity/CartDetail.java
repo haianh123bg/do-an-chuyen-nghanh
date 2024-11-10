@@ -16,8 +16,11 @@ public class CartDetail {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "course_id")
-    private Integer courseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")

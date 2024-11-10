@@ -25,7 +25,10 @@ public class Cart {
     private User user;
 
     @Column(name = "total_price")
-    private Integer totalPrice;
+    private Double totalPrice;
+
+    @Column(name = "total_real_price")
+    private Double totalRealPrice;
 
     @Column(name = "total_course")
     private Integer totalCourse;

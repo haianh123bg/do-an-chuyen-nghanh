@@ -31,7 +31,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => (
 
     {subtext}
 
-    <AuthSocialButtons title="Sign in with" />
+    <AuthSocialButtons title="Đăng nhập với" />
     <Box mt={3}>
       <Divider>
         <Typography
@@ -42,25 +42,25 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => (
           position="relative"
           px={2}
         >
-          or sign in with
+         Chào mừng đến với Redtech
         </Typography>
       </Divider>
     </Box>
 
     <Stack>
       <Box>
-        <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
+        <CustomFormLabel htmlFor="username">Email</CustomFormLabel>
         <CustomTextField id="username" variant="outlined" fullWidth />
       </Box>
       <Box>
-        <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
+        <CustomFormLabel htmlFor="password">Mật khẩu</CustomFormLabel>
         <CustomTextField id="password" type="password" variant="outlined" fullWidth />
       </Box>
       <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
         <FormGroup>
           <FormControlLabel
             control={<CustomCheckbox defaultChecked />}
-            label="Remeber this Device"
+            label="Nhớ mật khẩu"
           />
         </FormGroup>
         <Typography
@@ -72,7 +72,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => (
             color: 'primary.main',
           }}
         >
-          Forgot Password ?
+          Quên mật khẩu ?
         </Typography>
       </Stack>
     </Stack>
@@ -86,7 +86,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => (
         to="/"
         type="submit"
       >
-        Sign In
+        Đăng nhập
       </Button>
     </Box>
     {subtitle}

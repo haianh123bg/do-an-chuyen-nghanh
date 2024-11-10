@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ModuleResponse {
+    private Integer index;
     private Integer moduleId;
     private String moduleName;
     private List<ItemResponse> items;

@@ -34,7 +34,20 @@ public enum ErrorCode {
     REFRESH_TOKEN_INVALID(1024, "Refresh token invalid", HttpStatus.BAD_REQUEST),
     INVALID_TOKEN(1025, "Token invalid", HttpStatus.BAD_REQUEST),
     DATE_ERROR_FORMAT(1026, "Date error format", HttpStatus.BAD_REQUEST),
-    COURSE_NOT_EXIST(1027, "Course does not exist", HttpStatus.BAD_REQUEST ),;
+    COURSE_NOT_EXIST(1027, "Course does not exist", HttpStatus.BAD_REQUEST ),
+    PASSWORD_MISMATCH(1028, "Passwords do not match", HttpStatus.BAD_REQUEST),
+    CLOUD_FLARE_ERROR_DELETE(1029, "Cloudflare delete error!", HttpStatus.INTERNAL_SERVER_ERROR),
+    FILE_NOT_EXISTS(1030, "File does not exist", HttpStatus.NOT_FOUND),
+    CART_EMPTY(1031, "No courses in the cart", HttpStatus.BAD_REQUEST),
+    COURSE_NOT_FOUND(1032, "Course not found", HttpStatus.NOT_FOUND),
+    COURSE_NOT_IN_CART(1033, "There are no courses in your cart", HttpStatus.NOT_FOUND),
+    ERROR_DELETE_CART(1034, "Failed to delete the course from the cart", HttpStatus.BAD_REQUEST),
+    DISCOUNT_NOT_FOUND(1035, "Discount not found", HttpStatus.NOT_FOUND),
+    EXPIRED_DISCOUNT(1036, "Discount code has expired", HttpStatus.BAD_REQUEST),
+    DISCOUNT_OUT_OF_STOCK(1037, "Discount code is out of stock", HttpStatus.BAD_REQUEST),;
+
+
+
 
     ErrorCode(int code, String message, HttpStatusCode status) {
         this.code = code;
