@@ -4,7 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum PrefixFolderEnum {
-    USER_AVATAR("user/avatar");
+    USER_AVATAR("user/avatar"),
+    RESOURCE_TEACHER("teacher");
 
     private String prefix;
     PrefixFolderEnum(String prefix) {

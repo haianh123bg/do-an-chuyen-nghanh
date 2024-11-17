@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class ApiService {
-    static BASE_URL = 'http://localhost:8080'; // Dựa trên URL API của bạn
+    static BASE_URL = 'http://localhost:8001';
 
     static getHeader() {
         const token = localStorage.getItem('accessToken');
@@ -19,18 +19,18 @@ export default class ApiService {
     }
 
     static isAuthenticated() {
-        // const token = localStorage.getItem('accessToken');
-        // return !!token;
+        const token = localStorage.getItem('accessToken');
+        return !!token;
         return true;
     }
 
     static isAdmin() {
-        const roles = JSON.parse(localStorage.getItem('roles') || '[]'); // Lấy mảng roles từ localStorage
-        return roles.includes('ADMIN'); // Kiểm tra nếu mảng chứa 'ADMIN'
+        const roles = JSON.parse(localStorage.getItem('roles') || '[]');
+        return roles.includes('ADMIN');
     }
 
     static isUser() {
-        const roles = JSON.parse(localStorage.getItem('roles') || '[]'); // Lấy mảng roles từ localStorage
-        return roles.includes('USER'); // Kiểm tra nếu mảng chứa 'USER'
+        const roles = JSON.parse(localStorage.getItem('roles') || '[]');
+        return roles.includes('USER');
     }
 }

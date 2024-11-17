@@ -12,4 +12,6 @@ public interface UserService {
     UserInfoResponse changeUserInfoP1(UserInfoRequest request);
 
     String changeUserInfoP2(String phone);
+
+    UserInfoResponse getUserInfo();
 }

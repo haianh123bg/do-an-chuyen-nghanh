@@ -16,4 +16,8 @@ public class CourseResponse {
     private Double total;
     private Float star;
     private String imageUrl;
+
+    private Long totalBuyer;
+    private Double totalRevenue;
+    private Boolean active;
 }

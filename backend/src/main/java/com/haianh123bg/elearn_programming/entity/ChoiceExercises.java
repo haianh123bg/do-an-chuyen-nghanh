@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,7 +22,7 @@ public class ChoiceExercises {
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "item_id")
+    @Column(name = "item_id", insertable = false, updatable = false)
     private Integer itemId;
 
     @Column(name = "difficulty", length = 45)
@@ -32,4 +33,11 @@ public class ChoiceExercises {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
+
+    @OneToMany
+    private List<Answer> answers;
 }

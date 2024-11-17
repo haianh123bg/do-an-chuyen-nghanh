@@ -44,8 +44,11 @@ public enum ErrorCode {
     ERROR_DELETE_CART(1034, "Failed to delete the course from the cart", HttpStatus.BAD_REQUEST),
     DISCOUNT_NOT_FOUND(1035, "Discount not found", HttpStatus.NOT_FOUND),
     EXPIRED_DISCOUNT(1036, "Discount code has expired", HttpStatus.BAD_REQUEST),
-    DISCOUNT_OUT_OF_STOCK(1037, "Discount code is out of stock", HttpStatus.BAD_REQUEST),;
-
+    DISCOUNT_OUT_OF_STOCK(1037, "Discount code is out of stock", HttpStatus.BAD_REQUEST),
+    CATEGORY_NOT_FOUND(1038, "Category does not exist", HttpStatus.NOT_FOUND),
+    TYPE_ITEM_INVALID(1039, "Type item invalid", HttpStatus.BAD_REQUEST),
+    RESOURCE_NOT_FOUND(1040, "Resource not found", HttpStatus.BAD_REQUEST),
+    ITEM_NOT_FOUND(1041, "Item not found", HttpStatus.NOT_FOUND),;
 
 
 

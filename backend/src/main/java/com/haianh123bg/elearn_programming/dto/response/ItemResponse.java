@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemResponse {
-    private int itemId;
+    private Long itemId;
     private String itemName;
     private Integer index;
     private String type;

@@ -75,4 +75,8 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Module> modules;
 
+    @Column(name = "total_revenue")
+    private Double totalRevenue;
+
+
 }

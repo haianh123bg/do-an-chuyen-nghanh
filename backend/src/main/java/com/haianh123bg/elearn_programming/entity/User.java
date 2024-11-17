@@ -73,8 +73,17 @@ public class User implements UserDetails {
     @Column(name = "created_at")
     private LocalDateTime createdAt; // Ngày và giờ khi tài khoản người dùng được tạo
 
+    @Column(name = "total_spending")
+    private Double totalSpending;
+
     @OneToOne(mappedBy = "user")
     private Cart cart;
+
+    @OneToOne(mappedBy = "user")
+    private Bank bank;
+
+    @Column(name = "total_buyer")
+    private Long totalBuyer;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -83,7 +92,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.email;
+        return this.id.toString();
     }
 
     @Override
