@@ -22,7 +22,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Size(max = 255)
     @NotNull
@@ -54,13 +54,15 @@ public class Item {
     @OneToOne(mappedBy = "item")
     private CodingExercise codingExercise;
 
-    @OneToMany(mappedBy = "item")
-    private List<Comment> comments;
-
     @OneToOne(mappedBy = "item")
     private VideoLecture videoLecture;
+
+    @OneToMany(mappedBy = "item")
+    private List<ChoiceExercises> choiceExercises;
 
     @Column(name = "order")
     private Integer order;
 
+    @OneToMany(mappedBy = "item")
+    private List<Comment> comments;
 }

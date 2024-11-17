@@ -72,32 +72,31 @@ const LearningCourse: React.FC = () => {
                         style={{ position: 'sticky', top: '0', height: '100%', overflowY: 'auto' }}
                     >
                         {/* Phần CourseVideo */}
-                        <div style={{ marginBottom: '20px' }}>
+                        <div style={{ marginBottom: '20px', position: 'relative' }}>
+                            {/* Video với chiều cao lớn hơn */}
                             <CourseVideo />
+                            <Button
+                                onClick={() => {
+                                    setShowDetail(!showDetail);
+                                    handleOpenTabCategory();
+                                }}
+                                onMouseEnter={() => setIsHovered(true)} // Bắt đầu hover
+                                onMouseLeave={() => setIsHovered(false)} // Kết thúc hover
+                                variant="contained"
+                                sx={{
+                                    position: 'absolute',
+                                    bottom: '50px',
+                                    left: '96%',
+                                    transform: 'translateX(-50%)',
+                                    backgroundColor: 'transparent',
+                                    zIndex: 1200,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                }}
+                            >
+                                <ArrowForward sx={{ marginRight: '8px', color: 'blue' }} />
+                            </Button>
                         </div>
-
-                        {/* Nút để hiện lại nội dung CourseContent */}
-                        <Button
-                            onClick={() => {
-                                setShowDetail(!showDetail);
-                                handleOpenTabCategory();
-                            }}
-                            onMouseEnter={() => setIsHovered(true)} // Bắt đầu hover
-                            onMouseLeave={() => setIsHovered(false)} // Kết thúc hover
-                            variant="contained"
-                            sx={{
-                                position: 'absolute',
-                                bottom: '50px',
-                                left: '96%',
-                                transform: 'translateX(-50%)',
-                                backgroundColor: 'transparent',
-                                zIndex: 1200,
-                                display: 'flex',
-                                alignItems: 'center',
-                            }}
-                        >
-                            <ArrowForward sx={{ marginRight: '8px', color: 'blue' }} />
-                        </Button>
 
                         {/* Phần CourseDesc */}
                         <CourseDesc />

@@ -179,7 +179,7 @@ const ProductList = ({ onClick }: Props) => {
                   </>
                 ) : (
                   <BlankCard className="hoverCard">
-                    <Typography component={Link} to={`/apps/ecommerce/detail/${product.id}`}>
+                    <Typography component={Link} to={`/course/detail/2`}>
                       <img src={product.photo} alt="img" width="100%" />
                     </Typography>
                     <Tooltip title="Add To Cart">

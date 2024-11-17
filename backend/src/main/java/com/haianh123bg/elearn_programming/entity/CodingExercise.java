@@ -14,7 +14,7 @@ import lombok.*;
 public class CodingExercise {
     @Id
     @Column(name = "item_id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)

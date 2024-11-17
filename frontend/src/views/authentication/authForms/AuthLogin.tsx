@@ -42,7 +42,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => (
           position="relative"
           px={2}
         >
-         Chào mừng đến với Redtech
+         Chào mừng đến với HA
         </Typography>
       </Divider>
     </Box>

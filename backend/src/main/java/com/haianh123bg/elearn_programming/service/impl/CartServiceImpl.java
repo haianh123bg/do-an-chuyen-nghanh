@@ -147,10 +147,10 @@ public class CartServiceImpl implements CartService {
     @Override
     public void deleteCourseToCart(Integer courseId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
+        Integer userId = Integer.valueOf(authentication.getName());
 
-        User user = userRepository.findByEmail(email).orElseThrow(
-                () -> new AppException(ErrorCode.USER_NOT_EXISTED)
+        User user = userRepository.findById(userId).orElseThrow(
+                () -> new AppException(ErrorCode.UNAUTHORIZED)
         );
 
         Cart cart = user.getCart();

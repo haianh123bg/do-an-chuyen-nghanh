@@ -33,9 +33,9 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public PaymentResponse createPayment(PaymentRequest request) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
+        Integer userId = Integer.valueOf(authentication.getName());
 
-        User user = userRepository.findByEmail(email).orElseThrow(
+        User user = userRepository.findById(userId).orElseThrow(
                 () -> new AppException(ErrorCode.UNAUTHORIZED)
         );
 
