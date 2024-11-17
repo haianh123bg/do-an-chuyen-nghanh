@@ -4,6 +4,7 @@ import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import UserLayout from 'src/layouts/user/UserLayout';
+import path from 'path';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -138,12 +139,14 @@ const Home = Loadable(lazy(() => import('../views/pages/home/Home')));
 
 const DetailCourse = Loadable(lazy(() => import('../views/course/DetailCourse')));
 
+const CourseCreation = Loadable(lazy(() => import('../views/course/CourseCreation')));
+
 const Router = [
     {
         path: '/',
         element: <UserLayout />,
         children: [
-            { path: '/', element: <Navigate to="/homepage" /> },
+            { path: '/', element: <Navigate to="/home" /> },
             { path: '/homepage', exact: true, element: <HomePage /> },
             { path: '/user-profile', element: <UserProfile /> },
             { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
@@ -245,6 +248,7 @@ const Router = [
             { path: '/home', element: <Home /> },
             { path: '/checkout', element: <Checkout /> },
             { path: '/course/detail/:id', element: <DetailCourse /> },
+            {path: '/courseCreation', element: <CourseCreation /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
         ],
     },
