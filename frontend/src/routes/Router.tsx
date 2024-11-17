@@ -136,6 +136,8 @@ const Landingpage = Loadable(lazy(() => import('../views/pages/landingpage/Landi
 //Home
 const Home = Loadable(lazy(() => import('../views/pages/home/Home')));
 
+const DetailCourse = Loadable(lazy(() => import('../views/course/DetailCourse')));
+
 const Router = [
     {
         path: '/',
@@ -242,6 +244,7 @@ const Router = [
             { path: '/landingpage', element: <Landingpage /> },
             { path: '/home', element: <Home /> },
             { path: '/checkout', element: <Checkout /> },
+            { path: '/course/detail/:id', element: <DetailCourse /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
         ],
     },

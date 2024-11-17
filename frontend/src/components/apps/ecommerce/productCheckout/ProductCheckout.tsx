@@ -48,7 +48,7 @@ const ProductCheckout = () => {
             <>
               {/* Cart Total */}
               <FirstStep total={total} Discount={Discount} />
-              <Stack direction={'row'} justifyContent="space-between" mt={2}>
+              <Stack direction={'row'} justifyContent="space-between">
                 <Button
                   color="secondary"
                   variant="contained"
@@ -66,19 +66,38 @@ const ProductCheckout = () => {
             ''
           )}
         </>
-      ) : (
+      ) : activeStep === 1 ? (
+        // <>
+        //   {/* Billing & Address */}
+        //   <SecondStep nexStep={handleNext} />
+        //   <FirstStep total={total} Discount={Discount} />
+        //   <Stack direction={'row'} justifyContent="space-between">
+        //     <Button color="inherit" disabled={activeStep !== 1} onClick={handleBack}>
+        //       Back
+        //     </Button>
+        //     <Button color="inherit" variant="outlined">
+        //       Select Address to go next
+        //     </Button>
+        //   </Stack>
+        // </>
+
         <>
           {/* Payment */}
           <ThirdStep />
           <FirstStep total={total} Discount={Discount} />
-          <Stack direction={'row'} justifyContent="space-between" mt={2}>
-            <Button color="inherit" disabled={activeStep === 0} onClick={handleBack}>
+          <Stack direction={'row'} justifyContent="space-between">
+            <Button color="inherit" disabled={activeStep !== 1} onClick={handleBack}>
               <IconArrowBack /> Back
             </Button>
             <Button onClick={handleNext} size="large" variant="contained">
               Complete an Order
             </Button>
           </Stack>
+        </>
+        
+      ) : (
+        <>
+          <FinalStep />
         </>
       )}
     </Box>

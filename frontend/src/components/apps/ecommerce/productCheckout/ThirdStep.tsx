@@ -3,8 +3,10 @@
 import React from 'react';
 import { Box, Grid, Paper, Radio, Stack, Typography } from '@mui/material';
 // import Paypal from 'src/assets/images/svgs/paypal.svg';
-import payment from 'src/assets/images/products/payment.svg';
+// import payment from 'src/assets/images/products/payment.svg';
 import mastercard from 'src/assets/images/svgs/mastercard.svg';
+import payment from 'src/assets/images/qr-code/qr_code.jpg';
+import { round } from 'lodash';
 
 interface deliveryType {
   id: number;
@@ -149,7 +151,7 @@ const ThirdStep = () => {
               ))}
             </Grid>
           </Grid>
-          <Grid lg={4} xs={12} item>
+          <Grid lg={3} xs={12} item>
             <img src={payment} alt="payment" width={'100%'} />
           </Grid>
         </Grid>
