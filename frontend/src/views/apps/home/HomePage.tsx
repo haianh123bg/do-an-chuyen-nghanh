@@ -23,7 +23,7 @@ const HomePage = () => {
   return (
     <PageContainer title="Shop List" description="this is Shop List page">
       {/* breadcrumb */}
-      <Breadcrumb title="Danh sách hóa học" items={BCrumb} />
+      <Breadcrumb title="Danh sách khóa học" items={BCrumb} />
       <AppCard>
         {/* ------------------------------------------- */}
         {/* Left part */}

@@ -143,7 +143,7 @@ const Router = [
         path: '/',
         element: <UserLayout />,
         children: [
-            { path: '/', element: <Navigate to="/homepage" /> },
+            { path: '/', element: <Navigate to="/home" /> },
             { path: '/homepage', exact: true, element: <HomePage /> },
             { path: '/user-profile', element: <UserProfile /> },
             { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
