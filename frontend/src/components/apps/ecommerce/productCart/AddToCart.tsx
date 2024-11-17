@@ -110,10 +110,10 @@ const AddToCart = () => {
         <Box textAlign="center" mb={3}>
           <img src={emptyCart} alt="cart" width="200px" />
           <Typography variant="h5" mb={2}>
-            Cart is Empty
+            Giỏ hàng trống
           </Typography>
           <Button component={Link} to="/apps/ecommerce/shop" variant="contained">
-            Go back to Shopping
+            Đến danh sách khóa học
           </Button>
         </Box>
       )}
