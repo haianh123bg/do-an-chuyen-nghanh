@@ -288,4 +288,42 @@ public class CourseServiceImpl implements CourseService {
         }
         return item.getId();
     }
+
+    @Override
+    public PageResponse<CourseResponse> findCoursesByCategoryId(
+            Integer categoryId,
+            Integer pageNo,
+            Integer pageSize,
+            String sortBy,
+            String sortDir,
+            String searchKey,
+            LocalDateTime begin,
+            LocalDateTime end) {
+        // Tạo specification
+        Specification<Course> spec = Specification.where(
+                CourseSpecification.hasCategoryId(categoryId)
+                        .and(CourseSpecification.hasSearchKey(searchKey))
+                        .and(CourseSpecification.isActiveBetween(begin, end))
+
+        );
+
+        // Tạo sort
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+
+        // Tạo pageable
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+        // Truy vấn
+        Page<Course> courses = courseRepository.findAll(spec, pageable);
+
+        List<CourseResponse> content = courses.getContent().stream().map(CourseMapper::courseToCourseResponse).toList();
+        return PageResponse.<CourseResponse>builder()
+                .pageNo(pageNo)
+                .pageSize(courses.getSize())
+                .totalPages(courses.getTotalPages())
+                .totalElements(courses.getTotalElements())
+                .last(courses.isLast())
+                .content(content)
+                .build();
+    }
 }

@@ -24,4 +24,6 @@ public interface CourseService {
     Integer createModule(Integer courseId, CreateModuleRequest request);
 
     Long createItem(Integer moduleId, CreateItemRequest request);
+
+    PageResponse<CourseResponse> findCoursesByCategoryId(Integer categoryId, Integer pageNo, Integer pageSize, String sortBy, String sortDir, String searchKey, LocalDateTime begin, LocalDateTime end);
 }

@@ -78,5 +78,6 @@ public class Course {
     @Column(name = "total_revenue")
     private Double totalRevenue;
 
-
+    @Column(name = "active")
+    private Boolean active;
 }

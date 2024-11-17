@@ -7,6 +7,7 @@ import com.haianh123bg.elearn_programming.dto.response.ApiResponse;
 import com.haianh123bg.elearn_programming.dto.response.CourseResponse;
 import com.haianh123bg.elearn_programming.dto.response.PageResponse;
 import com.haianh123bg.elearn_programming.service.CourseService;
+import com.haianh123bg.elearn_programming.utils.DateUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -42,25 +43,15 @@ public class TMCourseController {
             @RequestParam(value = "sort_by", required = false, defaultValue = "userId") String sortBy,
             @RequestParam(value = "sort_dir", required = false, defaultValue = "desc") String sortDir,
             @RequestParam(value = "search_key", required = false, defaultValue = "") String searchKey,
-            @RequestParam(value = "begin", required = false, defaultValue = "") String begin,
-            @RequestParam(value = "end", required = false, defaultValue = "") String end
+            @RequestParam(value = "begin", required = false, defaultValue = "") String beginDate,
+            @RequestParam(value = "end", required = false, defaultValue = "") String endDate
     ) {
-        LocalDateTime beginLocalDateTime = null;
-        LocalDateTime endLocalDateTime = null;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        if (begin != null && !begin.isEmpty()) {
-            LocalDate beginLocalDate = LocalDate.parse(begin, formatter);
-            beginLocalDateTime = beginLocalDate.atStartOfDay();
-        }
-
-        if (end != null && !end.isEmpty()) {
-            LocalDate endLocalDate = LocalDate.parse(end, formatter);
-            endLocalDateTime = endLocalDate.atStartOfDay();
-        }
+        LocalDateTime begin = DateUtils.formatLocalDateTime(beginDate);
+        LocalDateTime end = DateUtils.formatLocalDateTime(endDate);
 
         return ApiResponse.<PageResponse<CourseResponse>>builder()
                 .code(200)
-                .result(courseService.getPageCoursesByTeacher(pageNo, pageSize, sortBy, sortDir, searchKey, beginLocalDateTime, endLocalDateTime))
+                .result(courseService.getPageCoursesByTeacher(pageNo, pageSize, sortBy, sortDir, searchKey, begin, end))
                 .build();
     }
 

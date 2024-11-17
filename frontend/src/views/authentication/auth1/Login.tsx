@@ -8,7 +8,7 @@ import { Grid, Box, Card, Stack, Typography } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import AuthLogin from '../authForms/AuthLogin';
-import ApiService from 'src/service/ApiService';
+import ApiService from 'src/service/apiService.ts';
 
 const Login2 = () => {
   const location = useLocation();

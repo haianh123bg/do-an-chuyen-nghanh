@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export default class ApiService {
     static BASE_URL = 'http://localhost:8001';
 
@@ -32,5 +30,10 @@ export default class ApiService {
     static isUser() {
         const roles = JSON.parse(localStorage.getItem('roles') || '[]');
         return roles.includes('USER');
+    }
+
+    static isTeacher() {
+        const roles = JSON.parse(localStorage.getItem('roles') || '[]');
+        return roles.includes('TEACHER');
     }
 }

@@ -19,7 +19,7 @@ import { Search } from 'src/components/forms/form-elements/search/Search';
 import { AppState } from 'src/store/Store';
 import Navigation from './Navigation';
 import MobileRightSidebar from './MobileRightSidebar';
-import ApiService from 'src/service/ApiService';
+import ApiService from 'src/service/apiService.ts';
 
 const Header = () => {
     const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'));

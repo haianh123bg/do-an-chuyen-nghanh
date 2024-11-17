@@ -2,11 +2,14 @@ package com.haianh123bg.elearn_programming.controller.user;
 
 import com.haianh123bg.elearn_programming.dto.response.*;
 import com.haianh123bg.elearn_programming.service.CourseService;
+import com.haianh123bg.elearn_programming.utils.DateUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/courses")
@@ -69,6 +72,25 @@ public class CourseController {
         return ApiResponse.<LessionDetailsResponse>builder()
                 .code(200)
                 .result(courseService.getLessionDetails(courseId, itemId))
+                .build();
+    }
+
+    @GetMapping("/categories/{category_id}")
+    public ApiResponse<PageResponse<CourseResponse>> getCourseByCategory(
+            @PathVariable(value = "category_id") Integer categoryId,
+            @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
+            @RequestParam(value = "page_size", required = false, defaultValue = "8") Integer pageSize,
+            @RequestParam(value = "sort_by", required = false, defaultValue = "total") String sortBy,
+            @RequestParam(value = "sort_dir", required = false, defaultValue = "desc") String sortDir,
+            @RequestParam(value = "search_key", required = false, defaultValue = "") String searchKey,
+            @RequestParam(value = "begin", required = false, defaultValue = "") String beginDate,
+            @RequestParam(value = "end", required = false, defaultValue = "") String endDate
+    ) {
+        LocalDateTime begin = DateUtils.formatLocalDateTime(beginDate);
+        LocalDateTime end = DateUtils.formatLocalDateTime(endDate);
+        return ApiResponse.<PageResponse<CourseResponse>>builder()
+                .code(200)
+                .result(courseService.findCoursesByCategoryId(categoryId, pageNo, pageSize, sortBy, sortDir, searchKey, begin, end))
                 .build();
     }
 }

@@ -1,11 +1,26 @@
 package com.haianh123bg.elearn_programming.specification;
 
+import com.haianh123bg.elearn_programming.entity.Category;
 import com.haianh123bg.elearn_programming.entity.Course;
+import jakarta.persistence.criteria.Join;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDateTime;
 
 public class CourseSpecification {
+    public static Specification<Course> hasCategoryId(Integer categoryId) {
+        return (root, query, criteriaBuilder) -> {
+            if (categoryId == null) {
+                return criteriaBuilder.conjunction();
+            }
+            // Thực hiện join với bảng "category"
+            Join<Course, Category> categoryJoin = root.join("category");
+
+            // So sánh id của category với categoryId được truyền vào
+            return criteriaBuilder.equal(categoryJoin.get("id"), categoryId);
+        };
+    }
+
     public static Specification<Course> hasTeacherId(Integer teacherId) {
         return (root, query, criteriaBuilder) -> {
             if (teacherId == null) {
