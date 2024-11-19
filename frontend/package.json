@@ -58,6 +58,7 @@
     "slick-carousel": "1.8.1",
     "styled-components": "^6.1.13",
     "stylis-plugin-rtl": "2.0.2",
+    "swiper": "^11.1.15",
     "yup": "^0.32.11"
   },
   "devDependencies": {

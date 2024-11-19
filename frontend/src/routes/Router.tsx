@@ -35,6 +35,7 @@ const Notes = Loadable(lazy(() => import('../views/apps/notes/Notes')));
 const Tickets = Loadable(lazy(() => import('../views/apps/tickets/Tickets')));
 const Ecommerce = Loadable(lazy(() => import('../views/apps/eCommerce/Ecommerce')));
 const LearningCourse = Loadable(lazy(() => import('../views/apps/course/LearningCourse')));
+const FeatureComingSoon = Loadable(lazy(() => import('../views/apps/feature-coming/FeatureComingSoon')));
 const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/EcomProductList')));
 const EcomProductCheckout = Loadable(
     lazy(() => import('../views/apps/eCommerce/EcommerceCheckout')),
@@ -158,6 +159,7 @@ const Router = [
             { path: '/ticket', element: <Email /> },
             { path: '/apps/notes', element: <Notes /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
+            { path: '/feature/coming-soon', element: <FeatureComingSoon /> },
         ],
     },
     {
