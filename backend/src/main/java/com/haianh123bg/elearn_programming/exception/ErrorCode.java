@@ -48,7 +48,9 @@ public enum ErrorCode {
     CATEGORY_NOT_FOUND(1038, "Category does not exist", HttpStatus.NOT_FOUND),
     TYPE_ITEM_INVALID(1039, "Type item invalid", HttpStatus.BAD_REQUEST),
     RESOURCE_NOT_FOUND(1040, "Resource not found", HttpStatus.BAD_REQUEST),
-    ITEM_NOT_FOUND(1041, "Item not found", HttpStatus.NOT_FOUND),;
+    ITEM_NOT_FOUND(1041, "Item not found", HttpStatus.NOT_FOUND),
+    FILE_SIZE_EXCEEDED(1042, "File size exceeds the allowed limit", HttpStatus.BAD_REQUEST),
+    INVALID_FILE_TYPE(1043, "Invalid file type", HttpStatus.BAD_REQUEST),;
 
 
 
