@@ -27,10 +27,11 @@ public class AccountController {
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1028", description = "Passwords do not match", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1039", description = "Type item invalid", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1032", description = "Course not found", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
-    })
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+        })
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/change-password")
     public ApiResponse<Void> changePassword(
@@ -49,9 +50,11 @@ public class AccountController {
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1039", description = "Type item invalid", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1032", description = "Course not found", content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "9999", description = "Uncategorized error", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+ 
     })
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -68,9 +71,11 @@ public class AccountController {
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1039", description = "Type item invalid", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1032", description = "Course not found", content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1003", description = "Account does not exist", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+
     })
     @PreAuthorize("isAuthenticated()")
     @PutMapping("/info")
@@ -85,10 +90,11 @@ public class AccountController {
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1039", description = "Type item invalid", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1032", description = "Course not found", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
-    })
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1003", description = "Account does not exist", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+
+            })
     @PreAuthorize("isAuthenticated()")
     @PutMapping("/info-p1")
     public ApiResponse<UserInfoResponse> changeUserInfoP1(
@@ -104,9 +110,11 @@ public class AccountController {
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1039", description = "Type item invalid", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1032", description = "Course not found", content = @Content),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
+             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
+             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1003", description = "Account does not exist", content = @Content),
+             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+
     })
     @PreAuthorize("isAuthenticated()")
     @PutMapping("/info-p2")

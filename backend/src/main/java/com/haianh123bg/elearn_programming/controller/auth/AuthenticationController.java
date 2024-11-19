@@ -12,6 +12,7 @@ import com.haianh123bg.elearn_programming.service.AuthenticationService;
 import com.haianh123bg.elearn_programming.validator.ValidEmail;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
@@ -34,7 +35,17 @@ public class AuthenticationController {
     @Value("${jwt.refresh-token}")
     private Integer timeHoursRefresh;
 
-    @Operation(summary = "đăng nhập")
+    
+     @Operation(summary = "đăng nhập", description = "đăng nhập")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1003", description = "Account does not exist", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+
+    })
     @PostMapping("/login")
     public ApiResponse<LoginResponse> login(
             @Valid @RequestBody LoginFormRequest request,
@@ -58,7 +69,15 @@ public class AuthenticationController {
                 .build();
     }
 
-    @Operation(summary = "đăng ký tài khoản")
+    
+    @Operation(summary = "đăng ký tài khoản", description = "đăng ký tài khoản")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1003", description = "Account does not exist", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+
+    })
     @PostMapping("/register")
     public ApiResponse<LoginResponse> register(
             @Valid @RequestBody RegisterFormRequest request
@@ -70,7 +89,13 @@ public class AuthenticationController {
                 .build();
     }
 
-    @Operation(summary = "lấy refresh token đổi lấy access token")
+    @Operation(summary = "lấy refresh token đổi lấy access token", description = "lấy refresh token đổi lấy access token")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1024", description = "Refresh token invalid", content = @Content),
+          
+
+    })
     @PostMapping("/refresh-token")
     public ApiResponse<LoginResponse> refreshToken(
             HttpServletRequest request,
@@ -113,7 +138,16 @@ public class AuthenticationController {
                 .build();
     }
 
-    @Operation(summary = "gửi yêu cầu quên mật khẩu")
+   
+    @Operation(summary = "gửi yêu cầu quên mật khẩu", description = "gửi yêu cầu quên mật khẩu")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1012", description = "Password is invalid!", content = @Content),
+
+
+
+    })
     @PostMapping("/forgot-password")
     public ApiResponse<Void> forgotPassword(
             @RequestParam String email
@@ -139,7 +173,16 @@ public class AuthenticationController {
                 .build();
     }
 
-    @Operation(summary = "reset mật khẩu mới sau khi xác thực code")
+    
+    @Operation(summary = "reset mật khẩu mới sau khi xác thực code", description = "reset mật khẩu mới sau khi xác thực code")
+    @ApiResponses(value = {
+          
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1012", description = "Password is invalid!", content = @Content),
+
+
+    })
     @PostMapping("/create-new-password")
     public ApiResponse<LoginResponse> createNewPassword(
             @Valid @RequestBody CreateNewPassword request
@@ -156,7 +199,14 @@ public class AuthenticationController {
                 .build();
     }
 
-    @Operation(summary = "đăng nhập bằng google")
+   
+    @Operation(summary = "đăng nhập bằng google", description = "đăng nhập bằng google")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+
+    })
     @PostMapping("/login-google")
     @ResponseStatus(HttpStatus.OK)
     public ApiResponse<LoginResponse> loginGoogle(
