@@ -1,9 +1,7 @@
-// Interface cho việc quản lý SSE Emitter
-export interface SseEmitter {
-    close: () => void;
+export interface Notification {
+    id: string;       
+    title: string;    
+    content: string;  
+    timestamp: string; 
 }
 
-// Interface cho phản hồi lấy thông tin người dùng từ token
-export interface UserIdResponse {
-    userId: string;
-}

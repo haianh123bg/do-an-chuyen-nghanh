@@ -1,27 +1,33 @@
 
 // Định nghĩa các kiểu dữ liệu request
 export interface LoginFormRequest {
-    email: string;
-    password: string;
+    username: string; 
+    password: string; 
 }
+
 
 export interface RegisterFormRequest {
-    email: string;
-    password: string;
-    confirmPassword: string;
+    username: string; 
+    password: string; 
+    email: string;    
 }
 
+
 export interface CreateNewPassword {
-    password: string;
-    confirmPassword: string;
+    password: string;         
+    confirmPassword: string;  
 }
+
 
 // Định nghĩa các kiểu dữ liệu response
 export interface LoginResponse {
-    accessToken: string;
-    refreshToken: string;
+    accessToken: string;  
+    refreshToken: string; 
+    username: string;     
+    roles: string[];      
 }
 
 export interface TokenResponse {
-    token: string;
+    accessToken: string; 
 }
+

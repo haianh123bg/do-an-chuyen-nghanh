@@ -1,36 +1,25 @@
 
 
-
-// Interface for PageResponse
-export interface PageResponse<T> {
-    content: T[];
-    totalPages: number;
-    totalElements: number;
-    size: number;
-    number: number;
-}
-
-// DTO Models for Course
 export interface CourseResponse {
     id: number;
-    name: string;
+    title: string;
     description: string;
-    regularPrice: number;
+    price: number;
     discount: number;
-    category: string;
+    imageUrl: string;
+    duration: string; 
+    createdAt: string;
+    updatedAt: string;
+}
+export interface PageResponse<T> {
+    totalItems: number; 
+    totalPages: number; 
+    currentPage: number; 
+    itemsPerPage: number; 
+    items: T[]; 
 }
 
-export interface CourseCategoryResponse {
-    id: number;
-    name: string;
-}
 
-export interface LessionDetailsResponse {
-    id: number;
-    courseId: number;
-    itemId: number;
-    content: string;
-}
 
 
 

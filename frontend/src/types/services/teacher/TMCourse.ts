@@ -1,37 +1,34 @@
-// Các interface tương ứng với request và response của API
-
-// Yêu cầu tạo khóa học
-export interface CreateCourseRequest {
-    title: string;
-    description: string;
-    // Các trường khác tùy theo yêu cầu của bạn
+export interface PageResponse<T> {
+    content: T[];
+    pageNo: number;
+    pageSize: number;
+    totalPages: number;
+    totalElements: number;
 }
 
-// Yêu cầu tạo chương (module)
-export interface CreateModuleRequest {
-    title: string;
-    // Các trường khác tùy theo yêu cầu của bạn
-}
-
-// Yêu cầu tạo bài học (item)
-export interface CreateItemRequest {
-    title: string;
-    content: string;
-    // Các trường khác tùy theo yêu cầu của bạn
-}
-
-
-// Kiểu dữ liệu phản hồi khi lấy thông tin khóa học
 export interface CourseResponse {
     id: number;
-    title: string;
+    name: string;
     description: string;
-    // Các trường khác tùy theo yêu cầu của bạn
+    createdDate: string; 
+    updatedDate: string; 
+    teacherId: number;
+}
+export interface CreateCourseRequest {
+    name: string;
+    description: string;
+    teacherId: number;
+}
+export interface CreateModuleRequest {
+    name: string;
+    description: string;
+    courseId: number;
+}
+export interface CreateItemRequest {
+    name: string;
+    content: string;
+    moduleId: number;
+    type: string; 
 }
 
-// Kiểu dữ liệu phản hồi phân trang
-export interface PageResponse<T> {
-    data: T[];
-    totalPages: number;
-    currentPage: number;
-}
+

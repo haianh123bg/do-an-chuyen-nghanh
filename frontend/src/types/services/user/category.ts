@@ -1,9 +1,10 @@
 
 
-// Định nghĩa kiểu dữ liệu cho CategoryResponse
-export type CategoryResponse = {
+export interface CategoryResponse {
     id: number;
     name: string;
     description: string;
-};
-
+    imageUrl: string;  
+    createdAt: string; 
+    updatedAt: string; 
+}
