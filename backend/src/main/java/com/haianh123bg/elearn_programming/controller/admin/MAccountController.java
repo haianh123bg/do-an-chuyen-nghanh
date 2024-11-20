@@ -5,6 +5,10 @@ import com.haianh123bg.elearn_programming.dto.response.PageResponse;
 import com.haianh123bg.elearn_programming.dto.response.UserResponse;
 import com.haianh123bg.elearn_programming.service.MAccountService;
 import com.haianh123bg.elearn_programming.utils.DateUtils;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +25,15 @@ import java.time.format.DateTimeFormatter;
 public class MAccountController {
     private final MAccountService mAccountService;
 
+     @Operation(summary = "Lấy trang thông tin người dùng", description = "Lấy trang thông tin người dùng")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1003", description = "Account does not exist", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+    })
     @GetMapping("/page-user")
     public ApiResponse<PageResponse<UserResponse>> pageUser(
             @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
