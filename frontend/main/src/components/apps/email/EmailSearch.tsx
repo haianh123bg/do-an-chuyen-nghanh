@@ -42,7 +42,7 @@ const EmailSearch = ({ onClick }: Props) => {
         fullWidth
         size="small"
         value={searchTerm}
-        placeholder="Search emails"
+        placeholder="Tìm kiếm emails"
         variant="outlined"
         onChange={(e) => dispatch(SearchEmail(e.target.value))}
       />

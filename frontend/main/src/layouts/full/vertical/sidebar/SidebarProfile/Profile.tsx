@@ -6,42 +6,53 @@ import { AppState } from 'src/store/Store';
 import { Link } from 'react-router-dom';
 
 export const Profile = () => {
-  const customizer = useSelector((state: AppState) => state.customizer);
-  const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'));
-  const hideMenu = lgUp ? customizer.isCollapse && !customizer.isSidebarHover : '';
+    const customizer = useSelector((state: AppState) => state.customizer);
+    const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'));
+    const hideMenu = lgUp ? customizer.isCollapse && !customizer.isSidebarHover : '';
 
-  return (
-    <Box
-      display={'flex'}
-      alignItems="center"
-      gap={2}
-      sx={{ m: 3, p: 2, bgcolor: `${'secondary.light'}` }}
-    >
-      {!hideMenu ? (
-        <>
-          <Avatar alt="Remy Sharp" src={img1} />
+    return (
+        <Box
+            display={'flex'}
+            alignItems="center"
+            gap={2}
+            sx={{ m: 3, p: 2, bgcolor: `${'secondary.light'}` }}
+        >
+            {!hideMenu ? (
+                <>
+                    <Avatar alt="Remy Sharp" src={img1} />
 
-          <Box>
-            <Typography variant="h6">Mathew </Typography>
-            <Typography variant="caption">Designer</Typography>
-          </Box>
-          <Box sx={{ ml: 'auto' }}>
-            <Tooltip title="Logout" placement="top">
-              <IconButton
-                color="primary"
-                component={Link}
-                to="auth/login"
-                aria-label="logout"
-                size="small"
-              >
-                <IconPower size="20" />
-              </IconButton>
-            </Tooltip>
-          </Box>
-        </>
-      ) : (
-        ''
-      )}
-    </Box>
-  );
+                    <Box>
+                        <Tooltip title={'Nguyễn Ngọc Hải Anh'} placement="top">
+                            <Typography
+                                variant="h6"
+                                sx={{
+                                    maxWidth: '100px',
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                }}
+                            >
+                                Nguyễn Ngọc Hải Anh
+                            </Typography>
+                        </Tooltip>
+                    </Box>
+                    <Box sx={{ ml: 'auto' }}>
+                        <Tooltip title="Logout" placement="top">
+                            <IconButton
+                                color="primary"
+                                component={Link}
+                                to="auth/login"
+                                aria-label="logout"
+                                size="small"
+                            >
+                                <IconPower size="20" />
+                            </IconButton>
+                        </Tooltip>
+                    </Box>
+                </>
+            ) : (
+                ''
+            )}
+        </Box>
+    );
 };

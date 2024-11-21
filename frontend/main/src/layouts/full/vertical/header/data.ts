@@ -125,15 +125,33 @@ const profile: ProfileType[] = [
     icon: icon1,
   },
   {
-    href: '/apps/email',
+    href: '/my-course',
     title: 'Khóa học của tôi',
     subtitle: 'Messages & Emails',
     icon: icon2,
   },
   {
     href: '/apps/notes',
-    title: 'My Tasks',
-    subtitle: 'To-do and Daily Tasks',
+    title: 'Quản trị viên',
+    subtitle: 'Giao diện quản trị viên',
+    icon: icon3,
+  },
+  {
+    href: '/apps/notes',
+    title: 'Đổi mật khẩu',
+    subtitle: 'Giao diện quản trị viên',
+    icon: icon3,
+  },
+  {
+    href: '/apps/notes',
+    title: 'Lịch sử giao dịch',
+    subtitle: 'Giao diện quản trị viên',
+    icon: icon3,
+  },
+  {
+    href: '/apps/notes',
+    title: 'Ticket hỗ trợ',
+    subtitle: 'Giao diện quản trị viên',
     icon: icon3,
   },
 ];

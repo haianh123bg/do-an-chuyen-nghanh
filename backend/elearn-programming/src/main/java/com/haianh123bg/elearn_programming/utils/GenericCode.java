@@ -33,9 +33,4 @@ public class GenericCode {
     public static String generateCodeWithNumbersOnly(int size) {
         return generateRandomCode(NUMBER_POOL, size);
     }
-
-    public static void main(String[] args) {
-        System.out.println(generateCodeWithSize(10));       // Ví dụ sinh mã với ký tự
-        System.out.println(generateCodeWithNumbersOnly(6)); // Ví dụ sinh mã chỉ có số
-    }
 }

@@ -70,10 +70,9 @@ const Menuitems: MenuitemsType[] = [
     navlabel: true,
     subheader: 'Home',
   },
-
   {
     id: uniqueId(),
-    title: 'Modern',
+    title: 'Dashboard',
     icon: IconAperture,
     href: '/dashboards/modern',
     chip: 'New',
@@ -81,9 +80,78 @@ const Menuitems: MenuitemsType[] = [
   },
   {
     id: uniqueId(),
-    title: 'eCommerce',
+    title: 'Danh mục khóa học',
     icon: IconShoppingCart,
-    href: '/dashboards/ecommerce',
+    href: '/categories',
+  },
+  {
+    id: uniqueId(),
+    title: 'Khóa học của tôi',
+    icon: IconPackage,
+    chip: '2',
+    chipColor: 'secondary',
+    href: '/my-course',
+  },
+
+  {
+    id: uniqueId(),
+    title: 'Diễn đàn-Thảo luận',
+    icon: IconAperture,
+    href: '/forum-and-discussion',
+    chipColor: 'secondary',
+  },
+  {
+    id: uniqueId(),
+    title: 'Ticket',
+    icon: IconAperture,
+    href: '/forum-and-discussion',
+    chipColor: 'secondary',
+  },
+  {
+    id: uniqueId(),
+    title: 'Quản lý khóa học',
+    icon: IconAperture,
+    href: '/admin/course',
+    chipColor: 'secondary',
+  },
+  {
+    id: uniqueId(),
+    title: 'Quản lý tài khoản',
+    icon: IconChartDonut3,
+    href: '/admin/account/user',
+    children: [
+      {
+        id: uniqueId(),
+        title: 'Học viên',
+        icon: IconPoint,
+        href: '/admin/account/user',
+      },
+      {
+        id: uniqueId(),
+        title: 'Giáo viên',
+        icon: IconPoint,
+        href: '/admin/account/teacher',
+      },
+    ],
+  },
+  {
+    id: uniqueId(),
+    title: 'Quản lý danh mục',
+    icon: IconAperture,
+    href: '/admin/category',
+    chipColor: 'secondary',
+  },
+  {
+    id: uniqueId(),
+    title: 'Blog',
+    icon: IconShoppingCart,
+    href: '/blogs',
+  },
+  {
+    id: uniqueId(),
+    title: 'Liên kết hỗ trợ',
+    icon: IconShoppingCart,
+    href: '/tickets',
   },
   {
     navlabel: true,
