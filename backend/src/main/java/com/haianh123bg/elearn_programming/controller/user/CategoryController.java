@@ -3,6 +3,10 @@ package com.haianh123bg.elearn_programming.controller.user;
 import com.haianh123bg.elearn_programming.dto.response.ApiResponse;
 import com.haianh123bg.elearn_programming.dto.response.CategoryResponse;
 import com.haianh123bg.elearn_programming.service.CategoryService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +19,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService categoryService;
+      @Operation(summary = "Lấy ra danh sách danh mục ", description = "Lấy ra danh sách danh mục")
+      
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1038", description = "Category does not exist", content = @Content),
+           })
 
     @GetMapping
     public ApiResponse<List<CategoryResponse>> getCategories() {

@@ -1,16 +1,23 @@
-// Định nghĩa các kiểu dữ liệu cho Request và Response
-
-
-// Kiểu dữ liệu cho yêu cầu tải lên tài nguyên
 export interface ResourceRequest {
-    name: string;
-    description: string;
-    type: string;
+    name: string; 
+    type: string; 
+    tag: string;  
+    courseId: number; 
 }
 
-// Kiểu dữ liệu cho phản hồi sau khi tải lên tài nguyên
 export interface ResourceResponse {
-    id: number;
-    name: string;
-    url: string;
+    id: number;       
+    name: string;     
+    url: string;      
+    type: string;     
+    tag: string;     
 }
+
+export interface AppException {
+    errorCode: string; 
+    message: string;   
+}
+
+
+
+

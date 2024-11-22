@@ -1,30 +1,34 @@
 
 
-// Các kiểu dữ liệu cho PaymentRequest
 export interface PaymentRequest {
+    orderId: string;
     amount: number;
+    currency: string;
+    description?: string; // Optional field
     paymentMethod: string;
-    userId: string;
-    // Thêm các trường cần thiết khác
 }
 
-// Kiểu dữ liệu trả về cho PaymentResponse
+
 export interface PaymentResponse {
     transactionId: string;
     status: string;
-    message: string;
+    paymentUrl?: string; // Optional field
 }
 
-// Kiểu dữ liệu chung cho ApiResponse
-export interface ApiResponse<T> {
-    code: number;
-    result: T;
-}
-
-// Kiểu dữ liệu cho Sepay IPN Request
 export interface SepayIpnRequest {
     transactionId: string;
+    orderId: string;
     status: string;
-    amount: number;
-    // Thêm các trường cần thiết từ webhook
+    signature: string;
+    [key: string]: any; 
 }
+export interface HttpRequest {
+    headers: Record<string, string>;
+    body: any;
+    query: Record<string, string | undefined>;
+    params: Record<string, string>;
+    method: string;
+    url: string;
+}
+
+
