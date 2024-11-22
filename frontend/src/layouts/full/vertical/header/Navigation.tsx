@@ -87,7 +87,7 @@ const AppDD = () => {
                 color="inherit"
                 sx={{ color: (theme) => theme.palette.text.secondary }}
                 variant="text"
-                to="/home"
+                to="/feature/coming-soon"
                 component={Link}
             >
                 Nâng cấp hội viên
@@ -105,7 +105,7 @@ const AppDD = () => {
                 color="inherit"
                 sx={{ color: (theme) => theme.palette.text.secondary }}
                 variant="text"
-                to="/homepage"
+                to="/feature/coming-soon"
                 component={Link}
             >
                 Combo

@@ -14,12 +14,14 @@ import {
     Breadcrumbs,
     Link,
 } from '@mui/material';
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PageContainer from 'src/components/container/PageContainer';
 import LpHeader from 'src/components/landingpage/header/Header';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Link as RouterLink } from 'react-router-dom'; // Import RouterLink from react-router-dom
 
 const DetailCourse: React.FC = () => {
     // Data for the course
@@ -240,24 +242,30 @@ const DetailCourse: React.FC = () => {
                                     {courseInfo.discountDeadline}
                                 </Typography>
 
-                                <Button
-                                    variant="contained"
-                                    color="secondary"
-                                    startIcon={<ShoppingCartIcon />}
-                                    fullWidth
-                                    sx={{ mt: 2 }}
-                                >
-                                    Go to cart
-                                </Button>
-                                <Button
-                                    variant="outlined"
-                                    color="secondary"
-                                    startIcon={<FavoriteBorderIcon />}
-                                    fullWidth
-                                    sx={{ mt: 1 }}
-                                >
-                                    Buy now
-                                </Button>
+                                {/* Linking the buttons to /checkout */}
+                                <Link to="/checkout" component={RouterLink}>
+                                    <Button
+                                        variant="contained"
+                                        color="secondary"
+                                        startIcon={<ShoppingCartIcon />}
+                                        fullWidth
+                                        sx={{ mt: 2 }}
+                                    >
+                                        Go to cart
+                                    </Button>
+                                </Link>
+                                
+                                <Link to="/checkout" component={RouterLink}>
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        startIcon={<FavoriteBorderIcon />}
+                                        fullWidth
+                                        sx={{ mt: 1 }}
+                                    >
+                                        Buy now
+                                    </Button>
+                                </Link>
 
                                 <Typography
                                     variant="body2"

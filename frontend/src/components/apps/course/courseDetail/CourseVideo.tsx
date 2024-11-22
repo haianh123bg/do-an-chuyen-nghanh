@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useSelector, useDispatch } from 'src/store/Store';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 // Carousel slider for video
 import Slider from 'react-slick';
@@ -41,7 +41,28 @@ const CourseVideo = () => {
     const videoEmbedUrl = getProductVideo.replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
 
     return (
-        <Box>
+        <Box sx={{ position: 'relative' }}>
+            {/* Tiêu đề khóa học, nằm ở góc trên trái */}
+            <Typography
+                component={Link}
+                to="/my-course"  // Liên kết đến trang my-course
+                variant="h5"
+                sx={{
+                    position: 'absolute',
+                    top: 10,
+                    left: 10,
+                    color: 'white',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    zIndex: 10,
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                    padding: '5px 10px',
+                    borderRadius: '5px',
+                }}
+            >
+                {product?.title} {/* Tiêu đề khóa học */}
+            </Typography>
+
             {/* Slider chính hiển thị video */}
             <Slider asNavFor={nav1} ref={(slider: any) => (slider1.current = slider)}>
                 <Box>
