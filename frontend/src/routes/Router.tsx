@@ -99,13 +99,14 @@ const Router = [
             { path: '/user-profile', element: <UserProfile /> },
             { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
             { path: '/course/management', element: <CourseManage /> },
-            { path: '/home', element: <Home /> },
+            { path: '/learning/course/:id', element: <LearningCourse /> },
+            { path: '/my-course', element: <Blog /> },
             { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
             { path: '/apps/chats', element: <Chats /> },
             { path: '/ticket', element: <Email /> },
             { path: '/apps/notes', element: <Notes /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
-           
+            { path: '/feature/coming-soon', element: <FeatureComingSoon /> },
         ],
     },
     {
@@ -146,14 +147,11 @@ const Router = [
             { path: '/auth/two-steps2', element: <TwoSteps2 /> },
             { path: '/auth/maintenance', element: <Maintenance /> },
             { path: '/landingpage', element: <Landingpage /> },
-            
+            { path: '/home', element: <Home /> },
             { path: '/checkout', element: <Checkout /> },
             { path: '/course/detail/:id', element: <DetailCourse /> },
             {path: '/courseCreation', element: <CourseCreation /> },
-            { path: '/learning/course/:id', element: <LearningCourse /> },
-            { path: '/my-course', element: <Blog /> },
-            { path: '/feature/coming-soon', element: <FeatureComingSoon /> },
-            
+            { path: '*', element: <Navigate to="/auth/404" /> },
         ],
     },
 
