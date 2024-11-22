@@ -92,9 +92,6 @@ const DetailCourse: React.FC = () => {
                                         {cat}
                                     </Link>
                                 ))}
-                                <Typography color="text.secondary" sx={{ fontSize: '1rem' }}>
-                                    {courseInfo.category[2]}
-                                </Typography>
                             </Breadcrumbs>
                             <Typography variant="h4" fontWeight="bold" gutterBottom mt={4}>
                                 {courseInfo.title}
@@ -160,8 +157,10 @@ const DetailCourse: React.FC = () => {
                                         </Grid>
                                     ))}
                                 </Grid>
+
+                                <Divider sx={{ mt: 4 }} />
                                 {/* Course Content Section */}
-                                <Grid item xs={12} mt={6}>
+                                <Grid item xs={12} mt={4}>
                                     <Typography variant="h5" fontWeight="bold" gutterBottom>
                                         Course content
                                     </Typography>
