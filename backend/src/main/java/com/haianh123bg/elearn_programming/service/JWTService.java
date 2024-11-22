@@ -3,7 +3,6 @@ package com.haianh123bg.elearn_programming.service;
 import io.jsonwebtoken.Claims;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Date;
 
 public interface JWTService {
     String generateToken(UserDetails user);

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.Specification;
 import java.time.LocalDateTime;
 
 public class CourseSpecification {
+
     public static Specification<Course> hasCategoryId(Integer categoryId) {
         return (root, query, criteriaBuilder) -> {
             if (categoryId == null) {

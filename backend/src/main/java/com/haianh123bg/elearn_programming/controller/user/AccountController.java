@@ -59,7 +59,7 @@ public class AccountController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ApiResponse<String> changeAvatar(
-            @NotNull(message = "Ảnh đại diện bắt buộc") @RequestPart(required = true) MultipartFile avatar
+            @NotNull(message = "Ảnh đại diện bắt buộc") @RequestPart MultipartFile avatar
     ) {
         return ApiResponse.<String>builder()
                 .message("Cập nhật ảnh đại diện thành công")

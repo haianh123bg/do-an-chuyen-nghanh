@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -100,6 +101,28 @@ public class CourseController {
         return ApiResponse.<PageResponse<CourseResponse>>builder()
                 .code(200)
                 .result(courseService.findCoursesByCategoryId(categoryId, pageNo, pageSize, sortBy, sortDir, searchKey, begin, end))
+                .build();
+    }
+
+    @Operation(summary = "Phân trang danh sách khóa học", description = "Phân trang danh sách khóa học")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1039", description = "Type item invalid", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1032", description = "Course not found", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
+    })
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/page-course/user")
+    public ApiResponse<PageResponse<CourseResponse>> getCourseOfUser(
+            @RequestParam(value = "page_no", required = false, defaultValue = "1") Integer pageNo,
+            @RequestParam(value = "page_size", required = false, defaultValue = "8") Integer pageSize,
+            @RequestParam(value = "search_key", required = false, defaultValue = "") String searchKey
+    ) {
+
+        return ApiResponse.<PageResponse<CourseResponse>>builder()
+                .code(200)
+                .result(courseService.getCourseOfUser(pageNo, pageSize, searchKey))
                 .build();
     }
 }

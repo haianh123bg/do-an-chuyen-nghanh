@@ -16,6 +16,7 @@ import com.haianh123bg.elearn_programming.service.CourseService;
 import com.haianh123bg.elearn_programming.service.async.ItemServiceAsync;
 import com.haianh123bg.elearn_programming.service.async.ModuleServiceAsync;
 import com.haianh123bg.elearn_programming.specification.CourseSpecification;
+import com.haianh123bg.elearn_programming.specification.UserHasCourseSpecification;
 import com.haianh123bg.elearn_programming.utils.TypeItemEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -45,6 +46,8 @@ public class CourseServiceImpl implements CourseService {
     private final ItemServiceAsync itemServiceAsync;
     private final BlogRepository blogRepository;
     private final CodingExerciseRepository codingExerciseRepository;
+    private final UserHasCourseRepository userHasCourseRepository;
+    private final VideoLectureRepository videoLectureRepository;
 
     @Override
     public PageResponse<CourseResponse> getPageCourses(
@@ -132,9 +135,7 @@ public class CourseServiceImpl implements CourseService {
                 VideoLecture videoLecture = item.getVideoLecture();
                 return ItemMapper.toLessionVideoLectureResponse(item, videoLecture);
             }
-            default -> {
-                throw new AppException(ErrorCode.TYPE_ITEM_INVALID);
-            }
+            default -> throw new AppException(ErrorCode.TYPE_ITEM_INVALID);
         }
     }
 
@@ -274,6 +275,7 @@ public class CourseServiceImpl implements CourseService {
                 VideoLecture videoLecture = VideoLecture.builder()
                         .url(request.getUrl())
                         .build();
+                videoLectureRepository.save(videoLecture);
             }
             case CODING_EXERCISE -> {
                 CodingExercise codingExercise = CodingExercise.builder()
@@ -282,9 +284,7 @@ public class CourseServiceImpl implements CourseService {
                 codingExerciseRepository.save(codingExercise);
             }
             case CHOICE_EXERCISES -> {}
-            default -> {
-                throw new AppException(ErrorCode.TYPE_ITEM_INVALID);
-            }
+            default -> throw new AppException(ErrorCode.TYPE_ITEM_INVALID);
         }
         return item.getId();
     }
@@ -324,6 +324,41 @@ public class CourseServiceImpl implements CourseService {
                 .totalElements(courses.getTotalElements())
                 .last(courses.isLast())
                 .content(content)
+                .build();
+    }
+
+    @Override
+    public PageResponse<CourseResponse> getCourseOfUser(
+            Integer pageNo,
+            Integer pageSize,
+            String searchKey
+    ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Integer userId = Integer.valueOf(authentication.getName());
+
+        // Tạo specification
+        Specification<UserHasCourse> spec = Specification.where(
+                UserHasCourseSpecification.hasUserId(userId)
+                        .and(UserHasCourseSpecification.hasSearchKey(searchKey))
+        );
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+
+        Page<UserHasCourse> page = userHasCourseRepository.findAll(spec, pageable);
+
+        List<CourseResponse> contentResponse = page.getContent().stream().map(
+                (userHasCourse) -> {
+                    Course course = userHasCourse.getCourse();
+                    return CourseMapper.courseToCourseResponse(course);
+                }
+        ).toList();
+
+        return PageResponse.<CourseResponse>builder()
+                .pageNo(pageNo)
+                .pageSize(page.getSize())
+                .totalPages(page.getTotalPages())
+                .totalElements(page.getTotalElements())
+                .last(page.isLast())
+                .content(contentResponse)
                 .build();
     }
 }
