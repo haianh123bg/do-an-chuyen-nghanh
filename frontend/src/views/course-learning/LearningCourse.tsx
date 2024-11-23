@@ -1,8 +1,8 @@
 import { Grid, Typography, IconButton, Button } from '@mui/material';
-import CourseVideo from 'src/components/apps/course/courseDetail/CourseVideo';
+import CourseVideo from 'src/components/course-learning/CourseVideo';
 import PageContainer from 'src/components/container/PageContainer';
-import CourseContent from 'src/components/apps/course/courseDetail/CourseContent';
-import CourseDesc from 'src/components/apps/course/courseDetail/CourseDesc';
+import CourseContent from 'src/components/course-learning/CourseContent';
+import CourseDesc from 'src/components/course-learning/CourseDesc';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ExpandMore, Close, ArrowForward } from '@mui/icons-material'; // Import icon mới

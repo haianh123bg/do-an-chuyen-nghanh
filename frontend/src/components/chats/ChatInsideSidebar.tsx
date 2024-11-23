@@ -59,7 +59,7 @@ const ChatInsideSidebar = ({ isInSidebar, chat }: chatType) => {
           p={3}
         >
           <Typography variant="h6" mb={2}>
-            Media ({totalMedia})
+            Hình ảnh ({totalMedia})
           </Typography>
           <Grid container spacing={2}>
             {chat?.messages.map((c) => {
@@ -79,12 +79,12 @@ const ChatInsideSidebar = ({ isInSidebar, chat }: chatType) => {
               );
             })}
             <Grid item xs={12} lg={12}>
-              {totalMedia === 0 ? <Alert severity="error">No Media Found!</Alert> : null}
+              {totalMedia === 0 ? <Alert severity="error">Không thấy phương tiện nào</Alert> : null}
             </Grid>
           </Grid>
 
           <Typography variant="h6" mt={5} mb={2}>
-            Attachments ({totalAttachment})
+            Tài liệu đính kèm ({totalAttachment})
           </Typography>
           <Box>
             {chat?.messages.map((c, index) => {
@@ -125,7 +125,7 @@ const ChatInsideSidebar = ({ isInSidebar, chat }: chatType) => {
                 </Stack>
               );
             })}
-            {totalAttachment === 0 ? <Alert severity="error">No Attachment Found!</Alert> : null}
+            {totalAttachment === 0 ? <Alert severity="error">Không có tài liệu đính kèm</Alert> : null}
           </Box>
         </Box>
       ) : null}

@@ -126,7 +126,7 @@ interface ChatContentProps {
                                     {formatDistanceToNowStrict(new Date(chat.createdAt), {
                                       addSuffix: false,
                                     })}{' '}
-                                    ago
+                                    trước
                                   </Typography>
                                 ) : null}
                                 {chat.type === 'text' ? (
@@ -160,7 +160,7 @@ interface ChatContentProps {
                             <Box alignItems="flex-end" display="flex" flexDirection={'column'}>
                               {chat.createdAt ? (
                                 <Typography variant="body2" color="grey.400" mb={1}>
-                                  ago
+                                  vừa mới
                                 </Typography>
                               ) : null}
                               {chat.type === 'text' ? (
@@ -211,7 +211,7 @@ interface ChatContentProps {
           >
             <IconMenu2 stroke={1.5} onClick={toggleChatSidebar} />
           </Box>
-          <Typography variant="h4">Select Chat</Typography>
+          <Typography variant="h4">Chọn tin nhắn</Typography>
         </Box>
       )}
     </Box>

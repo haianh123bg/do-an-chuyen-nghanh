@@ -30,12 +30,14 @@ const AdminAccountTeacher = Loadable(
 const Blog = Loadable(lazy(() => import('../views/apps/blog/Blog')));
 const BlogDetail = Loadable(lazy(() => import('../views/apps/blog/BlogPost')));
 
-const Chats = Loadable(lazy(() => import('../views/apps/chat/Chat')));
+const TicketAdmin = Loadable(lazy(() => import('../views/ticket-admin/TicketAdmin')));
+const TicketUser = Loadable(lazy(() => import('../views/ticket-user/TicketUser')));
+
 const Notes = Loadable(lazy(() => import('../views/apps/notes/Notes')));
 const Tickets = Loadable(lazy(() => import('../views/apps/tickets/Tickets')));
 const Ecommerce = Loadable(lazy(() => import('../views/apps/eCommerce/Ecommerce')));
-const LearningCourse = Loadable(lazy(() => import('../views/apps/course/LearningCourse')));
-const FeatureComingSoon = Loadable(lazy(() => import('../views/apps/feature-coming/FeatureComingSoon')));
+const LearningCourse = Loadable(lazy(() => import('../views/course-learning/LearningCourse')));
+const FeatureComingSoon = Loadable(lazy(() => import('../views/feature-coming/FeatureComingSoon')));
 const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/EcomProductList')));
 
 const Checkout = Loadable(lazy(() => import('../views/apps/eCommerce/Checkout')));
@@ -99,14 +101,18 @@ const Router = [
             { path: '/user-profile', element: <UserProfile /> },
             { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
             { path: '/course/management', element: <CourseManage /> },
-            { path: '/learning/course/:id', element: <LearningCourse /> },
+            
             { path: '/my-course', element: <Blog /> },
             { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
-            { path: '/apps/chats', element: <Chats /> },
+            
             { path: '/ticket', element: <Email /> },
             { path: '/apps/notes', element: <Notes /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
             { path: '/feature/coming-soon', element: <FeatureComingSoon /> },
+            { path: '/admin/ticket', element: <TicketAdmin /> },
+            { path: '/user/ticket', element: <TicketUser /> },
+            { path: '/learning/course/:id', element: <LearningCourse /> },
+           
         ],
     },
     {
@@ -116,6 +122,7 @@ const Router = [
             { path: '/admin/dashboards/modern', exact: true, element: <ModernDash /> },
             { path: '/admin', element: <Navigate to="/admin/dashboards/modern" /> },
             { path: '/admin/course', element: <AdminCourse /> },
+            
            
             { path: '/admin/category', element: <AdminCategory /> },
             { path: '/admin/account/user', element: <AdminAccountUser /> },
@@ -152,6 +159,9 @@ const Router = [
             { path: '/course/detail/:id', element: <DetailCourse /> },
             {path: '/courseCreation', element: <CourseCreation /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
+            
+           
+            
         ],
     },
 
