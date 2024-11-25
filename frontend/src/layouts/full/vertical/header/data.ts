@@ -131,7 +131,7 @@ const profile: ProfileType[] = [
     icon: icon2,
   },
   {
-    href: '/apps/notes',
+    href: '/admin',
     title: 'Quản trị viên',
     subtitle: 'Giao diện quản trị viên',
     icon: icon3,
@@ -143,13 +143,13 @@ const profile: ProfileType[] = [
     icon: icon3,
   },
   {
-    href: '/apps/notes',
+    href: '/checkout',
     title: 'Lịch sử giao dịch',
     subtitle: 'Giao diện quản trị viên',
     icon: icon3,
   },
   {
-    href: '/ticket',
+    href: '/user/ticket',
     title: 'Ticket hỗ trợ',
     subtitle: 'Giao diện quản trị viên',
     icon: icon3,

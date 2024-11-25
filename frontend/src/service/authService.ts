@@ -16,6 +16,26 @@ const authService = {
             password,
         });
     },
+    // API quên mật khẩu
+    forgotPassword: (email: string) => {
+        return axios.post(`${baseUrl}/forgot-password`, {
+            email,
+        });
+    },
+    // API tạo mật khẩu mới
+    createNewPassword: (password: string, confirmPassword: string, token: string) => {
+        return axios.post(`${baseUrl}/create-new-password`, {
+            password,
+            confirmPassword,
+            token,
+        });
+    },
+    // API đăng nhập bằng Google
+    loginGoogle: (googleCode: string) => {
+        return axios.post(`${baseUrl}/login-google`, {
+            code: googleCode,
+        });
+    },
 };
 
 export default authService;

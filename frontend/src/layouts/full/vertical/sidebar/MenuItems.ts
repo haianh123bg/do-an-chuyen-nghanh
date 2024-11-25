@@ -124,7 +124,7 @@ const Menuitems: MenuitemsType[] = [
     id: uniqueId(),
     title: 'Ticket',
     icon: IconAperture,
-    href: 'ticket',
+    href: '/admin/ticket',
     chipColor: 'secondary',
   },
   // {

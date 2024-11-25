@@ -18,8 +18,8 @@ import {
   MenuItem,
 } from '@mui/material';
 import { useSelector, useDispatch } from 'src/store/Store';
-import Scrollbar from '../../custom-scroll/Scrollbar';
-import { SelectChat, fetchChats, SearchChat } from '../../../store/apps/chat/ChatSlice';
+import Scrollbar from '../custom-scroll/Scrollbar';
+import { SelectChat, fetchChats, SearchChat } from '../../store/apps/chat/ChatSlice';
 import { ChatsType } from 'src/types/apps/chat';
 import { last } from 'lodash';
 import { formatDistanceToNowStrict } from 'date-fns';
@@ -88,9 +88,9 @@ const ChatListing = () => {
         </Badge>
         <Box>
           <Typography variant="body1" fontWeight={600}>
-            John Deo
+            Hải Anh
           </Typography>
-          <Typography variant="body2">Marketing Manager</Typography>
+          <Typography variant="body2">Backend Developer</Typography>
         </Box>
       </Box>
       {/* ------------------------------------------- */}
@@ -99,7 +99,7 @@ const ChatListing = () => {
       <Box px={3} py={1}>
         <TextField
           id="outlined-search"
-          placeholder="Search contacts"
+          placeholder="Tìm kiếm liên hệ"
           size="small"
           type="search"
           variant="outlined"
@@ -127,7 +127,7 @@ const ChatListing = () => {
             onClick={handleClick}
             color="inherit"
           >
-            Recent Chats <IconChevronDown size="16" />
+            Tin nhắn gần đây <IconChevronDown size="16" />
           </Button>
           <Menu
             id="basic-menu"
@@ -138,9 +138,9 @@ const ChatListing = () => {
               'aria-labelledby': 'basic-button',
             }}
           >
-            <MenuItem onClick={handleClose}>Sort By Time</MenuItem>
-            <MenuItem onClick={handleClose}>Sort By Unread</MenuItem>
-            <MenuItem onClick={handleClose}>Mark as all Read</MenuItem>
+            <MenuItem onClick={handleClose}>Sắp xếp theo thời gian</MenuItem>
+            <MenuItem onClick={handleClose}>Sắp xếp tin nhắn chưa đọc</MenuItem>
+            <MenuItem onClick={handleClose}>Đánh dấu đã đọc</MenuItem>
           </Menu>
         </Box>
         <Scrollbar sx={{ height: { lg: 'calc(100vh - 100px)', md: '100vh' }, maxHeight: '600px' }}>
@@ -202,7 +202,7 @@ const ChatListing = () => {
           ) : (
             <Box m={2}>
               <Alert severity="error" variant="filled" sx={{ color: 'white' }}>
-                No Contacts Found!
+                Không có liên hệ nào
               </Alert>
             </Box>
           )}
