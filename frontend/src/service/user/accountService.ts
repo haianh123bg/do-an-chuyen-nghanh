@@ -1,5 +1,6 @@
 import axios from 'axios';
 import ApiService from '../apiService.ts';
+import { UserInfoRequest } from 'src/types/services/user/account.ts';
 
 const baseUrl = ApiService.BASE_URL + '/user';
 
@@ -10,8 +11,8 @@ const accountService = {
             params: {
                 oldPassword,
                 newPassword,
-                confirmPassword
-            }
+                confirmPassword,
+            },
         });
     },
 
@@ -22,8 +23,8 @@ const accountService = {
 
         return axios.post(`${baseUrl}/avatar`, formData, {
             headers: {
-                'Content-Type': 'multipart/form-data'
-            }
+                'Content-Type': 'multipart/form-data',
+            },
         });
     },
 
@@ -33,19 +34,14 @@ const accountService = {
     },
 
     // API thay đổi thông tin user phần 1
-    changeUserInfoP1: (request: {
-        fullName?: string;
-        dateOfBirth?: string;
-        address?: string;
-        // thêm các field khác theo UserInfoRequest
-    }) => {
+    changeUserInfoP1: (request: UserInfoRequest) => {
         return axios.put(`${baseUrl}/info-p1`, request);
     },
 
     // API thay đổi thông tin user phần 2 (số điện thoại)
     changeUserInfoP2: (phone: string) => {
         return axios.put(`${baseUrl}/info-p2`, null, {
-            params: { phone }
+            params: { phone },
         });
     },
 };
