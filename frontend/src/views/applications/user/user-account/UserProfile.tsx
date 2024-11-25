@@ -32,7 +32,6 @@ const UserProfile = () => {
                         {selectedSection === 'personal' && <PersonalInformation />}
                         {selectedSection === 'account' && <AccountInformation />}
                         {selectedSection === 'banking' && <BankInformation />}
-                        {selectedSection === 'email' && <ReceiveEmail />}
                         {selectedSection === 'changepassword' && <ChangePassword />}
                     </Grid>
                 </Grid>

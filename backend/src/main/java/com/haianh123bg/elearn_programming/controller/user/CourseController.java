@@ -43,8 +43,8 @@ public class CourseController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1027", description = "Course does not exist", content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1032", description = "Course not found", content = @Content),
-           
-           })
+
+    })
     @GetMapping("/{id}/category-detail")
     public ApiResponse<CourseCategoryResponse> getCategoryOfCourse(
             @PathVariable(value = "id") Integer courseId
@@ -63,9 +63,9 @@ public class CourseController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1039", description = "Type item invalid", content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1027", description = "Course does not exist", content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1032", description = "Course not found", content = @Content),
-           
-        
-             })
+
+
+    })
     @GetMapping("/{courseId}/{itemId}")
     public ApiResponse<LessionDetailsResponse> getLessionDetails(
             @PathVariable(value = "courseId") Integer courseId,
@@ -76,14 +76,13 @@ public class CourseController {
                 .result(courseService.getLessionDetails(courseId, itemId))
                 .build();
     }
+
     @Operation(summary = "Lấy ra khóa học bằng danh mục", description = "Lấy ra các danh sách khóa học dựa vào danh mục")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
-          @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1027", description = "Course does not exist", content = @Content),
-          @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1039", description = "Type item invalid", content = @Content),
-          
-        
-             })
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1027", description = "Course does not exist", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1039", description = "Type item invalid", content = @Content),
+    })
 
     @GetMapping("/categories/{category_id}")
     public ApiResponse<PageResponse<CourseResponse>> getCourseByCategory(

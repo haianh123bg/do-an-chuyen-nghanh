@@ -17,10 +17,10 @@ import CustomTable from 'src/components/admin/ComponentTables/CustomTable';
 import { useEffect, useMemo, useState } from 'react';
 import PublisherTable from './datatable/Publisher';
 import { IconEdit, IconSearch, IconTrash } from '@tabler/icons-react';
-import { DatePicker, LocalizationProvider } from '@mui/lab';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AddCircle, FilterList } from '@mui/icons-material';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { Dayjs } from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 interface Column {
     title: string;
@@ -199,171 +199,167 @@ const AccountUserManagement = () => {
         },
         { to: '/admin/course', title: 'Khóa học' },
     ];
-    return <PageContainer title="eCommerce Dashboard" description="this is eCommerce Dashboard page">
-    <BannerPage title="Nhân viên" items={BCrumb} />
-    <Grid container spacing={0}>
-        <TopCard dataSource={dataSource} totalColumn={4} />
-        <Grid item xs={12} mt={3}>
-            <Grid container sx={{ alignItems: 'center' }} spacing={2}>
-                <Grid
-                    item
-                    xs={4}
-                    sm={4}
-                    md={3.5}
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Grid container sx={{ alignItems: 'center' }}>
-                        <Grid item>
-                            <IconButton
-                                color="primary"
-                                aria-label="Add to cart"
-                                onClick={() => {
-                                    setOpen(true);
-                                    setCheckValue('add');
-                                }}
-                            >
-                                <AddCircle sx={{ fontSize: 30 }} />
-                            </IconButton>
+    return (
+        <PageContainer title="eCommerce Dashboard" description="this is eCommerce Dashboard page">
+            <BannerPage title="Nhân viên" items={BCrumb} />
+            <Grid container spacing={0}>
+                <TopCard dataSource={dataSource} totalColumn={4} />
+                <Grid item xs={12} mt={3} mb={1}>
+                    <Grid container sx={{ alignItems: 'center' }} spacing={2}>
+                        <Grid
+                            item
+                            xs={4}
+                            sm={4}
+                            md={3.5}
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Grid container sx={{ alignItems: 'center' }}>
+                                <Grid item>
+                                    <IconButton
+                                        color="primary"
+                                        aria-label="Add to cart"
+                                        onClick={() => {
+                                            setOpen(true);
+                                            setCheckValue('add');
+                                        }}
+                                    >
+                                        <AddCircle sx={{ fontSize: 30 }} />
+                                    </IconButton>
+                                </Grid>
+                                <Grid item xs={10}>
+                                    <TextField
+                                        id="outlined-search"
+                                        placeholder="Tìm kiếm khóa học"
+                                        size="small"
+                                        type="search"
+                                        variant="outlined"
+                                        inputProps={{ 'aria-label': 'Search Followers' }}
+                                        sx={{ fontSize: { xs: '10px', sm: '16px', md: '16px' } }}
+                                        InputProps={{
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <IconSearch size="12" />
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                        fullWidth={true}
+                                    />
+                                </Grid>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={10}>
-                            <TextField
-                                id="outlined-search"
-                                placeholder="Tìm kiếm khóa học"
-                                size="small"
-                                type="search"
-                                variant="outlined"
-                                inputProps={{ 'aria-label': 'Search Followers' }}
-                                sx={{ fontSize: { xs: '10px', sm: '16px', md: '16px' } }}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <IconSearch size="12" />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                                fullWidth={true}
-                            />
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    xs={4.5}
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'end',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Grid container sx={{ alignItems: 'center' }}>
-                        <Grid item xs={5} sx={{ display: 'flex' }}>
-                            <IconButton aria-label="filter" sx={{ mr: 2 }}>
-                                <Badge
-                                    badgeContent={column.length - dataSelect.length}
-                                    color="primary"
-                                >
-                                    <FilterList />
-                                </Badge>
-                            </IconButton>
-                            <Select
-                                multiple
-                                value={dataSelect}
-                                displayEmpty
-                                onChange={handleColumnChange}
-                                renderValue={() => 'Sửa đổi cột'}
-                                size="small"
-                                MenuProps={{
-                                    PaperProps: {
-                                        sx: {
-                                            marginTop: 1,
-                                            maxHeight: 400,
-                                            '&::-webkit-scrollbar': {
-                                                width: '4px',
-                                            },
-                                            '&::-webkit-scrollbar-thumb': {
-                                                backgroundColor: '#D2D2D2',
-                                                borderRadius: '10px',
-                                            },
-                                            '&::-webkit-scrollbar-thumb:hover': {
-                                                backgroundColor: '#C6C8CC',
-                                            },
-                                            '&::-webkit-scrollbar-track': {
-                                                backgroundColor: '#f1f1f1',
-                                            },
-                                        },
-                                    },
-                                    anchorOrigin: {
-                                        vertical: 'bottom',
-                                        horizontal: 'right',
-                                    },
-                                    transformOrigin: {
-                                        vertical: 'top',
-                                        horizontal: 'right',
-                                    },
-                                }}
-                            >
-                                {column.map((header: any) => {
-                                    // console.log(`check ${header.title}`, dataSelect.includes(header.dataIndex));
-
-                                    const isSelected = dataSelect.includes(
-                                        header.dataIndex,
-                                    );
-
-                                    return (
-                                        <MenuItem
-                                            key={header.dataIndex}
-                                            value={header.dataIndex}
+                        <Grid
+                            item
+                            xs={4.5}
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'end',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <Grid container sx={{ alignItems: 'center' }}>
+                                <Grid item xs={5} sx={{ display: 'flex' }}>
+                                    <IconButton aria-label="filter" sx={{ mr: 2 }}>
+                                        <Badge
+                                            badgeContent={column.length - dataSelect.length}
+                                            color="primary"
                                         >
-                                            <Checkbox checked={!isSelected} />
-                                            <ListItemText primary={header.title} />
-                                        </MenuItem>
-                                    );
-                                })}
-                            </Select>
+                                            <FilterList />
+                                        </Badge>
+                                    </IconButton>
+                                    <Select
+                                        multiple
+                                        value={dataSelect}
+                                        displayEmpty
+                                        onChange={handleColumnChange}
+                                        renderValue={() => 'Sửa đổi cột'}
+                                        size="small"
+                                        MenuProps={{
+                                            PaperProps: {
+                                                sx: {
+                                                    marginTop: 1,
+                                                    maxHeight: 400,
+                                                    '&::-webkit-scrollbar': {
+                                                        width: '4px',
+                                                    },
+                                                    '&::-webkit-scrollbar-thumb': {
+                                                        backgroundColor: '#D2D2D2',
+                                                        borderRadius: '10px',
+                                                    },
+                                                    '&::-webkit-scrollbar-thumb:hover': {
+                                                        backgroundColor: '#C6C8CC',
+                                                    },
+                                                    '&::-webkit-scrollbar-track': {
+                                                        backgroundColor: '#f1f1f1',
+                                                    },
+                                                },
+                                            },
+                                            anchorOrigin: {
+                                                vertical: 'bottom',
+                                                horizontal: 'right',
+                                            },
+                                            transformOrigin: {
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            },
+                                        }}
+                                    >
+                                        {column.map((header: any) => {
+                                            // console.log(`check ${header.title}`, dataSelect.includes(header.dataIndex));
+
+                                            const isSelected = dataSelect.includes(
+                                                header.dataIndex,
+                                            );
+
+                                            return (
+                                                <MenuItem
+                                                    key={header.dataIndex}
+                                                    value={header.dataIndex}
+                                                >
+                                                    <Checkbox checked={!isSelected} />
+                                                    <ListItemText primary={header.title} />
+                                                </MenuItem>
+                                            );
+                                        })}
+                                    </Select>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                        label="Ngày bắt đầu"
+                                        value={value}
+                                        onChange={(newValue: any) => setValue(newValue)}
+                                        renderInput={(params) => <TextField {...params} />}
+                                    />
+                                </LocalizationProvider>
+                                tới
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                        label="Ngày kết thúc"
+                                        value={value}
+                                        onChange={(newValue: any) => setValue(newValue)}
+                                        renderInput={(params) => <TextField {...params} />}
+                                    />
+                                </LocalizationProvider>
+                            </Box>
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item xs={4}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                                value={value}
-                                onChange={(newValue: any) => {
-                                    setValue(newValue);
-                                }}
-                                renderInput={(params: any) => (
-                                    <TextField {...params} fullWidth sx={{ mb: 3 }} />
-                                )}
-                            />
-                        </LocalizationProvider>
-                        tới
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                                value={value1}
-                                onChange={(newValue: any) => {
-                                    setValue1(newValue);
-                                }}
-                                renderInput={(params: any) => (
-                                    <TextField {...params} fullWidth sx={{ mb: 3 }} />
-                                )}
-                            />
-                        </LocalizationProvider>
-                    </Box>
+                <Grid item xs={12}>
+                    <CustomTable
+                        columns={column}
+                        dataSource={PublisherTable}
+                        dataSelect={dataSelect}
+                    />
                 </Grid>
             </Grid>
-        </Grid>
-        <Grid item xs={12}>
-            <CustomTable
-                columns={column}
-                dataSource={PublisherTable}
-                dataSelect={dataSelect}
-            />
-        </Grid>
-    </Grid>
-</PageContainer>
+        </PageContainer>
+    );
 };
 
 export default AccountUserManagement;

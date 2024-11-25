@@ -5,8 +5,8 @@ export interface UserInfoResponse {
     username: string;
     email: string;
     fullName: string;
-    createdAt: string; // ISO 8601 format
-    updatedAt: string; // ISO 8601 format
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface UserInfoRequest {

@@ -13,7 +13,6 @@ const SCROLLABLE_TAB = [
   { value: 'personal', icon: <Person />, label: 'Thông tin cá nhân' },
   { value: 'account', icon: <AccountCircle />, label: 'Thông tin tài khoản' },
   { value: 'banking', icon: <AccountBalanceIcon />, label: 'Thông tin ngân hàng' }, // Sửa chính tả 'bankking' thành 'banking'
-  { value: 'email', icon: <Email />, label: 'Tùy chọn nhận Email' },
   { value: 'changepassword', icon: <IconLock />, label: 'Đổi mật khẩu' },
 ];
 

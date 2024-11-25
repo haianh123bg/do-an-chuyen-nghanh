@@ -10,6 +10,7 @@ import {
     MenuItem,
     Select,
     TextField,
+    Typography,
 } from '@mui/material';
 import BannerPage from 'src/layouts/full/shared/breadcrumb/BannerPage';
 import TopCard from 'src/components/widgets/cards/TopCard';
@@ -17,7 +18,7 @@ import CustomTable from 'src/components/admin/ComponentTables/CustomTable';
 import { useEffect, useMemo, useState } from 'react';
 import PublisherTable from './datatable/Publisher';
 import { IconEdit, IconSearch, IconTrash } from '@tabler/icons-react';
-import { DatePicker, LocalizationProvider } from '@mui/lab';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AddCircle, FilterList } from '@mui/icons-material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { Dayjs } from 'dayjs';
@@ -332,24 +333,26 @@ const CategoryManagement = () => {
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                                     <DatePicker
+                                        label="Ngày bắt đầu"
                                         value={value}
                                         onChange={(newValue: any) => {
                                             setValue(newValue);
                                         }}
                                         renderInput={(params: any) => (
-                                            <TextField {...params} fullWidth sx={{ mb: 3 }} />
+                                            <TextField {...params} fullWidth />
                                         )}
                                     />
                                 </LocalizationProvider>
                                 tới
                                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                                     <DatePicker
+                                        label="Ngày kết thúc"
                                         value={value1}
                                         onChange={(newValue: any) => {
                                             setValue1(newValue);
                                         }}
                                         renderInput={(params: any) => (
-                                            <TextField {...params} fullWidth sx={{ mb: 3 }} />
+                                            <TextField {...params} fullWidth />
                                         )}
                                     />
                                 </LocalizationProvider>

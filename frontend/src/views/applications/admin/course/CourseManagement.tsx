@@ -17,10 +17,10 @@ import CustomTable from 'src/components/admin/ComponentTables/CustomTable';
 import { useEffect, useMemo, useState } from 'react';
 import PublisherTable from './datatable/Publisher';
 import { IconEdit, IconSearch, IconTrash } from '@tabler/icons-react';
-import { DatePicker, LocalizationProvider } from '@mui/lab';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AddCircle, FilterList } from '@mui/icons-material';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { Dayjs } from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 interface Column {
     title: string;
@@ -213,10 +213,10 @@ const CourseManagement = () => {
 
     return (
         <PageContainer title="eCommerce Dashboard" description="this is eCommerce Dashboard page">
-            <BannerPage title="Nhân viên" items={BCrumb} />
+            <BannerPage title="Khóa học" items={BCrumb} />
             <Grid container spacing={0}>
                 <TopCard dataSource={dataSource} totalColumn={4} />
-                <Grid item xs={12} mt={3}>
+                <Grid item xs={12} mt={3} mb={1}>
                     <Grid container sx={{ alignItems: 'center' }} spacing={2}>
                         <Grid
                             item
@@ -341,27 +341,21 @@ const CourseManagement = () => {
                         </Grid>
                         <Grid item xs={4}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DatePicker
+                                        label="Ngày bắt đầu"
                                         value={value}
-                                        onChange={(newValue: any) => {
-                                            setValue(newValue);
-                                        }}
-                                        renderInput={(params: any) => (
-                                            <TextField {...params} fullWidth sx={{ mb: 3 }} />
-                                        )}
+                                        onChange={(newValue: any) => setValue(newValue)}
+                                        renderInput={(params: any) => <TextField {...params} />}
                                     />
                                 </LocalizationProvider>
                                 tới
-                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DatePicker
-                                        value={value1}
-                                        onChange={(newValue: any) => {
-                                            setValue1(newValue);
-                                        }}
-                                        renderInput={(params: any) => (
-                                            <TextField {...params} fullWidth sx={{ mb: 3 }} />
-                                        )}
+                                        label="Ngày kết thúc"
+                                        value={value}
+                                        onChange={(newValue: any) => setValue(newValue)}
+                                        renderInput={(params: any) => <TextField {...params} />}
                                     />
                                 </LocalizationProvider>
                             </Box>

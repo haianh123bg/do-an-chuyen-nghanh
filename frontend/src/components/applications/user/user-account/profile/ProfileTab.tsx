@@ -35,7 +35,7 @@ const ProfileTab = () => {
     {
       label: 'Thông tin cá nhân',
       icon: <IconUser size="20" />,
-      to: '/user_profile',
+      to: '/user-profile',
     },
     {
       label: 'Lịch sử giao dịch',
