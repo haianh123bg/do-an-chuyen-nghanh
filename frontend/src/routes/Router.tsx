@@ -109,8 +109,7 @@ const Router = [
             { path: '/apps/notes', element: <Notes /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
             { path: '/feature/coming-soon', element: <FeatureComingSoon /> },
-            { path: '/admin/ticket', element: <TicketAdmin /> },
-            { path: '/user/ticket', element: <TicketUser /> },
+           { path: '/user/ticket', element: <TicketUser /> },
             { path: '/learning/course/:id', element: <LearningCourse /> },
            
         ],
@@ -123,7 +122,8 @@ const Router = [
             { path: '/admin', element: <Navigate to="/admin/dashboards/modern" /> },
             { path: '/admin/course', element: <AdminCourse /> },
             
-           
+            { path: '/admin/ticket', element: <TicketAdmin /> },
+            
             { path: '/admin/category', element: <AdminCategory /> },
             { path: '/admin/account/user', element: <AdminAccountUser /> },
             { path: '/admin/account/teacher', element: <AdminAccountTeacher /> },
@@ -145,13 +145,13 @@ const Router = [
         children: [
             { path: '/auth/404', element: <Error /> },
             { path: '/auth/login', element: <Login /> },
-            { path: '/auth/login2', element: <Login2 /> },
+           
             { path: '/auth/register', element: <Register /> },
-            { path: '/auth/register2', element: <Register2 /> },
+           
             { path: '/auth/forgot-password', element: <ForgotPassword /> },
-            { path: '/auth/forgot-password2', element: <ForgotPassword2 /> },
+           
             { path: '/auth/two-steps', element: <TwoSteps /> },
-            { path: '/auth/two-steps2', element: <TwoSteps2 /> },
+            
             { path: '/auth/maintenance', element: <Maintenance /> },
             { path: '/landingpage', element: <Landingpage /> },
             { path: '/home', element: <Home /> },
