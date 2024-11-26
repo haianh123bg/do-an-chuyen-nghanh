@@ -16,6 +16,7 @@ import {
   // Avatar,
   Button,
   // Stack
+  Rating,
 } from '@mui/material';
 import {
   filterProducts,
@@ -38,6 +39,7 @@ import {
 } from '@tabler/icons-react';
 import { ProductFiterType } from 'src/types/apps/eCommerce';
 import { IconAdjustmentsCode } from '@tabler/icons-react';
+import { sortByRating } from 'src/store/apps/eCommerce/ECommerceSlice';
 
 const ProductFilter = () => {
   const dispatch = useDispatch();
@@ -101,12 +103,6 @@ const ProductFilter = () => {
       devider: true,
     },
   ];
-  const filterbySort = [
-    { id: 1, value: 'All', label: 'All', icon: IconAd2 },
-    { id: 2, value: 'elementary', label: 'Cơ cấp', icon: IconSortAscending2 },
-    { id: 3, value: 'intermediate', label: 'Trung cấp', icon: IconSortDescending2 },
-    { id: 4, value: 'Expert', label: 'Chuyên gia', icon: IconAd2 },
-  ];
   const filterbyPrice = [
     {
       id: 0,
@@ -115,36 +111,38 @@ const ProductFilter = () => {
     },
     {
       id: 1,
-      label: '0-50',
-      value: '0-50',
+      label: `${Number(50000).toLocaleString('vi-VN')} đ - ${Number(500000).toLocaleString('vi-VN')} đ`,
+      value: '50000-500000',
+    },
+    {
+      id: 2,
+      label: `${Number(500000).toLocaleString('vi-VN')} đ - ${Number(1000000).toLocaleString('vi-VN')} đ`,
+      value: '500000-1000000',
     },
     {
       id: 3,
-      label: '50-100',
-      value: '50-100',
-    },
-    {
-      id: 4,
-      label: '100-200',
-      value: '100-200',
-    },
-    {
-      id: 5,
-      label: 'Trên 200',
-      value: '200-99999',
+      label: `Trên ${Number(1000000).toLocaleString('vi-VN')} đ`,
+      value: '1000000-999999',
     },
   ];
+  // const filterbyRating = [
+  //   { value: 1, label: '1 sao' },
+  //   { value: 2, label: '2 sao' },
+  //   { value: 3, label: '3 sao' },
+  //   { value: 4, label: '4 sao' },
+  //   { value: 5, label: '5 sao' },
+  // ];
 
-  const handlerGenderFilter = (value: React.ChangeEvent<HTMLInputElement>) => {
-    if (value.target.checked) {
-      dispatch(sortByGender({ gender: value.target.value }));
-    }
-  };
   const handlerPriceFilter = (value: React.ChangeEvent<HTMLInputElement>) => {
     if (value.target.checked) {
       dispatch(sortByPrice({ price: value.target.value }));
     }
   };
+  // const handlerRatingFilter = (value: number) => {
+  //   dispatch(sortByRating({ rating: value }));
+  // };
+
+
 
   return (
     <>
@@ -178,57 +176,37 @@ const ProductFilter = () => {
           );
         })}
         {/* ------------------------------------------- */}
-        {/* Sort by */}
+        {/* Rating filter */}
         {/* ------------------------------------------- */}
-        <Typography variant="subtitle2" fontWeight={600} px={3} mt={3} pb={2}>
-          Cấp độ
+       
+        {/* Rating filter */}
+        {/* <Typography variant="h6" px={3} mt={3} pb={2}>
+          Đánh giá sao
         </Typography>
-        {filterbySort.map((filter) => {
-          return (
-            <ListItemButton
-              sx={{ mb: 1, mx: 3, borderRadius: br }}
-              selected={checkactive === `${filter.value}`}
-              onClick={() => dispatch(sortByProducts(`${filter.value}`))}
-              key={filter.id + filter.label + filter.value}
-            >
-              <ListItemIcon sx={{ minWidth: '30px' }}>
-                <filter.icon stroke="1.5" size={19} />
-              </ListItemIcon>
-              <ListItemText>{filter.label}</ListItemText>
-            </ListItemButton>
-          );
-        })}
-        <Divider></Divider>
-        {/* ------------------------------------------- */}
-        {/* Filter By Gender */}
-        {/* ------------------------------------------- */}
-        {/* <Box p={3}>
-          <Typography variant="subtitle2" fontWeight={600}>
-            By Gender
-          </Typography>
-          <br />
+        <Box p={3} pt={0}>
           <FormGroup>
-            {filterbyGender.map((gen) => (
+            {filterbyRating.map((rating) => (
               <FormControlLabel
-                key={gen}
+                key={rating.l}
                 control={
                   <Radio
-                    value={gen}
-                    checked={active.gender === gen}
-                    onChange={handlerGenderFilter}
+                    value={rating.value.toString()} // Chuyển rating.value thành string
+                    checked={active.rating === rating.value.toString()} // So sánh với active.rating dưới dạng string
+                    onChange={() => handlerRatingFilter(rating.value)}
                   />
                 }
-                label={gen}
+                label={rating.label}
               />
             ))}
           </FormGroup>
-        </Box> */}
-        <Divider></Divider>
+        </Box>
+        <Divider /> */}
+
         {/* ------------------------------------------- */}
         {/* Filter By Pricing */}
         {/* ------------------------------------------- */}
         <Typography variant="h6" px={3} mt={3} pb={2}>
-          Gía khóa học
+          Giá khóa học
         </Typography>
         <Box p={3} pt={0}>
           <FormGroup>
@@ -248,48 +226,12 @@ const ProductFilter = () => {
           </FormGroup>
         </Box>
         <Divider></Divider>
-        {/* <Typography variant="h6" px={3} mt={3} pb={2}>
-          By Colors
-        </Typography> */}
-        {/* ------------------------------------------- */}
-        {/* Filter By colors */}
-        {/* ------------------------------------------- */}
-        {/* <Box p={3} pt={0}>
-          <Stack direction={'row'} flexWrap="wrap" gap={1}>
-            {filterbyColors.map((curColor) => {
-              if (curColor !== 'All') {
-                return (
-                  <Avatar
-                    sx={{
-                      backgroundColor: curColor,
-                      width: 24,
-                      height: 24,
-                      cursor: 'pointer',
-                    }}
-                    aria-label={curColor}
-                    key={curColor}
-                    onClick={
-                      active.color === curColor
-                        ? () => dispatch(sortByColor({ color: 'All' }))
-                        : () => dispatch(sortByColor({ color: curColor }))
-                    }
-                  >
-                    {active.color === curColor ? <IconCheck size="13" /> : ''}
-                  </Avatar>
-                );
-              } else {
-                return <Box key={curColor} sx={{ display: 'none' }}></Box>;
-              }
-            })}
-          </Stack>
-        </Box> */}
-        <Divider></Divider>
         {/* ------------------------------------------- */}
         {/* Reset */}
         {/* ------------------------------------------- */}
         <Box p={3}>
           <Button variant="contained" onClick={() => dispatch(filterReset())} fullWidth>
-            Reset Filters
+            Xóa lọc
           </Button>
         </Box>
       </List>

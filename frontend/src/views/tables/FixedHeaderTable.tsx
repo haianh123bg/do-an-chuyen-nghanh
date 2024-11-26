@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 
 import img1 from 'src/assets/images/products/s1.jpg';
 import img2 from 'src/assets/images/products/s2.jpg';

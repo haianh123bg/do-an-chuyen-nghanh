@@ -30,7 +30,7 @@ import { visuallyHidden } from '@mui/utils';
 import CustomCheckbox from 'src/components/forms/theme-elements/CustomCheckbox';
 import CustomSwitch from 'src/components/forms/theme-elements/CustomSwitch';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ParentCard from 'src/components/shared/ParentCard';
 import { IconTrash, IconFilter } from '@tabler/icons-react';
 import { EnhancedTableData, EnTableType } from 'src/components/tables/tableData';

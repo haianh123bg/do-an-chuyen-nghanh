@@ -18,7 +18,7 @@ import {
   Stack,
 } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ParentCard from 'src/components/shared/ParentCard';
 import BlankCard from 'src/components/shared/BlankCard';
 

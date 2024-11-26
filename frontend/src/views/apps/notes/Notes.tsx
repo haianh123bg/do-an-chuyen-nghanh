@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, useMediaQuery, Theme } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import NoteSidebar from 'src/components/apps/notes/NoteSidebar';
 import NoteContent from 'src/components/apps/notes/NoteContent';
 import AppCard from 'src/components/shared/AppCard';

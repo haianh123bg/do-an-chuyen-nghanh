@@ -5,7 +5,7 @@ import { Grid } from '@mui/material';
 import ParentCard from 'src/components/shared/ParentCard';
 import ChildCard from 'src/components/shared/ChildCard';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import CustomExSwitch from 'src/components/forms/form-elements/switch/Custom';
 import DefaultSwitch from 'src/components/forms/form-elements/switch/Default';
 import DefaultLabelSwitch from 'src/components/forms/form-elements/switch/DefaultLabel';

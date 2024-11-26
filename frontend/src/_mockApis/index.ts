@@ -4,7 +4,7 @@ import './contacts/ContactsData';
 import './chat/Chatdata';
 import './notes/NotesData';
 import './ticket/TicketData';
-import './eCommerce/ProductsData';
+import '../components/apps/ecommerce/productGrid/ProductsData';
 import './email/EmailData';
 import './userprofile/PostData';
 import './userprofile/UsersData';

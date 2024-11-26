@@ -3,7 +3,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ProductList from 'src/components/apps/ecommerce/productGrid/ProductList';
 import ProductSidebar from 'src/components/apps/ecommerce/productGrid/ProductSidebar';
 import AppCard from 'src/components/shared/AppCard';
@@ -17,11 +17,11 @@ const BCrumb = [
     title: 'Khóa học',
   },
 ];
-const HomePage = () => {
+const ListCourse = () => {
   const [isMobileSidebarOpen, setMobileSidebarOpen] = React.useState(false);
 
   return (
-    <PageContainer title="Shop List" description="this is Shop List page">
+    <PageContainer title="Danh sách khóa học" description="Đây là danh sách khóa học">
       {/* breadcrumb */}
       <Breadcrumb title="Danh sách khóa học" items={BCrumb} />
       <AppCard>
@@ -43,4 +43,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ListCourse;

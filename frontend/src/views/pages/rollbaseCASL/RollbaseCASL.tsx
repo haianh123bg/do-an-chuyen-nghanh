@@ -4,7 +4,7 @@ import React from 'react';
 import { defineAbility } from '@casl/ability';
 import { Can } from '@casl/react';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import { Box, Button, List, ListItem, Stack } from '@mui/material';
 import ParentCard from 'src/components/shared/ParentCard';
 

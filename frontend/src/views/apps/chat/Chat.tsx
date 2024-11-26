@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Divider, Box } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ChatSidebar from 'src/components/apps/chats/ChatSidebar';
 import ChatContent from 'src/components/apps/chats/ChatContent';
 import ChatMsgSent from 'src/components/apps/chats/ChatMsgSent';

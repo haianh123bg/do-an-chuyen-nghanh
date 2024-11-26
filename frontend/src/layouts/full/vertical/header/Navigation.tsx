@@ -96,7 +96,7 @@ const AppDD = () => {
                 color="inherit"
                 sx={{ color: (theme) => theme.palette.text.secondary }}
                 variant="text"
-                to="/homepage"
+                to="/listcourse"
                 component={Link}
             >
                 Khóa học

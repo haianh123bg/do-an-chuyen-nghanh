@@ -2,7 +2,7 @@
 // @ts-ignore
 import React from 'react';
 import { Box, Grid } from '@mui/material';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 
 import TopCards from 'src/components/dashboards/modern/TopCards';
 import Social from 'src/components/dashboards/modern/Social';

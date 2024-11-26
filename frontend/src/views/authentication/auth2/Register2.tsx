@@ -3,7 +3,7 @@
 import React from 'react';
 import { Grid, Box, Card, Typography, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 
 import AuthRegister from '../authForms/AuthRegister';

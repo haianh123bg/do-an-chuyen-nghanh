@@ -8,7 +8,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ParentCard from 'src/components/shared/ParentCard';
 import ChildCard from 'src/components/shared/ChildCard';
 import { IconHeart, IconPhone, IconUser } from "@tabler/icons-react";

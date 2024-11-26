@@ -1,6 +1,6 @@
 import { Grid, Typography, IconButton } from '@mui/material';
 import ProductCarousel from 'src/components/apps/ecommerce/productDetail/ProductCarousel';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ProductDetail from 'src/components/apps/ecommerce/productDetail/ProductDetail';
 import ProductDesc from 'src/components/apps/ecommerce/productDetail/ProductDesc';
 import { useState } from 'react';

@@ -3,6 +3,8 @@ import { filter, map } from 'lodash';
 import { createSlice } from '@reduxjs/toolkit';
 import { AppDispatch } from 'src/store/Store';
 
+
+
 const API_URL = '/api/data/eCommerce/ProductsData';
 
 interface StateType {
@@ -32,10 +34,11 @@ const initialState = {
     color: 'All',
     gender: 'All',
     price: 'All',
-    rating: '',
+    rating: 'All',
   },
   error: '',
 };
+
 
 export const EcommerceSlice = createSlice({
   name: 'ecommerce',
@@ -46,7 +49,10 @@ export const EcommerceSlice = createSlice({
     hasError(state: StateType, action) {
       state.error = action.payload;
     },
-
+    //Get Rating
+    sortByRating(state, action) {
+      state.filters.rating = action.payload.rating;
+    },
     // GET PRODUCTS
     getProducts: (state, action) => {
       state.products = action.payload;
@@ -160,5 +166,5 @@ export const fetchProducts = () => async (dispatch: AppDispatch) => {
     dispatch(hasError(error));
   }
 };
-
+export const { sortByRating } = EcommerceSlice.actions;
 export default EcommerceSlice.reducer;

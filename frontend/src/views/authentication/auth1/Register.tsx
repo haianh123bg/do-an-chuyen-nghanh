@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Box, Typography, Stack } from '@mui/material';
 
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import img1 from 'src/assets/images/backgrounds/welcome-bg2.png';
 
 import AuthRegister from '../authForms/AuthRegister';

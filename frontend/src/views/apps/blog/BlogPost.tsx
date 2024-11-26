@@ -2,7 +2,7 @@
 // @ts-ignore
 import React from 'react';
 import BlogDetail from 'src/components/apps/blog/detail/BlogDetail';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 
 const BlogPost = () => {
   return (

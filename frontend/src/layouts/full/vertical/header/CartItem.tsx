@@ -59,15 +59,15 @@ const CartItems = () => {
           ))}
         </>
       ) : (
-        <Box textAlign="center" mb={3}>
-          <img src={emptyCart} alt="cart" width="200px" />
-          <Typography variant="h5" mb={2}>
-            Cart is Empty
-          </Typography>
-          <Button component={Link} to="/homepage" variant="contained">
-            Go back to Shopping
-          </Button>
-        </Box>
+          <Box textAlign="center" mb={3}>
+            <img src={emptyCart} alt="cart" width="200px" />
+            <Typography variant="h5" mb={2}>
+              Giỏ hàng trống
+            </Typography>
+            <Button component={Link} to="/listcourse" variant="contained">
+              Quay lại mua sắm
+            </Button>
+          </Box>
       )}
     </Box>
   );

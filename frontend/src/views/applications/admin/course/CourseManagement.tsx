@@ -1,4 +1,4 @@
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import {
     Badge,
     Box,

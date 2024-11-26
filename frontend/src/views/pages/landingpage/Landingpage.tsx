@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 
 // components
 import Banner from '../../../components/landingpage/banner/Banner';

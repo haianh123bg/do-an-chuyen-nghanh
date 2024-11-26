@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { Box } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ProductTableList from 'src/components/apps/ecommerce/ProductTableList/ProductTableList';
 
 const BCrumb = [

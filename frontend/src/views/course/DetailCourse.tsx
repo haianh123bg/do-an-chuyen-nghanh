@@ -18,7 +18,7 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import LpHeader from 'src/components/landingpage/header/Header';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Link as RouterLink } from 'react-router-dom'; // Import RouterLink from react-router-dom

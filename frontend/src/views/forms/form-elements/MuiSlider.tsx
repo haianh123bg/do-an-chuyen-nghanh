@@ -5,7 +5,7 @@ import { Grid, Box, Slider, Typography, SliderThumb, SliderValueLabelProps, Stac
 import ParentCard from 'src/components/shared/ParentCard';
 import ChildCard from 'src/components/shared/ChildCard';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import CustomRangeSlider from 'src/components/forms/theme-elements/CustomRangeSlider';
 import CustomSlider from 'src/components/forms/theme-elements/CustomSlider';
 import { IconVolume, IconVolume2 } from '@tabler/icons-react';

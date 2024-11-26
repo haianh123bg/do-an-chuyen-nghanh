@@ -2,7 +2,7 @@
 // @ts-ignore
 import React from 'react';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ProductTableList from 'src/components/apps/ecommerce/ProductTableList/ProductTableList';
 import BlankCard from 'src/components/shared/BlankCard';
 

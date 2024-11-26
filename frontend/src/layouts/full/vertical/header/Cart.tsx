@@ -98,7 +98,7 @@ const Cart = () => {
                             <Button
                                 fullWidth
                                 component={Link}
-                                to="/apps/ecommerce/eco-checkout"
+                                to="/checkout"
                                 variant="contained"
                                 color="primary"
                             >

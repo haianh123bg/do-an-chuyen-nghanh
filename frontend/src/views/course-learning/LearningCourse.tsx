@@ -1,6 +1,6 @@
 import { Grid, Typography, IconButton, Button } from '@mui/material';
 import CourseVideo from 'src/components/course-learning/CourseVideo';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import CourseContent from 'src/components/course-learning/CourseContent';
 import CourseDesc from 'src/components/course-learning/CourseDesc';
 import { useState } from 'react';

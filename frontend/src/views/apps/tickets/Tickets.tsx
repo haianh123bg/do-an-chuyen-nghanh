@@ -1,5 +1,5 @@
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import TicketListing from 'src/components/apps/tickets/TicketListing';
 import TicketFilter from 'src/components/apps/tickets/TicketFilter';
 import ChildCard from 'src/components/shared/ChildCard';

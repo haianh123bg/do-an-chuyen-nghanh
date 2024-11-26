@@ -4,6 +4,7 @@ import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import UserLayout from 'src/layouts/user/UserLayout';
+import ProductCheckout from 'src/components/apps/ecommerce/productCheckout/ProductCheckout';
 
 
 /* ***Layouts**** */
@@ -40,6 +41,7 @@ const LearningCourse = Loadable(lazy(() => import('../views/course-learning/Lear
 const FeatureComingSoon = Loadable(lazy(() => import('../views/feature-coming/FeatureComingSoon')));
 const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/EcomProductList')));
 
+
 const Checkout = Loadable(lazy(() => import('../views/apps/eCommerce/Checkout')));
 
 
@@ -57,7 +59,7 @@ const Email = Loadable(lazy(() => import('../views/apps/email/Email')));
 const AccountSetting = Loadable(
     lazy(() => import('../views/pages/account-setting/AccountSetting')),
 );
-const HomePage = Loadable(lazy(() => import('../views/apps/home/HomePage')));
+const ListCourse = Loadable(lazy(() => import('../views/apps/listcourse/listcourse1')));
 const CourseManage = Loadable(lazy(() => import('../views/course/CourseManage')));
 
 
@@ -69,15 +71,13 @@ const SearchTable = Loadable(lazy(() => import('../views/tables/SearchTable')));
 
 // authentication
 const Login = Loadable(lazy(() => import('../views/authentication/auth1/Login')));
-const Login2 = Loadable(lazy(() => import('../views/authentication/auth2/Login2')));
+
 const Register = Loadable(lazy(() => import('../views/authentication/auth1/Register')));
-const Register2 = Loadable(lazy(() => import('../views/authentication/auth2/Register2')));
+
 const ForgotPassword = Loadable(lazy(() => import('../views/authentication/auth1/ForgotPassword')));
-const ForgotPassword2 = Loadable(
-    lazy(() => import('../views/authentication/auth2/ForgotPassword2')),
-);
+
 const TwoSteps = Loadable(lazy(() => import('../views/authentication/auth1/TwoSteps')));
-const TwoSteps2 = Loadable(lazy(() => import('../views/authentication/auth2/TwoSteps2')));
+
 const Error = Loadable(lazy(() => import('../views/authentication/Error')));
 const Maintenance = Loadable(lazy(() => import('../views/authentication/Maintenance')));
 
@@ -91,13 +91,14 @@ const DetailCourse = Loadable(lazy(() => import('../views/course/DetailCourse'))
 
 const CourseCreation = Loadable(lazy(() => import('../views/course/CourseCreation')));
 
+
 const Router = [
     {
         path: '/',
         element: <UserLayout />,
         children: [
             { path: '/', element: <Navigate to="/home" /> },
-            { path: '/homepage', exact: true, element: <HomePage /> },
+            { path: '/listcourse', exact: true, element: <ListCourse /> },
             { path: '/user-profile', element: <UserProfile /> },
             { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
             { path: '/course/management', element: <CourseManage /> },
@@ -130,7 +131,7 @@ const Router = [
             { path: '/apps/tickets', element: <Tickets /> },
             { path: '/apps/ecommerce/shop', element: <Ecommerce /> },
             { path: '/apps/ecommerce/eco-product-list', element: <EcomProductList /> },
-            
+           
 
           
             { path: '/user-profile', element: <AccountSetting /> },
@@ -159,6 +160,8 @@ const Router = [
             { path: '/course/detail/:id', element: <DetailCourse /> },
             {path: '/courseCreation', element: <CourseCreation /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
+            { path: '/apps/ecommerce/eco-checkout', element: <ProductCheckout /> },
+
             
            
             
