@@ -125,7 +125,7 @@ const profile: ProfileType[] = [
     icon: icon1,
   },
   {
-    href: '/my-course',
+    href: '/mycourse',
     title: 'Khóa học của tôi',
     subtitle: 'Messages & Emails',
     icon: icon2,

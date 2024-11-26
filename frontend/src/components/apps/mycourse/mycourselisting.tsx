@@ -2,7 +2,7 @@
 // @ts-ignore
 import React, { useEffect } from 'react';
 import { Grid, Pagination } from '@mui/material';
-import BlogCard from './BlogCard';
+import BlogCard from './mycoursecard';
 import { orderBy } from 'lodash';
 import { useSelector, useDispatch } from 'src/store/Store';
 import { fetchBlogPosts } from 'src/store/apps/blog/BlogSlice';

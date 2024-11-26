@@ -77,7 +77,9 @@ const BlogCard = ({ post }: Btype) => {
                 </Stack>
                   <Stack direction="row" ml="auto" alignItems="center">
                     <IconPoint size="16" />
-                    <small>{format(new Date(createdAt), " dd 'tháng' MM 'năm' yyyy", { locale: vi })}</small>
+                    <small>
+                      {format(new Date(createdAt), "dd 'tháng' MM 'năm' yyyy", { locale: vi })}
+                    </small>
                   </Stack>
               </Stack>
             </CardContent>

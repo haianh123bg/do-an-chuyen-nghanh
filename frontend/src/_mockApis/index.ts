@@ -1,5 +1,5 @@
 import mock from './mock';
-import './blog/blogData';
+import '../components/apps/mycourse/mycoursedata';
 import './contacts/ContactsData';
 import './chat/Chatdata';
 import './notes/NotesData';

@@ -32,7 +32,7 @@ const Navigations = () => {
       {/* Khóa học của tôi */}
       <StyledButton
         component={Link}
-        to="/my-course" // Điều hướng nội bộ
+        to="/mycourse" // Điều hướng nội bộ
         color="inherit"
         variant="text"
         sx={{

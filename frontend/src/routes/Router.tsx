@@ -28,8 +28,8 @@ const AdminAccountTeacher = Loadable(
 );
 
 /* ****Apps***** */
-const Blog = Loadable(lazy(() => import('../views/apps/blog/Blog')));
-const BlogDetail = Loadable(lazy(() => import('../views/apps/blog/BlogPost')));
+const MyCourse = Loadable(lazy(() => import('../views/apps/mycourse/mycourse1')));
+const BlogDetail = Loadable(lazy(() => import('../views/apps/mycourse/mycoursepost')));
 
 const TicketAdmin = Loadable(lazy(() => import('../views/ticket-admin/TicketAdmin')));
 const TicketUser = Loadable(lazy(() => import('../views/ticket-user/TicketUser')));
@@ -103,7 +103,7 @@ const Router = [
             { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
             { path: '/course/management', element: <CourseManage /> },
             
-            { path: '/my-course', element: <Blog /> },
+            { path: '/mycourse', element: <MyCourse /> },
             { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
             
             { path: '/ticket', element: <Email /> },
