@@ -2,6 +2,8 @@
 // @ts-ignore
 import React, { useEffect } from 'react';
 import { filter, orderBy } from 'lodash';
+import Pagination from '@mui/material/Pagination';
+
 import {
   Box,
   Grid,
@@ -208,6 +210,7 @@ const ProductList = ({ onClick }: Props) => {
                 {/* Product Card */}
                 {/* ------------------------------------------- */}
               </Grid>
+              
             ))}
           </>
         ) : (
@@ -223,9 +226,13 @@ const ProductList = ({ onClick }: Props) => {
                     Thử lại
                   </Button>
                 </Box>
+             
               </Grid>
           </>
         )}
+      </Grid>
+      <Grid item lg={12} sm={12} mt={3}>
+        <Pagination count={10} color="primary" sx={{ display: 'flex', justifyContent: 'center' }} />
       </Grid>
     </Box>
   );
