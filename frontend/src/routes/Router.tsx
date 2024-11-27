@@ -13,7 +13,7 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 
 /* ****Pages***** */
 const ModernDash = Loadable(lazy(() => import('../views/dashboard/Modern')));
-const EcommerceDash = Loadable(lazy(() => import('../views/dashboard/Ecommerce')));
+
 const AdminCourse = Loadable(
     lazy(() => import('../views/applications/admin/course/CourseManagement')),
 );
@@ -35,11 +35,10 @@ const TicketAdmin = Loadable(lazy(() => import('../views/ticket-admin/TicketAdmi
 const TicketUser = Loadable(lazy(() => import('../views/ticket-user/TicketUser')));
 
 const Notes = Loadable(lazy(() => import('../views/apps/notes/Notes')));
-const Tickets = Loadable(lazy(() => import('../views/apps/tickets/Tickets')));
-const Ecommerce = Loadable(lazy(() => import('../views/apps/eCommerce/Ecommerce')));
+
 const LearningCourse = Loadable(lazy(() => import('../views/course-learning/LearningCourse')));
 const FeatureComingSoon = Loadable(lazy(() => import('../views/feature-coming/FeatureComingSoon')));
-const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/EcomProductList')));
+
 
 
 const Checkout = Loadable(lazy(() => import('../views/apps/eCommerce/Checkout')));
@@ -100,7 +99,7 @@ const Router = [
             { path: '/', element: <Navigate to="/home" /> },
             { path: '/listcourse', exact: true, element: <ListCourse /> },
             { path: '/user-profile', element: <UserProfile /> },
-            { path: '/dashboards/ecommerce', element: <EcommerceDash /> },
+            
             { path: '/course/management', element: <CourseManage /> },
             
             { path: '/mycourse', element: <MyCourse /> },
@@ -128,9 +127,8 @@ const Router = [
             { path: '/admin/category', element: <AdminCategory /> },
             { path: '/admin/account/user', element: <AdminAccountUser /> },
             { path: '/admin/account/teacher', element: <AdminAccountTeacher /> },
-            { path: '/apps/tickets', element: <Tickets /> },
-            { path: '/apps/ecommerce/shop', element: <Ecommerce /> },
-            { path: '/apps/ecommerce/eco-product-list', element: <EcomProductList /> },
+           
+           
            
 
           
