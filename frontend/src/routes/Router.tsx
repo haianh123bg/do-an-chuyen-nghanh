@@ -31,13 +31,13 @@ const AdminAccountTeacher = Loadable(
 const MyCourse = Loadable(lazy(() => import('../views/apps/mycourse/mycourse1')));
 const BlogDetail = Loadable(lazy(() => import('../views/apps/mycourse/mycoursepost')));
 
-const TicketAdmin = Loadable(lazy(() => import('../views/ticket-admin/TicketAdmin')));
-const TicketUser = Loadable(lazy(() => import('../views/ticket-user/TicketUser')));
+const TicketAdmin = Loadable(lazy(() => import('../views/applications/admin/ticket-admin/TicketAdmin')));
+const TicketUser = Loadable(lazy(() => import('../views/applications/user/ticket-user/TicketUser')));
 
 const Notes = Loadable(lazy(() => import('../views/apps/notes/Notes')));
 
-const LearningCourse = Loadable(lazy(() => import('../views/course-learning/LearningCourse')));
-const FeatureComingSoon = Loadable(lazy(() => import('../views/feature-coming/FeatureComingSoon')));
+const LearningCourse = Loadable(lazy(() => import('../views/applications/user/course-learning/LearningCourse')));
+const FeatureComingSoon = Loadable(lazy(() => import('../views/applications/user/feature-coming/FeatureComingSoon')));
 
 
 
