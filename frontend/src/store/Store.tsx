@@ -67,8 +67,6 @@ const rootReducer = combineReducers({
     deleteResourceSlice: deleteResourceSlice,
     uploadListResourceSlice: uploadListResourceSlice,
     uploadResourceSlice: uploadResourceSlice,
-
-
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
