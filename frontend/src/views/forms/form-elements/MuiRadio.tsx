@@ -5,7 +5,7 @@ import { Grid } from '@mui/material';
 import ParentCard from 'src/components/shared/ParentCard';
 import ChildCard from 'src/components/shared/ChildCard';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ColorLabelRadio from "src/components/forms/form-elements/radio/ColorLabel";
 import DefaultRadio from "src/components/forms/form-elements/radio/Default";
 import ColorsRadio from "src/components/forms/form-elements/radio/Colors";

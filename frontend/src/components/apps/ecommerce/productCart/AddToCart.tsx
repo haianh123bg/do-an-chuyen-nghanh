@@ -112,7 +112,7 @@ const AddToCart = () => {
           <Typography variant="h5" mb={2}>
             Giỏ hàng trống
           </Typography>
-          <Button component={Link} to="/apps/ecommerce/shop" variant="contained">
+          <Button component={Link} to="/listcourse" variant="contained">
             Đến danh sách khóa học
           </Button>
         </Box>

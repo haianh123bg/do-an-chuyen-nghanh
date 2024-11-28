@@ -3,7 +3,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 
 import PaymentGateways from '../../../components/dashboards/ecommerce/PaymentGateways';
 import RecentTransactions from '../../../components/dashboards/ecommerce/RecentTransactions';

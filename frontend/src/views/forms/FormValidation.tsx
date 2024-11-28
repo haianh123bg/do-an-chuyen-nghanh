@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 
 // common components
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
 import ChildCard from 'src/components/shared/ChildCard';
 import BlankCard from 'src/components/shared/BlankCard';

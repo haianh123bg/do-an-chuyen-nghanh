@@ -40,7 +40,7 @@ const ProfileTab = () => {
     {
       label: 'Lịch sử giao dịch',
       icon: <IconHistory size="20" />,
-      to: '/history-purchase'
+      to: '/checkout'
     },
   ];
   return (

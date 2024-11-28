@@ -90,7 +90,7 @@ const BannerContent = () => {
             Đăng nhập
           </StyledButton>
 
-          <StyledButton variant="outlined" href="/homepage">
+          <StyledButton variant="outlined" href="/listcourse">
             Danh sách khóa học
           </StyledButton>
         </Stack>

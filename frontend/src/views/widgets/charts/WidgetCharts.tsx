@@ -3,7 +3,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import YearlyBreakup from '../../../components/dashboards/modern/YearlyBreakup';
 import Projects from '../../../components/dashboards/modern/Projects';
 import Customers from '../../../components/dashboards/modern/Customers';

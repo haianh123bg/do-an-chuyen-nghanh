@@ -2,6 +2,8 @@
 // @ts-ignore
 import React, { useEffect } from 'react';
 import { filter, orderBy } from 'lodash';
+import Pagination from '@mui/material/Pagination';
+
 import {
   Box,
   Grid,
@@ -41,6 +43,7 @@ const ProductList = ({ onClick }: Props) => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+ 
 
   const getVisibleProduct = (
     products: ProductType[],
@@ -68,16 +71,6 @@ const ProductList = ({ onClick }: Props) => {
       products = products.filter((_product) => _product.category.includes(filters.category));
     }
 
-    //FILTER PRODUCTS BY GENDER
-    if (filters.gender !== 'All') {
-      products = filter(products, (_product) => _product.gender === filters.gender);
-    }
-
-    //FILTER PRODUCTS BY GENDER
-    if (filters.color !== 'All') {
-      products = products.filter((_product) => _product.colors.includes(filters.color));
-    }
-
     //FILTER PRODUCTS BY Search
     if (search !== '') {
       products = products.filter((_product) =>
@@ -92,7 +85,7 @@ const ProductList = ({ onClick }: Props) => {
         filters.price ? _product.price >= minMax[0] && _product.price <= minMax[1] : true,
       );
     }
-
+   
     return products;
   };
 
@@ -136,13 +129,7 @@ const ProductList = ({ onClick }: Props) => {
       {/* Header Detail page */}
       {/* ------------------------------------------- */}
       <Stack direction="row" justifyContent="space-between" pb={3}>
-        {/* {lgUp ? (
-          <Typography variant="h5">Products</Typography>
-        ) : (
-          <Fab onClick={onClick} color="primary" size="small">
-            <IconMenu2 width="16" />
-          </Fab>
-        )} */}
+    
         <Box>
           <ProductSearch />
         </Box>
@@ -192,25 +179,28 @@ const ProductList = ({ onClick }: Props) => {
                         <IconBasket size="16" />
                       </Fab>
                     </Tooltip>
-                    <CardContent sx={{ p: 3, pt: 2 }}>
+                    <CardContent sx={{ p: 1, pt: 2 }}>
                       <Typography variant="h6">{product.title}</Typography>
+                        
                       <Stack
-                        direction="row"
-                        alignItems="center"
+                        direction="column"
                         justifyContent="space-between"
+                        spacing={1}
+                        alignItems="flex-start"
                         mt={1}
                       >
-                        <Stack direction="row" alignItems="center">
-                          <Typography variant="h6">${product.price}</Typography>
+                        <Rating name="read-only" size="small" value={product.rating} readOnly />
+                          <Stack direction="row" spacing={1}>
+                            <Typography variant="h6"> đ{product.price.toLocaleString('vi-VN')}</Typography>
                           <Typography
                             color="textSecondary"
                             ml={1}
                             sx={{ textDecoration: 'line-through' }}
                           >
-                            ${product.salesPrice}
+                              đ{product.salesPrice.toLocaleString('vi-VN')}
                           </Typography>
                         </Stack>
-                        <Rating name="read-only" size="small" value={product.rating} readOnly />
+                        
                       </Stack>
                     </CardContent>
                   </BlankCard>
@@ -220,24 +210,29 @@ const ProductList = ({ onClick }: Props) => {
                 {/* Product Card */}
                 {/* ------------------------------------------- */}
               </Grid>
+              
             ))}
           </>
         ) : (
           <>
-            <Grid item xs={12} lg={12} md={12} sm={12}>
-              <Box textAlign="center" mt={6}>
-                <img src={emptyCart} alt="cart" width="200px" />
-                <Typography variant="h2">There is no Product</Typography>
-                <Typography variant="h6" mb={3}>
-                  The Product you are searching is no longer available.
-                </Typography>
-                <Button variant="contained" onClick={() => dispatch(filterReset())}>
-                  Try Again
-                </Button>
-              </Box>
-            </Grid>
+              <Grid item xs={12} lg={12} md={12} sm={12}>
+                <Box textAlign="center" mt={6}>
+                  <img src={emptyCart} alt="cart" width="200px" />
+                  <Typography variant="h2">Không có sản phẩm</Typography>
+                  <Typography variant="h6" mb={3}>
+                    Sản phẩm bạn đang tìm kiếm hiện không còn khả dụng.
+                  </Typography>
+                  <Button variant="contained" onClick={() => dispatch(filterReset())}>
+                    Thử lại
+                  </Button>
+                </Box>
+             
+              </Grid>
           </>
         )}
+      </Grid>
+      <Grid item lg={12} sm={12} mt={3}>
+        <Pagination count={10} color="primary" sx={{ display: 'flex', justifyContent: 'center' }} />
       </Grid>
     </Box>
   );

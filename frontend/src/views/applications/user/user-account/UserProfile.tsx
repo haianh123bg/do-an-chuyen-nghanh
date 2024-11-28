@@ -7,7 +7,7 @@ import PersonalInformation from 'src/components/applications/user/user-account/p
 import ProfileBanner from 'src/components/applications/user/user-account/profile/ProfileBanner';
 import ReceiveEmail from 'src/components/applications/user/user-account/profile/ReceiveEmail';
 import Sidebar from 'src/components/applications/user/user-account/profile/Sidebar';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 
 const UserProfile = () => {
     // Local state to track selected section

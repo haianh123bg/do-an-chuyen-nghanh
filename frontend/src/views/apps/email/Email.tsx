@@ -7,7 +7,7 @@ import EmailLists from 'src/components/apps/email/EmailList';
 import EmailFilter from 'src/components/apps/email/EmailFilter';
 import EmailSearch from 'src/components/apps/email/EmailSearch';
 import EmailContent from 'src/components/apps/email/EmailContent';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import AppCard from 'src/components/shared/AppCard';
 import emailIcon from 'src/assets/images/breadcrumb/emailSv.png';
 

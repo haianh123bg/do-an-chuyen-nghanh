@@ -125,7 +125,7 @@ const profile: ProfileType[] = [
     icon: icon1,
   },
   {
-    href: '/my-course',
+    href: '/mycourse',
     title: 'Khóa học của tôi',
     subtitle: 'Messages & Emails',
     icon: icon2,
@@ -167,15 +167,15 @@ interface appsLinkType {
 
 const appsLink:appsLinkType[] = [
   {
-    href: '/apps/chats',
+    href: '/user/ticket',
     title: 'Chat Application',
     subtext: 'New messages arrived',
     avatar: ddIcon1
   },
   {
-    href: '/apps/ecommerce/shop',
+    href: '/checkout',
     title: 'eCommerce App',
-    subtext: 'New stock available',
+    subtext: 'Hàng không có sẵn',
     avatar: ddIcon2
   },
   {

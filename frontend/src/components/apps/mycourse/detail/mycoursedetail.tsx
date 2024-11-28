@@ -21,7 +21,7 @@ import {
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
 import { IconEye, IconMessage2, IconPoint, IconQuote } from '@tabler/icons-react';
 import { format } from 'date-fns';
-import BlogComment from './BlogComment';
+import BlogComment from './mycoursecomment';
 import { uniqueId } from 'lodash';
 import { addComment } from 'src/store/apps/blog/BlogSlice';
 import BlankCard from '../../../shared/BlankCard';
@@ -42,11 +42,11 @@ const BlogDetail = () => {
   const post: BlogPostType | any = useSelector((state: AppState) => state.blogReducer.selectedPost);
   const BCrumb = [
     {
-      to: '/',
+      to: '/home',
       title: 'Trang chủ',
     },
     {
-      to: '/apps/blog/posts',
+      to: '/listcourse',
       title: 'Khóa học',
     },
     {

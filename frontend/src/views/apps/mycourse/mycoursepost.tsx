@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import React from 'react';
-import BlogDetail from 'src/components/apps/blog/detail/BlogDetail';
-import PageContainer from 'src/components/container/PageContainer';
+import BlogDetail from 'src/components/apps/mycourse/detail/mycoursedetail';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 
 const BlogPost = () => {
   return (

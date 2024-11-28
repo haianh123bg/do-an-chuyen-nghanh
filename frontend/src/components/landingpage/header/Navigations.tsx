@@ -1,13 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import React, { useState } from 'react';
-import { Box, Button, Divider, Grid, styled, Paper, Stack } from '@mui/material';
-import { IconChevronDown } from '@tabler/icons-react';
+import React from 'react';
+import { Box, Button, styled, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
-import AppLinks from 'src/layouts/full/vertical/header/AppLinks';
-import QuickLinks from 'src/layouts/full/vertical/header/QuickLinks';
-import Notifications from 'src/layouts/full/vertical/header/Notification';
 import Cart from 'src/layouts/full/vertical/header/Cart';
+import Notifications from 'src/layouts/full/vertical/header/Notification';
 import Profile from 'src/layouts/full/vertical/header/Profile';
 
 const Navigations = () => {
@@ -17,61 +12,27 @@ const Navigations = () => {
     textTransform: 'none',
   }));
 
-  const [open2, setOpen2] = useState(false);
-
-  const handleOpen2 = () => setOpen2(true);
-  const handleClose2 = () => setOpen2(false);
-
   return (
     <>
       {/* Phân loại */}
       <Box>
         <StyledButton
-          color="inherit"
-          variant="text"
-          onMouseEnter={handleOpen2}
-          onMouseLeave={handleClose2}
-          sx={{
-            color: open2 ? 'primary.main' : (theme) => theme.palette.text.secondary,
-          }}
-          endIcon={<IconChevronDown size="15" style={{ marginLeft: '-5px', marginTop: '2px' }} />}
+         component={Link}
+         to="/feature/coming-soon" // Điều hướng nội bộ
+         color="inherit"
+         variant="text"
+         sx={{
+           color: (theme) => theme.palette.text.secondary,
+         }}
         >
           Phân loại
         </StyledButton>
-        {open2 && (
-          <Paper
-            onMouseEnter={handleOpen2}
-            onMouseLeave={handleClose2}
-            sx={{
-              position: 'absolute',
-              left: '0',
-              right: '0',
-              top: '55px',
-              width: '850px',
-              margin: '0 auto',
-            }}
-          >
-            <Grid container>
-              <Grid item sm={8} display="flex">
-                <Box p={4} pr={0} pb={3}>
-                  <AppLinks />
-                </Box>
-                <Divider orientation="vertical" />
-              </Grid>
-              <Grid item sm={4}>
-                <Box p={4}>
-                  <QuickLinks />
-                </Box>
-              </Grid>
-            </Grid>
-          </Paper>
-        )}
       </Box>
 
       {/* Khóa học của tôi */}
       <StyledButton
         component={Link}
-        to="/my-course" // Điều hướng nội bộ
+        to="/mycourse" // Điều hướng nội bộ
         color="inherit"
         variant="text"
         sx={{
@@ -83,30 +44,26 @@ const Navigations = () => {
 
       {/* Blog */}
       <StyledButton
+        component={Link}
+        to="/feature/coming-soon" // Điều hướng nội bộ
         color="inherit"
         variant="text"
         sx={{
           color: (theme) => theme.palette.text.secondary,
         }}
-        component="a"
-        href="https://demos.adminmart.com/premium/react/modernize-react/docs/index.html"
-        target="_blank"
-        rel="noopener noreferrer"
       >
         Blog
       </StyledButton>
 
       {/* Liên hệ */}
       <StyledButton
+        component={Link}
+        to="/user/ticket" // Điều hướng nội bộ
         color="inherit"
         variant="text"
         sx={{
           color: (theme) => theme.palette.text.secondary,
         }}
-        component="a"
-        href="https://adminmart.com/support/"
-        target="_blank"
-        rel="noopener noreferrer"
       >
         Liên hệ
       </StyledButton>

@@ -1,30 +1,40 @@
 
-
 export interface UserInfoResponse {
     userId: number;
-    username: string;
-    email: string;
-    fullName: string;
-    createdAt: string;
-    updatedAt: string;
+    name: string;
+    phoneNumber: string;
+    gender: GenderEnum;
+    date: string;  
+    address: string;
+    bankName: string;
+    bankBranch: string;
+    bankCode: string;
+    accountNumber: string;
+    accountName: string;
+}
+export enum GenderEnum {
+    MALE = 'MALE',
+    FEMALE = 'FEMALE',
+    OTHER = 'OTHER',
 }
 
 export interface UserInfoRequest {
-    username?: string;
-    email?: string;
-    fullName?: string;
+    name: string;
+    gender: GenderEnum;
+    date: string; 
+    address: string;
 }
 
-export interface PasswordChangeRequest {
+export interface changePassword {
     oldPassword: string;
     newPassword: string;
     confirmPassword: string;
 }
 
-export interface AvatarUploadRequest {
+export interface changeAvatar {
     avatar: File;
 }
 
-export interface PhoneChangeRequest {
+export interface changeUserInfoP2 {
     phone: string;
 }

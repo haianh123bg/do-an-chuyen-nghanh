@@ -2,13 +2,21 @@
 // @ts-ignore
 import React from 'react';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
-import BlogListing from 'src/components/apps/blog/BlogListing';
-
-const Blog = () => {
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
+import BlogListing from 'src/components/apps/mycourse/mycourselisting';
+const BCrumb = [
+  {
+    to: '/home',
+    title: 'Trang Chủ',
+  },
+  {
+    title: 'Khóa học',
+  },
+];
+const MyCourse = () => {
   return (
     <PageContainer title="Khóa học của tôi" description="this is Blog page">
-      <Breadcrumb title="Khóa học của tôi" subtitle="" />
+      <Breadcrumb title="Khóa học của tôi" items={BCrumb} />
       {/* ------------------------------------------- */}
       {/* Blog Listing */}
       {/* ------------------------------------------- */}
@@ -17,4 +25,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default MyCourse;

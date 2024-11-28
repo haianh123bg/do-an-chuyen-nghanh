@@ -4,7 +4,7 @@ export interface PaymentRequest {
     orderId: string;
     amount: number;
     currency: string;
-    description?: string;
+    description: string;
     paymentMethod: string;
 }
 
@@ -12,7 +12,7 @@ export interface PaymentRequest {
 export interface PaymentResponse {
     transactionId: string;
     status: string;
-    paymentUrl?: string;
+    paymentUrl: string;
 }
 
 export interface SepayIpnRequest {

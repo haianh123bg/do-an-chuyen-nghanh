@@ -3,7 +3,7 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import WelcomeCard from '../../../components/dashboards/ecommerce/WelcomeCard';
 import Banner1 from '../../../components/widgets/banners/Banner1';
 import Banner2 from '../../../components/widgets/banners/Banner2';

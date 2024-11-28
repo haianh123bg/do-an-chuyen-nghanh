@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Box } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ProductCheckout from 'src/components/apps/ecommerce/productCheckout/ProductCheckout';
 import ChildCard from 'src/components/shared/ChildCard';
 import LpHeader from 'src/components/landingpage/header/Header';

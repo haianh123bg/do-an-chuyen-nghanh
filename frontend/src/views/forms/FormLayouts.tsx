@@ -12,7 +12,7 @@ import {
   FbRightIconForm,
   FbInputVariants,
 } from 'src/components/forms/form-layouts/index';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
 
 const BCrumb = [

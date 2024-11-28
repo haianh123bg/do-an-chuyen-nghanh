@@ -23,7 +23,7 @@ interface Btype {
 }
 
 const BlogCard = ({ post }: Btype) => {
-  const { coverImg, title, view, comments, author, createdAt }: any = post;
+  const { coverImg, title, view, comments, createdAt }: any = post;
 
   // Skeleton
   const [isLoading, setLoading] = React.useState(true);
@@ -56,11 +56,7 @@ const BlogCard = ({ post }: Btype) => {
               <CardMedia component="img" height="240" image={coverImg} alt={title} />
             </Typography>
             <CardContent>
-              <Stack direction="row" sx={{ marginTop: '-45px' }}>
-                <Tooltip title={author?.name} placement="top">
-                  <Avatar aria-label="recipe" src={author?.avatar}></Avatar>
-                </Tooltip>
-              </Stack>
+              
               <Box my={3}>
                 <Typography
                   gutterBottom
@@ -79,10 +75,12 @@ const BlogCard = ({ post }: Btype) => {
                 <Stack direction="row" gap={1} alignItems="center">
                   <IconMessage2 size="18" /> {comments?.length}
                 </Stack>
-                <Stack direction="row" ml="auto" alignItems="center">
-                  <IconPoint size="16" />
-                  <small>{format(new Date(createdAt), 'E, MMM d', { locale: vi })}</small>
-                </Stack>
+                  <Stack direction="row" ml="auto" alignItems="center">
+                    <IconPoint size="16" />
+                    <small>
+                      {format(new Date(createdAt), "dd 'tháng' MM 'năm' yyyy", { locale: vi })}
+                    </small>
+                  </Stack>
               </Stack>
             </CardContent>
           </>

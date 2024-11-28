@@ -4,7 +4,7 @@ import React from 'react';
 import { Grid, Box, Card, Typography } from '@mui/material';
 
 import Logo from 'src/layouts/full/shared/logo/Logo';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 
 import AuthForgotPassword from '../authForms/AuthForgotPassword';
 

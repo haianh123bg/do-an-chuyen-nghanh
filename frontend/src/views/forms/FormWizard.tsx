@@ -12,7 +12,7 @@ import {
   Alert,
   Stack
 } from '@mui/material';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
 
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';

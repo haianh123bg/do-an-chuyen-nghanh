@@ -1,7 +1,7 @@
 // import React from 'react';
 import { Grid, Box, Typography } from '@mui/material';
 
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import img1 from 'src/assets/images/backgrounds/login-bg.svg';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import AuthTwoSteps from '../authForms/AuthTwoSteps';

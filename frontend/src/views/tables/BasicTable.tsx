@@ -4,7 +4,7 @@ import React from 'react';
 import { Box, Grid } from '@mui/material';
 
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ParentCard from 'src/components/shared/ParentCard';
 import Table2 from '../../components/tables/Table2';
 import Table3 from '../../components/tables/Table3';

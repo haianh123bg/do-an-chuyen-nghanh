@@ -20,7 +20,7 @@ import Events from './EventData';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 import './Calendar.css';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
 import { IconCheck } from '@tabler/icons-react';
 import BlankCard from 'src/components/shared/BlankCard';

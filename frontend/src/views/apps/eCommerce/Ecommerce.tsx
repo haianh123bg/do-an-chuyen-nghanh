@@ -3,7 +3,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import Breadcrumb from 'src/layouts/full/shared/breadcrumb/Breadcrumb';
-import PageContainer from 'src/components/container/PageContainer';
+import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
 import ProductList from 'src/components/apps/ecommerce/productGrid/ProductList';
 import ProductSidebar from 'src/components/apps/ecommerce/productGrid/ProductSidebar';
 import AppCard from 'src/components/shared/AppCard';
