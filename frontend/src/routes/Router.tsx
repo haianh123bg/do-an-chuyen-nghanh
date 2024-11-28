@@ -78,10 +78,6 @@ const ForgotPassword = Loadable(lazy(() => import('../views/authentication/auth1
 const TwoSteps = Loadable(lazy(() => import('../views/authentication/auth1/TwoSteps')));
 
 const Error = Loadable(lazy(() => import('../views/authentication/Error')));
-const Maintenance = Loadable(lazy(() => import('../views/authentication/Maintenance')));
-
-// landingpage
-const Landingpage = Loadable(lazy(() => import('../views/pages/landingpage/Landingpage')));
 
 //Home
 const Home = Loadable(lazy(() => import('../views/pages/home/Home')));
@@ -99,12 +95,9 @@ const Router = [
             { path: '/', element: <Navigate to="/home" /> },
             { path: '/listcourse', exact: true, element: <ListCourse /> },
             { path: '/user-profile', element: <UserProfile /> },
-            
             { path: '/course/management', element: <CourseManage /> },
-            
             { path: '/mycourse', element: <MyCourse /> },
             { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
-            
             { path: '/ticket', element: <Email /> },
             { path: '/apps/notes', element: <Notes /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
@@ -127,11 +120,6 @@ const Router = [
             { path: '/admin/category', element: <AdminCategory /> },
             { path: '/admin/account/user', element: <AdminAccountUser /> },
             { path: '/admin/account/teacher', element: <AdminAccountTeacher /> },
-           
-           
-           
-
-          
             { path: '/user-profile', element: <AccountSetting /> },
            
             { path: '/tables/search', element: <SearchTable /> },
@@ -144,15 +132,9 @@ const Router = [
         children: [
             { path: '/auth/404', element: <Error /> },
             { path: '/auth/login', element: <Login /> },
-           
             { path: '/auth/register', element: <Register /> },
-           
             { path: '/auth/forgot-password', element: <ForgotPassword /> },
-           
             { path: '/auth/two-steps', element: <TwoSteps /> },
-            
-            { path: '/auth/maintenance', element: <Maintenance /> },
-            { path: '/landingpage', element: <Landingpage /> },
             { path: '/home', element: <Home /> },
             { path: '/checkout', element: <Checkout /> },
             { path: '/course/detail/:id', element: <DetailCourse /> },
