@@ -1,34 +1,39 @@
 
-
 export interface PaymentRequest {
-    orderId: string;
-    amount: number;
-    currency: string;
-    description: string;
-    paymentMethod: string;
+    course: CourseRequest[];
+    discountId?: number; 
 }
 
+export interface CourseRequest {
+    courseId: number;
+}
 
 export interface PaymentResponse {
-    transactionId: string;
-    status: string;
-    paymentUrl: string;
+    qrCode: string;
+    bankCode: string;
+    bankName: string;
+    bankIcon: string;
+    accountNumber: string;
+    accountName: string;
+    total: number;
+    description: string;
 }
 
+
 export interface SepayIpnRequest {
-    transactionId: string;
-    orderId: string;
-    status: string;
-    signature: string;
-    [key: string]: any; 
+    gateway: string;             
+    transactionDate: string;    
+    accountNumber: string;       
+    subAccount: string;          
+    code: string | null;         
+    content: string;            
+    transferType: string;        
+    description: string;         
+    transferAmount: number;     
+    referenceCode: string;       
+    accumulated: number;         
+    id: number;                  
 }
-export interface HttpRequest {
-    headers: Record<string, string>;
-    body: any;
-    query: Record<string, string | undefined>;
-    params: Record<string, string>;
-    method: string;
-    url: string;
-}
+
 
 
