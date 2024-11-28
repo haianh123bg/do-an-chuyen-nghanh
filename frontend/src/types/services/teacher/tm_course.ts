@@ -1,34 +1,53 @@
 export interface PageResponse<T> {
-    content: T[];
-    pageNo: number;
-    pageSize: number;
-    totalPages: number;
-    totalElements: number;
+    pageNo: number;           
+    pageSize: number;         
+    totalElements: number;    
+    totalPages: number;       
+    last: boolean;            
+    content: T[];             
 }
 
+
 export interface CourseResponse {
-    id: number;
-    name: string;
-    description: string;
-    createdDate: string; 
-    updatedDate: string; 
-    teacherId: number;
+    courseId: number;         
+    courseName: string;       
+    amount: number;           
+    total: number;            
+    star: number;             
+    imageUrl: string;         
+    totalBuyer: number;       
+    totalRevenue: number;     
+    active: boolean;          
 }
+
 export interface CreateCourseRequest {
-    name: string;
-    description: string;
-    teacherId: number;
+    courseName: string;          
+    shortDescription: string;    
+    detailDescription: string;   
+    categoryId?: number;         
+    categoryName?: string;       
 }
+
 export interface CreateModuleRequest {
-    name: string;
-    description: string;
-    courseId: number;
+    name: string;          
+    description: string;   
+    order?: number;        
 }
+
+export enum TypeItemEnum {
+    BLOG = 'BLOG',
+    CODING_EXERCISE = 'CODING_EXERCISE',
+    VIDEO_LECTURE = 'VIDEO_LECTURE',
+}
+
 export interface CreateItemRequest {
-    name: string;
-    content: string;
-    moduleId: number;
-    type: string; 
+    type: TypeItemEnum;  
+    title: string;       
+    description: string; 
+    order?: number;      
+    content?: string;    
+    url?: string;        
 }
+
 
 
