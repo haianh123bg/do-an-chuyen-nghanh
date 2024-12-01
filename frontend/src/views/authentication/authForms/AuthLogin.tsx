@@ -41,7 +41,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
     const loadingLogin = useSelector((state: AppState) => state.loginSlice.loading);
 
     const handleLogin = async () => {
-        const responseLogin = await dispatch(fetchLogin({ account: email, password: password }));
+        const responseLogin = await dispatch(fetchLogin({ email: email, password: password }));
         const dataLogin = responseLogin.payload as ApiResponse<LoginResponseType>;
 
         if (dataLogin.code == 200) {
@@ -61,7 +61,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
             localStorage.setItem('userId', JSON.stringify(userId));
             localStorage.setItem('roles', JSON.stringify(roles));
 
-            navigate('/');
+            navigate('/home');
         } else {
             setConfig({
                 open: true,
@@ -104,7 +104,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
                         variant="outlined"
                         fullWidth
                         type="text"
-                        onClick={(e: any) => setEmail(e.target.value)}
+                        onChange={(e: any) => setEmail(e.target.value)}
                     />
                 </Box>
                 <Box>
@@ -114,7 +114,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
                         type="password"
                         variant="outlined"
                         fullWidth
-                        onClick={(e: any) => setPassword(e.target.value)}
+                        onChange={(e: any) => setPassword(e.target.value)}
                     />
                 </Box>
                 <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>

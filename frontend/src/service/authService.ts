@@ -5,9 +5,9 @@ import { RegisterFormRequest } from 'src/types/services/auth/authentication.ts';
 const baseUrl = ApiService.BASE_URL + '/auth';
 
 const authService = {
-    login: (account: string, password: string) => {
+    login: (email: string, password: string) => {
         return axios.post(`${baseUrl}/login`, {
-            account,
+            email,
             password,
         });
     },

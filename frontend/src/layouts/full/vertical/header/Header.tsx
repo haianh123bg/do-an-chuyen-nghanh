@@ -9,9 +9,7 @@ import {
     Button,
 } from '@mui/material';
 
-import { useSelector, useDispatch } from 'src/store/Store';
-import { toggleSidebar, toggleMobileSidebar } from 'src/store/customizer/CustomizerSlice';
-import { IconMenu2 } from '@tabler/icons-react';
+import { useSelector } from 'src/store/Store';
 import Notifications from './Notification';
 import Profile from './Profile';
 import Cart from './Cart';
@@ -20,6 +18,7 @@ import { AppState } from 'src/store/Store';
 import Navigation from './Navigation';
 import MobileRightSidebar from './MobileRightSidebar';
 import ApiService from 'src/service/apiService.ts';
+import { useNavigate } from 'react-router';
 
 const Header = () => {
     const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'));
@@ -29,7 +28,6 @@ const Header = () => {
 
     // drawer
     const customizer = useSelector((state: AppState) => state.customizer);
-    const dispatch = useDispatch();
 
     const AppBarStyled = styled(AppBar)(({ theme }) => ({
         boxShadow: 'none',
@@ -44,6 +42,9 @@ const Header = () => {
         width: '100%',
         color: theme.palette.text.secondary,
     }));
+
+    // Hook
+    const navigate = useNavigate();
 
     return (
         <AppBarStyled position="sticky" color="default">
@@ -75,7 +76,11 @@ const Header = () => {
                     {isAuthenticate ? (
                         <Profile />
                     ) : (
-                        <Button variant="contained" color="primary">
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => navigate('/auth/login')}
+                        >
                             Đăng nhập
                         </Button>
                     )}

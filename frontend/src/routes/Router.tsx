@@ -129,6 +129,7 @@ const Router = [
         element: <BlankLayout />,
         children: [
             { path: '/', element: <Navigate to="/home" /> },
+            { path: '/home', element: <Home /> },
             { path: '/auth/404', element: <Error /> },
             { path: '/auth/login', element: <Login /> },
             { path: '/auth/register', element: <Register /> },

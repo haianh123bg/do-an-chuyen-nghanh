@@ -1,187 +1,172 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Alert,
-  Snackbar,
-  IconButton,
-  InputAdornment,
-  useTheme,
-  Slide,
+    Box,
+    Typography,
+    TextField,
+    Button,
+    Alert,
+    Snackbar,
+    IconButton,
+    InputAdornment,
+    useTheme,
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-
-function SlideTransition(props: any) {
-  return <Slide {...props} direction="left" />;
-}
+import { dispatch } from 'src/store/Store';
+import { fetchChangePassword } from 'src/store/user/account/changePasswordSlice';
+import { ApiResponse } from 'src/types/services/response/response';
+import { SnackbarProps } from 'src/types/components/snackbar';
 
 const ChangePassword = () => {
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmNewPassword, setConfirmNewPassword] = useState('');
-  const [showCurrentPassword, setShowCurrentPassword] = useState(false); // State để mở/tắt mật khẩu hiện tại
-  const [showPassword, setShowPassword] = useState(false); // State để mở/tắt mật khẩu mới và xác nhận
-  const [open, setOpen] = useState(false); // State để mở Snackbar
-  const [showAlert, setShowAlert] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
-  const [passwordMatchError, setPasswordMatchError] = useState(false); // State để hiển thị lỗi khớp mật khẩu
-  const [passwordLengthError, setPasswordLengthError] = useState(false); // State để hiển thị lỗi độ dài mật khẩu
-  const theme = useTheme();
+    const [currentPassword, setCurrentPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmNewPassword, setConfirmNewPassword] = useState('');
+    const [showCurrentPassword, setShowCurrentPassword] = useState(false); // State để mở/tắt mật khẩu hiện tại
+    const [showPassword, setShowPassword] = useState(false); // State để mở/tắt mật khẩu mới và xác nhận
+    const theme = useTheme();
 
-  const handleSubmit = () => {
-    if (newPassword.length < 6) {
-      setPasswordLengthError(true);
-      setShowAlert({ message: 'Mật khẩu mới phải có ít nhất 6 ký tự.', type: 'error' });
-      setOpen(true); // Mở Snackbar khi có lỗi
-      return;
-    }
+    const [config, setConfig] = useState<SnackbarProps>({
+        open: false,
+        content: '',
+        severity: 'error',
+    });
 
-    if (newPassword !== confirmNewPassword) {
-      setPasswordMatchError(true);
-      setShowAlert({ message: 'Mật khẩu mới và xác nhận mật khẩu không khớp.', type: 'error' });
-      setOpen(true); // Mở Snackbar khi có lỗi
-      return;
-    }
+    const handleSubmit = async () => {
+        const responseChangePassword = await dispatch(
+            fetchChangePassword({
+                confirmPassword: confirmNewPassword,
+                newPassword: newPassword,
+                oldPassword: currentPassword,
+            }),
+        );
 
-    setShowAlert({ message: 'Đổi mật khẩu thành công!', type: 'success' });
-    setOpen(true); // Mở Snackbar khi thành công
+        const dataChangePassword = responseChangePassword.payload as ApiResponse<void>;
+        if (dataChangePassword.code == 200) {
+            setConfig({
+                content: 'Thay đổi mật khẩu thành công',
+                open: true,
+                severity: 'success',
+            });
+        } else {
+            setConfig({
+                content: dataChangePassword.message || 'Có lỗi xảy ra',
+                open: true,
+                severity: 'error',
+            });
+        }
+    };
 
-    setTimeout(() => setShowAlert(null), 3000);
+    const handleToggleCurrentPasswordVisibility = () => {
+        setShowCurrentPassword(!showCurrentPassword); // Đổi trạng thái hiển thị mật khẩu hiện tại
+    };
 
-    setCurrentPassword('');
-    setNewPassword('');
-    setConfirmNewPassword('');
-    setPasswordMatchError(false);
-    setPasswordLengthError(false);
-  };
+    const handleTogglePasswordVisibility = () => {
+        setShowPassword(!showPassword); // Đổi trạng thái hiển thị mật khẩu mới và xác nhận
+    };
 
-  const handleToggleCurrentPasswordVisibility = () => {
-    setShowCurrentPassword(!showCurrentPassword); // Đổi trạng thái hiển thị mật khẩu hiện tại
-  };
-
-  const handleTogglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Đổi trạng thái hiển thị mật khẩu mới và xác nhận
-  };
-
-  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setConfirmNewPassword(e.target.value);
-    if (newPassword !== e.target.value) {
-      setPasswordMatchError(true);
-    } else {
-      setPasswordMatchError(false);
-    }
-  };
-
-  const handleClose = (_event: Event | React.SyntheticEvent<any, Event>, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false); // Đóng Snackbar
-  };
-
-  return (
-    <Box
-      sx={{
-        padding: 3,
-        borderRadius: 1,
-        boxShadow: 3,
-        backgroundColor: theme.palette.mode === 'dark' ? '#2A3447' : '#fff',
-        color: theme.palette.mode === 'dark' ? '#fff' : '#000',
-        margin: '0 auto',
-      }}
-    >
-      <Typography mb={4} variant="h4" fontWeight="600" gutterBottom>
-        Đổi Mật Khẩu
-      </Typography>
-      <Box sx={{ mb: 2 }}>
-        <TextField
-          label="Mật khẩu hiện tại"
-          type={showCurrentPassword ? 'text' : 'password'} // Hiển thị hoặc ẩn mật khẩu hiện tại
-          fullWidth
-          value={currentPassword}
-          onChange={(e) => setCurrentPassword(e.target.value)}
-          sx={{
-            mb: 2,
-            input: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
-            label: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={handleToggleCurrentPasswordVisibility}>
-                  {showCurrentPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <TextField
-          label="Mật khẩu mới"
-          type={showPassword ? 'text' : 'password'}
-          fullWidth
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          error={passwordLengthError} // Đặt lỗi nếu mật khẩu ngắn
-          helperText={passwordLengthError ? 'Mật khẩu mới phải có ít nhất 6 ký tự' : ''}
-          sx={{
-            mb: 2,
-            input: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
-            label: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={handleTogglePasswordVisibility}>
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <TextField
-          label="Nhập lại mật khẩu mới"
-          type={showPassword ? 'text' : 'password'}
-          fullWidth
-          value={confirmNewPassword}
-          onChange={handleConfirmPasswordChange}
-          error={passwordMatchError} // Đặt lỗi nếu mật khẩu không khớp
-          helperText={passwordMatchError ? 'Mật khẩu không khớp' : ''}
-          sx={{
-            input: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
-            label: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={handleTogglePasswordVisibility}>
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Box>
-      <Box sx={{ mb: 2, display: 'flex', justifyContent: 'flex-start' }}>
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Đổi mật khẩu
-        </Button>
-      </Box>
-
-      {/* Hiển thị Alert khi có sự thay đổi */}
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        TransitionComponent={SlideTransition}
-      >
-        <Alert onClose={handleClose} severity={showAlert?.type || 'success'} variant="filled">
-          {showAlert?.message || 'Lưu thay đổi thành công'}
-        </Alert>
-      </Snackbar>
-    </Box>
-  );
+    return (
+        <Box
+            sx={{
+                padding: 3,
+                borderRadius: 1,
+                boxShadow: 3,
+                backgroundColor: theme.palette.mode === 'dark' ? '#2A3447' : '#fff',
+                color: theme.palette.mode === 'dark' ? '#fff' : '#000',
+                margin: '0 auto',
+            }}
+        >
+            <Typography mb={4} variant="h4" fontWeight="600" gutterBottom>
+                Đổi Mật Khẩu
+            </Typography>
+            <Box sx={{ mb: 2 }}>
+                <TextField
+                    label="Mật khẩu hiện tại"
+                    type={showCurrentPassword ? 'text' : 'password'} // Hiển thị hoặc ẩn mật khẩu hiện tại
+                    fullWidth
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    sx={{
+                        mb: 2,
+                        input: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
+                        label: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
+                    }}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton onClick={handleToggleCurrentPasswordVisibility}>
+                                    {showCurrentPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+                <TextField
+                    label="Mật khẩu mới"
+                    type={showPassword ? 'text' : 'password'}
+                    fullWidth
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    sx={{
+                        mb: 2,
+                        input: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
+                        label: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
+                    }}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton onClick={handleTogglePasswordVisibility}>
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+                <TextField
+                    label="Nhập lại mật khẩu mới"
+                    type={showPassword ? 'text' : 'password'}
+                    fullWidth
+                    value={confirmNewPassword}
+                    onChange={(e: any) => setConfirmNewPassword(e.target.value)}
+                    sx={{
+                        input: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
+                        label: { color: theme.palette.mode === 'dark' ? '#fff' : '#000' },
+                    }}
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton onClick={handleTogglePasswordVisibility}>
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+            </Box>
+            <Box sx={{ mb: 2, display: 'flex', justifyContent: 'flex-start' }}>
+                <Button variant="contained" color="primary" onClick={handleSubmit}>
+                    Đổi mật khẩu
+                </Button>
+            </Box>
+            <Snackbar
+                open={config.open}
+                autoHideDuration={5000}
+                onClose={() =>
+                    setConfig({
+                        ...config,
+                        open: false,
+                    })
+                }
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            >
+                <Alert
+                    variant="filled"
+                    severity={config.severity}
+                    sx={{ width: '100%', display: 'flex', alignItems: 'center', px: 3 }}
+                >
+                    {config.content}
+                </Alert>
+            </Snackbar>
+        </Box>
+    );
 };
 
 export default ChangePassword;

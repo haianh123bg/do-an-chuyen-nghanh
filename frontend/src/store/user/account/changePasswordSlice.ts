@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import accountService from 'src/service/user/accountService';
 import { ApiResponse } from 'src/types/services/response/response';
+import { FormChangePassword } from 'src/types/services/user/account';
 
 interface ChangePasswordState {
     data: ApiResponse<void> | null;
@@ -17,20 +18,9 @@ const initialState: ChangePasswordState = {
 // Mock API để lấy dữ liệu người dùng
 export const fetchChangePassword = createAsyncThunk(
     'fetchchangePassword',
-    async (
-        {
-            oldPassword,
-            newPassword,
-            confirmPassword,
-        }: { oldPassword: string; newPassword: string; confirmPassword: string },
-        thunkAPI,
-    ) => {
+    async (request: FormChangePassword, thunkAPI) => {
         try {
-            const response = await accountService.changePassword(
-                oldPassword,
-                newPassword,
-                confirmPassword,
-            );
+            const response = await accountService.changePassword(request);
             return response.data as ApiResponse<void>;
         } catch (error: any) {
             return thunkAPI.rejectWithValue(error.response?.data || 'Something went wrong');

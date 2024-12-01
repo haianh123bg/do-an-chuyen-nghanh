@@ -5,17 +5,18 @@ import BankInformation from 'src/components/applications/user/user-account/profi
 import ChangePassword from 'src/components/applications/user/user-account/profile/ChangePassword';
 import PersonalInformation from 'src/components/applications/user/user-account/profile/PersonalInformation';
 import ProfileBanner from 'src/components/applications/user/user-account/profile/ProfileBanner';
-import ReceiveEmail from 'src/components/applications/user/user-account/profile/ReceiveEmail';
 import Sidebar from 'src/components/applications/user/user-account/profile/Sidebar';
 import PageContainer from 'src/components/apps/ecommerce/productGrid/PageContainer';
+import { setSelected } from 'src/store/RouterSlice';
+import { AppState, dispatch, useSelector } from 'src/store/Store';
 
 const UserProfile = () => {
     // Local state to track selected section
-    const [selectedSection, setSelectedSection] = useState('personal');
+    const selectedSection = useSelector((state: AppState) => state.selectItem.selecteds);
 
     // Function to handle section selection
     const handleButtonClick = (buttonName: string) => {
-        setSelectedSection(buttonName);
+        dispatch(setSelected(buttonName));
     };
 
     return (

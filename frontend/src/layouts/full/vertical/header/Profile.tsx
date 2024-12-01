@@ -1,11 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Menu, Avatar, Typography, Divider, Button, IconButton, Stack } from '@mui/material';
 import * as dropdownData from './data';
 
 import ProfileImg from 'src/assets/images/profile/user-1.jpg';
+import { AppState, dispatch, useSelector } from 'src/store/Store';
+import { fetchGetUserInfo } from 'src/store/user/account/getUserInfoSlice';
 
 const Profile = () => {
     const [anchorEl2, setAnchorEl2] = useState(null);
@@ -15,6 +17,14 @@ const Profile = () => {
     const handleClose2 = () => {
         setAnchorEl2(null);
     };
+
+    const dataUserInfo = useSelector((state: AppState) => state.getUserInfo.data);
+    const userInfo = dataUserInfo?.result;
+    useEffect(() => {
+        if (dataUserInfo?.code != 200) {
+            dispatch(fetchGetUserInfo());
+        }
+    }, []);
 
     return (
         <Box>
@@ -32,8 +42,8 @@ const Profile = () => {
                 onClick={handleClick2}
             >
                 <Avatar
-                    src={ProfileImg}
-                    alt={ProfileImg}
+                    src={userInfo.avatar ?? ProfileImg}
+                    alt={userInfo.avatar ?? ProfileImg}
                     sx={{
                         width: 35,
                         height: 35,
@@ -60,10 +70,10 @@ const Profile = () => {
             >
                 <Typography variant="h5">Thông tin tài khoản</Typography>
                 <Stack direction="row" py={3} spacing={2} alignItems="center">
-                    <Avatar src={ProfileImg} alt={ProfileImg} sx={{ width: 95, height: 95 }} />
+                    <Avatar src={userInfo.avatar ?? ProfileImg} alt={userInfo.avatar ?? ProfileImg} sx={{ width: 95, height: 95 }} />
                     <Box>
                         <Typography variant="subtitle2" color="textPrimary" fontWeight={600}>
-                            Nguyễn Ngọc Hải Anh
+                            {userInfo?.name}
                         </Typography>
                         <Typography
                             variant="subtitle2"
@@ -71,8 +81,7 @@ const Profile = () => {
                             display="flex"
                             alignItems="center"
                             gap={1}
-                        >
-                        </Typography>
+                        ></Typography>
                     </Box>
                 </Stack>
                 <Divider />
