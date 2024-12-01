@@ -1,17 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import authService from 'src/service/authService';
 import { ApiResponse } from 'src/types/services/response/response';
-import { RegisterFormRequest, LoginResponse } from 'src/types/services/auth/authentication';
+import { RegisterFormRequest } from 'src/types/services/auth/authentication';
 
 
 interface RegisterState {
-    data: ApiResponse<LoginResponse> | null;
+    data: ApiResponse<void>;
     loading: boolean;
     error: any | null;
 }
 
 const initialState: RegisterState = {
-    data: null,
+    data: {
+        code: 0,
+        message:'',
+        result: undefined,
+    },
     loading: false,
     error: null,
 };
@@ -22,8 +26,8 @@ export const fetchRegister = createAsyncThunk(
     async (request: RegisterFormRequest, thunkAPI) => {
         try {
             // Truyền email và password vào hàm register
-            const response = await authService.register(request.email, request.password);
-            return response.data as ApiResponse<LoginResponse>;
+            const response = await authService.register(request);
+            return response.data as ApiResponse<void>;
         } catch (error: any) {
             return thunkAPI.rejectWithValue(error.response?.data || 'Something went wrong');
         }

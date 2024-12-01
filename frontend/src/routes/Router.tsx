@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import UserLayout from 'src/layouts/user/UserLayout';
 import ProductCheckout from 'src/components/apps/ecommerce/productCheckout/ProductCheckout';
-
+import { ProtectedRoute } from 'src/service/guard';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -31,18 +31,23 @@ const AdminAccountTeacher = Loadable(
 const MyCourse = Loadable(lazy(() => import('../views/applications/user/mycourse/mycourse1')));
 const BlogDetail = Loadable(lazy(() => import('../views/applications/user/mycourse/mycoursepost')));
 
-const TicketAdmin = Loadable(lazy(() => import('../views/applications/admin/ticket-admin/TicketAdmin')));
-const TicketUser = Loadable(lazy(() => import('../views/applications/user/ticket-user/TicketUser')));
+const TicketAdmin = Loadable(
+    lazy(() => import('../views/applications/admin/ticket-admin/TicketAdmin')),
+);
+const TicketUser = Loadable(
+    lazy(() => import('../views/applications/user/ticket-user/TicketUser')),
+);
 
 const Notes = Loadable(lazy(() => import('../views/apps/notes/Notes')));
 
-const LearningCourse = Loadable(lazy(() => import('../views/applications/user/course-learning/LearningCourse')));
-const FeatureComingSoon = Loadable(lazy(() => import('../views/applications/user/feature-coming/FeatureComingSoon')));
-
-
+const LearningCourse = Loadable(
+    lazy(() => import('../views/applications/user/course-learning/LearningCourse')),
+);
+const FeatureComingSoon = Loadable(
+    lazy(() => import('../views/applications/user/feature-coming/FeatureComingSoon')),
+);
 
 const Checkout = Loadable(lazy(() => import('../views/apps/eCommerce/Checkout')));
-
 
 const UserProfile = Loadable(
     lazy(() => import('../views/applications/user/user-account/UserProfile')),
@@ -50,23 +55,17 @@ const UserProfile = Loadable(
 
 const Email = Loadable(lazy(() => import('../views/apps/email/Email')));
 
-
-
-
-
 //page
 const AccountSetting = Loadable(
     lazy(() => import('../views/pages/account-setting/AccountSetting')),
 );
-const ListCourse = Loadable(lazy(() => import('../views/applications/user/listcourse/listcourse1')));
+const ListCourse = Loadable(
+    lazy(() => import('../views/applications/user/listcourse/listcourse1')),
+);
 const CourseManage = Loadable(lazy(() => import('../views/course/CourseManage')));
-
-
 
 //table
 const SearchTable = Loadable(lazy(() => import('../views/tables/SearchTable')));
-
-
 
 // authentication
 const Login = Loadable(lazy(() => import('../views/authentication/auth1/Login')));
@@ -86,25 +85,25 @@ const DetailCourse = Loadable(lazy(() => import('../views/course/DetailCourse'))
 
 const CourseCreation = Loadable(lazy(() => import('../views/course/CourseCreation')));
 
-
 const Router = [
     {
         path: '/',
         element: <UserLayout />,
         children: [
-            { path: '/', element: <Navigate to="/home" /> },
-            { path: '/listcourse', exact: true, element: <ListCourse /> },
-            { path: '/user-profile', element: <UserProfile /> },
-            { path: '/course/management', element: <CourseManage /> },
-            { path: '/mycourse', element: <MyCourse /> },
-            { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
-            { path: '/ticket', element: <Email /> },
-            { path: '/apps/notes', element: <Notes /> },
+            { path: '/listcourse', exact: true, element: <ProtectedRoute element={ListCourse} /> },
+            { path: '/user-profile', element: <ProtectedRoute element={UserProfile} /> },
+            { path: '/course/management', element: <ProtectedRoute element={CourseManage} /> },
+            { path: '/mycourse', element: <ProtectedRoute element={MyCourse} /> },
+            { path: '/apps/blog/detail/:id', element: <ProtectedRoute element={BlogDetail} /> },
+            { path: '/ticket', element: <ProtectedRoute element={Email} /> },
+            { path: '/apps/notes', element: <ProtectedRoute element={Notes} /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
-            { path: '/feature/coming-soon', element: <FeatureComingSoon /> },
-           { path: '/user/ticket', element: <TicketUser /> },
-            { path: '/learning/course/:id', element: <LearningCourse /> },
-           
+            {
+                path: '/feature/coming-soon',
+                element: <ProtectedRoute element={FeatureComingSoon} />,
+            },
+            { path: '/user/ticket', element: <ProtectedRoute element={TicketUser} /> },
+            { path: '/learning/course/:id', element: <ProtectedRoute element={LearningCourse} /> },
         ],
     },
     {
@@ -114,22 +113,22 @@ const Router = [
             { path: '/admin/dashboards/modern', exact: true, element: <ModernDash /> },
             { path: '/admin', element: <Navigate to="/admin/dashboards/modern" /> },
             { path: '/admin/course', element: <AdminCourse /> },
-            
+
             { path: '/admin/ticket', element: <TicketAdmin /> },
-            
+
             { path: '/admin/category', element: <AdminCategory /> },
             { path: '/admin/account/user', element: <AdminAccountUser /> },
             { path: '/admin/account/teacher', element: <AdminAccountTeacher /> },
             { path: '/user-profile', element: <AccountSetting /> },
-           
+
             { path: '/tables/search', element: <SearchTable /> },
-            
         ],
     },
     {
         path: '/',
         element: <BlankLayout />,
         children: [
+            { path: '/', element: <Navigate to="/home" /> },
             { path: '/auth/404', element: <Error /> },
             { path: '/auth/login', element: <Login /> },
             { path: '/auth/register', element: <Register /> },
@@ -138,16 +137,11 @@ const Router = [
             { path: '/home', element: <Home /> },
             { path: '/checkout', element: <Checkout /> },
             { path: '/course/detail/:id', element: <DetailCourse /> },
-            {path: '/courseCreation', element: <CourseCreation /> },
+            { path: '/courseCreation', element: <CourseCreation /> },
             { path: '*', element: <Navigate to="/auth/404" /> },
             { path: '/apps/ecommerce/eco-checkout', element: <ProductCheckout /> },
-
-            
-           
-            
         ],
     },
-
 ];
 
 export default Router;

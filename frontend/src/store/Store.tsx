@@ -20,9 +20,8 @@ import deleteListResourceSlice from 'src/store/teacher/tResource/deleteListResou
 import deleteResourceSlice from 'src/store/teacher/tResource/deleteResourceSlice';
 import uploadListResourceSlice from 'src/store/teacher/tResource/uploadListResourceSlice';
 import uploadResourceSlice from 'src/store/teacher/tResource/uploadResourceSlice';
-
-
-
+import loginSlice from 'src/store/auth/loginSlice';
+import registerSlice from 'src/store/auth/registerSlice';
 
 import { combineReducers } from 'redux';
 import {
@@ -67,6 +66,9 @@ const rootReducer = combineReducers({
     deleteResourceSlice: deleteResourceSlice,
     uploadListResourceSlice: uploadListResourceSlice,
     uploadResourceSlice: uploadResourceSlice,
+    // Authentication
+    loginSlice: loginSlice,
+    registerSlice: registerSlice,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

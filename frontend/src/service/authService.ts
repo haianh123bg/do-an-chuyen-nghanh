@@ -1,5 +1,6 @@
 import axios from 'axios';
 import ApiService from './apiService.ts';
+import { RegisterFormRequest } from 'src/types/services/auth/authentication.ts';
 
 const baseUrl = ApiService.BASE_URL + '/auth';
 
@@ -10,11 +11,8 @@ const authService = {
             password,
         });
     },
-    register: (email: string, password: string) => {
-        return axios.post(`${baseUrl}/register`, {
-            email,
-            password,
-        });
+    register: (request: RegisterFormRequest) => {
+        return axios.post(`${baseUrl}/register`, request);
     },
     // API quên mật khẩu
     forgotPassword: (email: string) => {

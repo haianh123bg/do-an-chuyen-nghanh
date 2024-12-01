@@ -19,7 +19,6 @@ export default class ApiService {
     static isAuthenticated() {
         const token = localStorage.getItem('accessToken');
         return !!token;
-        return true;
     }
 
     static isAdmin() {
