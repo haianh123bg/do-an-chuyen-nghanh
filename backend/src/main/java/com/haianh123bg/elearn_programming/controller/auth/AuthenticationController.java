@@ -75,11 +75,11 @@ public class AuthenticationController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
     })
     @PostMapping("/register")
-    public ApiResponse<LoginResponse> register(
+    public ApiResponse<Void> register(
             @Valid @RequestBody RegisterFormRequest request
     ) {
         authenticationService.register(request);
-        return ApiResponse.<LoginResponse>builder()
+        return ApiResponse.<Void>builder()
                 .code(200)
                 .message("Đăng ký thành công")
                 .build();
