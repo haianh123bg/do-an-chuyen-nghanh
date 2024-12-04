@@ -1,5 +1,7 @@
 import axios from 'axios';
 import ApiService from '../apiService';
+import {CourseSearchParams} from 'src/types/services/user/course.ts';
+import {CourseOfUser} from 'src/types/services/user/course.ts';
 
 const baseUrl = ApiService.BASE_URL + '/courses';
 
@@ -38,45 +40,32 @@ const courseService = {
     /**
      * Lấy khóa học theo danh mục
      */
-    getCourseByCategory: (
-        categoryId: number,
-        pageNo: number = 1,
-        pageSize: number = 8,
-        sortBy: string = 'total',
-        sortDir: string = 'desc',
-        searchKey: string = '',
-        beginDate: string = '',
-        endDate: string = ''
-    ) => {
-        return axios.get(`${baseUrl}/categories/${categoryId}`, {
+    getCourseByCategory: (params: CourseSearchParams) => {
+        return axios.get(`${baseUrl}/categories/${params.categoryId}`, {
             params: {
-                page_no: pageNo,
-                page_size: pageSize,
-                sort_by: sortBy,
-                sort_dir: sortDir,
-                search_key: searchKey,
-                begin: beginDate,
-                end: endDate
-            }
+                page_no: params.pageNo,
+                page_size: params.pageSize,
+                sort_by: params.sortBy,
+                sort_dir: params.sortDir,
+                search_key: params.searchKey,
+                begin: params.beginDate,
+                end: params.endDate,
+            },
         });
     },
 
     /**
      * Lấy danh sách khóa học của người dùng
      */
-    getCourseOfUser: (
-        pageNo: number = 1,
-        pageSize: number = 8,
-        searchKey: string = ''
-    ) => {
+    getCourseOfUser: (params: CourseOfUser) => {
         return axios.get(`${baseUrl}/page-course/user`, {
             params: {
-                page_no: pageNo,
-                page_size: pageSize,
-                search_key: searchKey
-            }
+                page_no: params.pageNo,
+                page_size: params.pageSize,
+                search_key: params.searchKey,
+            },
         });
-    }
+    },
 };
 
 export default courseService;
