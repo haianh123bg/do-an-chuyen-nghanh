@@ -24,9 +24,12 @@ import registerSlice from 'src/store/auth/registerSlice';
 import changeUserInfoP1Slice from 'src/store/user/account/changeUserInfoP1Slice';
 import changeAvatarSlice from 'src/store/user/account/changeAvatarSlice';
 import changeUserInfoP2Slice from 'src/store/user/account/changeUserInfoP2Slice';
-import getUserInfo from 'src/store/user/account/getUserInfoSlice';
+import getUserInfoSlice from 'src/store/user/account/getUserInfoSlice';
 import changePasswordSlice from 'src/store/user/account/changePasswordSlice';
 import SelectItem from 'src/store/RouterSlice';
+import addCourseToCartSlice from 'src/store/user/cart/addCourseToCartSlice';
+import deleteCourseToCartSlice from 'src/store/user/cart/deleteCourseToCartSlice';
+import getCartsSlice from 'src/store/user/cart/getCartsSlice';
 import changeBankSlice from 'src/store/user/account/changeBankSlice'
 
 import { combineReducers } from 'redux';
@@ -65,7 +68,7 @@ export const store = configureStore({
         changeUserInfoP1Slice: changeUserInfoP1Slice,
         changeAvatarSlice: changeAvatarSlice,
         changeUserInfoP2Slice: changeUserInfoP2Slice,
-        getUserInfo: getUserInfo,
+        getUserInfoSlice: getUserInfoSlice,
         selectItem: SelectItem,
         changeBankSlice: changeBankSlice,
     },
@@ -100,9 +103,12 @@ const rootReducer = combineReducers({
     changeUserInfoP1Slice: changeUserInfoP1Slice,
     changeAvatarSlice: changeAvatarSlice,
     changeUserInfoP2Slice: changeUserInfoP2Slice,
-    getUserInfo: getUserInfo,
+    getUserInfoSlice: getUserInfoSlice,
     selectItem: SelectItem,
     changeBankSlice: changeBankSlice,
+    addCourseToCartSlice: addCourseToCartSlice,
+    deleteCourseToCartSlice: deleteCourseToCartSlice,
+    getCartsSlice: getCartsSlice,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
