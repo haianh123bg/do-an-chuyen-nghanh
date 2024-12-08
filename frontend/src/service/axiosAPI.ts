@@ -1,9 +1,10 @@
 import axios from 'axios';
+import ApiService from './apiService';
 
 // Tạo axios instance
 const axiosAPI = axios.create({
-    baseURL: 'https://your-api-url.com', // Đặt base URL cho API
-    timeout: 10000, // Thời gian timeout nếu request quá lâu
+    baseURL: ApiService.BASE_URL,
+    timeout: 10000,
 });
 
 // Thêm interceptor để truyền header Authorization (Bearer Token)

@@ -68,11 +68,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public LoginResponse login(LoginFormRequest request) {
-        RecaptchaV2 recaptchaV2 = recaptchaClient.verifyRecaptcha(recaptchaSecret, request.getCaptchaToken(), null);
-
-        if (!recaptchaV2.isSuccess()) {
-            throw new AppException(ErrorCode.CAPTCHA_INVALID);
-        }
+//        RecaptchaV2 recaptchaV2 = recaptchaClient.verifyRecaptcha(recaptchaSecret, request.getCaptchaToken(), null);
+//
+//        if (!recaptchaV2.isSuccess()) {
+//            throw new AppException(ErrorCode.CAPTCHA_INVALID);
+//        }
 
         User user = userRepository.findByEmail(request.getEmail()).orElseThrow(
                 () -> new AppException(ErrorCode.USER_NOT_EXISTED)
@@ -89,11 +89,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     @Override
     public void register(RegisterFormRequest request) {
-        RecaptchaV2 recaptchaV2 = recaptchaClient.verifyRecaptcha(recaptchaSecret, request.getCaptchaToken(), null);
-
-        if (!recaptchaV2.isSuccess()) {
-            throw new AppException(ErrorCode.CAPTCHA_INVALID);
-        }
+//        RecaptchaV2 recaptchaV2 = recaptchaClient.verifyRecaptcha(recaptchaSecret, request.getCaptchaToken(), null);
+//
+//        if (!recaptchaV2.isSuccess()) {
+//            throw new AppException(ErrorCode.CAPTCHA_INVALID);
+//        }
 
         User user = userRepository.findByEmail(request.getEmail()).orElse(null);
         if (user != null) {

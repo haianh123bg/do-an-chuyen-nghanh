@@ -1,5 +1,7 @@
 // import axios from 'axios';
+import { dispatch } from 'src/store/Store.tsx';
 import ApiService from './apiService.ts';
+import axiosAPI from './axiosAPI.ts';
 
 const baseUrl = ApiService.BASE_URL + '/api/notifications';
 
@@ -12,7 +14,8 @@ const notificationService = {
             // Hàm lắng nghe các sự kiện từ server
             subscribe: (callback: (data: any) => void) => {
                 eventSource.onmessage = (event) => {
-                    callback(JSON.parse(event.data));
+                    const data = JSON.parse(event.data);
+                    dispatch(addNotification(data)); 
                 };
             },
             // Hàm xử lý khi có lỗi
@@ -25,6 +28,9 @@ const notificationService = {
             }
         };
     },
+    moreNotifications: (notification_id: number) => {
+        return axiosAPI.get(``)
+    }
 };
 
 export default notificationService;

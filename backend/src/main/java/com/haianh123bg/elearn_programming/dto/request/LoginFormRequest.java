@@ -1,6 +1,7 @@
 package com.haianh123bg.elearn_programming.dto.request;
 
 import com.haianh123bg.elearn_programming.validator.ValidEmail;
+import com.haianh123bg.elearn_programming.validator.ValidPassword;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -14,6 +15,7 @@ public class LoginFormRequest {
     @ValidEmail(message = "Email sai định dạng")
     private String email;
 
+    @ValidPassword
     private String password;
 
     //@NotBlank

@@ -44,9 +44,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = AccessDeniedException.class)
     ResponseEntity<ApiResponse> handlingAccessDeniedException(AccessDeniedException exception) {
+        log.error("Access Denied: ", exception);
         ErrorCode errorCode = ErrorCode.UNAUTHORIZED;
 
-        return ResponseEntity.status(errorCode.getStatusCode())
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
                 .body(ApiResponse.builder()
                         .code(errorCode.getCode())
                         .message(errorCode.getMessage())
@@ -55,19 +56,21 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<ApiResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception){
+    public ResponseEntity<ApiResponse<?>> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         log.error("MethodArgumentNotValidException caught: ", exception);
-        Map<String, String> attributes = new HashMap<>();
-        exception.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String message = error.getDefaultMessage();
-            attributes.put(fieldName, message);
-        });
-        return ResponseEntity.badRequest().body(
-                new ApiResponse().builder()
-                        .code(ErrorCode.BAD_REQUEST.getCode())
-                        .result(attributes)
-                        .build()
-        );
+
+        // Lấy lỗi đầu tiên từ danh sách lỗi (có thể là lỗi ở tham số hoặc trong body)
+        FieldError firstError = exception.getBindingResult().getFieldErrors().stream().findFirst().orElse(null);
+
+        // Trả về thông báo lỗi nếu tồn tại lỗi, ngược lại trả về thông báo mặc định
+        String message = (firstError != null) ? firstError.getDefaultMessage() : "Invalid request";
+
+        // Tạo ApiResponse với mã lỗi và thông báo
+        ApiResponse<?> apiResponse = ApiResponse.builder()
+                .code(ErrorCode.BAD_REQUEST.getCode())
+                .message(message)
+                .build();
+
+        return ResponseEntity.badRequest().body(apiResponse);
     }
 }

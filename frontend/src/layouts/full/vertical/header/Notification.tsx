@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   IconButton,
   Box,
@@ -15,6 +15,8 @@ import * as dropdownData from './data';
 import Scrollbar from 'src/components/custom-scroll/Scrollbar';
 import { Link } from 'react-router-dom';
 import { IconBellRinging } from '@tabler/icons-react';
+import notificationService from 'src/service/notificationService';
+import ApiService from 'src/service/apiService';
 
 const Notifications = () => {
   const [anchorEl2, setAnchorEl2] = useState(null);
@@ -24,6 +26,13 @@ const Notifications = () => {
   const handleClose2 = () => {
     setAnchorEl2(null);
   };
+
+  useEffect(() =>{
+    const accessToken = ApiService.getAccessToken();
+    if (accessToken) {
+      notificationService.streamNotifications(accessToken);
+    }
+  },[])
 
   return (
     <Box>
