@@ -25,7 +25,7 @@ import java.time.format.DateTimeFormatter;
 public class MAccountController {
     private final MAccountService mAccountService;
 
-     @Operation(summary = "Lấy trang thông tin người dùng", description = "Lấy trang thông tin người dùng")
+    @Operation(summary = "Lấy trang thông tin người dùng", description = "Lấy trang thông tin người dùng")
     @ApiResponses(value = {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),

@@ -30,7 +30,13 @@ import SelectItem from 'src/store/RouterSlice';
 import addCourseToCartSlice from 'src/store/user/cart/addCourseToCartSlice';
 import deleteCourseToCartSlice from 'src/store/user/cart/deleteCourseToCartSlice';
 import getCartsSlice from 'src/store/user/cart/getCartsSlice';
-import changeBankSlice from 'src/store/user/account/changeBankSlice'
+import changeBankSlice from 'src/store/user/account/changeBankSlice';
+// admin -> dashboard
+import mOverviewSlice from 'src/store/admin/mdashboard/mOverviewSlice';
+// admin -> course
+import mOverviewCourseSlice from 'src/store/admin/mcource/mOverviewCourseSlice';
+// admin -> category
+import mOverviewCategorySlice from 'src/store/admin/mcategory/mOverviewCategorySlice';
 
 import { combineReducers } from 'redux';
 import {
@@ -71,6 +77,12 @@ export const store = configureStore({
         getUserInfoSlice: getUserInfoSlice,
         selectItem: SelectItem,
         changeBankSlice: changeBankSlice,
+        // admin -> dashboard
+        mOverviewSlice: mOverviewSlice,
+        // admin -> course
+        mOverviewCourseSlice: mOverviewCourseSlice,
+        // admin -> category
+        mOverviewCategorySlice: mOverviewCategorySlice,
     },
 });
 
@@ -109,6 +121,12 @@ const rootReducer = combineReducers({
     addCourseToCartSlice: addCourseToCartSlice,
     deleteCourseToCartSlice: deleteCourseToCartSlice,
     getCartsSlice: getCartsSlice,
+    // admin -> dashboard
+    mOverviewSlice: mOverviewSlice,
+    // admin -> course
+    mOverviewCourseSlice: mOverviewCourseSlice,
+    // admin -> category
+    mOverviewCategorySlice: mOverviewCategorySlice,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

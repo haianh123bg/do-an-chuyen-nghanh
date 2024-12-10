@@ -7,8 +7,8 @@ import java.util.List;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponse {
     private String accessToken;

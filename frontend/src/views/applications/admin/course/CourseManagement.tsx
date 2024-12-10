@@ -21,6 +21,8 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AddCircle, FilterList } from '@mui/icons-material';
 import { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { AppState, dispatch, useSelector } from 'src/store/Store';
+import { fetchMOverviewCourse } from 'src/store/admin/mcource/mOverviewCourseSlice';
 
 interface Column {
     title: string;
@@ -29,89 +31,6 @@ interface Column {
     isValids?: boolean;
 }
 
-const dataSource = [
-    {
-        bgColor: 'primary.light',
-        title: 'Tổng',
-        total: '190',
-        icons: (
-            <Box
-                textAlign="center"
-                padding={1}
-                sx={{
-                    width: 40,
-                    height: 40,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                {/* <img src={contract} width={30} /> */}
-            </Box>
-        ),
-    },
-    {
-        bgColor: 'primary.light',
-        title: 'Số lượt bán',
-        total: '190',
-        icons: (
-            <Box
-                textAlign="center"
-                padding={1}
-                sx={{
-                    width: 40,
-                    height: 40,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                {/* <img src={contractreject} width={30} /> */}
-            </Box>
-        ),
-    },
-    {
-        bgColor: 'primary.light',
-        title: 'Khóa Tiếng Việt',
-        total: '123',
-        icons: (
-            <Box
-                textAlign="center"
-                padding={1}
-                sx={{
-                    width: 40,
-                    height: 40,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                {/* <img src={contractdone} width={30} /> */}
-            </Box>
-        ),
-    },
-    {
-        bgColor: 'primary.light',
-        title: 'Khóa tiếng anh',
-        total: '23',
-        icons: (
-            <Box
-                textAlign="center"
-                padding={1}
-                sx={{
-                    width: 40,
-                    height: 40,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                {/* <img src={contractwait} width={30} /> */}
-            </Box>
-        ),
-    },
-];
-
 const CourseManagement = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [checkValue, setCheckValue] = useState<string | null>(null);
@@ -119,6 +38,127 @@ const CourseManagement = () => {
     const [dataSelect, setDataSelect] = useState<string[]>([]);
     const [value, setValue] = useState<Dayjs | null>(null);
     const [value1, setValue1] = useState<Dayjs | null>(null);
+
+    /**
+     * BEGIN USE_EFFECT
+     */
+    useEffect(() => {
+        if (dataMOverviewCourse?.code != 200) {
+            dispatch(fetchMOverviewCourse());
+        }
+    }, []);
+    /**
+     * END USE_EFFECT
+     */
+    /**
+     * BEGIN SLICE
+     */
+    const dataMOverviewCourse = useSelector((state: AppState) => state.mOverviewCourseSlice.data);
+    /**
+     * END SLICE
+     */
+
+    /**
+     * BEGIN CHILDREN
+     */
+    const mOverviewCourse = dataMOverviewCourse?.result ?? {
+        languageEnglish: 0,
+        languageVN: 0,
+        totalBuyer: 0,
+        totalCourse: 0,
+    };
+    /**
+     * END CHILDREN
+     */
+
+    /**
+     * BEGIN OTHER
+     */
+    const dataSource = [
+        {
+            bgColor: 'primary.light',
+            title: 'Tổng',
+            total: mOverviewCourse.totalCourse,
+            icons: (
+                <Box
+                    textAlign="center"
+                    padding={1}
+                    sx={{
+                        width: 40,
+                        height: 40,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    {/* <img src={contract} width={30} /> */}
+                </Box>
+            ),
+        },
+        {
+            bgColor: 'primary.light',
+            title: 'Số lượt bán',
+            total: mOverviewCourse.totalBuyer,
+            icons: (
+                <Box
+                    textAlign="center"
+                    padding={1}
+                    sx={{
+                        width: 40,
+                        height: 40,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    {/* <img src={contractreject} width={30} /> */}
+                </Box>
+            ),
+        },
+        {
+            bgColor: 'primary.light',
+            title: 'Khóa Tiếng Việt',
+            total: mOverviewCourse.languageVN,
+            icons: (
+                <Box
+                    textAlign="center"
+                    padding={1}
+                    sx={{
+                        width: 40,
+                        height: 40,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    {/* <img src={contractdone} width={30} /> */}
+                </Box>
+            ),
+        },
+        {
+            bgColor: 'primary.light',
+            title: 'Khóa tiếng anh',
+            total: mOverviewCourse.languageEnglish,
+            icons: (
+                <Box
+                    textAlign="center"
+                    padding={1}
+                    sx={{
+                        width: 40,
+                        height: 40,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    {/* <img src={contractwait} width={30} /> */}
+                </Box>
+            ),
+        },
+    ];
+    /**
+     * END OTHER
+     */
 
     const handleColumnChange = (event: any) => {
         const {
@@ -341,7 +381,7 @@ const CourseManagement = () => {
                         </Grid>
                         <Grid item xs={4}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DatePicker
                                         label="Ngày bắt đầu"
                                         value={value}

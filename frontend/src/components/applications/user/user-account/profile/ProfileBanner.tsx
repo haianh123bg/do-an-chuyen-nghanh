@@ -71,7 +71,7 @@ const ProfileBanner = () => {
     };
 
     // Slice
-    const dataUserInfo = useSelector((state: AppState) => state.getUserInfo.data);
+    const dataUserInfo = useSelector((state: AppState) => state.getUserInfoSlice.data);
     const userInfo = dataUserInfo?.result;
     useEffect(() => {
         if (dataUserInfo?.code != 200) {

@@ -21,7 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selected, onSelect }) => {
     <Tabs
       orientation="vertical"
       value={selected}
-      onChange={(event, newValue) => onSelect(newValue)} // Gọi onSelect với giá trị mới
+      onChange={(_, newValue) => onSelect(newValue)} // Gọi onSelect với giá trị mới
       variant="scrollable"
       scrollButtons="auto"
       sx={{

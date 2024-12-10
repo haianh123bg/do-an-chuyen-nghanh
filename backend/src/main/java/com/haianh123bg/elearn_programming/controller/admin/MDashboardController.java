@@ -1,8 +1,8 @@
 package com.haianh123bg.elearn_programming.controller.admin;
 
 import com.haianh123bg.elearn_programming.dto.response.ApiResponse;
-import com.haianh123bg.elearn_programming.dto.response.MOverviewCourceResponse;
-import com.haianh123bg.elearn_programming.service.MCourceService;
+import com.haianh123bg.elearn_programming.dto.response.MDashboardResponse;
+import com.haianh123bg.elearn_programming.service.MDashboardService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/m-course")
+@RequestMapping("/m-dashboard")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class MCourceController {
-    MCourceService mCourceService;
+public class MDashboardController {
+    MDashboardService mDashboardService;
 
     @GetMapping("/overview")
-    public ApiResponse<MOverviewCourceResponse> overviewCourse() {
+    public ApiResponse<MDashboardResponse> overview() {
 
-        return ApiResponse.<MOverviewCourceResponse>builder()
+        return ApiResponse.<MDashboardResponse>builder()
                 .code(200)
-                .result(mCourceService.overviewCourse())
+                .result(mDashboardService.overview())
                 .build();
     }
 }

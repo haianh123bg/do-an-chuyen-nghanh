@@ -21,14 +21,15 @@ public interface CourseRepository extends JpaRepository<Course, Integer>, JpaSpe
     List<Course> findByIds(@Param("ids") List<Integer> ids);
 
     @Query("""
-    SELECT 
-        new com.haianh123bg.elearn_programming.dto.response.MOverviewCourceResponse(
-            COUNT(c.courseId),
-            SUM(c.totalBuyer),
-            COUNT(CASE WHEN c.language = 'VN' THEN 1 END),
-            COUNT(CASE WHEN c.language = 'English' THEN 1 END)
-        )
-    FROM Course c
-""")
+        SELECT
+             new com.haianh123bg.elearn_programming.dto.response.MOverviewCourceResponse(
+                 COUNT(c.courseId),
+                 SUM(c.totalBuyer),
+                 COUNT(CASE WHEN c.language = 'VN' THEN 1 END),
+                 COUNT(CASE WHEN c.language = 'English' THEN 1 END)
+             )
+        FROM Course c
+                                  
+            """)
     MOverviewCourceResponse overview();
 }

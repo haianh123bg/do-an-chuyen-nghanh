@@ -90,8 +90,8 @@ const PersonalInformation = () => {
     };
 
     // Slice
-    const dataUserInfo = useSelector((state: AppState) => state.getUserInfo.data);
-    const loadingUserInfo = useSelector((state: AppState) => state.getUserInfo.loading);
+    const dataUserInfo = useSelector((state: AppState) => state.getUserInfoSlice.data);
+    const loadingUserInfo = useSelector((state: AppState) => state.getUserInfoSlice.loading);
     const loadingChangeUserInfoP1 = useSelector(
         (state: AppState) => state.changeUserInfoP1Slice.loading,
     );

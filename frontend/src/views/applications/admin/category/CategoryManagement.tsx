@@ -21,6 +21,8 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AddCircle, FilterList } from '@mui/icons-material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { Dayjs } from 'dayjs';
+import { AppState, dispatch, useSelector } from 'src/store/Store';
+import { fetchMOverviewCategory } from 'src/store/admin/mcategory/mOverviewCategorySlice';
 
 interface Column {
     title: string;
@@ -29,89 +31,6 @@ interface Column {
     isValids?: boolean;
 }
 
-const dataSource = [
-    {
-        bgColor: 'primary.light',
-        title: 'Danh mục',
-        total: '190',
-        icons: (
-            <Box
-                textAlign="center"
-                padding={1}
-                sx={{
-                    width: 40,
-                    height: 40,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                {/* <img src={contract} width={30} /> */}
-            </Box>
-        ),
-    },
-    {
-        bgColor: 'primary.light',
-        title: 'Số lượt bán',
-        total: '190',
-        icons: (
-            <Box
-                textAlign="center"
-                padding={1}
-                sx={{
-                    width: 40,
-                    height: 40,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                {/* <img src={contractreject} width={30} /> */}
-            </Box>
-        ),
-    },
-    {
-        bgColor: 'primary.light',
-        title: 'Khóa Tiếng Việt',
-        total: '123',
-        icons: (
-            <Box
-                textAlign="center"
-                padding={1}
-                sx={{
-                    width: 40,
-                    height: 40,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                {/* <img src={contractdone} width={30} /> */}
-            </Box>
-        ),
-    },
-    {
-        bgColor: 'primary.light',
-        title: 'Khóa tiếng anh',
-        total: '23',
-        icons: (
-            <Box
-                textAlign="center"
-                padding={1}
-                sx={{
-                    width: 40,
-                    height: 40,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                {/* <img src={contractwait} width={30} /> */}
-            </Box>
-        ),
-    },
-];
-
 const CategoryManagement = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [checkValue, setCheckValue] = useState<string | null>(null);
@@ -119,6 +38,64 @@ const CategoryManagement = () => {
     const [dataSelect, setDataSelect] = useState<string[]>([]);
     const [value, setValue] = useState<Dayjs | null>(null);
     const [value1, setValue1] = useState<Dayjs | null>(null);
+
+    /**
+     * BEGIN USE_EFFECT
+     */
+    useEffect(() => {
+        if (dataMOverviewCategory.code != 200) {
+            dispatch(fetchMOverviewCategory());
+        }
+    }, []);
+    /**
+     * END USE_EFFECT
+     */
+    /**
+     * BEGIN SLICE
+     */
+    const dataMOverviewCategory = useSelector(
+        (state: AppState) => state.mOverviewCategorySlice.data,
+    );
+    /**
+     * END SLICE
+     */
+
+    /**
+     * BEGIN CHILDREN
+     */
+    const mOverviewCategory = dataMOverviewCategory.result;
+    /**
+     * END CHILDREN
+     */
+
+    /**
+     * BEGIN OTHER
+     */
+    const dataSource = [
+        {
+            bgColor: 'primary.light',
+            title: 'Danh mục',
+            total: mOverviewCategory.totalCategory,
+            icons: (
+                <Box
+                    textAlign="center"
+                    padding={1}
+                    sx={{
+                        width: 40,
+                        height: 40,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    {/* <img src={contract} width={30} /> */}
+                </Box>
+            ),
+        },
+    ];
+    /**
+     * END OTHER
+     */
 
     const handleColumnChange = (event: any) => {
         const {

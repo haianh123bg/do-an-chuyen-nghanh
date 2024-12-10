@@ -2,6 +2,7 @@ package com.haianh123bg.elearn_programming.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
@@ -9,9 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MOverviewCourceResponse {
-    private Long totalCourse = 0L;
-    private Long totalBuyer = 0L;
-    private Long languageVN = 0L;
-    private Long languageEnglish = 0L;
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class MOverviewCategoryResponse {
+    Long totalCategory;
 }

@@ -25,8 +25,8 @@ const BankInformation = () => {
         severity: 'error',
     });
 
-    const dataUserInfo = useSelector((state: AppState) => state.getUserInfo.data);
-    const loadingUserInfo = useSelector((state: AppState) => state.getUserInfo.loading);
+    const dataUserInfo = useSelector((state: AppState) => state.getUserInfoSlice.data);
+    const loadingUserInfo = useSelector((state: AppState) => state.getUserInfoSlice.loading);
     const loadingChangeBank = useSelector((state: AppState) => state.changeBankSlice.loading);
     useEffect(() => {
         if (dataUserInfo?.code != 200) {

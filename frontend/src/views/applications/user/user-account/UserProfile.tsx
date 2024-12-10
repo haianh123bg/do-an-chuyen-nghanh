@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-import { useState } from 'react';
 import { default as AccountInformation } from 'src/components/applications/user/user-account/profile/AccountInformation';
 import BankInformation from 'src/components/applications/user/user-account/profile/BankInformation';
 import ChangePassword from 'src/components/applications/user/user-account/profile/ChangePassword';

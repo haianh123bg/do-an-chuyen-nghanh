@@ -15,7 +15,7 @@ const notificationService = {
             subscribe: (callback: (data: any) => void) => {
                 eventSource.onmessage = (event) => {
                     const data = JSON.parse(event.data);
-                    dispatch(addNotification(data)); 
+                    //dispatch(addNotification(data)); 
                 };
             },
             // Hàm xử lý khi có lỗi

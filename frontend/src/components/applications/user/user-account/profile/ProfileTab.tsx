@@ -1,20 +1,16 @@
 import DescriptionIcon from '@mui/icons-material/Description';
 import { Box, Menu, MenuItem, Tab, Tabs, Typography } from '@mui/material';
-import { IconHistory, IconUser } from '@tabler/icons-react';
+import { IconUser } from '@tabler/icons-react';
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const ProfileTab = () => {
   const location = useLocation();
   const [value, setValue] = useState(location.pathname);
-  // const [anchorElTransaction, setAnchorElTransaction] = useState<null | HTMLElement>(null);
   const [anchorElContract, setAnchorElContract] = useState<null | HTMLElement>(null);
   const [menuHistory, setMenuHistory] = useState<null | HTMLElement>(null);
   const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
-  };
-  const handleClickHistory = (event: React.MouseEvent<HTMLElement>) => {
-    setMenuHistory(event.currentTarget);
   };
   const handleCloseHistory = () => {
     setMenuHistory(null);
@@ -36,11 +32,6 @@ const ProfileTab = () => {
       label: 'Thông tin cá nhân',
       icon: <IconUser size="20" />,
       to: '/user-profile',
-    },
-    {
-      label: 'Lịch sử giao dịch',
-      icon: <IconHistory size="20" />,
-      to: '/checkout'
     },
   ];
   return (

@@ -16,6 +16,11 @@ public class MCourceServiceImpl implements MCourceService {
 
     @Override
     public MOverviewCourceResponse overviewCourse() {
-        return courseRepository.overview();
+        MOverviewCourceResponse response = courseRepository.overview();
+        if (response.getTotalBuyer() == null) {
+            response.setTotalBuyer(0L);
+        }
+
+        return response;
     }
 }
