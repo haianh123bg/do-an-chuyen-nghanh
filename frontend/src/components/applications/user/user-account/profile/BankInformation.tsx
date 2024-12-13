@@ -1,16 +1,21 @@
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import { Alert, Box, Button, Slide, Snackbar, TextField, Typography } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import {
+    Alert,
+    Box,
+    CircularProgress,
+    Snackbar,
+    TextField,
+    Typography,
+} from '@mui/material';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import { AppState, dispatch, useSelector } from 'src/store/Store';
-import { fetchChangeUserInfoP2 } from 'src/store/user/account/changeUserInfoP2Slice';
-import { fetchGetUserInfo } from 'src/store/user/account/getUserInfoSlice';
+import { fetchChangeBank } from 'src/store/user/account/changeBankSlice';
+import { fetchGetUserInfo, setBank } from 'src/store/user/account/getUserInfoSlice';
 import { SnackbarProps } from 'src/types/components/snackbar';
+import { ApiResponse } from 'src/types/services/response/response';
 import * as Yup from 'yup';
-
-function SlideTransition(props: any) {
-    return <Slide {...props} direction="left" />;
-}
 
 const BankInformation = () => {
     const [editing, setEditing] = useState(false);
@@ -22,9 +27,7 @@ const BankInformation = () => {
 
     const dataUserInfo = useSelector((state: AppState) => state.getUserInfo.data);
     const loadingUserInfo = useSelector((state: AppState) => state.getUserInfo.loading);
-    const loadingChangeUserInfoP2 = useSelector(
-        (state: AppState) => state.changeUserInfoP2Slice.loading,
-    );
+    const loadingChangeBank = useSelector((state: AppState) => state.changeBankSlice.loading);
     useEffect(() => {
         if (dataUserInfo?.code != 200) {
             dispatch(fetchGetUserInfo());
@@ -55,8 +58,40 @@ const BankInformation = () => {
         },
     });
     const handleSaveClick = async () => {
-        // const responseChangeInfo = dispatch(fetchChangeUserInfoP2())
-        setEditing(false);
+        const responseChangeBank = await dispatch(
+            fetchChangeBank({
+                accountName: formik.values.accountHolder,
+                accountNumber: formik.values.accountNumber,
+                bankBranch: formik.values.branch,
+                bankCode: 'MB',
+                bankName: formik.values.bankName,
+            }),
+        );
+        const dataChangeBank = responseChangeBank.payload as ApiResponse<void>;
+
+        if (dataChangeBank.code == 200) {
+            setConfig({
+                content: dataChangeBank.message || 'Cập nhật thành công',
+                open: true,
+                severity: 'success',
+            });
+            dispatch(
+                setBank({
+                    accountName: formik.values.accountHolder,
+                    accountNumber: formik.values.accountNumber,
+                    bankBranch: formik.values.branch,
+                    bankCode: 'MB',
+                    bankName: formik.values.bankName,
+                }),
+            );
+            setEditing(false);
+        } else {
+            setConfig({
+                content: dataChangeBank.message || 'Có lỗi xảy ra',
+                open: true,
+                severity: 'success',
+            });
+        }
     };
     const handleEditClick = () => {
         setEditing(true);
@@ -65,12 +100,6 @@ const BankInformation = () => {
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             formik.handleSubmit();
-        }
-    };
-
-    const handleClose = (_event: Event | React.SyntheticEvent<any, Event>, reason?: string) => {
-        if (reason === 'clickaway') {
-            return;
         }
     };
 
@@ -121,18 +150,25 @@ const BankInformation = () => {
             <Typography mb={4} variant="h4" fontWeight="600" gutterBottom display={'flex'} gap={1}>
                 <AccountBalanceIcon /> <span>Thông tin ngân hàng</span>
             </Typography>
-            {renderField('bankName', 'Tên Ngân Hàng')}
-            {renderField('branch', 'Chi nhánh')}
-            {renderField('accountNumber', 'Số tài khoản')}
-            {renderField('accountHolder', 'Chủ ngân hàng')}
+            {loadingUserInfo ? (
+                <CircularProgress />
+            ) : (
+                <>
+                    {renderField('bankName', 'Tên Ngân Hàng')}
+                    {renderField('branch', 'Chi nhánh')}
+                    {renderField('accountNumber', 'Số tài khoản')}
+                    {renderField('accountHolder', 'Chủ ngân hàng')}
+                </>
+            )}
 
-            <Button
+            <LoadingButton
                 variant="contained"
                 onClick={editing ? handleSaveClick : handleEditClick}
                 sx={{ mt: 2, marginLeft: 'auto', display: 'block' }}
+                loading={loadingChangeBank}
             >
                 {editing ? 'Lưu' : 'Sửa'}
-            </Button>
+            </LoadingButton>
             <Snackbar
                 open={config.open}
                 autoHideDuration={5000}

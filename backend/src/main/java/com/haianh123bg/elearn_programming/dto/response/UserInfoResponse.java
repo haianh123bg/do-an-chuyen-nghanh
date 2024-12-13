@@ -16,6 +16,8 @@ public class UserInfoResponse {
     private Integer userId;
     private String name;
     private String phoneNumber;
+    private String avatar;
+    private String email;
 
     private GenderEnum gender;
     private LocalDate date;

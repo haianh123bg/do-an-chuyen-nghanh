@@ -9,6 +9,11 @@ export default class ApiService {
         };
     }
 
+    static getAccessToken() {
+        const token = localStorage.getItem('accessToken');
+        return token;
+    }
+
     static logout() {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');

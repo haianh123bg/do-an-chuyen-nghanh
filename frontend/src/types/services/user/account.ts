@@ -45,3 +45,11 @@ export interface FormChangePassword {
     newPassword: string;
     confirmPassword: string;
 }
+
+export interface FormChangeBank {
+    bankCode: string;
+    bankBranch: string;
+    accountNumber: string;
+    accountName: string;
+    bankName: string;
+}

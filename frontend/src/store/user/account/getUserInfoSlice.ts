@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import accountService from 'src/service/user/accountService';
 import { ApiResponse } from 'src/types/services/response/response';
-import { GenderEnum, UserInfoResponse } from 'src/types/services/user/account';
+import { FormChangeBank, GenderEnum, UserInfoResponse } from 'src/types/services/user/account';
 
 interface UserInfoState {
     data: ApiResponse<UserInfoResponse>;
@@ -53,6 +53,13 @@ const getUserInfoSlice = createSlice({
         setUserInfoResponse: (state, action: PayloadAction<UserInfoResponse>) => {
             state.data.result = action.payload;
         },
+        setBank: (state, action: PayloadAction<FormChangeBank>) => {
+            state.data.result.accountName = action.payload.accountName;
+            state.data.result.accountNumber = action.payload.accountNumber;
+            state.data.result.bankBranch = action.payload.bankBranch;
+            state.data.result.bankCode = action.payload.bankCode;
+            state.data.result.bankName = action.payload.bankName;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -71,5 +78,5 @@ const getUserInfoSlice = createSlice({
     },
 });
 
-export const { setAvatar, setUserInfoResponse } = getUserInfoSlice.actions;
+export const { setAvatar, setUserInfoResponse, setBank } = getUserInfoSlice.actions;
 export default getUserInfoSlice.reducer;

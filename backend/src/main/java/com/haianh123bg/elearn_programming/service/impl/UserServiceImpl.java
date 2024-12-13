@@ -1,12 +1,15 @@
 package com.haianh123bg.elearn_programming.service.impl;
 
+import com.haianh123bg.elearn_programming.dto.request.FormChangeBank;
 import com.haianh123bg.elearn_programming.dto.request.UserInfoRequest;
 import com.haianh123bg.elearn_programming.dto.response.UserInfoResponse;
 import com.haianh123bg.elearn_programming.entity.Bank;
 import com.haianh123bg.elearn_programming.entity.User;
 import com.haianh123bg.elearn_programming.exception.AppException;
 import com.haianh123bg.elearn_programming.exception.ErrorCode;
+import com.haianh123bg.elearn_programming.mapper.BankMapper;
 import com.haianh123bg.elearn_programming.mapper_mapstruct.UserMapperMapstruct;
+import com.haianh123bg.elearn_programming.repository.BankRepository;
 import com.haianh123bg.elearn_programming.repository.UserRepository;
 import com.haianh123bg.elearn_programming.service.UserService;
 import com.haianh123bg.elearn_programming.service.other.CloudFlareR2Service;
@@ -28,6 +31,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final CloudFlareR2Service cloudFlareR2Service;
     private final UserMapperMapstruct userMapperMapstruct;
+    private final BankRepository bankRepository;
 
     @Override
     public void changePassword(String oldPassword, String newPassword, String confirmPassword) {
@@ -61,6 +65,7 @@ public class UserServiceImpl implements UserService {
             );
             user.setAvatar(url);
             userRepository.save(user);
+            return url;
         }
         throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
     }
@@ -123,6 +128,28 @@ public class UserServiceImpl implements UserService {
                 .bankBranch(bank.getBankBranch())
                 .accountNumber(bank.getAccountNumber())
                 .accountName(bank.getAccountName())
+                .avatar(user.getAvatar())
+                .email(user.getEmail())
                 .build();
+    }
+
+    @Override
+    public void changeBank(FormChangeBank request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Integer userId = Integer.valueOf(authentication.getName());
+
+        User user = userRepository.findById(userId).orElseThrow(
+                () -> new AppException(ErrorCode.USER_NOT_EXISTED)
+        );
+
+        Bank bank = user.getBank();
+        if (bank == null) {
+            bank = BankMapper.toBank(request, user);
+            bankRepository.save(bank);
+        } else {
+            Bank bankEdit = BankMapper.toBank(request, user);
+            bankEdit.setId(bank.getId());
+            bankRepository.save(bankEdit);
+        }
     }
 }

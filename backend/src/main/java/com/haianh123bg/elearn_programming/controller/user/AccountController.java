@@ -1,5 +1,7 @@
 package com.haianh123bg.elearn_programming.controller.user;
 
+import com.haianh123bg.elearn_programming.dto.request.FormChangeBank;
+import com.haianh123bg.elearn_programming.dto.request.FormChangePassword;
 import com.haianh123bg.elearn_programming.dto.request.UserInfoRequest;
 import com.haianh123bg.elearn_programming.dto.response.ApiResponse;
 import com.haianh123bg.elearn_programming.dto.response.UserInfoResponse;
@@ -9,6 +11,7 @@ import com.haianh123bg.elearn_programming.validator.ValidPhoneNumber;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -35,11 +38,9 @@ public class AccountController {
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/change-password")
     public ApiResponse<Void> changePassword(
-            @RequestParam("oldPassword") String oldPassword,
-            @ValidPassword @RequestParam("newPassword") String newPassword,
-            @ValidPassword @RequestParam("confirmPassword") String confirmPassword
+            @Valid @RequestBody FormChangePassword request
     ) {
-        userService.changePassword(oldPassword, newPassword, confirmPassword);
+        userService.changePassword(request.getOldPassword(), request.getNewPassword(), request.getConfirmPassword());
         return ApiResponse.<Void>builder()
                 .code(200)
                 .message("Bạn đã thay đổi mật khẩu thành công")
@@ -62,7 +63,7 @@ public class AccountController {
             @NotNull(message = "Ảnh đại diện bắt buộc") @RequestPart MultipartFile avatar
     ) {
         return ApiResponse.<String>builder()
-                .message("Cập nhật ảnh đại diện thành công")
+                .code(200)
                 .result(userService.changeAvatar(avatar))
                 .build();
     }
@@ -78,7 +79,7 @@ public class AccountController {
 
     })
     @PreAuthorize("isAuthenticated()")
-    @PutMapping("/info")
+    @GetMapping("/info")
     public ApiResponse<UserInfoResponse> getUserInfo() {
         return ApiResponse.<UserInfoResponse>builder()
                 .code(200)
@@ -92,8 +93,6 @@ public class AccountController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1003", description = "Account does not exist", content = @Content),
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
-
-
             })
     @PreAuthorize("isAuthenticated()")
     @PutMapping("/info-p1")
@@ -124,6 +123,28 @@ public class AccountController {
         return ApiResponse.<String>builder()
                 .code(200)
                 .result(userService.changeUserInfoP2(phone))
+                .build();
+    }
+
+    @Operation(summary = "Thay đổi thông tin ngân hàng")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Thành công"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1000", description = "Bạn không có quyền truy cập", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1001", description = "You do not have permission", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1003", description = "Account does not exist", content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "1002", description = "Invalid email or password!", content = @Content),
+
+
+    })
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping("/bank")
+    public ApiResponse<Void> changeBank(
+            @Valid @RequestBody FormChangeBank request
+    ) {
+        userService.changeBank(request);
+        return ApiResponse.<Void>builder()
+                .code(200)
+                .message("Cập nhật thông tin thành công")
                 .build();
     }
 }

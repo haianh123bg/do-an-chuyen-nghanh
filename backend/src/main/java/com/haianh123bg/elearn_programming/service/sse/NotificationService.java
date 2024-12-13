@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -28,7 +30,7 @@ public class NotificationService {
 
         // Lấy thông báo cũ từ database khi người dùng kết nối lần đầu tiên
         Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
-        Pageable pageable = PageRequest.of(0, 8, sort);
+        Pageable pageable = PageRequest.of(0, 5, sort);
         List<Notification> notifications = notificationRepository.getListNotificationWithPage(Integer.valueOf(userId), pageable).getContent();
         for (Notification notification : notifications) {
             try {
@@ -75,5 +77,15 @@ public class NotificationService {
     @Async
     public void sendNotificationToAllAsync(String message) {
         sendNotificationToAll(message);
+    }
+
+
+    public List<NotificationResponse> moreNotifications(Long notificationId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Integer userId = Integer.valueOf(authentication.getName());
+
+        // Tạo pageable
+        Pageable pageable = PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC, "notificationId"));
+        return notificationRepository.moreNotifications(userId, notificationId, pageable);
     }
 }

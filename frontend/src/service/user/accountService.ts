@@ -1,5 +1,5 @@
 import ApiService from '../apiService.ts';
-import { FormChangePassword, UserInfoRequest } from 'src/types/services/user/account.ts';
+import { FormChangeBank, FormChangePassword, UserInfoRequest } from 'src/types/services/user/account.ts';
 import axiosAPI from '../axiosAPI.ts';
 
 const baseUrl = ApiService.BASE_URL + '/user';
@@ -38,6 +38,9 @@ const accountService = {
             params: { phone },
         });
     },
+    changeBank: (request: FormChangeBank) => {
+        return axiosAPI.put(`${baseUrl}/bank`, request);
+    }
 };
 
 export default accountService;
