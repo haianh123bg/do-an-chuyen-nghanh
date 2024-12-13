@@ -64,7 +64,7 @@ const DetailCourse: React.FC = () => {
     const courseSections = ['Course Introduction', 'Core Java', 'Advance Java', 'Maven', 'JDBC'];
 
     return (
-        <PageContainer title="CourseDetail">
+        <PageContainer title={courseInfo.title}>
             <LpHeader />
             {/* Upper section with gray background */}
             <Box sx={{ backgroundColor: '#ccc' }}>
@@ -253,7 +253,7 @@ const DetailCourse: React.FC = () => {
                                         Go to cart
                                     </Button>
                                 </Link>
-                                
+
                                 <Link to="/checkout" component={RouterLink}>
                                     <Button
                                         variant="outlined"
