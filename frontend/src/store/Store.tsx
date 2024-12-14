@@ -30,7 +30,7 @@ import SelectItem from 'src/store/RouterSlice';
 import addCourseToCartSlice from 'src/store/user/cart/addCourseToCartSlice';
 import deleteCourseToCartSlice from 'src/store/user/cart/deleteCourseToCartSlice';
 import getCartsSlice from 'src/store/user/cart/getCartsSlice';
-import changeBankSlice from 'src/store/user/account/changeBankSlice'
+// import changeBankSlice from 'src/store/user/account/changeBankSlice'
 
 import { combineReducers } from 'redux';
 import {
@@ -70,7 +70,7 @@ export const store = configureStore({
         changeUserInfoP2Slice: changeUserInfoP2Slice,
         getUserInfoSlice: getUserInfoSlice,
         selectItem: SelectItem,
-        changeBankSlice: changeBankSlice,
+        // changeBankSlice: changeBankSlice,
     },
 });
 
@@ -105,7 +105,7 @@ const rootReducer = combineReducers({
     changeUserInfoP2Slice: changeUserInfoP2Slice,
     getUserInfoSlice: getUserInfoSlice,
     selectItem: SelectItem,
-    changeBankSlice: changeBankSlice,
+    // changeBankSlice: changeBankSlice,
     addCourseToCartSlice: addCourseToCartSlice,
     deleteCourseToCartSlice: deleteCourseToCartSlice,
     getCartsSlice: getCartsSlice,
