@@ -20,63 +20,59 @@ import { styled } from '@mui/material';
 import { AppState } from 'src/store/Store';
 
 const Logo: FC = () => {
-  const customizer = useSelector((state: AppState) => state.customizer);
-  const LinkStyled = styled(Link)(() => ({
-    height: customizer.TopbarHeight,
-    width: customizer.isCollapse ? '40px' : '180px',
-    overflow: 'hidden',
-    display: 'block',
-  }));
+    const customizer = useSelector((state: AppState) => state.customizer);
+    const LinkStyled = styled(Link)(() => ({
+        height: customizer.TopbarHeight,
+        width: customizer.isCollapse ? '40px' : '180px',
+        overflow: 'hidden',
+        display: 'block',
+    }));
 
-  if (customizer.activeDir === 'ltr') {
+    if (customizer.activeDir === 'ltr') {
+        return (
+            <LinkStyled
+                to="/home"
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+            >
+                {customizer.isCollapse ? ( // Hiển thị logo khác khi thu nhỏ
+                    customizer.activeMode === 'dark' ? (
+                        <LogoDark />
+                    ) : (
+                        <LogoDark />
+                    )
+                ) : customizer.activeMode === 'dark' ? (
+                    <LogoLight />
+                ) : (
+                    <LogoDark />
+                )}
+            </LinkStyled>
+        );
+    }
+
     return (
-      <LinkStyled
-        to="/"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        {customizer.isCollapse ? ( // Hiển thị logo khác khi thu nhỏ
-          customizer.activeMode === 'dark' ? (
-            <LogoDark />
-          ) : (
-            <LogoDark />
-          )
-        ) : (
-          customizer.activeMode === 'dark' ? (
-            <LogoLight />
-          ) : (
-            <LogoDark />
-          )
-        )}
-      </LinkStyled>
+        <LinkStyled
+            to="/home"
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+            }}
+        >
+            {customizer.isCollapse ? ( // Hiển thị logo khác khi thu nhỏ cho RTL
+                customizer.activeMode === 'dark' ? (
+                    <LogoDarkRTL />
+                ) : (
+                    <LogoLightRTL />
+                )
+            ) : customizer.activeMode === 'dark' ? (
+                <LogoLightRTL />
+            ) : (
+                <LogoLightRTL />
+            )}
+        </LinkStyled>
     );
-  }
-
-  return (
-    <LinkStyled
-      to="/"
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
-      {customizer.isCollapse ? ( // Hiển thị logo khác khi thu nhỏ cho RTL
-        customizer.activeMode === 'dark' ? (
-          <LogoDarkRTL />  
-        ) : (
-          <LogoLightRTL />  
-        )
-      ) : (
-        customizer.activeMode === 'dark' ? (
-          <LogoLightRTL /> 
-        ) : (
-          <LogoLightRTL /> 
-        )
-      )}
-    </LinkStyled>
-  );
 };
 
 export default Logo;

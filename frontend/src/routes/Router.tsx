@@ -97,7 +97,7 @@ const Router = [
             { path: '/apps/blog/detail/:id', element: <ProtectedRoute element={BlogDetail} /> },
             { path: '/ticket', element: <ProtectedRoute element={Email} /> },
             { path: '/apps/notes', element: <ProtectedRoute element={Notes} /> },
-            { path: '*', element: <Navigate to="/auth/404" /> },
+            // { path: '*', element: <Navigate to="/auth/404" /> },
             {
                 path: '/feature/coming-soon',
                 element: <ProtectedRoute element={FeatureComingSoon} />,
@@ -139,7 +139,7 @@ const Router = [
             { path: '/checkout', element: <Checkout /> },
             { path: '/course/detail/:id', element: <DetailCourse /> },
             { path: '/courseCreation', element: <CourseCreation /> },
-            { path: '*', element: <Navigate to="/auth/404" /> },
+            // { path: '*', element: <Navigate to="/auth/404" /> },
             { path: '/apps/ecommerce/eco-checkout', element: <ProductCheckout /> },
         ],
     },

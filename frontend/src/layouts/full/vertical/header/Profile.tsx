@@ -70,7 +70,11 @@ const Profile = () => {
             >
                 <Typography variant="h5">Thông tin tài khoản</Typography>
                 <Stack direction="row" py={3} spacing={2} alignItems="center">
-                    <Avatar src={userInfo.avatar ?? ProfileImg} alt={userInfo.avatar ?? ProfileImg} sx={{ width: 95, height: 95 }} />
+                    <Avatar
+                        src={userInfo.avatar ?? ProfileImg}
+                        alt={userInfo.avatar ?? ProfileImg}
+                        sx={{ width: 95, height: 95 }}
+                    />
                     <Box>
                         <Typography variant="subtitle2" color="textPrimary" fontWeight={600}>
                             {userInfo?.name}
