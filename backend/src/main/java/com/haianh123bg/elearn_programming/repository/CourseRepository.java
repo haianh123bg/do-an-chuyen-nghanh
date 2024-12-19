@@ -1,9 +1,11 @@
 package com.haianh123bg.elearn_programming.repository;
 
+import com.haianh123bg.elearn_programming.dto.response.MCourseResponse;
 import com.haianh123bg.elearn_programming.dto.response.MOverviewCourceResponse;
 import com.haianh123bg.elearn_programming.entity.Course;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -32,4 +34,14 @@ public interface CourseRepository extends JpaRepository<Course, Integer>, JpaSpe
                                   
             """)
     MOverviewCourceResponse overview();
+
+    @Query(value = """
+        SELECT c
+        FROM Course c
+        JOIN c.createdBy createdBy
+        JOIN c.updatedBy updatedBy
+        JOIN c.teacherId teacher
+        JOIN c.category category
+    """)
+    Page<Object[]> findCourseDetails(Specification<Course> specification, Pageable pageable);
 }

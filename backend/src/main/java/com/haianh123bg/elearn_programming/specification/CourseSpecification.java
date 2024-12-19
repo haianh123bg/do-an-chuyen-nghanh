@@ -2,12 +2,46 @@ package com.haianh123bg.elearn_programming.specification;
 
 import com.haianh123bg.elearn_programming.entity.Category;
 import com.haianh123bg.elearn_programming.entity.Course;
+import com.haianh123bg.elearn_programming.entity.User;
 import jakarta.persistence.criteria.Join;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDateTime;
 
 public class CourseSpecification {
+
+    public static Specification<Course> toMCourseResponse() {
+        return (root, query, criteriaBuilder) -> {
+            Join<Course, User> createdByJoin = root.join("createdBy");
+            Join<Course, User> updatedByJoin = root.join("updatedBy");
+            Join<Course, User> teacherJoin = root.join("teacherId");
+            Join<Course, Category> categoryJoin = root.join("category");
+
+            assert query != null;
+            query.multiselect(
+                    root.get("courseId"),           // 0
+                    root.get("name"),               // 1
+                    root.get("shortDescription"),   // 2
+                    root.get("detailDescription"),  // 3
+                    root.get("createdAt"),          // 4
+                    root.get("updatedAt"),          // 5
+                    createdByJoin.get("name"),      // 6
+                    updatedByJoin.get("name"),      // 7
+                    teacherJoin.get("name"),        // 8
+                    categoryJoin.get("name"),       // 9
+                    root.get("language"),           // 10
+                    root.get("price"),              // 11
+                    root.get("priceReal"),          // 12
+                    root.get("averageRating"),      // 13
+                    root.get("totalBuyer"),         // 14
+                    root.get("imageUrl"),           // 15
+                    root.get("totalModules"),       // 16
+                    root.get("totalRevenue"),       // 17
+                    root.get("active")              // 18
+            );
+            return query.getRestriction();
+        };
+    }
 
     public static Specification<Course> hasCategoryId(Integer categoryId) {
         return (root, query, criteriaBuilder) -> {

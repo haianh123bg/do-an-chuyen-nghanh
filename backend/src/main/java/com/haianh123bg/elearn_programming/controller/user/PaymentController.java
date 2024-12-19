@@ -57,6 +57,6 @@ public class PaymentController {
             @RequestBody SepayIpnRequest requestBody,
             HttpServletRequest request
     ) {
-        return null;
+        return paymentService.ipn(request, requestBody);
     }
 }

@@ -20,8 +20,8 @@ public class SepayIpnRequest {
     String content;               // DH32
     String transferType;          // in
     String description;           // BankAPINotify DH32
-    BigDecimal transferAmount;    // 10000
+    Double transferAmount;    // 10000
     String referenceCode;         // 20241102000360
-    BigDecimal accumulated;       // 0
+    Double accumulated;       // 0
     Long id;                      // 4205975
 }

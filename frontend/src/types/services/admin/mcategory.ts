@@ -1,0 +1,3 @@
+interface MOverviewCategoryResponse {
+    totalCategory: number;
+}
