@@ -4,7 +4,7 @@ import CourseForm from 'src/views/course/CourseForm';
 import Curriculum from 'src/views/course/Curriculum.tsx';
 import { CourseFormData } from 'src/types/services/course/course';
 
-const steps = ['Course Landing Page', 'Curriculum'];
+const steps = ['Trang đích khóa học', 'Chương trình đào tạo'];
 
 const CourseCreation = () => {
     const [activeStep, setActiveStep] = useState(0);
@@ -69,7 +69,7 @@ const CourseCreation = () => {
                             color="primary"
                             onClick={handleBack}
                         >
-                            Back
+                            Quay lại
                         </Button>
                     )}
                     {activeStep < steps.length - 1 && (
@@ -80,7 +80,7 @@ const CourseCreation = () => {
                             onClick={handleNext}
                             disabled={!isStepComplete(activeStep)}
                         >
-                            Next
+                            Tiếp theo
                         </Button>
                     )}
                 </Box>

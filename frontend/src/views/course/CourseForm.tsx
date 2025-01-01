@@ -74,7 +74,7 @@ const ImagePreview = styled('img')({
 
 interface CourseFormProps {
     data: CourseFormData;
-    onChange: Dispatch<SetStateAction<CourseFormData>>;
+    onChange: (data: CourseFormData) => void;
 }
 
 export default function CourseForm({ data, onChange }: CourseFormProps) {
@@ -162,25 +162,25 @@ export default function CourseForm({ data, onChange }: CourseFormProps) {
     return (
         <Box sx={{ maxWidth: 800, mx: 'auto' }}>
             <Typography variant="h4" gutterBottom>
-                Course landing page
+                Trang đích khóa học
             </Typography>
 
             <form onSubmit={handleSubmit}>
                 <StyledPaper>
                     <Typography variant="h6" gutterBottom>
-                        Course title
+                        Tiêu đề khóa học
                     </Typography>
                     <Box sx={{ position: 'relative' }}>
                         <TextField
                             fullWidth
                             value={data.title}
                             onChange={handleTextChange('title')}
-                            placeholder="e.g. Java Core"
+                            placeholder="VD. Java Core"
                             inputProps={{ maxLength: 51 }}
                             error={Boolean(errors.title)}
                             helperText={
                                 errors.title ||
-                                'Your title should be a mix of attention-grabbing, informative, and optimized for search'
+                                'Tiêu đề của bạn phải là sự kết hợp giữa thu hút sự chú ý, cung cấp thông tin và được tối ưu hóa cho tìm kiếm'
                             }
                         />
                         <CharacterCount>{data.title.length}/51</CharacterCount>
@@ -189,19 +189,17 @@ export default function CourseForm({ data, onChange }: CourseFormProps) {
 
                 <StyledPaper>
                     <Typography variant="h6" gutterBottom>
-                        Course subtitle
+                        Tiêu đề phụ của khóa học
                     </Typography>
                     <Box sx={{ position: 'relative' }}>
                         <TextField
                             fullWidth
                             value={data.subtitle}
                             onChange={handleTextChange('subtitle')}
-                            placeholder="Insert your course subtitle"
+                            placeholder="Chèn tiêu đề phụ của khóa học"
                             inputProps={{ maxLength: 120 }}
                             error={Boolean(errors.subtitle)}
-                            helperText={
-                                errors.subtitle || 'Subtitle must be at most 120 characters'
-                            }
+                            helperText={errors.subtitle || 'Tiêu đề phụ phải dài tối đa 120 ký tự'}
                         />
                         <CharacterCount>{data.subtitle.length}/120</CharacterCount>
                     </Box>
@@ -209,15 +207,15 @@ export default function CourseForm({ data, onChange }: CourseFormProps) {
 
                 <StyledPaper>
                     <Typography variant="h6" gutterBottom>
-                        Course description
+                        Mô tả khóa học
                     </Typography>
                     <RichTextEditor
                         value={data.description}
                         onChange={(value) => onChange({ ...data, description: value })}
                     />
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>
-                        <HelperText>Description should have minimum 200 words</HelperText>
-                        <WordCounter>{wordCount} words</WordCounter>
+                        <HelperText>Mô tả phải có tối thiểu 200 từ</HelperText>
+                        <WordCounter>{wordCount} từ</WordCounter>
                     </Box>
                     {errors.description && (
                         <FormHelperText error>{errors.description}</FormHelperText>
@@ -226,52 +224,56 @@ export default function CourseForm({ data, onChange }: CourseFormProps) {
 
                 <StyledPaper>
                     <Typography variant="h6" gutterBottom>
-                        Basic info
+                        Thông tin cơ bản
                     </Typography>
                     <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
                         <StyledFormControl fullWidth error={Boolean(errors.language)}>
-                            <InputLabel>Language</InputLabel>
+                            <InputLabel>Ngôn ngữ</InputLabel>
                             <Select
                                 value={data.language}
                                 label="Language"
                                 onChange={handleSelectChange('language')}
                             >
-                                <MenuItem value="en-US">English (US)</MenuItem>
-                                <MenuItem value="es">Spanish</MenuItem>
-                                <MenuItem value="fr">French</MenuItem>
+                                <MenuItem value="en-US">Tiếng Anh (Mỹ)</MenuItem>
+                                <MenuItem value="es">Tiếng Tây Ban Nha</MenuItem>
+                                <MenuItem value="fr">Tiếng Pháp</MenuItem>
                             </Select>
                             <FormHelperText>
-                                {errors.language || 'Select course language'}
+                                {errors.language || 'Chọn ngôn ngữ khóa học'}
                             </FormHelperText>
                         </StyledFormControl>
 
                         <StyledFormControl fullWidth error={Boolean(errors.level)}>
-                            <InputLabel>Level</InputLabel>
+                            <InputLabel>Cấp độ</InputLabel>
                             <Select
                                 value={data.level}
                                 label="Level"
                                 onChange={handleSelectChange('level')}
                             >
-                                <MenuItem value="beginner">Beginner</MenuItem>
-                                <MenuItem value="intermediate">Intermediate</MenuItem>
-                                <MenuItem value="advanced">Advanced</MenuItem>
+                                <MenuItem value="beginner">Bắt đầu</MenuItem>
+                                <MenuItem value="intermediate">Trung cấp</MenuItem>
+                                <MenuItem value="advanced">Nâng cao</MenuItem>
                             </Select>
-                            <FormHelperText>{errors.level || 'Select course level'}</FormHelperText>
+                            <FormHelperText>
+                                {errors.level || 'Chọn cấp đô khóa học'}
+                            </FormHelperText>
                         </StyledFormControl>
 
                         <StyledFormControl fullWidth error={Boolean(errors.category)}>
-                            <InputLabel>Category</InputLabel>
+                            <InputLabel>Phân loại</InputLabel>
                             <Select
                                 value={data.category}
                                 label="Category"
                                 onChange={handleSelectChange('category')}
                             >
-                                <MenuItem value="it-software">IT & Software</MenuItem>
-                                <MenuItem value="business">Business</MenuItem>
-                                <MenuItem value="design">Design</MenuItem>
+                                <MenuItem value="it-software">
+                                    Công nghệ thông tin & Phần mềm
+                                </MenuItem>
+                                <MenuItem value="business">Nghiệp vụ</MenuItem>
+                                <MenuItem value="design">Thiết kế</MenuItem>
                             </Select>
                             <FormHelperText>
-                                {errors.category || 'Select course category'}
+                                {errors.category || 'Chọn phân loại khóa học'}
                             </FormHelperText>
                         </StyledFormControl>
                     </Box>
@@ -280,9 +282,9 @@ export default function CourseForm({ data, onChange }: CourseFormProps) {
                 <StyledPaper>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                         <Typography variant="h6">
-                            What is primarily taught in your course?
+                            Khóa học của bạn chủ yếu dạy những gì ?
                         </Typography>
-                        <Tooltip title="This helps us categorize your course appropriately">
+                        <Tooltip title="Điều này giúp chúng tôi phân loại khóa học của bạn một cách phù hợp">
                             <IconButton size="small" sx={{ color: 'primary.main' }}>
                                 <InfoIcon fontSize="small" />
                             </IconButton>
@@ -294,13 +296,13 @@ export default function CourseForm({ data, onChange }: CourseFormProps) {
                         onChange={handleTextChange('primarySubject')}
                         placeholder="e.g. Landscape Photography"
                         error={Boolean(errors.primarySubject)}
-                        helperText={errors.primarySubject || 'Primary subject is required'}
+                        helperText={errors.primarySubject || 'Cần có môn học chính'}
                     />
                 </StyledPaper>
 
                 <StyledPaper>
                     <Typography variant="h6" gutterBottom>
-                        Course image
+                        Ảnh khóa học
                     </Typography>
                     <Box
                         sx={{
@@ -314,15 +316,15 @@ export default function CourseForm({ data, onChange }: CourseFormProps) {
                         <ImageUpload
                             onFileSelect={(file) => onChange({ ...data, courseImage: file })}
                         />
-                        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-                            Upload your course image here. It must meet our{' '}
+                        <Typography variant="body2" color="text.secondary" sx={{ mt: 2, px: 5 }}>
+                            Tải ảnh khóa học của bạn ở đây. Ảnh phải phù hợp với{' '}
                             <Link href="#" color="primary">
-                                course image quality standards
+                                tiêu chuẩn chất lượng ảnh
                             </Link>{' '}
-                            to be accepted.
+                            của chúng tôi để được chấp nhận
                             <br />
-                            Important guidelines: 750x422 pixels; jpg, jpeg, gif, or .png. no text
-                            on the image.
+                            Hướng dẫn quan trọng: 750x422 pixels; jpg, jpeg, gif, hoặc .png. không
+                            có văn bản trên ảnh
                         </Typography>
                     </Box>
                     {data.courseImage && (
@@ -341,10 +343,10 @@ export default function CourseForm({ data, onChange }: CourseFormProps) {
                             setAutoSaveStatus('success');
                         }}
                     >
-                        Save as Draft
+                        Lưu bản nháp
                     </Button>
                     <Button variant="contained" type="submit">
-                        Submit for Review
+                        Gửi để đánh giá
                     </Button>
                 </Box>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Box,
     Typography,
@@ -20,6 +20,10 @@ import {
     Divider,
     Link,
     Tooltip,
+    List,
+    ListItem,
+    ListItemText,
+    ListItemSecondaryAction,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AddIcon from '@mui/icons-material/Add';
@@ -50,6 +54,9 @@ import {
     isCodingExerciseItem,
     isPracticeTestItem,
     isAssignmentItem,
+    IntendedLearner,
+    CourseStructure,
+    TestVideo,
 } from 'src/types/services/course/course.ts';
 import QuizDialog from './QuizDialog';
 import ContentDialog from './ContentDialog';
@@ -214,6 +221,36 @@ export default function Curriculum() {
     const [isCodingExerciseDialogOpen, setIsCodingExerciseDialogOpen] = useState(false);
     const [isPracticeTestDialogOpen, setIsPracticeTestDialogOpen] = useState(false);
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
+    const [planYourCourseData, setPlanYourCourseData] = useState({
+        intendedLearners: [] as IntendedLearner[],
+        courseStructure: [] as CourseStructure[],
+        testVideo: null as TestVideo | null,
+    });
+    const [isLearnersDialogOpen, setIsLearnersDialogOpen] = useState(false);
+    const [isStructureDialogOpen, setIsStructureDialogOpen] = useState(false);
+    const [isVideoDialogOpen, setIsVideoDialogOpen] = useState(false);
+    const [newLearner, setNewLearner] = useState('');
+    const [newStructure, setNewStructure] = useState({
+        title: '',
+        description: '',
+        duration: '',
+    });
+    const [completedItems, setCompletedItems] = useState<string[]>([]);
+
+    useEffect(() => {
+        // Update completed items based on data
+        const completed: string[] = [];
+        if (planYourCourseData.intendedLearners.length > 0) {
+            completed.push('intended-learners');
+        }
+        if (planYourCourseData.courseStructure.length > 0) {
+            completed.push('course-structure');
+        }
+        if (planYourCourseData.testVideo) {
+            completed.push('setup-video');
+        }
+        setCompletedItems(completed);
+    }, [planYourCourseData]);
 
     const handleAddSection = () => {
         const newSection: Section = {
@@ -451,12 +488,77 @@ export default function Curriculum() {
         });
     };
 
+    const handleAddLearner = () => {
+        if (!newLearner.trim()) return;
+        setPlanYourCourseData({
+            ...planYourCourseData,
+            intendedLearners: [
+                ...planYourCourseData.intendedLearners,
+                {
+                    id: Date.now().toString(),
+                    description: newLearner,
+                },
+            ],
+        });
+        setNewLearner('');
+    };
+
+    const handleDeleteLearner = (id: string) => {
+        setPlanYourCourseData({
+            ...planYourCourseData,
+            intendedLearners: planYourCourseData.intendedLearners.filter(
+                (learner) => learner.id !== id,
+            ),
+        });
+    };
+
+    const handleAddStructure = () => {
+        if (!newStructure.title.trim() || !newStructure.description.trim()) return;
+        setPlanYourCourseData({
+            ...planYourCourseData,
+            courseStructure: [
+                ...planYourCourseData.courseStructure,
+                {
+                    id: Date.now().toString(),
+                    ...newStructure,
+                },
+            ],
+        });
+        setNewStructure({ title: '', description: '', duration: '' });
+    };
+
+    const handleDeleteStructure = (id: string) => {
+        setPlanYourCourseData({
+            ...planYourCourseData,
+            courseStructure: planYourCourseData.courseStructure.filter(
+                (structure) => structure.id !== id,
+            ),
+        });
+    };
+
+    const handleTestVideoUpload = (file: File) => {
+        setPlanYourCourseData({
+            ...planYourCourseData,
+            testVideo: {
+                id: Date.now().toString(),
+                title: file.name,
+                video: file,
+            },
+        });
+    };
+
     return (
         <Box sx={{ display: 'flex', height: '76vh' }}>
-            <CurriculumSidebar onSubmit={handleSubmit} />
+            <CurriculumSidebar
+                onSubmit={handleSubmit}
+                onOpenLearnersDialog={() => setIsLearnersDialogOpen(true)}
+                onOpenStructureDialog={() => setIsStructureDialogOpen(true)}
+                onOpenVideoDialog={() => setIsVideoDialogOpen(true)}
+                completedItems={completedItems}
+            />
             <Box sx={{ flexGrow: 1, p: 3, overflowY: 'auto' }}>
                 <Typography variant="h4" gutterBottom>
-                    Curriculum
+                    Chương trình đào tạo
                 </Typography>
 
                 {sections.map((section, sectionIndex) => (
@@ -535,7 +637,7 @@ export default function Curriculum() {
                                                     }
                                                     endIcon={<ExpandMoreIcon />}
                                                 >
-                                                    Content
+                                                    Nội dung
                                                 </Button>
                                                 {item.contents.length > 0 && (
                                                     <Typography
@@ -559,7 +661,7 @@ export default function Curriculum() {
                                                         handleQuizQuestions(sectionIndex, itemIndex)
                                                     }
                                                 >
-                                                    + Questions
+                                                    + Câu hỏi
                                                 </Button>
                                                 {item.questions.length > 0 && (
                                                     <Typography
@@ -582,7 +684,7 @@ export default function Curriculum() {
                                                     handleCodingExercise(sectionIndex, itemIndex)
                                                 }
                                             >
-                                                Edit Exercise
+                                                Chỉnh sửa bài tập
                                             </Button>
                                         )}
                                         {item.type === 'practice_test' && (
@@ -593,7 +695,7 @@ export default function Curriculum() {
                                                     handlePracticeTest(sectionIndex, itemIndex)
                                                 }
                                             >
-                                                Edit Test
+                                                Chỉnh sửa bài kiểm tra
                                             </Button>
                                         )}
                                         {item.type === 'assignment' && (
@@ -604,7 +706,7 @@ export default function Curriculum() {
                                                     handleAssignment(sectionIndex, itemIndex)
                                                 }
                                             >
-                                                Edit Assignment
+                                                Chỉnh sửa bài tập lớn
                                             </Button>
                                         )}
                                         <IconButton
@@ -626,7 +728,7 @@ export default function Curriculum() {
                                     onClick={() => handleAddItem(sectionIndex, 'lecture')}
                                     startIcon={<AddIcon />}
                                 >
-                                    Lecture
+                                    Bài giảng
                                 </AddItemButton>
                                 <AddItemButton
                                     variant="outlined"
@@ -634,7 +736,7 @@ export default function Curriculum() {
                                     onClick={() => handleAddItem(sectionIndex, 'quiz')}
                                     startIcon={<AddIcon />}
                                 >
-                                    Quiz
+                                    Câu hỏi trắc nghiệm
                                 </AddItemButton>
                                 <AddItemButton
                                     variant="outlined"
@@ -642,7 +744,7 @@ export default function Curriculum() {
                                     onClick={() => handleAddItem(sectionIndex, 'coding_exercise')}
                                     startIcon={<AddIcon />}
                                 >
-                                    Coding Exercise
+                                    Bài tập code
                                 </AddItemButton>
                                 <AddItemButton
                                     variant="outlined"
@@ -650,7 +752,7 @@ export default function Curriculum() {
                                     onClick={() => handleAddItem(sectionIndex, 'practice_test')}
                                     startIcon={<AddIcon />}
                                 >
-                                    Practice Test
+                                    Bài kiểm tra thực hành
                                 </AddItemButton>
                                 <AddItemButton
                                     variant="outlined"
@@ -658,7 +760,7 @@ export default function Curriculum() {
                                     onClick={() => handleAddItem(sectionIndex, 'assignment')}
                                     startIcon={<AddIcon />}
                                 >
-                                    Assignment
+                                    Bài tập lớn
                                 </AddItemButton>
                             </Box>
                         </Collapse>
@@ -674,7 +776,7 @@ export default function Curriculum() {
                     }}
                 >
                     <Button variant="outlined" startIcon={<AddIcon />} onClick={handleAddSection}>
-                        Add Section
+                        Thêm chương
                     </Button>
                     <Button
                         variant="contained"
@@ -683,7 +785,7 @@ export default function Curriculum() {
                             // Handle submit for review
                         }}
                     >
-                        Submit for Review
+                        Gửi để đánh giá
                     </Button>
                 </Box>
 
@@ -815,6 +917,183 @@ export default function Curriculum() {
                         onSave={handleSaveAssignment}
                     />
                 )}
+
+                <Dialog
+                    open={isLearnersDialogOpen}
+                    onClose={() => setIsLearnersDialogOpen(false)}
+                    maxWidth="sm"
+                    fullWidth
+                >
+                    <DialogTitle>Người học dự kiến</DialogTitle>
+                    <DialogContent>
+                        <List>
+                            {planYourCourseData.intendedLearners.map((learner) => (
+                                <ListItem key={learner.id}>
+                                    <ListItemText primary={learner.description} />
+                                    <ListItemSecondaryAction>
+                                        <IconButton
+                                            edge="end"
+                                            onClick={() => handleDeleteLearner(learner.id)}
+                                        >
+                                            <CloseIcon />
+                                        </IconButton>
+                                    </ListItemSecondaryAction>
+                                </ListItem>
+                            ))}
+                        </List>
+                        <Box sx={{ display: 'flex', gap: 1, mt: 2 }}>
+                            <TextField
+                                fullWidth
+                                value={newLearner}
+                                onChange={(e) => setNewLearner(e.target.value)}
+                                placeholder="VD. Developers với kiến thức cơ bản về Java"
+                            />
+                            <Button
+                                variant="contained"
+                                onClick={handleAddLearner}
+                                disabled={!newLearner.trim()}
+                            >
+                                Thêm
+                            </Button>
+                        </Box>
+                    </DialogContent>
+                </Dialog>
+
+                <Dialog
+                    open={isStructureDialogOpen}
+                    onClose={() => setIsStructureDialogOpen(false)}
+                    maxWidth="sm"
+                    fullWidth
+                >
+                    <DialogTitle>Course Structure</DialogTitle>
+                    <DialogContent>
+                        <List>
+                            {planYourCourseData.courseStructure.map((structure) => (
+                                <ListItem key={structure.id}>
+                                    <ListItemText
+                                        primary={structure.title}
+                                        secondary={
+                                            <>
+                                                {structure.description}
+                                                <Typography
+                                                    variant="caption"
+                                                    display="block"
+                                                    color="text.secondary"
+                                                >
+                                                    Duration: {structure.duration}
+                                                </Typography>
+                                            </>
+                                        }
+                                    />
+                                    <ListItemSecondaryAction>
+                                        <IconButton
+                                            edge="end"
+                                            onClick={() => handleDeleteStructure(structure.id)}
+                                        >
+                                            <CloseIcon />
+                                        </IconButton>
+                                    </ListItemSecondaryAction>
+                                </ListItem>
+                            ))}
+                        </List>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
+                            <TextField
+                                fullWidth
+                                value={newStructure.title}
+                                onChange={(e) =>
+                                    setNewStructure({ ...newStructure, title: e.target.value })
+                                }
+                                placeholder="Tiêu đề chương"
+                            />
+                            <TextField
+                                fullWidth
+                                multiline
+                                rows={2}
+                                value={newStructure.description}
+                                onChange={(e) =>
+                                    setNewStructure({
+                                        ...newStructure,
+                                        description: e.target.value,
+                                    })
+                                }
+                                placeholder="Mô tả chương"
+                            />
+                            <Box sx={{ display: 'flex', gap: 1 }}>
+                                <TextField
+                                    fullWidth
+                                    value={newStructure.duration}
+                                    onChange={(e) =>
+                                        setNewStructure({
+                                            ...newStructure,
+                                            duration: e.target.value,
+                                        })
+                                    }
+                                    placeholder="Thời lượng (VD. 2 giờ)"
+                                />
+                                <Button
+                                    variant="contained"
+                                    onClick={handleAddStructure}
+                                    disabled={
+                                        !newStructure.title.trim() ||
+                                        !newStructure.description.trim()
+                                    }
+                                >
+                                    Thêm
+                                </Button>
+                            </Box>
+                        </Box>
+                    </DialogContent>
+                </Dialog>
+
+                <Dialog
+                    open={isVideoDialogOpen}
+                    onClose={() => setIsVideoDialogOpen(false)}
+                    maxWidth="sm"
+                    fullWidth
+                >
+                    <DialogTitle>Video thiết lập và kiểm tra</DialogTitle>
+                    <DialogContent>
+                        {planYourCourseData.testVideo ? (
+                            <Box sx={{ mt: 2 }}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                    <VideoLibraryIcon />
+                                    <Typography>{planYourCourseData.testVideo.title}</Typography>
+                                    <IconButton
+                                        onClick={() =>
+                                            setPlanYourCourseData({
+                                                ...planYourCourseData,
+                                                testVideo: null,
+                                            })
+                                        }
+                                        size="small"
+                                    >
+                                        <CloseIcon />
+                                    </IconButton>
+                                </Box>
+                            </Box>
+                        ) : (
+                            <Button
+                                variant="outlined"
+                                component="label"
+                                startIcon={<VideoLibraryIcon />}
+                                sx={{ mt: 2 }}
+                            >
+                                Tải lên video kiểm tra
+                                <input
+                                    type="file"
+                                    hidden
+                                    accept="video/*"
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0];
+                                        if (file) {
+                                            handleTestVideoUpload(file);
+                                        }
+                                    }}
+                                />
+                            </Button>
+                        )}
+                    </DialogContent>
+                </Dialog>
             </Box>
         </Box>
     );
